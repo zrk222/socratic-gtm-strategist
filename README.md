@@ -1,12 +1,17 @@
-# Socratic GTM Strategist for AI Startups (v2.1 - Context-Engineered)
+# Socratic GTM Strategist for AI Startups (v3.0 - Full-Spectrum OS)
 
-An elite AI Startup Strategy Partner and Socratic Advisor designed to ruthlessly but constructively de-risk a founder's Go-To-Market (GTM) strategy before building unscalable or indefensible products.
+An elite AI Startup Strategy Partner, Socratic Advisor, and GTM Operating System designed to ruthlessly but constructively de-risk a founder's Go-To-Market (GTM) strategy before building unscalable or indefensible products.
 
-Version 2.1 incorporates **Context Engineering** principles (pioneered by Dex Horthy and Carlos Kelkboom) to ensure high-fidelity execution, eliminate context degradation across multi-turn dialogues, and enforce quantitative confidence gating.
+Version 3.0 integrates **Context Engineering** state management with **5 production-grade execution modules**:
+1. 📊 **Interactive GTM Risk Radar & Margin Collapse Simulator** (`gtm_simulator.html`)
+2. 🕵️ **Live Incumbent Reconnaissance** (Automated competitive intelligence)
+3. ⚔️ **Adversarial Stress Test Modes** (`/stress-test ciso` and `/stress-test vc`)
+4. 🚀 **Executable Sprint Backlog Export** (Importable CSV/JSON for Linear, Jira & GitHub)
+5. 🎙️ **Investor Pitch Deck Narrative Generator** (`GTM_PITCH_DECK.md`)
 
 ---
 
-## 🎯 Overview
+## 🎯 Strategic Overview
 
 AI products face unique market dynamics that render traditional B2B SaaS playbooks obsolete:
 - The death of per-seat SaaS pricing.
@@ -14,20 +19,38 @@ AI products face unique market dynamics that render traditional B2B SaaS playboo
 - The trap of low-frequency reactive text-boxes.
 - Incumbent distribution advantages.
 
-**Socratic GTM Strategist** acts as an uncompromising peer-level strategic advisor that conducts a structured, 8-phase Socratic dialogue with the founder, evaluates answers against strict red/green flags, and synthesizes a production-grade **Customized AI GTM Playbook & Risk Matrix**.
+**Socratic GTM Strategist** conducts a structured, 8-phase Socratic dialogue with the founder, evaluates answers against strict red/green flags, verifies operational depth against an **85% confidence gate**, and synthesizes an entire execution toolkit.
 
 ---
 
-## 🧠 Context Engineering Enhancements (v2.1)
+## 🛠️ The 5 Operational Modules
 
-1. **Context State Accumulator (`<internal_monologue>`):**
-   Maintains a formal, structured state object across all conversational turns. Prevents "context loosening" where long transcripts cause models to forget early nuances by Phase 8.
-2. **Quantitative Confidence Gating ($\ge 85\%$ Threshold):**
-   Replaces subjective advancement with an operational score gate. The advisor will not advance to the next phase without concrete mechanics (APIs, DAU mechanisms, integration depth).
-3. **Open-Mode Execution Fence:**
-   Strict separation between diagnostic discovery and execution. File creation and raw playbook dumps are locked behind the completion of all 8 phases to prevent premature generation.
-4. **Artifact Containment:**
-   The final deliverable is written cleanly to `GTM_PLAYBOOK.md` rather than dumped into the conversational window, preserving context cleanliness for subsequent iterative refinement.
+### 1. Interactive Risk Radar & Margin Collapse Simulator
+* **Script:** [`scripts/generate_dashboard.py`](./scripts/generate_dashboard.py)
+* **Output:** Standalone responsive dark-mode HTML file (`gtm_simulator.html`) with:
+  * Dynamic **8-Vector Radar (Spider) Chart** plotting your startup's moats and vulnerabilities.
+  * Real-time **AI Unit Economics Calculator**: Sliders for token counts, pricing, task frequencies, and user accounts that dynamically graphs Gross Margin % and triggers red alerts when margins drop below healthy software thresholds.
+
+### 2. Live Incumbent Reconnaissance
+* **Script:** [`scripts/incumbent_recon.py`](./scripts/incumbent_recon.py)
+* **Function:** In Phase 2, queries real-time product updates and announcements for named competitors (`"[Incumbent] AI agent announcements 2026"`). 
+* **Value:** Protects founders from building features that incumbents already shipped or announced last quarter.
+
+### 3. Adversarial Role-Playing Inquisitions
+* **Script:** [`scripts/stress_test_simulator.py`](./scripts/stress_test_simulator.py)
+* **Subcommands:**
+  * `/stress-test ciso`: Grills the founder from the perspective of an enterprise Fortune 500 CISO on data egress, tenant isolation, prompt injection blast radiuses, and SOC2 readiness.
+  * `/stress-test vc`: Grills the founder as a Tier-1 Venture Partner on unit economics, churn rate physics, TAM, and defensibility against foundation lab updates.
+
+### 4. Executable GTM Runbook Export (Linear / Jira / GitHub)
+* **Script:** [`scripts/export_issues.py`](./scripts/export_issues.py)
+* **Outputs:** `gtm_sprint_issues.csv` and `gtm_sprint_issues.json`
+* **Value:** Instantly converts strategic advice into prioritized engineering tickets (Sprint 0 Telemetry, Sprint 1 Bi-Directional Webhooks, Sprint 2 Hybrid Metering) with acceptance criteria ready to import directly into your project tracker.
+
+### 5. Investor Pitch Deck Narrative Generator
+* **Script:** [`scripts/generate_pitch_deck.py`](./scripts/generate_pitch_deck.py)
+* **Output:** `GTM_PITCH_DECK.md`
+* **Value:** Translates the validated strategy into 5 battle-tested slide scripts for Seed/Series A fundraising (The Wedge, The Agentic Shift, Incumbent Bypass, AI Economics, Data Gravity).
 
 ---
 
@@ -46,45 +69,70 @@ AI products face unique market dynamics that render traditional B2B SaaS playboo
 
 ## 🔄 The 8-Phase Socratic Framework
 
-| Phase | Strategic Vector | Core Objective | Confidence Gate |
+| Phase | Strategic Vector | Core Objective | Gating Threshold |
 | :--- | :--- | :--- | :---: |
 | **Phase 1** | **Interaction Frequency & WoM Physics** | Test for the annual/cyclical trap & organic virality | $\ge 85\%$ |
-| **Phase 2** | **"Ticking Clock" vs. Incumbent Distribution** | Pressure-test durability against incumbent feature copies | $\ge 85\%$ |
+| **Phase 2** | **"Ticking Clock" vs. Incumbent Distribution** | Live recon on competitor releases & architectural wedge | $\ge 85\%$ |
 | **Phase 3** | **Adoption Vector (PLG vs. CISO Governance)** | Ensure end-user wedge precedes compliance bloat | $\ge 85\%$ |
 | **Phase 4** | **Expansion Strategy** | De-risk vertical specialization via horizontal discovery | $\ge 85\%$ |
 | **Phase 5** | **Value Architecture** | Shift reactive prompt engineering to proactive routines | $\ge 85\%$ |
-| **Phase 6** | **Defensive Layer** | Ensure model neutrality & context ownership | $\ge 85\%$ |
+| **Phase 6** | **Defensive Layer** | Ensure model neutrality & customer context ownership | $\ge 85\%$ |
 | **Phase 7** | **Pricing & Value Capture** | Align pricing models with autonomous work economics | $\ge 85\%$ |
 | **Phase 8** | **Integration & Data Gravity** | Establish bi-directional sync and switching barriers | $\ge 85\%$ |
-| **Phase 9** | **Final Playbook Deliverable** | Auto-generate the customized Playbook, Matrix & Stress Test to file | Synthesis |
+| **Phase 9** | **Full 5-Piece Deliverable Synthesis** | Playbook, HTML Simulator, Sprint Issues, Pitch Deck | Multi-Artifact |
 
 ---
 
-## 🛡️ Execution Guardrails & Mechanics
+## 📦 Repository Structure
 
-- **The Rule of Two:** At most two focused questions per turn to ensure depth.
-- **Synthesize & Pivot:** Every turn validates/challenges previous responses before transitioning.
-- **Internal Monologue:** Operates with internal evaluation (`<internal_monologue>`) measuring red vs. green flags.
-- **Dynamic Branching:** Offers constructive pivot brainstorming when fatal flaws are uncovered rather than simple failure notices.
-- **Anti-Sycophancy:** Uncompromising, intellectually rigorous peer tone.
-
----
-
-## 📦 Installation & Usage
-
-### Antigravity / Gemini CLI
-Clone or copy this repository into your customizations directory:
-
-```bash
-# Global skills
-git clone https://github.com/zrk222/socratic-gtm-strategist.git ~/.gemini/config/skills/socratic-gtm-strategist
-
-# Or within a workspace:
-git clone https://github.com/zrk222/socratic-gtm-strategist.git .agents/skills/socratic-gtm-strategist
+```text
+socratic-gtm-strategist/
+├── SKILL.md                          # Full v3.0 agent system skill with module hooks
+├── skills/
+│   └── socratic-gtm-strategist/
+│       └── SKILL.md                  # Package distribution mirror
+├── README.md                         # Complete documentation
+├── LICENSE                           # Apache License 2.0
+├── scripts/
+│   ├── generate_dashboard.py         # Generates interactive HTML Radar & Margin Simulator
+│   ├── incumbent_recon.py            # Automated competitor AI intelligence recon
+│   ├── stress_test_simulator.py      # CISO & VC adversarial brief generator
+│   ├── export_issues.py              # Exports Sprint 0-2 issues to Linear/Jira CSV & JSON
+│   └── generate_pitch_deck.py        # Generates 5-slide venture pitch deck copy
+└── templates/
+    ├── gtm_simulator.html            # Sample interactive simulator
+    ├── GTM_PLAYBOOK.md               # Sample strategic playbook
+    ├── GTM_PITCH_DECK.md             # Sample investor deck copy
+    └── gtm_sprint_issues.csv         # Sample Linear/Jira importable issues
 ```
 
-### Direct Agent System Prompt
-Copy the entire content of [`SKILL.md`](./SKILL.md) directly into your LLM's system prompt or custom instructions.
+---
+
+## 🚀 Usage
+
+### 1. Run in Antigravity or Gemini CLI
+```bash
+# Global installation:
+git clone https://github.com/zrk222/socratic-gtm-strategist.git ~/.gemini/config/skills/socratic-gtm-strategist
+```
+
+### 2. Standalone Python CLI Tooling
+```bash
+# Generate the interactive HTML Radar & Margin Simulator:
+python scripts/generate_dashboard.py --project "MyAI" --scores "85,60,90,75,80,70,85,90" --output gtm_simulator.html
+
+# Run live incumbent recon:
+python scripts/incumbent_recon.py --incumbent "Salesforce" --domain "Customer Support AI"
+
+# Generate an Adversarial CISO or VC Brief:
+python scripts/stress_test_simulator.py --mode ciso --startup "MyAI"
+
+# Export Linear / Jira Sprint Backlog:
+python scripts/export_issues.py --csv sprint_issues.csv
+
+# Generate 5-Slide Pitch Deck Copy:
+python scripts/generate_pitch_deck.py --startup "MyAI"
+```
 
 ---
 

@@ -1,0 +1,13 @@
+Title,Milestone,Priority,Estimate,Description,Acceptance Criteria
+[Sprint 0 - Telemetry] Instrument Magic Moment Timestamp,Sprint 0 (The Wedge),Urgent,3,Instrument product telemetry to measure the exact timestamp when a user experiences the primary value proposition. Must trigger within 90s of onboarding.,"1. Telemetry event `magic_moment_reached` fired with latency property.
+2. Dashboard displays median time-to-value across new signups."
+[Sprint 0 - PLG] Remove Pre-Signup Corporate Email Barrier,Sprint 0 (The Wedge),High,2,Ensure individual practitioners can pilot the tool without IT/CISO approval or corporate domain restrictions.,"1. Social/Google auth enabled.
+2. No mandatory credit card or enterprise contract required for core initial wedge."
+[Sprint 1 - Routine] Implement Background Asynchronous Cron Task,Sprint 1 (The Routine),High,5,Shift UX from a reactive text box to an automated background routine that proactively scans and surfaces ROI alerts via Slack/email.,"1. Scheduled worker executes low-cost background audits.
+2. High-value summary notification generated without user manual prompting."
+[Sprint 1 - Gravity] Build Bi-Directional Webhook Sync,Sprint 1 (The Routine),High,5,"Build bi-directional read/write sync with primary customer system of record (HubSpot, Salesforce, GitHub, or Postgres).","1. Two-way sync verified.
+2. Deleting the startup app creates noticeable data workflow disruption (high switching barrier)."
+[Sprint 2 - Pricing] Implement Hybrid Task/Outcome Metering,Sprint 2 (The Scale),Medium,5,Transition billing engine from legacy per-seat tiers to base platform fee + metered task credits to prevent AI labor margin cannibalization.,"1. Stripe/Lago integration meters executed agent work units.
+2. Automatic overage alerts trigger when usage approaches credit ceilings."
+[Sprint 2 - Defense] Multi-Model Router & CMEK Memory Layer,Sprint 2 (The Scale),Medium,8,Abstract foundation model calls behind a dynamic fallback router; ensure customer contextual data is encrypted with customer-controlled keys.,"1. System can swap between Claude, GPT, and local SLMs via config flag.
+2. Zero customer training data leakage guarantee audited."
