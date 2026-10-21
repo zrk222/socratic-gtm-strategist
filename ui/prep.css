@@ -34,3 +34,8 @@
 .prep-check input { width:20px; height:20px; margin-top:4px; flex-shrink:0; }
 @media(max-width:768px) { .prep-layout { grid-template-columns:minmax(0,1fr); gap:8px; } .prep-dialog { padding:16px; width:96vw; max-width:96vw; max-height:94vh; border-radius:12px; } .prep-header { display:block; } .prep-section { padding:14px; } .prep-actions button { flex:1 1 150px; } }
 @media(prefers-reduced-motion:reduce) { .prep-dialog * { animation:none !important; transition:none !important; scroll-behavior:auto !important; } }
+
+.prep-dialog { background:#19142c; border-color:#78629f; }
+.prep-section { background:#251d3d; border-color:#685282; }
+.prep-eyebrow,.prep-section h3 { color:#68efda; }
+#prepRespond,#prepStart { background:#ffad94; color:#30152b; border-color:#ffad94; }

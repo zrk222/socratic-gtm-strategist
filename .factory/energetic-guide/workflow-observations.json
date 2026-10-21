@@ -1,0 +1,307 @@
+{
+  "schema": "factory.workflow-audit.observations.v1",
+  "contract_sha256": "0a4a9efe39e59a57f7cee49a36af45dc4f080689978fb3a0c4ec1758a3e8249c",
+  "candidate_sha256": "e2b82ef3f550024bed62d5ca11584c676bb3142ef283608041d87adbca9d4aa5",
+  "observations": [
+    {
+      "id": "brief_guidance",
+      "profile": "windows-py311-node-headless-chrome-1440-390",
+      "status": "PASS",
+      "reason": "Each step has brief What/How/When guidance and one primary action. Observed by current source assertions and bounded owned-browser execution; no human study or speed claim.",
+      "execution_identity": "Codex local Windows runner and owned headless Chrome",
+      "observed_at": "2026-10-21T07:10:06.879676+00:00",
+      "artifacts": [
+        {
+          "path": ".factory/energetic-guide/check-0.txt",
+          "kind": "terminal",
+          "sha256": "330278e0dd4ed3ee0bbe5c8ac0ac12efc876ac65007918ca197412882337905b"
+        },
+        {
+          "path": ".factory/energetic-guide/check-1.txt",
+          "kind": "terminal",
+          "sha256": "0fde0879401307cd134b821355ab67b542f6a307a38980b6b42208f1ee67ca12"
+        },
+        {
+          "path": ".factory/energetic-guide/check-2.txt",
+          "kind": "terminal",
+          "sha256": "3abb25d89cd94d6e2e8b8140d732d9829b0e861044822aa5909a1165a97bb7f1"
+        },
+        {
+          "path": ".factory/energetic-guide/check-3.txt",
+          "kind": "terminal",
+          "sha256": "669ff29e7747214c8052746f268e8fff01d5c09c4bbac47263ac2881d084d3ea"
+        },
+        {
+          "path": ".factory/energetic-guide/check-4.txt",
+          "kind": "terminal",
+          "sha256": "581937f7477ca6d08670afe1248dfa01f835690008e1868812e690438e24e9a3"
+        },
+        {
+          "path": ".factory/energetic-guide/check-5.txt",
+          "kind": "terminal",
+          "sha256": "9975c614beb57884833319949ef3d4a8fb398363435a7fe5273b81463967e9be"
+        },
+        {
+          "path": ".factory/energetic-guide/check-6.txt",
+          "kind": "terminal",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": ".factory/energetic-guide/browser-final.txt",
+          "kind": "terminal",
+          "sha256": "330278e0dd4ed3ee0bbe5c8ac0ac12efc876ac65007918ca197412882337905b"
+        },
+        {
+          "path": ".factory/energetic-guide/doctor.json",
+          "kind": "terminal",
+          "sha256": "5be9f92d5db96beba6875444646c0bcb4f3f96a5a03ff9a7a8b5edd3cffc2928"
+        },
+        {
+          "path": ".factory/energetic-guide/browser/next-steps-desktop.png",
+          "kind": "screenshot",
+          "sha256": "21cfc57294d0a6d52f8aebf3cc48194581f21c3720e2ac980c848d80285d8a19"
+        },
+        {
+          "path": ".factory/energetic-guide/browser/next-steps-mobile.png",
+          "kind": "screenshot",
+          "sha256": "bae270fc536d4117f776a5e615d984b08d5580725bd60c1a7fed90ad2ea61cc5"
+        },
+        {
+          "path": ".factory/energetic-guide/browser/start-desktop.png",
+          "kind": "screenshot",
+          "sha256": "434fa2d033582f7f2c663d980994a07bf898e5780725356d799cca09b0c20156"
+        },
+        {
+          "path": ".factory/energetic-guide/browser/start-mobile.png",
+          "kind": "screenshot",
+          "sha256": "c1669261b08283f1ff14b43dc777d30b570a0c222b2d1045f91ba13073805835"
+        }
+      ]
+    },
+    {
+      "id": "active_starters",
+      "profile": "windows-py311-node-headless-chrome-1440-390",
+      "status": "PASS",
+      "reason": "Phase-specific starter and uncertainty actions preserve drafts and never auto-send or advance. Observed by current source assertions and bounded owned-browser execution; no human study or speed claim.",
+      "execution_identity": "Codex local Windows runner and owned headless Chrome",
+      "observed_at": "2026-10-21T07:10:06.879676+00:00",
+      "artifacts": [
+        {
+          "path": ".factory/energetic-guide/check-0.txt",
+          "kind": "terminal",
+          "sha256": "330278e0dd4ed3ee0bbe5c8ac0ac12efc876ac65007918ca197412882337905b"
+        },
+        {
+          "path": ".factory/energetic-guide/check-1.txt",
+          "kind": "terminal",
+          "sha256": "0fde0879401307cd134b821355ab67b542f6a307a38980b6b42208f1ee67ca12"
+        },
+        {
+          "path": ".factory/energetic-guide/check-2.txt",
+          "kind": "terminal",
+          "sha256": "3abb25d89cd94d6e2e8b8140d732d9829b0e861044822aa5909a1165a97bb7f1"
+        },
+        {
+          "path": ".factory/energetic-guide/check-3.txt",
+          "kind": "terminal",
+          "sha256": "669ff29e7747214c8052746f268e8fff01d5c09c4bbac47263ac2881d084d3ea"
+        },
+        {
+          "path": ".factory/energetic-guide/check-4.txt",
+          "kind": "terminal",
+          "sha256": "581937f7477ca6d08670afe1248dfa01f835690008e1868812e690438e24e9a3"
+        },
+        {
+          "path": ".factory/energetic-guide/check-5.txt",
+          "kind": "terminal",
+          "sha256": "9975c614beb57884833319949ef3d4a8fb398363435a7fe5273b81463967e9be"
+        },
+        {
+          "path": ".factory/energetic-guide/check-6.txt",
+          "kind": "terminal",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": ".factory/energetic-guide/browser-final.txt",
+          "kind": "terminal",
+          "sha256": "330278e0dd4ed3ee0bbe5c8ac0ac12efc876ac65007918ca197412882337905b"
+        },
+        {
+          "path": ".factory/energetic-guide/doctor.json",
+          "kind": "terminal",
+          "sha256": "5be9f92d5db96beba6875444646c0bcb4f3f96a5a03ff9a7a8b5edd3cffc2928"
+        },
+        {
+          "path": ".factory/energetic-guide/browser/next-steps-desktop.png",
+          "kind": "screenshot",
+          "sha256": "21cfc57294d0a6d52f8aebf3cc48194581f21c3720e2ac980c848d80285d8a19"
+        },
+        {
+          "path": ".factory/energetic-guide/browser/next-steps-mobile.png",
+          "kind": "screenshot",
+          "sha256": "bae270fc536d4117f776a5e615d984b08d5580725bd60c1a7fed90ad2ea61cc5"
+        },
+        {
+          "path": ".factory/energetic-guide/browser/start-desktop.png",
+          "kind": "screenshot",
+          "sha256": "434fa2d033582f7f2c663d980994a07bf898e5780725356d799cca09b0c20156"
+        },
+        {
+          "path": ".factory/energetic-guide/browser/start-mobile.png",
+          "kind": "screenshot",
+          "sha256": "c1669261b08283f1ff14b43dc777d30b570a0c222b2d1045f91ba13073805835"
+        }
+      ]
+    },
+    {
+      "id": "energetic_design",
+      "profile": "windows-py311-node-headless-chrome-1440-390",
+      "status": "PASS",
+      "reason": "Owned Chrome first-use and next-step views fit desktop and 390px; Prestige audit, strict critique, render and challenge pass. Observed by current source assertions and bounded owned-browser execution; no human study or speed claim.",
+      "execution_identity": "Codex local Windows runner and owned headless Chrome",
+      "observed_at": "2026-10-21T07:10:06.879676+00:00",
+      "artifacts": [
+        {
+          "path": ".factory/energetic-guide/check-0.txt",
+          "kind": "terminal",
+          "sha256": "330278e0dd4ed3ee0bbe5c8ac0ac12efc876ac65007918ca197412882337905b"
+        },
+        {
+          "path": ".factory/energetic-guide/check-1.txt",
+          "kind": "terminal",
+          "sha256": "0fde0879401307cd134b821355ab67b542f6a307a38980b6b42208f1ee67ca12"
+        },
+        {
+          "path": ".factory/energetic-guide/check-2.txt",
+          "kind": "terminal",
+          "sha256": "3abb25d89cd94d6e2e8b8140d732d9829b0e861044822aa5909a1165a97bb7f1"
+        },
+        {
+          "path": ".factory/energetic-guide/check-3.txt",
+          "kind": "terminal",
+          "sha256": "669ff29e7747214c8052746f268e8fff01d5c09c4bbac47263ac2881d084d3ea"
+        },
+        {
+          "path": ".factory/energetic-guide/check-4.txt",
+          "kind": "terminal",
+          "sha256": "581937f7477ca6d08670afe1248dfa01f835690008e1868812e690438e24e9a3"
+        },
+        {
+          "path": ".factory/energetic-guide/check-5.txt",
+          "kind": "terminal",
+          "sha256": "9975c614beb57884833319949ef3d4a8fb398363435a7fe5273b81463967e9be"
+        },
+        {
+          "path": ".factory/energetic-guide/check-6.txt",
+          "kind": "terminal",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": ".factory/energetic-guide/browser-final.txt",
+          "kind": "terminal",
+          "sha256": "330278e0dd4ed3ee0bbe5c8ac0ac12efc876ac65007918ca197412882337905b"
+        },
+        {
+          "path": ".factory/energetic-guide/doctor.json",
+          "kind": "terminal",
+          "sha256": "5be9f92d5db96beba6875444646c0bcb4f3f96a5a03ff9a7a8b5edd3cffc2928"
+        },
+        {
+          "path": ".factory/energetic-guide/browser/next-steps-desktop.png",
+          "kind": "screenshot",
+          "sha256": "21cfc57294d0a6d52f8aebf3cc48194581f21c3720e2ac980c848d80285d8a19"
+        },
+        {
+          "path": ".factory/energetic-guide/browser/next-steps-mobile.png",
+          "kind": "screenshot",
+          "sha256": "bae270fc536d4117f776a5e615d984b08d5580725bd60c1a7fed90ad2ea61cc5"
+        },
+        {
+          "path": ".factory/energetic-guide/browser/start-desktop.png",
+          "kind": "screenshot",
+          "sha256": "434fa2d033582f7f2c663d980994a07bf898e5780725356d799cca09b0c20156"
+        },
+        {
+          "path": ".factory/energetic-guide/browser/start-mobile.png",
+          "kind": "screenshot",
+          "sha256": "c1669261b08283f1ff14b43dc777d30b570a0c222b2d1045f91ba13073805835"
+        }
+      ]
+    },
+    {
+      "id": "preserved_download",
+      "profile": "windows-py311-node-headless-chrome-1440-390",
+      "status": "PASS",
+      "reason": "Actual guided download contains user interview and practice inputs; calculator returns to the workspace. Observed by current source assertions and bounded owned-browser execution; no human study or speed claim.",
+      "execution_identity": "Codex local Windows runner and owned headless Chrome",
+      "observed_at": "2026-10-21T07:10:06.879676+00:00",
+      "artifacts": [
+        {
+          "path": ".factory/energetic-guide/check-0.txt",
+          "kind": "terminal",
+          "sha256": "330278e0dd4ed3ee0bbe5c8ac0ac12efc876ac65007918ca197412882337905b"
+        },
+        {
+          "path": ".factory/energetic-guide/check-1.txt",
+          "kind": "terminal",
+          "sha256": "0fde0879401307cd134b821355ab67b542f6a307a38980b6b42208f1ee67ca12"
+        },
+        {
+          "path": ".factory/energetic-guide/check-2.txt",
+          "kind": "terminal",
+          "sha256": "3abb25d89cd94d6e2e8b8140d732d9829b0e861044822aa5909a1165a97bb7f1"
+        },
+        {
+          "path": ".factory/energetic-guide/check-3.txt",
+          "kind": "terminal",
+          "sha256": "669ff29e7747214c8052746f268e8fff01d5c09c4bbac47263ac2881d084d3ea"
+        },
+        {
+          "path": ".factory/energetic-guide/check-4.txt",
+          "kind": "terminal",
+          "sha256": "581937f7477ca6d08670afe1248dfa01f835690008e1868812e690438e24e9a3"
+        },
+        {
+          "path": ".factory/energetic-guide/check-5.txt",
+          "kind": "terminal",
+          "sha256": "9975c614beb57884833319949ef3d4a8fb398363435a7fe5273b81463967e9be"
+        },
+        {
+          "path": ".factory/energetic-guide/check-6.txt",
+          "kind": "terminal",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": ".factory/energetic-guide/browser-final.txt",
+          "kind": "terminal",
+          "sha256": "330278e0dd4ed3ee0bbe5c8ac0ac12efc876ac65007918ca197412882337905b"
+        },
+        {
+          "path": ".factory/energetic-guide/doctor.json",
+          "kind": "terminal",
+          "sha256": "5be9f92d5db96beba6875444646c0bcb4f3f96a5a03ff9a7a8b5edd3cffc2928"
+        },
+        {
+          "path": ".factory/energetic-guide/browser/next-steps-desktop.png",
+          "kind": "screenshot",
+          "sha256": "21cfc57294d0a6d52f8aebf3cc48194581f21c3720e2ac980c848d80285d8a19"
+        },
+        {
+          "path": ".factory/energetic-guide/browser/next-steps-mobile.png",
+          "kind": "screenshot",
+          "sha256": "bae270fc536d4117f776a5e615d984b08d5580725bd60c1a7fed90ad2ea61cc5"
+        },
+        {
+          "path": ".factory/energetic-guide/browser/start-desktop.png",
+          "kind": "screenshot",
+          "sha256": "434fa2d033582f7f2c663d980994a07bf898e5780725356d799cca09b0c20156"
+        },
+        {
+          "path": ".factory/energetic-guide/browser/start-mobile.png",
+          "kind": "screenshot",
+          "sha256": "c1669261b08283f1ff14b43dc777d30b570a0c222b2d1045f91ba13073805835"
+        }
+      ]
+    }
+  ]
+}

@@ -109,7 +109,7 @@
         }
 
         /* Founder workspace: a quiet, evidence-led narrative. */
-        :root { --story-ink:#0c1421; --story-panel:#131e2d; --story-line:#2b3b50; --story-text:#e9edf2; --story-muted:#aebed0; --story-mint:#83dfc4; --story-gold:#e8c68b; }
+        :root { --story-ink:#100e24; --story-panel:#211b3e; --story-line:#534577; --story-text:#f5f1ff; --story-muted:#c9bee2; --story-mint:#68efda; --story-gold:#ffbda7; --energy-violet:#bba4ff; --energy-coral:#ffad94; }
         body { font-family:Inter,"Segoe UI",sans-serif; background:var(--story-ink); color:var(--story-text); }
         aside { width:276px !important; background:#101b2a !important; border-color:var(--story-line) !important; }
         aside h1 { font-size:17px !important; letter-spacing:-.04em; font-weight:650 !important; }
@@ -191,6 +191,30 @@
         #ideaFieldLabel { display:none; font-size:20px; font-weight:600; margin-bottom:12px; }
         body[data-flow-step="1"] #ideaFieldLabel { display:block; }
         @media(max-width:768px) { .workflow-guide { padding:12px; } .workflow-guide h2 { font-size:20px; } .workflow-guide ol { font-size:16px; gap:4px 10px; } }
+        /* Energetic accents orient the user; the primary action stays distinct. */
+        main { background:radial-gradient(ellipse at 85% 35%,#39245a55,transparent 65%),var(--story-ink) !important; }
+        main > header { background:#19132f !important; }
+        #activePhasePill { color:var(--story-mint); background:#17383d; border-color:#36877c; }
+        .workflow-guide { background:linear-gradient(115deg,#302052,#1c2640); border-color:var(--story-line); }
+        .workflow-guide ol { gap:8px; }
+        .workflow-guide li { border:1px solid #655782; padding:5px 11px; border-radius:20px; color:#ded4f3; }
+        .workflow-guide li[aria-current=step] { color:#160e29; background:var(--energy-violet); border-color:var(--energy-violet); }
+        .workflow-guide p { color:#e2d9f1; line-height:1.6; }
+        #workflowExplainer strong { color:var(--story-mint); }
+        #workflowPrimary,#sendBtn { background:var(--energy-coral); color:#30152b; border-color:var(--energy-coral); box-shadow:0 4px 16px #ffad9420; }
+        #workflowPrimary:hover,#sendBtn:hover { background:#ffc6b5; }
+        .session-tools { background:#19152d; }
+        #strategistCoach { margin:0 0 12px; padding:12px 16px; border-left:3px solid var(--story-mint); background:#201b37; border-radius:0 12px 12px 0; }
+        #strategistCoach strong { color:var(--story-mint); font-size:16px; }
+        #strategistCoach p { font-size:16px; line-height:1.6; color:#e1d9f2; }
+        #strategistShortcuts { display:flex; gap:8px; flex-wrap:wrap; }
+        #strategistShortcuts[hidden] { display:none; }
+        #strategistShortcuts button { font-size:16px; min-height:44px; padding:8px 12px; border:1px solid #756196; border-radius:8px; color:#e6dcff; background:transparent; }
+        #strategistShortcuts button:hover { background:#3b2d58; }
+        button:focus-visible,textarea:focus-visible { outline:3px solid var(--story-mint); outline-offset:3px; }
+        body[data-flow-step="1"] #interviewComposer { border-color:#78629f; background:#19142c; margin:24px auto auto; }
+        .chat-bubble-agent { background:#251d3d; border-color:#685282; }
+        .chat-bubble-user { background:#173c40; border-color:#3e8c85; }
     </style>
 </head>
 <body class="bg-dark-900 text-gray-100 flex h-screen overflow-hidden font-sans antialiased">
@@ -333,7 +357,19 @@
         <section class="workflow-guide" aria-label="Your preparation workflow">
             <ol aria-label="Preparation steps"><li id="flowStep1" aria-current="step">1. Your idea</li><li id="flowStep2">2. Questions</li><li id="flowStep3">3. Practice</li><li id="flowStep4">4. Next steps</li></ol>
             <h2 id="workflowTitle">Start with your idea</h2>
-            <p id="workflowHelp">Tell us who you help and what problem you solve. Then press Continue.</p>
+            <div id="workflowExplainer">
+                <p><strong>What:</strong> <span id="workflowHelp">Describe your product and who it helps.</span></p>
+                <p><strong>How:</strong> <span id="workflowHow">Write one sentence below, then press Continue.</span></p>
+                <p><strong>When:</strong> <span id="workflowWhen">Start here, even if your idea is still rough.</span></p>
+            </div>
+            <div id="strategistCoach" role="region" aria-label="Your strategist">
+                <strong>Your strategist</strong>
+                <p id="strategistNudge" role="status">Let's make a first draft. You can sharpen it as we go.</p>
+                <div id="strategistShortcuts">
+                    <button type="button" onclick="useAnswerStarter()">Help me start</button>
+                    <button id="strategistUnknown" type="button" onclick="useAnswerStarter(true)" hidden>Not sure yet</button>
+                </div>
+            </div>
             <button id="workflowPrimary" type="button" onclick="runWorkflowPrimary()">Write my idea</button>
             <button id="workflowPractice" type="button" onclick="GTMPrepUI.quickStart()" hidden>Skip ahead to practice</button>
         </section>
@@ -1479,27 +1515,74 @@
             const input = document.getElementById('userInput');
             if (step === 1) {
                 title.textContent = 'Start with your idea';
-                help.textContent = 'Tell us who you help and what problem you solve. Example: I help small agencies turn customer interviews into a weekly action plan.';
                 primary.textContent = 'Write my idea';
                 input.placeholder = 'I help [who] with [problem] by [what your product does]...';
             } else if (step === 2) {
                 title.textContent = 'Question ' + currentPhase + ' of 8: ' + GTMSession.titles[currentPhase - 1];
-                help.textContent = 'Read the question below. Write a short answer, or say "I do not know yet," then press Continue. You can skip ahead to practice at any time.';
                 primary.textContent = 'Answer this question';
                 input.placeholder = 'Your answer - "I do not know yet" is fine...';
             } else if (step === 3) {
                 title.textContent = active ? 'Continue your practice' : 'Now try a hard question';
-                help.textContent = 'We will use your latest answer and ask you to defend it. Missing evidence becomes a next step.';
                 primary.textContent = active ? 'Resume practice' : 'Start my practice';
             } else {
                 title.textContent = 'Your next steps are ready';
-                const d = GTMPrep.debrief(practiceState, completed.id);
-                help.textContent = d.claim.action ? 'Your next test: ' + d.claim.action : 'Your rehearsal and evidence gaps are saved. Download your notes, then choose one thing to verify before your meeting.';
                 primary.textContent = 'Download my next steps';
             }
+            const guidance = [
+                ['Describe your product and who it helps.', 'Write one sentence below, then press Continue.', 'Start here, even if your idea is still rough.'],
+                ['Clarify your customers, offer and assumptions.', 'Answer each question briefly. "I do not know yet" is fine.', 'Continue through eight questions, or skip to practice when ready.'],
+                ['Rehearse objections to your latest answer.', 'Start practice, answer the challenge, then finish for next steps.', 'Use this before a customer, investor or partner conversation.'],
+                ['Take away your answers, rehearsal notes and evidence gaps.', 'Download your next steps and choose one assumption to test.', 'Test it before your next meeting, then return with what you learned.']
+            ][step - 1];
+            help.textContent = guidance[0];
+            document.getElementById('workflowHow').textContent = guidance[1];
+            document.getElementById('workflowWhen').textContent = guidance[2];
+            const latest = accumulatedContext.phases[String(Math.min(8, currentPhase - 1))] || '';
+            const uncertain = /do not know|don't know|not sure|assumption|unverified/i.test(latest);
+            const focus = [
+                'Start with the recurring problem: how often does it happen?',
+                'Name what customers use today, including doing nothing.',
+                'Separate the person using it from the person paying.',
+                'Choose one small group you can reach first.',
+                'Describe the result customers get, not just the features.',
+                'Name the model or data you depend on and what you control.',
+                'Start with a price hypothesis and your main delivery cost.',
+                'Explain how a customer starts using it and can leave.'
+            ];
+            document.getElementById('strategistNudge').textContent = step === 1
+                ? "Let's make a first draft. Tell me who you help; we can sharpen the rest together."
+                : step === 2 ? (uncertain ? "I've kept that uncertainty visible. " : 'Your input is captured. ') + focus[currentPhase - 1]
+                : step === 3 ? "Let's pressure-test one claim now. I'll ask a hard question and keep the gaps for your next steps."
+                : 'Choose one open question from your notes. Bring back evidence, and we can rehearse again.';
+            document.getElementById('strategistShortcuts').hidden = step >= 3;
+            document.getElementById('strategistUnknown').hidden = step !== 2;
             document.getElementById('workflowPractice').hidden = step !== 2;
             primary.hidden = step <= 2;
             primary.dataset.step = String(step);
+        }
+        function useAnswerStarter(unknown = false) {
+            if (sending) return;
+            const input = document.getElementById('userInput');
+            if (input.value.trim()) {
+                document.getElementById('strategistNudge').textContent = 'Your draft is still here. Keep editing it, then press Continue.';
+                input.focus();
+                return;
+            }
+            const starters = [
+                'I help [customer] solve [problem] by [approach].',
+                'The problem happens [how often]. Today, they [workaround].',
+                'They currently use [alternative]. They might switch because [reason].',
+                'The user is [person]. The buyer is [person]. They care about [result].',
+                'I will start with [specific group] and reach them through [channel].',
+                'The first useful result is [outcome]. It takes [time] to deliver.',
+                'I depend on [model/data]. I control [asset]. My fallback is [option].',
+                'My price hypothesis is [amount]. Main costs are [costs]. I will test it by [experiment].',
+                'Customers connect through [setup]. They can export or leave by [method].'
+            ];
+            input.value = unknown ? 'I do not know yet. I need to verify this with [person or evidence].' : starters[currentPhase] || starters[0];
+            persistSession();
+            document.getElementById('strategistNudge').textContent = 'Starter added. Replace the brackets with your own details before continuing.';
+            input.focus();
         }
         function runWorkflowPrimary() {
             const step = document.getElementById('workflowPrimary').dataset.step || '1';

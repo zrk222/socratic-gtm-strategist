@@ -1,0 +1,122 @@
+{
+  "schema": "factory.workflow-audit.contract.v1",
+  "project_id": "gtm-energetic-guide",
+  "candidate": [
+    {
+      "path": "ui/index.html",
+      "kind": "source",
+      "sha256": "7770f07d3c60e86ca62ae55549a66ad52cf1550d458bff3bfaf3e21d9f52a812"
+    },
+    {
+      "path": "ui/prep.css",
+      "kind": "source",
+      "sha256": "5dbd9138dc3a78260907ec2fa4cba60bac1290a888729bbbe49bd83054576937"
+    },
+    {
+      "path": "tests/guided_browser.cjs",
+      "kind": "source",
+      "sha256": "b6a4ec2b7f76b3ca8cd6054b8e9eec00ca5969f954d46b91611d2c5d4196c879"
+    },
+    {
+      "path": ".factory/energetic-guide/scope.md",
+      "kind": "source",
+      "sha256": "291380febcc61bbe5f6af9532a687f0c0051ef79811b53725e78efb545056be3"
+    }
+  ],
+  "applicability": [
+    {
+      "category": "happy_path",
+      "applicable": true,
+      "reason": "Scoped copy, CSS and local editable starter behavior; see reviewed scope and test assertions."
+    },
+    {
+      "category": "validation",
+      "applicable": false,
+      "reason": "Scoped copy, CSS and local editable starter behavior; see reviewed scope and test assertions.",
+      "review_evidence": {
+        "path": ".factory/energetic-guide/scope.md",
+        "kind": "review",
+        "sha256": "291380febcc61bbe5f6af9532a687f0c0051ef79811b53725e78efb545056be3"
+      }
+    },
+    {
+      "category": "failure_recovery",
+      "applicable": false,
+      "reason": "Scoped copy, CSS and local editable starter behavior; see reviewed scope and test assertions.",
+      "review_evidence": {
+        "path": ".factory/energetic-guide/scope.md",
+        "kind": "review",
+        "sha256": "291380febcc61bbe5f6af9532a687f0c0051ef79811b53725e78efb545056be3"
+      }
+    },
+    {
+      "category": "state_consistency",
+      "applicable": true,
+      "reason": "Scoped copy, CSS and local editable starter behavior; see reviewed scope and test assertions."
+    },
+    {
+      "category": "security_privacy",
+      "applicable": false,
+      "reason": "Scoped copy, CSS and local editable starter behavior; see reviewed scope and test assertions.",
+      "review_evidence": {
+        "path": ".factory/energetic-guide/scope.md",
+        "kind": "review",
+        "sha256": "291380febcc61bbe5f6af9532a687f0c0051ef79811b53725e78efb545056be3"
+      }
+    },
+    {
+      "category": "performance",
+      "applicable": false,
+      "reason": "Scoped copy, CSS and local editable starter behavior; see reviewed scope and test assertions.",
+      "review_evidence": {
+        "path": ".factory/energetic-guide/scope.md",
+        "kind": "review",
+        "sha256": "291380febcc61bbe5f6af9532a687f0c0051ef79811b53725e78efb545056be3"
+      }
+    },
+    {
+      "category": "accessibility",
+      "applicable": true,
+      "reason": "Scoped copy, CSS and local editable starter behavior; see reviewed scope and test assertions."
+    },
+    {
+      "category": "external_effects",
+      "applicable": true,
+      "reason": "Scoped copy, CSS and local editable starter behavior; see reviewed scope and test assertions."
+    }
+  ],
+  "checks": [
+    {
+      "id": "brief_guidance",
+      "requirement": "Each step has brief What/How/When guidance and one primary action.",
+      "category": "happy_path",
+      "profiles": [
+        "windows-py311-node-headless-chrome-1440-390"
+      ]
+    },
+    {
+      "id": "active_starters",
+      "requirement": "Phase-specific starter and uncertainty actions preserve drafts and never auto-send or advance.",
+      "category": "state_consistency",
+      "profiles": [
+        "windows-py311-node-headless-chrome-1440-390"
+      ]
+    },
+    {
+      "id": "energetic_design",
+      "requirement": "Owned Chrome first-use and next-step views fit desktop and 390px; Prestige audit, strict critique, render and challenge pass.",
+      "category": "accessibility",
+      "profiles": [
+        "windows-py311-node-headless-chrome-1440-390"
+      ]
+    },
+    {
+      "id": "preserved_download",
+      "requirement": "Actual guided download contains user interview and practice inputs; calculator returns to the workspace.",
+      "category": "external_effects",
+      "profiles": [
+        "windows-py311-node-headless-chrome-1440-390"
+      ]
+    }
+  ]
+}

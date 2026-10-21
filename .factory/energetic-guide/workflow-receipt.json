@@ -1,0 +1,65 @@
+{
+  "schema": "factory.workflow-audit.receipt.v1",
+  "project_id": "gtm-energetic-guide",
+  "state": "PASS",
+  "contract_sha256": "0a4a9efe39e59a57f7cee49a36af45dc4f080689978fb3a0c4ec1758a3e8249c",
+  "observations_sha256": "9ce74341e3132f4cef32a2fec57c2d494da14327b7d2fbe6baa53b47cc8c9add",
+  "candidate_sha256": "e2b82ef3f550024bed62d5ca11584c676bb3142ef283608041d87adbca9d4aa5",
+  "checks": 4,
+  "inapplicability_evidence": {
+    "validation": {
+      "path": ".factory/energetic-guide/scope.md",
+      "kind": "review",
+      "sha256": "291380febcc61bbe5f6af9532a687f0c0051ef79811b53725e78efb545056be3",
+      "actual_sha256": "291380febcc61bbe5f6af9532a687f0c0051ef79811b53725e78efb545056be3",
+      "current": true
+    },
+    "failure_recovery": {
+      "path": ".factory/energetic-guide/scope.md",
+      "kind": "review",
+      "sha256": "291380febcc61bbe5f6af9532a687f0c0051ef79811b53725e78efb545056be3",
+      "actual_sha256": "291380febcc61bbe5f6af9532a687f0c0051ef79811b53725e78efb545056be3",
+      "current": true
+    },
+    "security_privacy": {
+      "path": ".factory/energetic-guide/scope.md",
+      "kind": "review",
+      "sha256": "291380febcc61bbe5f6af9532a687f0c0051ef79811b53725e78efb545056be3",
+      "actual_sha256": "291380febcc61bbe5f6af9532a687f0c0051ef79811b53725e78efb545056be3",
+      "current": true
+    },
+    "performance": {
+      "path": ".factory/energetic-guide/scope.md",
+      "kind": "review",
+      "sha256": "291380febcc61bbe5f6af9532a687f0c0051ef79811b53725e78efb545056be3",
+      "actual_sha256": "291380febcc61bbe5f6af9532a687f0c0051ef79811b53725e78efb545056be3",
+      "current": true
+    }
+  },
+  "resource_usage": {
+    "artifact_references": 60,
+    "bytes_hashed": 2961912
+  },
+  "errors": [],
+  "agent_actions": [],
+  "authority": {
+    "repair": false,
+    "approval": false,
+    "merge": false,
+    "publication": false,
+    "deployment": false,
+    "signing": false,
+    "messaging": false,
+    "credential": false,
+    "connector": false,
+    "execution": false
+  },
+  "limits": [
+    "Recorded evidence completeness and hashes only; observations require review.",
+    "Inapplicability review evidence is hash-bound but its judgment and identity are not authenticated.",
+    "Each contract/observation JSON input and evidence artifact is limited to 16 MiB; total evidence hashing is limited to 128 MiB, 4096 artifact references, and 4096 required check/profile pairs.",
+    "No project command or provider is executed.",
+    "No approval, certification or deployment authority."
+  ],
+  "receipt_sha256": "bd306415d4f2e8b5bec645e86d8cf3f8b1bb648b1e1a96a0f22b68be57e7df81"
+}
