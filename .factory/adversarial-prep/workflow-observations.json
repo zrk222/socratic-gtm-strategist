@@ -1,0 +1,632 @@
+{
+  "schema": "factory.workflow-audit.observations.v1",
+  "contract_sha256": "301e4e0b43a2ad5910148a73c7770837ec0d6fd2d804f82593fd99be6becd598",
+  "candidate_sha256": "afd06ac6704fffbaca35dec4dd8cbe93eaffd4a0fbb18d8adf76d2d61e420d45",
+  "observations": [
+    {
+      "id": "practice_isolation",
+      "profile": "local-windows-py311-node22-chrome",
+      "status": "PASS",
+      "reason": "Expected: When a founder starts practice, the system shall store an isolated practice session with zero modifications to interview answers or phase (acceptance: `practice_isolation`). Observed: declared runtime assertions passed; inspect named tests/logs for exact fixtures and limitations.",
+      "execution_identity": "Codex local reviewer; Windows, Python 3.11.9, Node 22.22.0 and installed headless Chrome. Identity is not independently authenticated.",
+      "observed_at": "2026-10-21T06:19:41.122948+00:00",
+      "artifacts": [
+        {
+          "path": ".factory/adversarial-prep/prep-browser.txt",
+          "sha256": "27405899749691d526e564a493ce72a8699474b724d9e6ff5c611e9e60a9ee2b",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/adversarial-prep/verification.json",
+          "sha256": "63c707fd97d38b9354ef9a411a555b29430e44614950da1bed51382fdd5c08b7",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/adversarial-prep/browser/observations.json",
+          "sha256": "2514c84642e2e4550c0b4cd0ee01c88a336891470fba1d9d7c0d2ce78bccbb02",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/adversarial-prep/browser/debrief-desktop.png",
+          "sha256": "192d92123483a587f36d9e68c91a66946576ed8237e13f858c52ed84d1afc6ca",
+          "kind": "screenshot"
+        },
+        {
+          "path": ".factory/adversarial-prep/browser/practice-mobile.png",
+          "sha256": "c6a142ef20b17d155a427db4f3f14c8cd12484071544d3eac9749f6911c98186",
+          "kind": "screenshot"
+        }
+      ]
+    },
+    {
+      "id": "persona_selection",
+      "profile": "local-windows-py311-node22-chrome",
+      "status": "PASS",
+      "reason": "Expected: When a founder selects a persona, the system shall display investor, CISO, buyer, finance, procurement, competitor and dissatisfied-customer perspectives (acceptance: `persona_selection`). Observed: declared runtime assertions passed; inspect named tests/logs for exact fixtures and limitations.",
+      "execution_identity": "Codex local reviewer; Windows, Python 3.11.9, Node 22.22.0 and installed headless Chrome. Identity is not independently authenticated.",
+      "observed_at": "2026-10-21T06:16:50.996994+00:00",
+      "artifacts": [
+        {
+          "path": ".factory/adversarial-prep/node-tests.txt",
+          "sha256": "aca7afb300a003a21e2c44ab1ab15cf082aab72ae9642e256065b991e34cdca9",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/adversarial-prep/verification.json",
+          "sha256": "63c707fd97d38b9354ef9a411a555b29430e44614950da1bed51382fdd5c08b7",
+          "kind": "terminal"
+        }
+      ]
+    },
+    {
+      "id": "claim_ledger",
+      "profile": "local-windows-py311-node22-chrome",
+      "status": "PASS",
+      "reason": "Expected: When a founder records a claim, the system shall retain its exact text, assertion/hypothesis/unknown/evidence-linked label, evidence note, counterexample, next action, owner and due date without marking evidence verified (acceptance: `claim_ledger`). Observed: declared runtime assertions passed; inspect named tests/logs for exact fixtures and limitations.",
+      "execution_identity": "Codex local reviewer; Windows, Python 3.11.9, Node 22.22.0 and installed headless Chrome. Identity is not independently authenticated.",
+      "observed_at": "2026-10-21T06:16:50.996994+00:00",
+      "artifacts": [
+        {
+          "path": ".factory/adversarial-prep/node-tests.txt",
+          "sha256": "aca7afb300a003a21e2c44ab1ab15cf082aab72ae9642e256065b991e34cdca9",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/adversarial-prep/verification.json",
+          "sha256": "63c707fd97d38b9354ef9a411a555b29430e44614950da1bed51382fdd5c08b7",
+          "kind": "terminal"
+        }
+      ]
+    },
+    {
+      "id": "claim_candidates",
+      "profile": "local-windows-py311-node22-chrome",
+      "status": "PASS",
+      "reason": "Expected: When interview statements are extracted, the system shall store the resulting verbatim statements as founder assertions requiring review (acceptance: `claim_candidates`). Observed: declared runtime assertions passed; inspect named tests/logs for exact fixtures and limitations.",
+      "execution_identity": "Codex local reviewer; Windows, Python 3.11.9, Node 22.22.0 and installed headless Chrome. Identity is not independently authenticated.",
+      "observed_at": "2026-10-21T06:16:50.996994+00:00",
+      "artifacts": [
+        {
+          "path": ".factory/adversarial-prep/node-tests.txt",
+          "sha256": "aca7afb300a003a21e2c44ab1ab15cf082aab72ae9642e256065b991e34cdca9",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/adversarial-prep/verification.json",
+          "sha256": "63c707fd97d38b9354ef9a411a555b29430e44614950da1bed51382fdd5c08b7",
+          "kind": "terminal"
+        }
+      ]
+    },
+    {
+      "id": "adaptive_followup",
+      "profile": "local-windows-py311-node22-chrome",
+      "status": "PASS",
+      "reason": "Expected: When a practice answer lacks evidence, a counterexample or a falsifiable test, the system shall emit a follow-up requesting the missing field and quote the focused claim (acceptance: `adaptive_followup`). Observed: declared runtime assertions passed; inspect named tests/logs for exact fixtures and limitations.",
+      "execution_identity": "Codex local reviewer; Windows, Python 3.11.9, Node 22.22.0 and installed headless Chrome. Identity is not independently authenticated.",
+      "observed_at": "2026-10-21T06:16:50.996994+00:00",
+      "artifacts": [
+        {
+          "path": ".factory/adversarial-prep/node-tests.txt",
+          "sha256": "aca7afb300a003a21e2c44ab1ab15cf082aab72ae9642e256065b991e34cdca9",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/adversarial-prep/verification.json",
+          "sha256": "63c707fd97d38b9354ef9a411a555b29430e44614950da1bed51382fdd5c08b7",
+          "kind": "terminal"
+        }
+      ]
+    },
+    {
+      "id": "conflict_review",
+      "profile": "local-windows-py311-node22-chrome",
+      "status": "PASS",
+      "reason": "Expected: When statements have overlapping terms and differing numeric or negation patterns, the system shall display both exact statements as possible conflicts for founder review rather than asserting a contradiction (acceptance: `conflict_review`). Observed: declared runtime assertions passed; inspect named tests/logs for exact fixtures and limitations.",
+      "execution_identity": "Codex local reviewer; Windows, Python 3.11.9, Node 22.22.0 and installed headless Chrome. Identity is not independently authenticated.",
+      "observed_at": "2026-10-21T06:16:50.996994+00:00",
+      "artifacts": [
+        {
+          "path": ".factory/adversarial-prep/node-tests.txt",
+          "sha256": "aca7afb300a003a21e2c44ab1ab15cf082aab72ae9642e256065b991e34cdca9",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/adversarial-prep/verification.json",
+          "sha256": "63c707fd97d38b9354ef9a411a555b29430e44614950da1bed51382fdd5c08b7",
+          "kind": "terminal"
+        }
+      ]
+    },
+    {
+      "id": "fair_challenge",
+      "profile": "local-windows-py311-node22-chrome",
+      "status": "PASS",
+      "reason": "Expected: When a founder contests a question, the system shall record the challenge, invite correction of its premise and preserve the answer without a readiness penalty (acceptance: `fair_challenge`). Observed: declared runtime assertions passed; inspect named tests/logs for exact fixtures and limitations.",
+      "execution_identity": "Codex local reviewer; Windows, Python 3.11.9, Node 22.22.0 and installed headless Chrome. Identity is not independently authenticated.",
+      "observed_at": "2026-10-21T06:19:41.122948+00:00",
+      "artifacts": [
+        {
+          "path": ".factory/adversarial-prep/prep-browser.txt",
+          "sha256": "27405899749691d526e564a493ce72a8699474b724d9e6ff5c611e9e60a9ee2b",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/adversarial-prep/verification.json",
+          "sha256": "63c707fd97d38b9354ef9a411a555b29430e44614950da1bed51382fdd5c08b7",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/adversarial-prep/browser/observations.json",
+          "sha256": "2514c84642e2e4550c0b4cd0ee01c88a336891470fba1d9d7c0d2ce78bccbb02",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/adversarial-prep/browser/debrief-desktop.png",
+          "sha256": "192d92123483a587f36d9e68c91a66946576ed8237e13f858c52ed84d1afc6ca",
+          "kind": "screenshot"
+        },
+        {
+          "path": ".factory/adversarial-prep/browser/practice-mobile.png",
+          "sha256": "c6a142ef20b17d155a427db4f3f14c8cd12484071544d3eac9749f6911c98186",
+          "kind": "screenshot"
+        }
+      ]
+    },
+    {
+      "id": "scenario_shocks",
+      "profile": "local-windows-py311-node22-chrome",
+      "status": "PASS",
+      "reason": "Expected: When a founder selects a scenario, the system shall display baseline, budget loss, rising costs, free competition, integration loss and premortem conditions as hypothetical (acceptance: `scenario_shocks`). Observed: declared runtime assertions passed; inspect named tests/logs for exact fixtures and limitations.",
+      "execution_identity": "Codex local reviewer; Windows, Python 3.11.9, Node 22.22.0 and installed headless Chrome. Identity is not independently authenticated.",
+      "observed_at": "2026-10-21T06:16:50.996994+00:00",
+      "artifacts": [
+        {
+          "path": ".factory/adversarial-prep/node-tests.txt",
+          "sha256": "aca7afb300a003a21e2c44ab1ab15cf082aab72ae9642e256065b991e34cdca9",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/adversarial-prep/verification.json",
+          "sha256": "63c707fd97d38b9354ef9a411a555b29430e44614950da1bed51382fdd5c08b7",
+          "kind": "terminal"
+        }
+      ]
+    },
+    {
+      "id": "timed_rehearsal",
+      "profile": "local-windows-py311-node22-chrome",
+      "status": "PASS",
+      "reason": "Expected: When a timed rehearsal is selected, the system shall display untimed, 30-second and 120-second answer controls, pause/resume and an explicit interruption action; expiration shall preserve the draft without automatic submission (acceptance: `timed_rehearsal`). Observed: declared runtime assertions passed; inspect named tests/logs for exact fixtures and limitations.",
+      "execution_identity": "Codex local reviewer; Windows, Python 3.11.9, Node 22.22.0 and installed headless Chrome. Identity is not independently authenticated.",
+      "observed_at": "2026-10-21T06:19:41.122948+00:00",
+      "artifacts": [
+        {
+          "path": ".factory/adversarial-prep/prep-browser.txt",
+          "sha256": "27405899749691d526e564a493ce72a8699474b724d9e6ff5c611e9e60a9ee2b",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/adversarial-prep/verification.json",
+          "sha256": "63c707fd97d38b9354ef9a411a555b29430e44614950da1bed51382fdd5c08b7",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/adversarial-prep/browser/observations.json",
+          "sha256": "2514c84642e2e4550c0b4cd0ee01c88a336891470fba1d9d7c0d2ce78bccbb02",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/adversarial-prep/browser/debrief-desktop.png",
+          "sha256": "192d92123483a587f36d9e68c91a66946576ed8237e13f858c52ed84d1afc6ca",
+          "kind": "screenshot"
+        },
+        {
+          "path": ".factory/adversarial-prep/browser/practice-mobile.png",
+          "sha256": "c6a142ef20b17d155a427db4f3f14c8cd12484071544d3eac9749f6911c98186",
+          "kind": "screenshot"
+        }
+      ]
+    },
+    {
+      "id": "practice_debrief",
+      "profile": "local-windows-py311-node22-chrome",
+      "status": "PASS",
+      "reason": "Expected: When a practice session ends, the system shall retain the transcript and show missing evidence, counterexamples and next actions without inventing scores or probabilities (acceptance: `practice_debrief`). Observed: declared runtime assertions passed; inspect named tests/logs for exact fixtures and limitations.",
+      "execution_identity": "Codex local reviewer; Windows, Python 3.11.9, Node 22.22.0 and installed headless Chrome. Identity is not independently authenticated.",
+      "observed_at": "2026-10-21T06:19:41.122948+00:00",
+      "artifacts": [
+        {
+          "path": ".factory/adversarial-prep/prep-browser.txt",
+          "sha256": "27405899749691d526e564a493ce72a8699474b724d9e6ff5c611e9e60a9ee2b",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/adversarial-prep/verification.json",
+          "sha256": "63c707fd97d38b9354ef9a411a555b29430e44614950da1bed51382fdd5c08b7",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/adversarial-prep/browser/observations.json",
+          "sha256": "2514c84642e2e4550c0b4cd0ee01c88a336891470fba1d9d7c0d2ce78bccbb02",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/adversarial-prep/browser/debrief-desktop.png",
+          "sha256": "192d92123483a587f36d9e68c91a66946576ed8237e13f858c52ed84d1afc6ca",
+          "kind": "screenshot"
+        },
+        {
+          "path": ".factory/adversarial-prep/browser/practice-mobile.png",
+          "sha256": "c6a142ef20b17d155a427db4f3f14c8cd12484071544d3eac9749f6911c98186",
+          "kind": "screenshot"
+        }
+      ]
+    },
+    {
+      "id": "retest_comparison",
+      "profile": "local-windows-py311-node22-chrome",
+      "status": "PASS",
+      "reason": "Expected: When a founder retests a recorded objection, the system shall create a linked practice attempt and show the previous and current answer with their recorded supporting fields (acceptance: `retest_comparison`). Observed: declared runtime assertions passed; inspect named tests/logs for exact fixtures and limitations.",
+      "execution_identity": "Codex local reviewer; Windows, Python 3.11.9, Node 22.22.0 and installed headless Chrome. Identity is not independently authenticated.",
+      "observed_at": "2026-10-21T06:16:50.996994+00:00",
+      "artifacts": [
+        {
+          "path": ".factory/adversarial-prep/node-tests.txt",
+          "sha256": "aca7afb300a003a21e2c44ab1ab15cf082aab72ae9642e256065b991e34cdca9",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/adversarial-prep/verification.json",
+          "sha256": "63c707fd97d38b9354ef9a411a555b29430e44614950da1bed51382fdd5c08b7",
+          "kind": "terminal"
+        }
+      ]
+    },
+    {
+      "id": "practice_exports",
+      "profile": "local-windows-py311-node22-chrome",
+      "status": "PASS",
+      "reason": "Expected: When a founder exports practice, the system shall emit a text-safe Markdown debrief, formula-neutralized action CSV and an agent-coach packet from actual session inputs (acceptance: `practice_exports`). Observed: declared runtime assertions passed; inspect named tests/logs for exact fixtures and limitations.",
+      "execution_identity": "Codex local reviewer; Windows, Python 3.11.9, Node 22.22.0 and installed headless Chrome. Identity is not independently authenticated.",
+      "observed_at": "2026-10-21T06:19:41.122948+00:00",
+      "artifacts": [
+        {
+          "path": ".factory/adversarial-prep/prep-browser.txt",
+          "sha256": "27405899749691d526e564a493ce72a8699474b724d9e6ff5c611e9e60a9ee2b",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/adversarial-prep/verification.json",
+          "sha256": "63c707fd97d38b9354ef9a411a555b29430e44614950da1bed51382fdd5c08b7",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/adversarial-prep/browser/observations.json",
+          "sha256": "2514c84642e2e4550c0b4cd0ee01c88a336891470fba1d9d7c0d2ce78bccbb02",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/adversarial-prep/browser/debrief-desktop.png",
+          "sha256": "192d92123483a587f36d9e68c91a66946576ed8237e13f858c52ed84d1afc6ca",
+          "kind": "screenshot"
+        },
+        {
+          "path": ".factory/adversarial-prep/browser/practice-mobile.png",
+          "sha256": "c6a142ef20b17d155a427db4f3f14c8cd12484071544d3eac9749f6911c98186",
+          "kind": "screenshot"
+        }
+      ]
+    },
+    {
+      "id": "practice_restore",
+      "profile": "local-windows-py311-node22-chrome",
+      "status": "PASS",
+      "reason": "Expected: When a session file or device copy is restored, the system shall validate practice records, references, enums, text, numeric bounds and dates before replacing active state while accepting legacy interview-only files (acceptance: `practice_restore`). Observed: declared runtime assertions passed; inspect named tests/logs for exact fixtures and limitations.",
+      "execution_identity": "Codex local reviewer; Windows, Python 3.11.9, Node 22.22.0 and installed headless Chrome. Identity is not independently authenticated.",
+      "observed_at": "2026-10-21T06:16:50.996994+00:00",
+      "artifacts": [
+        {
+          "path": ".factory/adversarial-prep/node-tests.txt",
+          "sha256": "aca7afb300a003a21e2c44ab1ab15cf082aab72ae9642e256065b991e34cdca9",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/adversarial-prep/verification.json",
+          "sha256": "63c707fd97d38b9354ef9a411a555b29430e44614950da1bed51382fdd5c08b7",
+          "kind": "terminal"
+        }
+      ]
+    },
+    {
+      "id": "practice_recovery",
+      "profile": "local-windows-py311-node22-chrome",
+      "status": "PASS",
+      "reason": "Expected: If a practice mutation or import exceeds a bound or contains invalid data, the system shall retain the current session and show an error (acceptance: `practice_recovery`). Observed: declared runtime assertions passed; inspect named tests/logs for exact fixtures and limitations.",
+      "execution_identity": "Codex local reviewer; Windows, Python 3.11.9, Node 22.22.0 and installed headless Chrome. Identity is not independently authenticated.",
+      "observed_at": "2026-10-21T06:19:41.122948+00:00",
+      "artifacts": [
+        {
+          "path": ".factory/adversarial-prep/prep-browser.txt",
+          "sha256": "27405899749691d526e564a493ce72a8699474b724d9e6ff5c611e9e60a9ee2b",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/adversarial-prep/verification.json",
+          "sha256": "63c707fd97d38b9354ef9a411a555b29430e44614950da1bed51382fdd5c08b7",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/adversarial-prep/browser/observations.json",
+          "sha256": "2514c84642e2e4550c0b4cd0ee01c88a336891470fba1d9d7c0d2ce78bccbb02",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/adversarial-prep/browser/debrief-desktop.png",
+          "sha256": "192d92123483a587f36d9e68c91a66946576ed8237e13f858c52ed84d1afc6ca",
+          "kind": "screenshot"
+        },
+        {
+          "path": ".factory/adversarial-prep/browser/practice-mobile.png",
+          "sha256": "c6a142ef20b17d155a427db4f3f14c8cd12484071544d3eac9749f6911c98186",
+          "kind": "screenshot"
+        }
+      ]
+    },
+    {
+      "id": "practice_privacy",
+      "profile": "local-windows-py311-node22-chrome",
+      "status": "PASS",
+      "reason": "Expected: When untrusted text is rendered or exported, the system shall render it as text and shall make zero network requests from practice content (acceptance: `practice_privacy`). Observed: declared runtime assertions passed; inspect named tests/logs for exact fixtures and limitations.",
+      "execution_identity": "Codex local reviewer; Windows, Python 3.11.9, Node 22.22.0 and installed headless Chrome. Identity is not independently authenticated.",
+      "observed_at": "2026-10-21T06:19:41.122948+00:00",
+      "artifacts": [
+        {
+          "path": ".factory/adversarial-prep/prep-browser.txt",
+          "sha256": "27405899749691d526e564a493ce72a8699474b724d9e6ff5c611e9e60a9ee2b",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/adversarial-prep/verification.json",
+          "sha256": "63c707fd97d38b9354ef9a411a555b29430e44614950da1bed51382fdd5c08b7",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/adversarial-prep/browser/observations.json",
+          "sha256": "2514c84642e2e4550c0b4cd0ee01c88a336891470fba1d9d7c0d2ce78bccbb02",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/adversarial-prep/browser/debrief-desktop.png",
+          "sha256": "192d92123483a587f36d9e68c91a66946576ed8237e13f858c52ed84d1afc6ca",
+          "kind": "screenshot"
+        },
+        {
+          "path": ".factory/adversarial-prep/browser/practice-mobile.png",
+          "sha256": "c6a142ef20b17d155a427db4f3f14c8cd12484071544d3eac9749f6911c98186",
+          "kind": "screenshot"
+        }
+      ]
+    },
+    {
+      "id": "practice_accessibility",
+      "profile": "local-windows-py311-node22-chrome",
+      "status": "PASS",
+      "reason": "Expected: When practice opens at a 390px viewport, the system shall display labelled keyboard controls, a native focus-managed dialog and no horizontal overflow (acceptance: `practice_accessibility`). Observed: declared runtime assertions passed; inspect named tests/logs for exact fixtures and limitations.",
+      "execution_identity": "Codex local reviewer; Windows, Python 3.11.9, Node 22.22.0 and installed headless Chrome. Identity is not independently authenticated.",
+      "observed_at": "2026-10-21T06:19:41.122948+00:00",
+      "artifacts": [
+        {
+          "path": ".factory/adversarial-prep/prep-browser.txt",
+          "sha256": "27405899749691d526e564a493ce72a8699474b724d9e6ff5c611e9e60a9ee2b",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/adversarial-prep/verification.json",
+          "sha256": "63c707fd97d38b9354ef9a411a555b29430e44614950da1bed51382fdd5c08b7",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/adversarial-prep/browser/observations.json",
+          "sha256": "2514c84642e2e4550c0b4cd0ee01c88a336891470fba1d9d7c0d2ce78bccbb02",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/adversarial-prep/browser/debrief-desktop.png",
+          "sha256": "192d92123483a587f36d9e68c91a66946576ed8237e13f858c52ed84d1afc6ca",
+          "kind": "screenshot"
+        },
+        {
+          "path": ".factory/adversarial-prep/browser/practice-mobile.png",
+          "sha256": "c6a142ef20b17d155a427db4f3f14c8cd12484071544d3eac9749f6911c98186",
+          "kind": "screenshot"
+        }
+      ]
+    },
+    {
+      "id": "practice_wheel",
+      "profile": "local-windows-py311-node22-chrome",
+      "status": "PASS",
+      "reason": "Expected: When an installed wheel serves the dashboard, the system shall return HTTP 200 for the practice JavaScript and stylesheet resources (acceptance: `practice_wheel`). Observed: declared runtime assertions passed; inspect named tests/logs for exact fixtures and limitations.",
+      "execution_identity": "Codex local reviewer; Windows, Python 3.11.9, Node 22.22.0 and installed headless Chrome. Identity is not independently authenticated.",
+      "observed_at": "2026-10-21T06:17:24.734007+00:00",
+      "artifacts": [
+        {
+          "path": ".factory/adversarial-prep/wheel-smoke.txt",
+          "sha256": "2fae318e414c966b6fac4cd3cffc0d03c7dbe22000f2504bc01e3ec095c8d99b",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/adversarial-prep/verification.json",
+          "sha256": "63c707fd97d38b9354ef9a411a555b29430e44614950da1bed51382fdd5c08b7",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/adversarial-prep/wheel-build.txt",
+          "sha256": "0790b978fb88fbf042d83383c5de9a444e57dcdc3a04372fde6975f097d711ef",
+          "kind": "terminal"
+        }
+      ]
+    },
+    {
+      "id": "bounded_work",
+      "profile": "local-windows-py311-node22-chrome",
+      "status": "PASS",
+      "reason": "Expected: Enforce record/text/size ceilings and complete 50 small-history scans within 2000ms. Observed: declared runtime assertions passed; inspect named tests/logs for exact fixtures and limitations.",
+      "execution_identity": "Codex local reviewer; Windows, Python 3.11.9, Node 22.22.0 and installed headless Chrome. Identity is not independently authenticated.",
+      "observed_at": "2026-10-21T06:16:50.996994+00:00",
+      "artifacts": [
+        {
+          "path": ".factory/adversarial-prep/node-tests.txt",
+          "sha256": "aca7afb300a003a21e2c44ab1ab15cf082aab72ae9642e256065b991e34cdca9",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/adversarial-prep/verification.json",
+          "sha256": "63c707fd97d38b9354ef9a411a555b29430e44614950da1bed51382fdd5c08b7",
+          "kind": "terminal"
+        }
+      ]
+    },
+    {
+      "id": "regression",
+      "profile": "local-windows-py311-node22-chrome",
+      "status": "PASS",
+      "reason": "Expected: Existing browser failure recovery, credentials and downloads remain functional. Observed: declared runtime assertions passed; inspect named tests/logs for exact fixtures and limitations.",
+      "execution_identity": "Codex local reviewer; Windows, Python 3.11.9, Node 22.22.0 and installed headless Chrome. Identity is not independently authenticated.",
+      "observed_at": "2026-10-21T06:16:53.738466+00:00",
+      "artifacts": [
+        {
+          "path": ".factory/adversarial-prep/browser-tests.txt",
+          "sha256": "42a74e1fc7ff0c241eea256e5ea2040d7ac6a8ee5020ad190b26361ef00974b2",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/adversarial-prep/verification.json",
+          "sha256": "63c707fd97d38b9354ef9a411a555b29430e44614950da1bed51382fdd5c08b7",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/adversarial-prep/regression-browser/observations.json",
+          "sha256": "43273ee4c0d98914384306ed795035cd75c7b9f9ddd18ccdafdb4c6fed638331",
+          "kind": "terminal"
+        }
+      ]
+    },
+    {
+      "id": "architecture",
+      "profile": "local-windows-py311-node22-chrome",
+      "status": "PASS",
+      "reason": "Expected: Scoped SSAT and non-hollow actual runtime smoke, plus complete internal function complexity inventory. Observed: declared runtime assertions passed; inspect named tests/logs for exact fixtures and limitations.",
+      "execution_identity": "Codex local reviewer; Windows, Python 3.11.9, Node 22.22.0 and installed headless Chrome. Identity is not independently authenticated.",
+      "observed_at": "2026-10-21T06:21:06.404851+00:00",
+      "artifacts": [
+        {
+          "path": ".factory/adversarial-prep/forge-bundle.txt",
+          "sha256": "6c4a31683e40f7d5627a12070ebec1bb178b34e3f7c44e21c85fc7447894de6c",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/adversarial-prep/verification.json",
+          "sha256": "63c707fd97d38b9354ef9a411a555b29430e44614950da1bed51382fdd5c08b7",
+          "kind": "terminal"
+        }
+      ]
+    },
+    {
+      "id": "spec_proof",
+      "profile": "local-windows-py311-node22-chrome",
+      "status": "PASS",
+      "reason": "Expected: Strict contract, 17 requirement mutants and drift checks pass. Observed: declared runtime assertions passed; inspect named tests/logs for exact fixtures and limitations.",
+      "execution_identity": "Codex local reviewer; Windows, Python 3.11.9, Node 22.22.0 and installed headless Chrome. Identity is not independently authenticated.",
+      "observed_at": "2026-10-21T06:18:40.423873+00:00",
+      "artifacts": [
+        {
+          "path": ".factory/adversarial-prep/spec-mutations.txt",
+          "sha256": "6ccac30b4cc3c6eea1c6e4b49886c8608482da7cb98ae80fbb1137b8557b5078",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/adversarial-prep/verification.json",
+          "sha256": "63c707fd97d38b9354ef9a411a555b29430e44614950da1bed51382fdd5c08b7",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/adversarial-prep/spec-strict.txt",
+          "sha256": "e3ddd300e864b625e86a4e5a09b37ca5741764b8643b2be79eda180e51e5cfa4",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/adversarial-prep/spec-challenge.txt",
+          "sha256": "db34ef1d34983125611041a7025b2f9c8e8b3df01966867aa9fad83cb32b02bc",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/adversarial-prep/drift.txt",
+          "sha256": "e946b48e456e6a14fca46221346999a1e451fd50a3a8d3f622673a4c37e4df96",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/adversarial-prep/skill-validation.txt",
+          "sha256": "db349825903d66adffea3ecf1bd8e1803043e8a71cf1a051235dabc5371f5bb0",
+          "kind": "terminal"
+        }
+      ]
+    },
+    {
+      "id": "visual_proof",
+      "profile": "local-windows-py311-node22-chrome",
+      "status": "PASS",
+      "reason": "Expected: Prestige static/render/challenge checks plus rendered interactive dialog observations pass. Observed: declared runtime assertions passed; inspect named tests/logs for exact fixtures and limitations.",
+      "execution_identity": "Codex local reviewer; Windows, Python 3.11.9, Node 22.22.0 and installed headless Chrome. Identity is not independently authenticated.",
+      "observed_at": "2026-10-21T06:18:47.331335+00:00",
+      "artifacts": [
+        {
+          "path": ".factory/adversarial-prep/prestige-critique.txt",
+          "sha256": "f19dfc7ee5b33f66b603cf29af373f348632d4f82168796ddcf5eb85b9592981",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/adversarial-prep/verification.json",
+          "sha256": "63c707fd97d38b9354ef9a411a555b29430e44614950da1bed51382fdd5c08b7",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/adversarial-prep/prestige-audit.txt",
+          "sha256": "35371a01e9cc83083ca50f5ca0a20203f704a5555b2758b031299e9eed3ba857",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/adversarial-prep/prestige-render.txt",
+          "sha256": "a3b57562e073893c92e844680af331042379e109a9fa53b2ef7163c9e843a703",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/adversarial-prep/prestige-challenge.txt",
+          "sha256": "4e8a7d6b22283b93c862966e597c3eb2efd76bd0de72b305052bfd697a90127f",
+          "kind": "terminal"
+        }
+      ]
+    },
+    {
+      "id": "python_security",
+      "profile": "local-windows-py311-node22-chrome",
+      "status": "PASS",
+      "reason": "Expected: Bounded static Python scan covers the eligible source inventory. Observed: declared runtime assertions passed; inspect named tests/logs for exact fixtures and limitations.",
+      "execution_identity": "Codex local reviewer; Windows, Python 3.11.9, Node 22.22.0 and installed headless Chrome. Identity is not independently authenticated.",
+      "observed_at": "2026-10-21T06:18:44.151642+00:00",
+      "artifacts": [
+        {
+          "path": ".factory/adversarial-prep/security.txt",
+          "sha256": "e171046877453d946c50f1f9941463cc20a742f43e183be8640afac3bab58f02",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/adversarial-prep/verification.json",
+          "sha256": "63c707fd97d38b9354ef9a411a555b29430e44614950da1bed51382fdd5c08b7",
+          "kind": "terminal"
+        }
+      ]
+    }
+  ]
+}

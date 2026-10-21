@@ -1,0 +1,123 @@
+{
+  "feature": "adversarial-prep",
+  "description": "Pure bounded guided-practice engine and text-only DOM adapter. Browser and session integration tested separately.",
+  "modules": [
+    {
+      "name": "prep",
+      "path": "ui/prep.js",
+      "language": "javascript",
+      "functions": [
+        {
+          "name": "empty",
+          "args": []
+        },
+        {
+          "name": "normalize",
+          "args": [
+            "value"
+          ]
+        },
+        {
+          "name": "start",
+          "args": [
+            "value",
+            "options"
+          ]
+        },
+        {
+          "name": "answer",
+          "args": [
+            "value",
+            "fields"
+          ]
+        },
+        {
+          "name": "retest",
+          "args": [
+            "value",
+            "id",
+            "now"
+          ]
+        },
+        {
+          "name": "debrief",
+          "args": [
+            "value",
+            "id"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "prep_ui",
+      "path": "ui/prep-ui.js",
+      "language": "javascript",
+      "functions": []
+    }
+  ],
+  "dependencies": [
+    {
+      "from": "prep_ui",
+      "to": "prep"
+    }
+  ],
+  "invariants": [
+    {
+      "name": "Local engine cannot execute or transmit source data",
+      "forbid_pattern": "\\bfetch\\s*\\(|XMLHttpRequest|\\beval\\s*\\(|innerHTML|localStorage",
+      "scopes": [
+        {
+          "module": "prep",
+          "symbol": "normalize",
+          "max_lines": 50
+        },
+        {
+          "module": "prep",
+          "symbol": "answer",
+          "max_lines": 50
+        },
+        {
+          "module": "prep",
+          "symbol": "markdown",
+          "max_lines": 50
+        },
+        {
+          "module": "prep",
+          "symbol": "conflicts",
+          "max_lines": 50
+        },
+        {
+          "module": "prep",
+          "symbol": "coachPacket",
+          "max_lines": 50
+        }
+      ]
+    },
+    {
+      "name": "Text-only UI with explicit session integration",
+      "forbid_pattern": "\\bfetch\\s*\\(|XMLHttpRequest|\\beval\\s*\\(|innerHTML|localStorage",
+      "scopes": [
+        {
+          "module": "prep_ui",
+          "symbol": "element",
+          "max_lines": 50
+        },
+        {
+          "module": "prep_ui",
+          "symbol": "init",
+          "max_lines": 50
+        },
+        {
+          "module": "prep_ui",
+          "symbol": "saveDraft",
+          "max_lines": 50
+        },
+        {
+          "module": "prep_ui",
+          "symbol": "tick",
+          "max_lines": 50
+        }
+      ]
+    }
+  ]
+}

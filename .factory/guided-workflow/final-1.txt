@@ -1,0 +1,1 @@
+STRICT OK — spec is unambiguous (0 warns). next: specline gate spec guided-workflow

@@ -1,0 +1,727 @@
+{
+  "passed": true,
+  "attribution": {
+    "stage": "drift_audit",
+    "n_checked": 102,
+    "n_passed": 102,
+    "units": [
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\cli.py:cmd_simulate",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\cli.py:cmd_recon",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\cli.py:cmd_stress_test",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\cli.py:cmd_export",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\cli.py:cmd_pitch_deck",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\cli.py:cmd_start",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\cli.py:cmd_mcp",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\cli.py:cmd_ui",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\cli.py:main",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\server.py:reject_constant",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\server.py:setup",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\server.py:trusted_request",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\server.py:respond",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\server.py:send_json_response",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\server.py:error",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\server.py:discard_rejected_body",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\server.py:do_HEAD",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\server.py:do_GET",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\server.py:serve_get",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\server.py:output_path",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\server.py:do_POST",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\server.py:provider_proxy",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\server.py:voice_stt",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\server.py:voice_tts",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\server.py:execute",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\server.py:log_message",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\server.py:server_bind",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\server.py:start_server",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\mcp_server.py:validate_arguments",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\mcp_server.py:handle_tool_call",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\mcp_server.py:send_response",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\mcp_server.py:main",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\mcp_server.py:error",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\scripts\\generate_dashboard.py:generate_dashboard",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\scripts\\generate_dashboard.py:safe_json",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\scripts\\generate_dashboard.py:main",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\scripts\\incumbent_recon.py:__init__",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\scripts\\incumbent_recon.py:handle_starttag",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\scripts\\incumbent_recon.py:handle_data",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\scripts\\incumbent_recon.py:handle_endtag",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\scripts\\incumbent_recon.py:search_incumbent",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\scripts\\incumbent_recon.py:generate_recon_report",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\scripts\\incumbent_recon.py:main",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\scripts\\generate_pitch_deck.py:generate_pitch_deck",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\scripts\\generate_pitch_deck.py:main",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\scripts\\stress_test_simulator.py:<module>",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\socratic_gtm\\__init__.py:get_system_prompt",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\socratic_gtm\\__init__.py:get_langchain_tools",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\socratic_gtm\\__init__.py:simulate_radar",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\socratic_gtm\\__init__.py:incumbent_recon",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\socratic_gtm\\__init__.py:adversarial_stress_test",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\socratic_gtm\\__init__.py:export_sprint_issues",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\socratic_gtm\\__init__.py:generate_deck_copy",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\socratic_gtm\\assessment.py:validate_text",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\socratic_gtm\\assessment.py:validate_scores",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\socratic_gtm\\assessment.py:assess_answer",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\socratic_gtm\\assessment.py:render_playbook",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\ui\\index.html:<module>",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\ui\\session.js:<module>",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\pyproject.toml:<module>",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\tests\\test_socratic_gtm.py:setUp",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\tests\\test_socratic_gtm.py:tearDown",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\tests\\test_socratic_gtm.py:test_generate_dashboard",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\tests\\test_socratic_gtm.py:test_incumbent_recon",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\tests\\test_socratic_gtm.py:test_stress_test_ciso",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\tests\\test_socratic_gtm.py:test_stress_test_vc",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\tests\\test_socratic_gtm.py:test_export_issues",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\tests\\test_socratic_gtm.py:test_generate_pitch_deck",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\tests\\test_socratic_gtm.py:test_mcp_protocol_initialize",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\tests\\test_socratic_gtm.py:test_mcp_tools_list",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\tests\\test_socratic_gtm.py:test_mcp_parse_error",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\tests\\test_socratic_gtm.py:test_cli_start_mocked",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\tests\\test_socratic_gtm.py:test_server_api_endpoints",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\tests\\test_hardening.py:setUp",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\tests\\test_hardening.py:tearDown",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\tests\\test_hardening.py:request",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\tests\\test_hardening.py:post",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\tests\\test_hardening.py:test_private_routes",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\tests\\test_hardening.py:test_numeric_startup_without_reverse_dns",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\tests\\test_hardening.py:test_no_directory_listing_or_head_disclosure",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\tests\\test_hardening.py:test_origin_host",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\tests\\test_hardening.py:test_rejected_missing_body_has_bounded_wait",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\tests\\test_hardening.py:test_request_recovery",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\tests\\test_hardening.py:test_size_and_content_type",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\tests\\test_hardening.py:test_nested_json_recovery",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\tests\\test_hardening.py:test_field_validation",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\tests\\test_hardening.py:test_chat_is_intake_and_retains_context",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\tests\\test_hardening.py:test_export_is_downloadable",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\tests\\test_hardening.py:test_voice_fallback_and_origin",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\tests\\test_hardening.py:test_voice_mock_forwarding_and_failure",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\tests\\test_hardening.py:test_transcription_bounds_and_fixed_target",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\tests\\test_hardening.py:test_answer_integrity",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\tests\\test_hardening.py:test_html_injection",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\tests\\test_hardening.py:test_score_validation",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\tests\\test_hardening.py:test_recon_provenance_failure",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\tests\\test_hardening.py:test_recon_provenance_source",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\tests\\test_hardening.py:test_claim_integrity",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\tests\\test_hardening.py:exchange",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\tests\\test_hardening.py:test_mcp_recovery",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\tests\\test_hardening.py:test_bad_envelopes",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\tests\\test_hardening.py:test_tool_arguments",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\tests\\test_hardening.py:test_notification_does_not_execute_tool",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      }
+    ],
+    "rate": 1.0,
+    "dominant_failure_class": null
+  }
+}
+AUDIT OK — no drift (0 warns).

@@ -1,0 +1,61 @@
+{
+  "observed_at": "2026-10-21T05:41:26.696Z",
+  "profile": "Chrome headless, desktop 1440x1000 and mobile 390x844",
+  "observations": [
+    {
+      "id": "story_preview",
+      "status": "PASS",
+      "detail": "Founder mission and four-step idea-to-evidence journey render on desktop and mobile, with reduced motion honored."
+    },
+    {
+      "id": "voice_integration",
+      "status": "PASS",
+      "detail": "Voice provider controls preserved; fixture keys stayed in memory and were excluded from device/session data. No provider call made."
+    },
+    {
+      "id": "intake_context",
+      "status": "PASS",
+      "detail": "Two API turns retained concept and answer; no numerical confidence gate."
+    },
+    {
+      "id": "session_roundtrip",
+      "status": "PASS",
+      "detail": "Opt-in device save survived reload with revised answer, evidence, experiment, owner and date."
+    },
+    {
+      "id": "review_exports",
+      "status": "PASS",
+      "detail": "Downloaded actual playbook, JSON and formula-neutralized CSV, preserving edited inputs."
+    },
+    {
+      "id": "import_rejection_xss",
+      "status": "PASS",
+      "detail": "Malformed session retained active state; hostile imported text did not execute."
+    },
+    {
+      "id": "api_failure_recovery",
+      "status": "PASS",
+      "detail": "Injected 500 retained phase and recoverable answer; no synthetic success."
+    },
+    {
+      "id": "device_copy_removal",
+      "status": "PASS",
+      "detail": "Disabling device saving removed the saved copy."
+    },
+    {
+      "id": "simulator_runtime",
+      "status": "PASS",
+      "detail": "Generated artifact preserves zero and escapes hostile project text; table and calculator work with chart CDN blocked."
+    },
+    {
+      "id": "mobile_session_controls",
+      "status": "PASS",
+      "detail": "390px viewport: review, evidence edit and resume accessible; zero horizontal overflow."
+    },
+    {
+      "id": "browser_runtime",
+      "status": "PASS",
+      "detail": "No uncaught browser JavaScript errors across tested actions."
+    }
+  ]
+}

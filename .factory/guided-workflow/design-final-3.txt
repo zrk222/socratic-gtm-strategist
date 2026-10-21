@@ -1,0 +1,33 @@
+{
+  "schema": "factory.challenge.v1",
+  "brick": "prestige",
+  "feature": null,
+  "stage": "design_counterfactual",
+  "passed": true,
+  "baseline": {
+    "passed": true,
+    "score": 74,
+    "grade": "C"
+  },
+  "mutants_total": 3,
+  "mutants_killed": 3,
+  "mutations": [
+    {
+      "unit": "hidden_surface",
+      "killed": true,
+      "evidence": "audit_passed=False; score_passed=False; score=74; mobile=60; cta=80"
+    },
+    {
+      "unit": "broken_mobile",
+      "killed": true,
+      "evidence": "audit_passed=False; score_passed=False; score=66; mobile=0; cta=80"
+    },
+    {
+      "unit": "empty_primary_action",
+      "killed": true,
+      "evidence": "audit_passed=False; score_passed=False; score=66; mobile=60; cta=0"
+    }
+  ],
+  "scope": "source challenge; pair with render-audit for browser evidence",
+  "receipt_path": ".factory\\guided-workflow\\challenge.json"
+}

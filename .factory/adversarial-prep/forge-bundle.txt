@@ -1,0 +1,25 @@
+Starting feature state smoked
+Current SSAT erosion check PASS
+verify_tests {"verified": true, "checks": 1, "attribution": {"stage": "verify_tests", "n_checked": 1, "n_passed": 1, "units": [{"unit": "verify_tests:practice-state-transition", "stage": "verify_tests", "passed": true, "evidence": "correctly failed on stub: exit 1 != expected 0; last:     at evalFunction (node:internal/process/execution:279:30) |  | Node.js v22.22.0", "failure_class": null}], "rate": 1.0, "dominant_failure_class": null}, "input_fingerprint": "d8e65a4af66440e07bf7e15a9c4d897403c85134015ca4ca54a21e76802089e8"}
+smoke {"smoked": true, "checks": 1, "attribution": {"stage": "smoke", "n_checked": 1, "n_passed": 1, "units": [{"unit": "smoke:practice-state-transition", "stage": "smoke", "passed": true, "evidence": "ran green", "failure_class": null}], "rate": 1.0, "dominant_failure_class": null}}
+Behavioral stub diagnostic: evalmachine.<anonymous>:5
+  throw new Error("NotImplementedError: FILL");
+  ^
+
+Error: NotImplementedError: FILL
+    at Object.empty (evalmachine.<anonymous>:5:9)
+    at evalmachine.<anonymous>:8:29
+    at Script.runInThisContext (node:vm:137:12)
+    at Object.runInThisContext (node:vm:317:38)
+    at [eval]:1:20
+    at runScriptInThisContext (node:internal/vm:209:10)
+    at node:internal/process/execution:446:12
+    at [eval]-wrapper:6:24
+    at runScriptInContext (node:internal/process/execution:444:60)
+    at evalFunction (node:internal/process/execution:279:30)
+
+Node.js v22.22.0
+
+ui/prep.js all 81 internal symbols parsed; max complexity 7
+ui/prep-ui.js all 79 internal symbols parsed; max complexity 9
+FORGE_BUNDLE_PASS: same-process environment; no independent human or release approval inferred

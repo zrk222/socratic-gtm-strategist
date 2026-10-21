@@ -1,0 +1,311 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Socratic GTM Strategist Local Intake API",
+    "description": "Local single-user interview intake and artifact templates. No authentication or strategic validation; do not expose publicly.",
+    "version": "3.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8000",
+      "description": "Local server"
+    }
+  ],
+  "paths": {
+    "/api/chat": {
+      "post": {
+        "operationId": "socraticChatTurn",
+        "summary": "Process a Socratic GTM advisory turn",
+        "description": "Collect founder-reported answers and return the next intake question. Confidence is null. The monologue field is a concise intake summary; no internal reasoning is exposed.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "message": {
+                    "type": "string",
+                    "description": "The founder's response"
+                  },
+                  "phase": {
+                    "type": "integer",
+                    "description": "Current interview phase (0 through 9)",
+                    "minimum": 0,
+                    "maximum": 9
+                  },
+                  "context": {
+                    "type": "object",
+                    "description": "Accumulated strategic context"
+                  }
+                },
+                "required": [
+                  "message"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Recorded input and next intake question; review remains required.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "reply": {
+                      "type": "string"
+                    },
+                    "monologue": {
+                      "type": "string"
+                    },
+                    "phase": {
+                      "type": "integer"
+                    },
+                    "confidence": {
+                      "type": "null",
+                      "description": "No calibrated confidence is computed"
+                    },
+                    "context": {
+                      "type": "object",
+                      "description": "Client-carried interview inputs, not trusted verification state"
+                    },
+                    "assessment": {
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "description": "Review-required intake assessment"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/simulate": {
+      "post": {
+        "operationId": "generateGtmSimulator",
+        "summary": "Generate interactive HTML GTM Radar & Margin Collapse Simulator",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "project_name": {
+                    "type": "string"
+                  },
+                  "scores": {
+                    "type": "array",
+                    "items": {
+                      "type": [
+                        "integer",
+                        "null"
+                      ],
+                      "minimum": 0,
+                      "maximum": 100
+                    },
+                    "description": "Self-reported scenario values; null means not assessed.",
+                    "minItems": 8,
+                    "maxItems": 8
+                  }
+                },
+                "required": [
+                  "project_name"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Generated simulator file details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "path": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/recon": {
+      "post": {
+        "operationId": "runIncumbentRecon",
+        "summary": "Run competitive AI reconnaissance on an incumbent",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "incumbent": {
+                    "type": "string"
+                  },
+                  "domain": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "incumbent"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Reconnaissance briefing markdown",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "report": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/stress-test": {
+      "post": {
+        "operationId": "runStressTest",
+        "summary": "Execute an adversarial stress test (CISO or VC mode)",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "mode": {
+                    "type": "string",
+                    "enum": [
+                      "ciso",
+                      "vc"
+                    ]
+                  },
+                  "startup_name": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "mode",
+                  "startup_name"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Adversarial defense brief",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "brief": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/export": {
+      "post": {
+        "operationId": "exportSprintIssues",
+        "summary": "Export Linear/Jira/GitHub Issues Backlog",
+        "responses": {
+          "200": {
+            "description": "Export status and file paths",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "csv": {
+                      "type": "string"
+                    },
+                    "json": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/pitch-deck": {
+      "post": {
+        "operationId": "generatePitchDeck",
+        "summary": "Generate 5-slide Seed/Series A pitch deck copy",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "startup_name": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "startup_name"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Pitch deck markdown copy",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "deck": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

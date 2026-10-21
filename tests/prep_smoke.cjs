@@ -1,0 +1,17 @@
+const fs = require('node:fs');
+const vm = require('node:vm');
+const path = require('node:path');
+const assert = require('node:assert/strict');
+const context = vm.createContext({TextEncoder});
+vm.runInContext(fs.readFileSync(path.resolve('ui/prep.js'), 'utf8').replace(/^export function /gm, 'function '), context);
+const p = context.GTMPrep || context;
+let state = p.upsertClaim(p.empty(), {text: 'Teams need weekly reports.'});
+state = p.start(state, {claimId: 'c1', persona: 'buyer', scenario: 'budget', limit: 30});
+state = p.answer(state, {answer: 'That is my assumption.', evidence: '', counterexample: '', test: '', elapsed: 5, challenged: false});
+assert.equal(p.active(state).pending.stage, 'evidence');
+state = p.finish(state);
+assert.equal(p.debrief(state, 'r1').missing.join(','), 'evidence,counterexample,test');
+state = p.retest(state, 'r1');
+assert.equal(p.active(state).previousId, 'r1');
+assert.match(p.active(state).pending.question, /recent buying decision/);
+console.log('PRACTICE_SMOKE_PASS');

@@ -1,0 +1,12 @@
+Processing .\.
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Building wheels for collected packages: socratic-gtm-strategist
+  Building wheel for socratic-gtm-strategist (pyproject.toml): started
+  Building wheel for socratic-gtm-strategist (pyproject.toml): finished with status 'done'
+  Created wheel for socratic-gtm-strategist: filename=socratic_gtm_strategist-3.0.0-py3-none-any.whl size=62867 sha256=153480d7c48b7506b32833f3bdaaad0efb8ee2ec2f9057e2e45264341323c421
+  Stored in directory: c:\users\rkatz\appdata\local\pip\cache\wheels\1a\62\7f\60cf758e9650fef7803a046ab34e343f804ed4e6e7a7899be3
+Successfully built socratic-gtm-strategist
+
+[notice] A new release of pip is available: 26.0.1 -> 26.2.1
+[notice] To update, run: python.exe -m pip install --upgrade pip

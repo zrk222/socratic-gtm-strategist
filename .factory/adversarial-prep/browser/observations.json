@@ -1,0 +1,45 @@
+{
+  "at": "2026-10-21T06:19:46.004Z",
+  "observations": [
+    {
+      "id": "claim_ledger",
+      "status": "PASS",
+      "detail": "Verbatim interview statement and second claim retained; numeric possible-conflict quotes displayed."
+    },
+    {
+      "id": "adaptive_followup",
+      "status": "PASS",
+      "detail": "Missing evidence triggers a dated-source follow-up; contesting triggers premise correction."
+    },
+    {
+      "id": "timed_rehearsal",
+      "status": "PASS",
+      "detail": "30-second deadline preserves draft and turn count; interruption and device reload preserve pending practice."
+    },
+    {
+      "id": "practice_debrief",
+      "status": "PASS",
+      "detail": "Retest uses original objection; debrief shows prior/current answers and recorded gaps without scoring."
+    },
+    {
+      "id": "practice_isolation",
+      "status": "PASS",
+      "detail": "Interview phase/answers unchanged; no practice POST or provider request; real debrief/CSV/coach/session downloads verified."
+    },
+    {
+      "id": "practice_recovery",
+      "status": "PASS",
+      "detail": "Hostile content rendered as text; dangling claim reference import rejected without replacing active state."
+    },
+    {
+      "id": "practice_accessibility",
+      "status": "PASS",
+      "detail": "390px dialog has no horizontal overflow; keyboard focus stays inside; Escape returns focus to opener."
+    },
+    {
+      "id": "browser_runtime",
+      "status": "PASS",
+      "detail": "No uncaught browser errors across practice lifecycle."
+    }
+  ]
+}

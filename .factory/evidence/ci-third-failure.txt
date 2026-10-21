@@ -1,0 +1,45 @@
+test (macos-latest, 3.11)	Run Unit Tests	﻿2026-10-21T05:38:44.3005330Z ##[group]Run python -m unittest discover tests
+test (macos-latest, 3.11)	Run Unit Tests	2026-10-21T05:38:44.3005630Z [36;1mpython -m unittest discover tests[0m
+test (macos-latest, 3.11)	Run Unit Tests	2026-10-21T05:38:44.3034420Z shell: /bin/bash -e {0}
+test (macos-latest, 3.11)	Run Unit Tests	2026-10-21T05:38:44.3034590Z env:
+test (macos-latest, 3.11)	Run Unit Tests	2026-10-21T05:38:44.3034810Z   pythonLocation: /Users/runner/hostedtoolcache/Python/3.11.9/arm64
+test (macos-latest, 3.11)	Run Unit Tests	2026-10-21T05:38:44.3035200Z   PKG_CONFIG_PATH: /Users/runner/hostedtoolcache/Python/3.11.9/arm64/lib/pkgconfig
+test (macos-latest, 3.11)	Run Unit Tests	2026-10-21T05:38:44.3035580Z   Python_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.11.9/arm64
+test (macos-latest, 3.11)	Run Unit Tests	2026-10-21T05:38:44.3035940Z   Python2_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.11.9/arm64
+test (macos-latest, 3.11)	Run Unit Tests	2026-10-21T05:38:44.3036280Z   Python3_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.11.9/arm64
+test (macos-latest, 3.11)	Run Unit Tests	2026-10-21T05:38:44.3036550Z ##[endgroup]
+test (macos-latest, 3.11)	Run Unit Tests	2026-10-21T05:39:19.9372840Z .[+] Linear/Jira CSV exported to: /private/var/folders/n6/hn37q6pj7sj_9dmqqc2113800000gn/T/tmplqh0zzzs/gtm_sprint_issues.csv
+test (macos-latest, 3.11)	Run Unit Tests	2026-10-21T05:39:19.9399360Z [+] JSON backlog exported to: /private/var/folders/n6/hn37q6pj7sj_9dmqqc2113800000gn/T/tmplqh0zzzs/gtm_sprint_issues.json
+test (macos-latest, 3.11)	Run Unit Tests	2026-10-21T05:39:27.5217360Z .................Pitch template written to: /var/folders/n6/hn37q6pj7sj_9dmqqc2113800000gn/T/tmp2g7aeftu/deck.md
+test (macos-latest, 3.11)	Run Unit Tests	2026-10-21T05:39:27.5227350Z .Dashboard successfully generated at: /var/folders/n6/hn37q6pj7sj_9dmqqc2113800000gn/T/tmpthoh5q5w/radar.html
+test (macos-latest, 3.11)	Run Unit Tests	2026-10-21T05:39:27.5906070Z .....[+] Linear/Jira CSV exported to: /var/folders/n6/hn37q6pj7sj_9dmqqc2113800000gn/T/tmpm2lmcf_r/test_issues.csv
+test (macos-latest, 3.11)	Run Unit Tests	2026-10-21T05:39:27.5907180Z [+] JSON backlog exported to: /var/folders/n6/hn37q6pj7sj_9dmqqc2113800000gn/T/tmpm2lmcf_r/test_issues.json
+test (macos-latest, 3.11)	Run Unit Tests	2026-10-21T05:39:27.5912630Z .Dashboard successfully generated at: /var/folders/n6/hn37q6pj7sj_9dmqqc2113800000gn/T/tmpfvvu_odw/test_sim.html
+test (macos-latest, 3.11)	Run Unit Tests	2026-10-21T05:39:27.5920260Z .Pitch template written to: /var/folders/n6/hn37q6pj7sj_9dmqqc2113800000gn/T/tmp0j1he1j5/test_deck.md
+test (macos-latest, 3.11)	Run Unit Tests	2026-10-21T05:39:47.7939030Z .....F[+] Adversarial Brief generated at: /var/folders/n6/hn37q6pj7sj_9dmqqc2113800000gn/T/tmpgvqj6900/test_ciso.md
+test (macos-latest, 3.11)	Run Unit Tests	2026-10-21T05:39:47.7949370Z .[+] Adversarial Brief generated at: /var/folders/n6/hn37q6pj7sj_9dmqqc2113800000gn/T/tmpaqv39w5h/test_vc.md
+test (macos-latest, 3.11)	Run Unit Tests	2026-10-21T05:39:47.7954970Z .
+test (macos-latest, 3.11)	Run Unit Tests	2026-10-21T05:39:47.7956470Z ======================================================================
+test (macos-latest, 3.11)	Run Unit Tests	2026-10-21T05:39:47.7958350Z FAIL: test_server_api_endpoints (test_socratic_gtm.TestSocraticGTM.test_server_api_endpoints)
+test (macos-latest, 3.11)	Run Unit Tests	2026-10-21T05:39:47.7960620Z Test the local web server REST endpoints including fallback voice behavior.
+test (macos-latest, 3.11)	Run Unit Tests	2026-10-21T05:39:47.7962570Z ----------------------------------------------------------------------
+test (macos-latest, 3.11)	Run Unit Tests	2026-10-21T05:39:47.7964140Z Traceback (most recent call last):
+test (macos-latest, 3.11)	Run Unit Tests	2026-10-21T05:39:47.7991700Z   File "/Users/runner/work/socratic-gtm-strategist/socratic-gtm-strategist/tests/test_socratic_gtm.py", line 196, in test_server_api_endpoints
+test (macos-latest, 3.11)	Run Unit Tests	2026-10-21T05:39:47.7994140Z     line = startup.get(timeout=20)
+test (macos-latest, 3.11)	Run Unit Tests	2026-10-21T05:39:47.7995120Z            ^^^^^^^^^^^^^^^^^^^^^^^
+test (macos-latest, 3.11)	Run Unit Tests	2026-10-21T05:39:47.7997040Z   File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/queue.py", line 179, in get
+test (macos-latest, 3.11)	Run Unit Tests	2026-10-21T05:39:47.7998840Z     raise Empty
+test (macos-latest, 3.11)	Run Unit Tests	2026-10-21T05:39:47.7999560Z _queue.Empty
+test (macos-latest, 3.11)	Run Unit Tests	2026-10-21T05:39:47.7999870Z
+test (macos-latest, 3.11)	Run Unit Tests	2026-10-21T05:39:47.8000520Z During handling of the above exception, another exception occurred:
+test (macos-latest, 3.11)	Run Unit Tests	2026-10-21T05:39:47.8001370Z
+test (macos-latest, 3.11)	Run Unit Tests	2026-10-21T05:39:47.8001820Z Traceback (most recent call last):
+test (macos-latest, 3.11)	Run Unit Tests	2026-10-21T05:39:47.8003660Z   File "/Users/runner/work/socratic-gtm-strategist/socratic-gtm-strategist/tests/test_socratic_gtm.py", line 198, in test_server_api_endpoints
+test (macos-latest, 3.11)	Run Unit Tests	2026-10-21T05:39:47.8005690Z     self.fail("Server did not emit its startup URL within 20 seconds")
+test (macos-latest, 3.11)	Run Unit Tests	2026-10-21T05:39:47.8007400Z AssertionError: Server did not emit its startup URL within 20 seconds
+test (macos-latest, 3.11)	Run Unit Tests	2026-10-21T05:39:47.8008280Z
+test (macos-latest, 3.11)	Run Unit Tests	2026-10-21T05:39:47.8008770Z ----------------------------------------------------------------------
+test (macos-latest, 3.11)	Run Unit Tests	2026-10-21T05:39:47.8009730Z Ran 34 tests in 63.377s
+test (macos-latest, 3.11)	Run Unit Tests	2026-10-21T05:39:47.8010150Z
+test (macos-latest, 3.11)	Run Unit Tests	2026-10-21T05:39:47.8010440Z FAILED (failures=1)
+test (macos-latest, 3.11)	Run Unit Tests	2026-10-21T05:39:47.8244180Z ##[error]Process completed with exit code 1.

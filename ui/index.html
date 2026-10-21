@@ -41,7 +41,51 @@
     </script>
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/ui/prep.css">
     <style>
+        :root { --focus-color: #67e8f9; --text-color: #f3f4f6; --page-color: #0b0f19; }
+        body { color: #f3f4f6; background: #0b0f19; line-height: 1.6; }
+        button, a { min-height: 44px; min-width: 44px; transition: color .2s ease; }
+        button:focus-visible, a:focus-visible, textarea:focus-visible {
+            outline: 3px solid var(--focus-color); outline-offset: 3px;
+        }
+        main { min-width: 0; }
+        .chat-message { display: flex; gap: 1rem; }
+        .chat-bubble-agent, .chat-bubble-user { max-width: 70ch; overflow-wrap: anywhere; }
+        @media (max-width: 768px) {
+            aside { display: none; }
+            main { width: 100%; }
+            textarea { font-size: 16px; }
+        }
+
+        .session-tools { padding: .8rem 1.25rem; border-bottom: 1px solid #374151; background: #111827; }
+        .session-topline, .session-actions, .review-details, .review-header { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; }
+        .session-topline { justify-content: space-between; margin-bottom: .5rem; }
+        .session-tools input, .session-tools select, dialog input, dialog textarea, dialog select {
+            background: #0b0f19; color: #f3f4f6; border: 1px solid #64748b; border-radius: .5rem; padding: .5rem; max-width: 100%;
+        }
+        .session-tools button, dialog button { border: 1px solid #64748b; border-radius: .5rem; padding: .5rem .75rem; color: #f3f4f6; }
+        button.workspace-primary { background: #0e7490; border-color: #67e8f9; font-weight: 600; }
+        .remember-label { display: inline-flex; gap: .5rem; align-items: center; min-height: 44px; }
+        .privacy-note, #workspaceStatus { font-size: .8rem; margin-top: .35rem; color: #cbd5e1; }
+        #workspaceStatus { color: #a5f3fc; }
+        dialog { width: min(94vw, 780px); max-height: 90vh; overflow-y: auto; background: #111827; color: #f3f4f6; border: 1px solid #64748b; border-radius: 1rem; padding: 1.25rem; margin: auto; }
+        dialog::backdrop { background: rgba(0,0,0,.75); }
+        .review-header { justify-content: space-between; margin-bottom: .5rem; }
+        #reviewForm { display: grid; gap: .65rem; margin-top: 1rem; }
+        #reviewForm textarea, #reviewForm select { width: 100%; }
+        #reviewForm label { font-weight: 600; }
+        #reviewForm input { display: block; }
+        @media (max-width: 768px) {
+            main > header { padding: .5rem; height: auto; min-height: 56px; }
+            #sessionHeaderTitle { display: none; }
+            .session-tools { padding: .5rem; }
+            .session-topline { gap: .25rem; }
+            #projectName { width: 170px; }
+            .session-actions { gap: .3rem; }
+            .session-actions button, .session-actions select { font-size: .8rem; padding: .3rem .5rem; }
+            .session-tools .privacy-note { font-size: .72rem; }
+        }
         /* Custom scrollbar */
         ::-webkit-scrollbar { width: 6px; height: 6px; }
         ::-webkit-scrollbar-track { background: #0b0f19; }
@@ -63,6 +107,90 @@
             overflow-x: auto;
             border: 1px solid #1f2937;
         }
+
+        /* Founder workspace: a quiet, evidence-led narrative. */
+        :root { --story-ink:#0c1421; --story-panel:#131e2d; --story-line:#2b3b50; --story-text:#e9edf2; --story-muted:#aebed0; --story-mint:#83dfc4; --story-gold:#e8c68b; }
+        body { font-family:Inter,"Segoe UI",sans-serif; background:var(--story-ink); color:var(--story-text); }
+        aside { width:276px !important; background:#101b2a !important; border-color:var(--story-line) !important; }
+        aside h1 { font-size:17px !important; letter-spacing:-.04em; font-weight:650 !important; }
+        aside .phase-item { min-height:43px; border-radius:10px; font-size:16px; padding:.65rem .8rem; }
+        aside .phase-item:hover { background:#1c3040; }
+        main { background:var(--story-ink) !important; }
+        main > header { background:#101b2af2 !important; min-height:66px; border-color:var(--story-line) !important; }
+        #activePhasePill { color:#e8c68b; border-color:#66563d; background:#2d291f; white-space:nowrap; }
+        #voiceEngineBadge { max-width:165px; }
+        .session-tools { padding:.85rem 1.65rem; background:#111d2b; border-color:var(--story-line); }
+        .session-topline label { font-size:16px; font-weight:500; color:var(--story-muted); }
+        #projectName { background:transparent; border-color:#34485c; margin-left:.4rem; font-size:16px; }
+        .session-actions button, .session-actions select { font-size:16px; border-color:#3c5066; background:#152334; transition:background .15s ease,border-color .15s ease; }
+        .session-actions button:hover { border-color:#84cbb9; background:#1b3340; }
+        button.workspace-primary { background:#b6eadb; color:#092b25; border-color:#b6eadb; box-shadow:0 3px 12px #061c1840; }
+        button.workspace-primary:hover { background:#d0f3e9; color:#092b25; }
+        #workspaceStatus { font-size:16px; color:#91c5b7; letter-spacing:.01em; }
+        .privacy-note { font-size:16px; color:#aebed0; }
+        #chatHistory { padding-top:2rem; padding-bottom:2rem; background:radial-gradient(ellipse at 70% 0,#173a3b25,transparent 70%); }
+        .journey-card { border:1px solid #314659; background:linear-gradient(135deg,#1a2c3b,#132230); padding:2rem; border-radius:20px; position:relative; overflow:hidden; }
+        .journey-card::before { content:""; position:absolute; inset:0 auto 0 0; width:3px; background:#83dfc4; }
+        .story-eyebrow { color:#83dfc4; font-size:16px; letter-spacing:.18em; font-weight:700; margin-bottom:.9rem; text-transform:uppercase; }
+        .journey-card h2 { font-size:clamp(1.6rem,2.4vw,2.25rem); line-height:1.5; letter-spacing:-.04em; font-weight:550; max-width:19ch; margin-bottom:1rem; color:#f0f4f5; }
+        .journey-card p { color:#bfccd7; font-size:16px; line-height:1.8; max-width:62ch; }
+        .journey-track { display:grid; grid-template-columns:repeat(4,1fr); gap:.5rem; margin:1.5rem 0; padding:1rem 0; border-top:1px solid #33495a; border-bottom:1px solid #33495a; list-style:none; }
+        .journey-track li { font-size:16px; color:#d6dfe8; }
+        .journey-track span { display:block; color:#91b9b0; font-size:16px; margin-bottom:.25rem; font-variant-numeric:tabular-nums; }
+        .journey-card .story-prompt { color:#f0e0bc; font-size:16px; font-weight:500; }
+        .story-note { display:inline-block; margin-top:1rem; font-size:16px; color:#aebed0; }
+        .chat-bubble-agent { background:#142232; border-color:#2b4054; box-shadow:none !important; line-height:1.8; }
+        .chat-bubble-user { background:#1e3740; border-color:#3c5c62; }
+        #reviewDialog { border-color:#4a6576; box-shadow:0 25px 100px #0008; }
+        #reviewTitle { font-size:22px; letter-spacing:-.03em; }
+        #reviewForm label { color:#b6eadb; font-size:16px; }
+        #reviewForm textarea { background:#0f1b29; border-color:#395267; font-size:16px; line-height:1.65; }
+        #sendBtn { background:#b6eadb; color:#092b25; box-shadow:none; }
+        button,input,select,textarea { font-family:inherit; }
+        @media(max-width:768px) {
+            main > header { min-height:58px; gap:.4rem; }
+            main > header > div { gap:.35rem; }
+            main > header > div > * { margin-left:0 !important; }
+            #activePhasePill { font-size:16px; padding:.25rem .5rem; }
+            #voiceEngineBadge { display:none; }
+            #toggleTtsBtn { width:44px; padding:.4rem; justify-content:center; }
+            #toggleTtsBtn span { display:none; }
+            #currentStatusDot { display:none; }
+            .session-tools { padding:.65rem .75rem; }
+            .session-topline { align-items:center; flex-wrap:nowrap; }
+            #projectName { width:130px; margin-left:.15rem; min-height:38px; padding:.3rem; }
+            .remember-label { font-size:16px !important; gap:.25rem; min-width:0; }
+            .session-actions button,.session-actions select { font-size:16px; min-height:44px; padding:.35rem .45rem; }
+            #moreTools { max-width:170px; }
+            #workspaceStatus { font-size:16px; }
+            .privacy-note { font-size:16px; line-height:1.5; }
+            #chatHistory { padding:1rem .75rem; }
+            .chat-message { gap:.5rem; }
+            #chatHistory > .chat-message > div:first-child { display:none; }
+            .journey-card { padding:1.35rem; border-radius:16px; }
+            .journey-card h2 { font-size:27px; }
+            .journey-track { gap:.3rem; margin:1.1rem 0; }
+            .journey-track li { font-size:16px; }
+        }
+        @media(prefers-reduced-motion:reduce) { *,*::before,*::after { animation:none !important; transition:none !important; scroll-behavior:auto !important; } }
+        /* The main screen is a guided workflow; optional controls stay in Extra tools. */
+        body > aside { display:none !important; }
+        body:not(.tools-open) main > header > div:last-child { display:none; }
+        .workflow-guide { padding:16px 24px; border-bottom:1px solid #34485a; background:#142636; }
+        .workflow-guide ol { display:flex; flex-wrap:wrap; gap:8px 18px; color:#aebed0; font-size:16px; margin-bottom:8px; }
+        .workflow-guide li[aria-current=step] { color:#b6eadb; font-weight:700; }
+        .workflow-guide h2 { font-size:22px; font-weight:650; margin:6px 0; }
+        .workflow-guide p { font-size:16px; color:#c2d1dd; }
+        .workflow-guide button { padding:10px 16px; border:1px solid #6f918f; border-radius:8px; margin:12px 10px 0 0; font-size:16px; }
+        #workflowPrimary { background:#b6eadb; color:#092b25; font-weight:650; }
+        #workflowExtras summary { cursor:pointer; min-height:44px; padding:10px 0; color:#b4c6d6; font-size:16px; }
+        #sendBtn { width:auto; min-width:100px; padding:10px 14px; font-size:16px; font-weight:650; }
+        body[data-flow-step="1"] #chatHistory { display:none; }
+        body[data-flow-step="1"] #interviewComposer { margin:auto; border:1px solid #3c5869; border-radius:16px; max-width:720px; width:calc(100% - 24px); }
+        body:not(.tools-open) .mb-3:has(> button[onclick="toggleThought(this)"]) { display:none; }
+        #ideaFieldLabel { display:none; font-size:20px; font-weight:600; margin-bottom:12px; }
+        body[data-flow-step="1"] #ideaFieldLabel { display:block; }
+        @media(max-width:768px) { .workflow-guide { padding:12px; } .workflow-guide h2 { font-size:20px; } .workflow-guide ol { font-size:16px; gap:4px 10px; } }
     </style>
 </head>
 <body class="bg-dark-900 text-gray-100 flex h-screen overflow-hidden font-sans antialiased">
@@ -78,63 +206,63 @@
                     </div>
                     <div>
                         <h1 class="font-bold text-sm tracking-wide text-white">Socratic GTM</h1>
-                        <p class="text-xs text-brand-500 font-medium">v3.0 Context-Engineered</p>
+                        <p class="text-xs text-brand-500 font-medium">A founder's thinking space</p>
                     </div>
                 </div>
                 <button onclick="resetConversation()" title="New Audit Session" class="text-gray-400 hover:text-white transition p-1.5 rounded-lg hover:bg-dark-700">
                     <i class="fa-solid fa-pen-to-square"></i>
-                </button>
+                <span class="sr-only">New Audit Session</span></button>
             </div>
 
             <!-- Phase Tracker -->
             <div class="p-4 border-b border-dark-700">
                 <div class="flex items-center justify-between text-xs font-semibold mb-2">
-                    <span class="text-gray-400">ACTIVE DIAGNOSTIC PHASE</span>
+                    <span class="text-gray-400">YOUR REVIEW</span>
                     <span id="sidebarPhaseLabel" class="text-brand-500">Phase 0/8</span>
                 </div>
                 <div class="w-full bg-dark-700 h-2 rounded-full overflow-hidden">
                     <div id="phaseProgressBar" class="bg-gradient-to-r from-brand-500 to-cyan-400 h-full w-0 transition-all duration-500"></div>
                 </div>
                 <div class="flex items-center justify-between text-[11px] text-gray-400 mt-2">
-                    <span>Confidence Gate:</span>
-                    <span id="confidenceGateBadge" class="px-2 py-0.5 rounded bg-brand-500/10 text-brand-500 border border-brand-500/30 font-bold">&ge; 85% Required</span>
+                    <span>Evidence review:</span>
+                    <span id="confidenceGateBadge" class="px-2 py-0.5 rounded bg-brand-500/10 text-brand-500 border border-brand-500/30 font-bold">Human review required</span>
                 </div>
             </div>
 
             <!-- GTM Phase Checklist -->
             <div class="p-4 overflow-y-auto max-h-[calc(100vh-320px)] space-y-1.5 text-xs">
-                <p class="text-[11px] font-semibold text-gray-400 tracking-wider uppercase mb-2">Framework Checklist</p>
-                
+                <p class="text-[11px] font-semibold text-gray-400 tracking-wider uppercase mb-2">Eight perspectives</p>
+
                 <div id="phaseItem1" class="phase-item p-2 rounded-lg flex items-center justify-between bg-dark-700/50 text-gray-400 border border-transparent">
-                    <span class="truncate">1. Interaction Frequency</span>
+                    <span class="truncate">1. Customer demand</span>
                     <i class="fa-regular fa-circle text-gray-400 text-xs phase-status-icon"></i>
                 </div>
                 <div id="phaseItem2" class="phase-item p-2 rounded-lg flex items-center justify-between bg-dark-700/50 text-gray-400 border border-transparent">
-                    <span class="truncate">2. Incumbent Recon</span>
+                    <span class="truncate">2. The alternatives</span>
                     <i class="fa-regular fa-circle text-gray-400 text-xs phase-status-icon"></i>
                 </div>
                 <div id="phaseItem3" class="phase-item p-2 rounded-lg flex items-center justify-between bg-dark-700/50 text-gray-400 border border-transparent">
-                    <span class="truncate">3. PLG vs CISO Wedge</span>
+                    <span class="truncate">3. Your adoption path</span>
                     <i class="fa-regular fa-circle text-gray-400 text-xs phase-status-icon"></i>
                 </div>
                 <div id="phaseItem4" class="phase-item p-2 rounded-lg flex items-center justify-between bg-dark-700/50 text-gray-400 border border-transparent">
-                    <span class="truncate">4. Expansion Vector</span>
+                    <span class="truncate">4. Market focus</span>
                     <i class="fa-regular fa-circle text-gray-400 text-xs phase-status-icon"></i>
                 </div>
                 <div id="phaseItem5" class="phase-item p-2 rounded-lg flex items-center justify-between bg-dark-700/50 text-gray-400 border border-transparent">
-                    <span class="truncate">5. Proactive Routines</span>
+                    <span class="truncate">5. Value delivered</span>
                     <i class="fa-regular fa-circle text-gray-400 text-xs phase-status-icon"></i>
                 </div>
                 <div id="phaseItem6" class="phase-item p-2 rounded-lg flex items-center justify-between bg-dark-700/50 text-gray-400 border border-transparent">
-                    <span class="truncate">6. Model Neutrality</span>
+                    <span class="truncate">6. Models & data</span>
                     <i class="fa-regular fa-circle text-gray-400 text-xs phase-status-icon"></i>
                 </div>
                 <div id="phaseItem7" class="phase-item p-2 rounded-lg flex items-center justify-between bg-dark-700/50 text-gray-400 border border-transparent">
-                    <span class="truncate">7. Pricing Paradox</span>
+                    <span class="truncate">7. Pricing & costs</span>
                     <i class="fa-regular fa-circle text-gray-400 text-xs phase-status-icon"></i>
                 </div>
                 <div id="phaseItem8" class="phase-item p-2 rounded-lg flex items-center justify-between bg-dark-700/50 text-gray-400 border border-transparent">
-                    <span class="truncate">8. Data Gravity Moats</span>
+                    <span class="truncate">8. Integration & exit</span>
                     <i class="fa-regular fa-circle text-gray-400 text-xs phase-status-icon"></i>
                 </div>
             </div>
@@ -166,15 +294,15 @@
 
     <!-- Main Chat Workspace -->
     <main class="flex-1 flex flex-col bg-dark-900 relative">
-        
+
         <!-- Top Navigation Bar -->
         <header class="h-14 border-b border-dark-700 bg-dark-800/80 backdrop-blur px-6 flex items-center justify-between">
             <div class="flex items-center space-x-3">
                 <span id="currentStatusDot" class="w-2.5 h-2.5 rounded-full bg-brand-500 animate-pulse"></span>
-                <span id="sessionHeaderTitle" class="font-semibold text-sm text-gray-200">Socratic GTM Review Session</span>
-                <span id="activePhasePill" class="text-[11px] px-2.5 py-0.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 font-medium">Phase 0: Initialization</span>
+                <span id="sessionHeaderTitle" class="font-semibold text-sm text-gray-200">Your GTM workspace</span>
+                <span id="activePhasePill" class="text-[11px] px-2.5 py-0.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 font-medium">Your idea</span>
             </div>
-            
+
             <!-- Controls (TTS Voice Toggle, Fullscreen Voice Mode, Settings) -->
             <div class="flex items-center space-x-3 text-sm">
                 <!-- Active Engine Indicator Badge -->
@@ -186,7 +314,7 @@
                 <!-- Auto-TTS Toggle -->
                 <button id="toggleTtsBtn" onclick="toggleAutoTTS()" class="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-dark-700 hover:bg-dark-600 text-gray-300 transition text-xs font-medium">
                     <i id="ttsIcon" class="fa-solid fa-volume-high text-brand-400"></i>
-                    <span id="ttsLabel">Voice: ON</span>
+                    <span id="ttsLabel">Voice: MUTED</span>
                 </button>
 
                 <!-- ChatGPT Fullscreen Voice Mode Trigger -->
@@ -198,9 +326,43 @@
                 <!-- Voice & API Settings Gear Button -->
                 <button onclick="openSettingsModal()" title="Voice & API Key Settings" class="w-8 h-8 rounded-lg bg-dark-700 hover:bg-dark-600 text-gray-300 hover:text-white transition flex items-center justify-center">
                     <i class="fa-solid fa-gear"></i>
-                </button>
+                <span class="sr-only">Voice & API Key Settings</span></button>
             </div>
         </header>
+
+        <section class="workflow-guide" aria-label="Your preparation workflow">
+            <ol aria-label="Preparation steps"><li id="flowStep1" aria-current="step">1. Your idea</li><li id="flowStep2">2. Questions</li><li id="flowStep3">3. Practice</li><li id="flowStep4">4. Next steps</li></ol>
+            <h2 id="workflowTitle">Start with your idea</h2>
+            <p id="workflowHelp">Tell us who you help and what problem you solve. Then press Continue.</p>
+            <button id="workflowPrimary" type="button" onclick="runWorkflowPrimary()">Write my idea</button>
+            <button id="workflowPractice" type="button" onclick="GTMPrepUI.quickStart()" hidden>Skip ahead to practice</button>
+        </section>
+        <details id="workflowExtras" class="session-tools">
+            <summary>Extra tools: save, review, settings and calculator</summary>
+            <div class="session-topline">
+                <label for="projectName">Project <input id="projectName" maxlength="200" value="AI Startup" autocomplete="off"></label>
+                <label class="remember-label"><input type="checkbox" id="rememberSession"> Save on this device</label>
+            </div>
+            <div class="session-actions">
+                <button id="reviewAnswersBtn" type="button" onclick="openReview()">Review answers</button>
+                <button type="button" onclick="downloadSession()">Save session file</button>
+                <button type="button" onclick="document.getElementById('sessionFile').click()">Load session</button>
+                <button type="button" onclick="downloadPlaybook()">Draft playbook</button>
+                <button id="openPractice" type="button" onclick="GTMPrepUI.open()">Practice hard questions</button>
+                <label class="sr-only" for="moreTools">More tools</label>
+                <select id="moreTools" aria-label="More tools" onchange="runWorkspaceTool(this)">
+                    <option value="">More tools…</option>
+                    <option value="experiments">Export experiment CSV</option>
+                    <option value="simulator">Generate scenario simulator</option>
+                    <option value="backlog">Download example backlog</option>
+                    <option value="ciso">CISO practice</option>
+                    <option value="vc">Investor practice</option>
+                </select>
+                <input type="file" id="sessionFile" accept=".json,application/json" hidden>
+            </div>
+            <p id="workspaceStatus" role="status" aria-live="polite">0 of 8 answers recorded. Evidence review required.</p>
+            <p class="privacy-note">Device saving is optional and unencrypted. Session files contain your answers and evidence notes.</p>
+        </details>
 
         <!-- Chat History Scroll View -->
         <div id="chatHistory" class="flex-1 overflow-y-auto px-4 md:px-12 py-6 space-y-6">
@@ -211,15 +373,15 @@
                 </div>
                 <div class="flex-1">
                     <div class="flex items-center space-x-2 mb-1">
-                        <span class="font-semibold text-sm text-gray-200">Socratic GTM Advisor</span>
-                        <span class="text-[10px] text-gray-400">Phase 0 Kickoff</span>
+                        <span class="font-semibold text-sm text-gray-200">GTM thinking partner</span>
+                        <span class="text-[10px] text-gray-400">A place to begin</span>
                     </div>
 
                     <!-- Collapsible Monologue Block -->
                     <div class="mb-3">
                         <button onclick="toggleThought(this)" class="flex items-center space-x-1.5 text-xs text-brand-400 hover:text-brand-300 font-mono focus:outline-none">
                             <i class="fa-solid fa-angle-right transition-transform duration-200 thought-chevron"></i>
-                            <span>View Strategic Thought & Accumulator</span>
+                            <span>View intake summary</span>
                         </button>
                         <div class="thought-content hidden mt-2 p-3 rounded-lg bg-dark-800 border border-dark-700 font-mono text-xs text-gray-400 whitespace-pre-wrap leading-relaxed">
 - Current Phase: Phase 0 (Initialization)
@@ -230,10 +392,18 @@
 - Next Action: Prompt founder for 2-3 sentence overview.</div>
                     </div>
 
-                    <div class="chat-bubble-agent p-4 rounded-2xl text-sm leading-relaxed text-gray-200 shadow-sm space-y-3">
-                        <p>Hello. I'm your <strong>AI Startup Strategy Partner and Socratic Advisor</strong>.</p>
-                        <p>My role is to ruthlessly but constructively stress-test your Go-To-Market strategy across an 8-phase diagnostic framework (Interaction Frequency, Incumbent Distribution, PLG Wedges, Proactive Routines, Model Neutrality, Pricing Paradox, and Data Gravity).</p>
-                        <p class="font-medium text-brand-400">To begin Phase 1: In 2 to 3 sentences, what is your AI startup idea, who is your core user, and what primary problem are you solving?</p>
+                    <div class="chat-bubble-agent journey-card">
+                        <div class="story-eyebrow">Your next chapter</div>
+                        <h2>A good idea deserves a clear next step.</h2>
+                        <p>You have a product in mind. The uncertain part is who will choose it, why they will stay, and what to test first. Let's make those questions concrete, one conversation at a time.</p>
+                        <ol class="journey-track" aria-label="Your strategy journey">
+                            <li><span>01 / BEGIN</span>Your idea</li>
+                            <li><span>02 / EXPLORE</span>The assumptions</li>
+                            <li><span>03 / EXAMINE</span>Your evidence</li>
+                            <li><span>04 / CHOOSE</span>One next move</li>
+                        </ol>
+                        <p class="story-prompt">In two or three sentences, describe your idea, the person it helps, and the problem you want to solve.</p>
+                        <span class="story-note">Your answers, your evidence, your decision. Edit or pause whenever you need.</span>
                     </div>
 
                     <!-- Voice Speak Button for this message -->
@@ -259,36 +429,37 @@
         </div>
 
         <!-- Chat Input Controls Bar -->
-        <div class="p-4 md:p-6 bg-dark-900/90 border-t border-dark-700/80 max-w-4xl w-full mx-auto">
+        <div id="interviewComposer" class="p-4 md:p-6 bg-dark-900/90 border-t border-dark-700/80 max-w-4xl w-full mx-auto">
+            <label id="ideaFieldLabel" for="userInput">Who is your product for, and what does it help them do?</label>
             <div class="relative bg-dark-800 rounded-2xl border border-dark-700 focus-within:border-brand-500/60 focus-within:ring-2 focus-within:ring-brand-500/20 transition shadow-lg">
-                <textarea 
-                    id="userInput" 
-                    rows="2" 
-                    placeholder="Describe your startup idea or reply to the Socratic question..."
+                <textarea
+                    id="userInput" aria-label="Founder response" maxlength="10000"
+                    rows="2"
+                    placeholder="Start with your idea. We will take it one question at a time."
                     class="w-full bg-transparent px-4 py-3.5 pr-28 text-sm text-gray-100 placeholder-gray-400 focus:outline-none resize-none"
                     onkeydown="handleKeyDown(event)"
                 ></textarea>
 
                 <div class="absolute right-3 bottom-3 flex items-center space-x-2">
                     <!-- STT Microphone Button -->
-                    <button 
-                        id="micBtn" 
-                        onclick="toggleSpeechToText()" 
+                    <button
+                        id="micBtn" aria-label="Start voice input"
+                        onclick="toggleSpeechToText()"
                         title="Voice Input (Speech-to-Text)"
                         class="w-9 h-9 rounded-xl bg-dark-700 hover:bg-dark-600 text-gray-300 hover:text-brand-400 transition flex items-center justify-center focus:outline-none relative"
                     >
                         <i id="micIcon" class="fa-solid fa-microphone"></i>
                         <span id="micRing" class="hidden absolute inset-0 rounded-xl border-2 border-brand-500 animate-ping"></span>
-                    </button>
+                    <span class="sr-only">Start voice input</span></button>
 
                     <!-- Send Button -->
-                    <button 
-                        id="sendBtn" 
-                        onclick="handleSend()" 
+                    <button
+                        id="sendBtn" aria-label="Continue with my answer"
+                        onclick="handleSend()"
                         title="Send Message"
                         class="w-9 h-9 rounded-xl bg-brand-600 hover:bg-brand-500 text-white transition flex items-center justify-center shadow-md shadow-brand-600/30 focus:outline-none disabled:opacity-50"
                     >
-                        <i class="fa-solid fa-arrow-up"></i>
+                        <span>Continue</span>
                     </button>
                 </div>
             </div>
@@ -296,28 +467,28 @@
             <div class="flex items-center justify-between text-[11px] text-gray-400 mt-2 px-1">
                 <span class="flex items-center space-x-1.5">
                     <i class="fa-solid fa-shield text-brand-500/80"></i>
-                    <span>Enforcing Rule of Two & 85% Confidence Gating</span>
+                    <span>Your work stays in this session.</span>
                 </span>
                 <span>Press <kbd class="px-1.5 py-0.5 rounded bg-dark-800 border border-dark-700 font-mono text-[10px]">Enter</kbd> to send, <kbd class="px-1.5 py-0.5 rounded bg-dark-800 border border-dark-700 font-mono text-[10px]">Shift+Enter</kbd> for newline</span>
             </div>
         </div>
     </main>
 
-    <!-- Fullscreen ChatGPT-Style Voice Mode Overlay -->
+    <!-- Fullscreen Browser Voice Mode Overlay -->
     <div id="voiceModeOverlay" class="fixed inset-0 bg-dark-900/95 backdrop-blur-md z-50 flex flex-col justify-between p-8 hidden">
         <div class="flex items-center justify-between">
             <div class="flex items-center space-x-3">
                 <div class="w-8 h-8 rounded-lg bg-brand-500 flex items-center justify-center text-white font-bold">S</div>
                 <span class="font-semibold text-sm">Socratic GTM Voice Mode</span>
             </div>
-            <button onclick="closeVoiceMode()" class="text-gray-400 hover:text-white text-xl p-2 rounded-full hover:bg-dark-800">
+            <button aria-label="Close voice mode" onclick="closeVoiceMode()" class="text-gray-400 hover:text-white text-xl p-2 rounded-full hover:bg-dark-800">
                 <i class="fa-solid fa-xmark"></i>
-            </button>
+            <span class="sr-only">Close voice mode</span></button>
         </div>
 
         <!-- Center Glowing Interactive Voice Orb -->
         <div class="flex flex-col items-center justify-center space-y-6">
-            <div id="voiceOrb" class="w-44 h-44 rounded-full bg-gradient-to-tr from-brand-500 via-cyan-400 to-indigo-500 animate-voice-orb flex items-center justify-center shadow-2xl transition-all duration-300 cursor-pointer" onclick="toggleVoiceModeListening()">
+            <div id="voiceOrb" role="button" tabindex="0" aria-label="Toggle voice listening" onkeydown="if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); toggleVoiceModeListening(); }" class="w-44 h-44 rounded-full bg-gradient-to-tr from-brand-500 via-cyan-400 to-indigo-500 animate-voice-orb flex items-center justify-center shadow-2xl transition-all duration-300 cursor-pointer" onclick="toggleVoiceModeListening()">
                 <i id="voiceOrbIcon" class="fa-solid fa-microphone text-white text-4xl"></i>
             </div>
             <div class="text-center">
@@ -328,17 +499,48 @@
 
         <!-- Voice Mode Bottom Controls -->
         <div class="flex items-center justify-center space-x-6">
-            <button id="voiceMuteToggle" onclick="toggleVoiceModeMic()" class="w-14 h-14 rounded-full bg-dark-800 border border-dark-700 text-gray-200 hover:text-brand-400 text-xl flex items-center justify-center shadow transition">
+            <button id="voiceMuteToggle" aria-label="Toggle voice microphone" onclick="toggleVoiceModeMic()" class="w-14 h-14 rounded-full bg-dark-800 border border-dark-700 text-gray-200 hover:text-brand-400 text-xl flex items-center justify-center shadow transition">
                 <i id="voiceMuteIcon" class="fa-solid fa-microphone"></i>
-            </button>
-            <button onclick="closeVoiceMode()" class="w-14 h-14 rounded-full bg-red-600/20 border border-red-500/40 text-red-400 hover:bg-red-600 hover:text-white text-xl flex items-center justify-center shadow transition">
+            <span class="sr-only">Toggle voice microphone</span></button>
+            <button aria-label="Close voice mode" onclick="closeVoiceMode()" class="w-14 h-14 rounded-full bg-red-600/20 border border-red-500/40 text-red-400 hover:bg-red-600 hover:text-white text-xl flex items-center justify-center shadow transition">
                 <i class="fa-solid fa-phone-slash"></i>
-            </button>
+            <span class="sr-only">Close voice mode</span></button>
         </div>
     </div>
 
+    <dialog id="reviewDialog" aria-labelledby="reviewTitle">
+        <div class="review-header">
+            <h2 id="reviewTitle">Answers, evidence &amp; next experiments</h2>
+            <button type="button" aria-label="Close answer review" onclick="document.getElementById('reviewDialog').close()">Close</button>
+        </div>
+        <p>Record what you know, what could disprove it, and the next decision. Notes remain unverified.</p>
+        <form id="reviewForm">
+            <label for="reviewPhase">Review phase</label>
+            <select id="reviewPhase"></select>
+            <label for="reviewAnswer">Founder answer</label>
+            <textarea id="reviewAnswer" rows="4" maxlength="10000"></textarea>
+            <label for="reviewEvidence">Evidence, source &amp; counterexample</label>
+            <textarea id="reviewEvidence" rows="3" maxlength="10000" placeholder="Source URL or interview date, observation, sample size, and what remains uncertain"></textarea>
+            <label for="reviewExperiment">Next falsifiable experiment</label>
+            <textarea id="reviewExperiment" rows="2" maxlength="10000" placeholder="Action, measurable threshold and stop condition"></textarea>
+            <div class="review-details">
+                <label for="reviewOwner">Owner <input id="reviewOwner" maxlength="200" autocomplete="off"></label>
+                <label for="reviewDate">Decision date <input id="reviewDate" type="date"></label>
+            </div>
+            <div class="session-actions">
+                <button type="submit">Save changes</button>
+                <button type="button" onclick="continueAtReviewPhase()">Continue interview here</button>
+                <button type="button" onclick="downloadExperiments()">Export experiment CSV</button>
+            </div>
+            <p id="reviewStatus" role="status" aria-live="polite"></p>
+        </form>
+    </dialog>
+    <script src="/ui/prep.js"></script>
+    <script src="/ui/session.js"></script>
+    <script src="/ui/prep-ui.js"></script>
+
     <!-- Voice & 3rd-Party API Settings Modal (Local Use Only) -->
-    <div id="settingsModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+    <div id="settingsModal" role="dialog" aria-label="Voice settings" aria-modal="true" tabindex="-1" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
         <div class="bg-dark-800 border border-dark-700 rounded-2xl max-w-lg w-full p-6 shadow-2xl relative text-sm">
             <div class="flex items-center justify-between pb-4 border-b border-dark-700">
                 <div class="flex items-center space-x-2.5">
@@ -350,16 +552,16 @@
                         <p class="text-xs text-gray-400">Local use only &bull; Web Speech fallback active</p>
                     </div>
                 </div>
-                <button onclick="closeSettingsModal()" class="text-gray-400 hover:text-white text-lg p-1.5 rounded-lg hover:bg-dark-700">
+                <button aria-label="Close voice settings" onclick="closeSettingsModal()" class="text-gray-400 hover:text-white text-lg p-1.5 rounded-lg hover:bg-dark-700">
                     <i class="fa-solid fa-xmark"></i>
-                </button>
+                <span class="sr-only">Close voice settings</span></button>
             </div>
 
             <!-- Privacy Notice Banner -->
             <div class="mt-4 p-3 rounded-xl bg-dark-900 border border-dark-700 text-xs text-gray-300 flex items-start space-x-2.5">
                 <i class="fa-solid fa-shield-halved text-brand-400 text-sm mt-0.5"></i>
                 <div>
-                    <span class="font-semibold text-white">Local Use Only Security:</span> Keys are stored exclusively in your browser's private <code class="text-brand-400">localStorage</code>. When an API key is omitted or invalid, the system automatically falls back to your browser's native Web Speech API.
+                    <span class="font-semibold text-white">Local Use Only Security:</span> Keys stay in this tab's memory and are excluded from device saving and session exports. Audio or text is sent to the selected provider when you use it; provider charges and retention rules may apply. Browser voice is the default fallback.
                 </div>
             </div>
 
@@ -374,7 +576,7 @@
                         <span class="text-[10px] text-gray-400">User Mic Input</span>
                     </div>
 
-                    <select id="sttProviderSelect" onchange="onSttProviderChange()" class="w-full bg-dark-800 border border-dark-700 rounded-lg p-2.5 text-xs text-gray-100 focus:outline-none focus:border-brand-500">
+                    <select id="sttProviderSelect" aria-label="Transcription provider" onchange="onSttProviderChange()" class="w-full bg-dark-800 border border-dark-700 rounded-lg p-2.5 text-xs text-gray-100 focus:outline-none focus:border-brand-500">
                         <option value="web">Web Speech API (Browser Native - Free)</option>
                         <option value="openai">OpenAI Whisper (Cloud Neural)</option>
                         <option value="groq">Groq Whisper (Cloud High-Speed)</option>
@@ -386,10 +588,10 @@
                             <span class="text-[10px] text-brand-400 italic">Saved locally</span>
                         </div>
                         <div class="relative">
-                            <input type="password" id="sttApiKeyInput" placeholder="sk-..." class="w-full bg-dark-800 border border-dark-700 rounded-lg p-2.5 pr-10 text-xs text-gray-100 focus:outline-none focus:border-brand-500">
-                            <button type="button" onclick="togglePasswordVisibility('sttApiKeyInput')" class="absolute right-3 top-2.5 text-gray-400 hover:text-white text-xs">
+                            <input type="password" id="sttApiKeyInput" aria-label="Transcription API key" placeholder="sk-..." class="w-full bg-dark-800 border border-dark-700 rounded-lg p-2.5 pr-10 text-xs text-gray-100 focus:outline-none focus:border-brand-500">
+                            <button type="button" aria-label="Show or hide transcription key" onclick="togglePasswordVisibility('sttApiKeyInput')" class="absolute right-3 top-2.5 text-gray-400 hover:text-white text-xs">
                                 <i class="fa-regular fa-eye"></i>
-                            </button>
+                            <span class="sr-only">Show or hide transcription key</span></button>
                         </div>
                     </div>
                 </div>
@@ -404,7 +606,7 @@
                         <span class="text-[10px] text-gray-400">Agent Voice Output</span>
                     </div>
 
-                    <select id="ttsProviderSelect" onchange="onTtsProviderChange()" class="w-full bg-dark-800 border border-dark-700 rounded-lg p-2.5 text-xs text-gray-100 focus:outline-none focus:border-brand-500">
+                    <select id="ttsProviderSelect" aria-label="Speech provider" onchange="onTtsProviderChange()" class="w-full bg-dark-800 border border-dark-700 rounded-lg p-2.5 text-xs text-gray-100 focus:outline-none focus:border-brand-500">
                         <option value="web">Web Speech Synthesis (Browser Native - Free)</option>
                         <option value="openai">OpenAI TTS-1 (Cloud Neural)</option>
                         <option value="elevenlabs">ElevenLabs (Hyper-Realistic Neural)</option>
@@ -412,7 +614,8 @@
 
                     <div id="ttsVoiceGroup" class="space-y-1 hidden">
                         <div class="text-xs text-gray-400">Voice Selection</div>
-                        <select id="ttsVoiceSelect" class="w-full bg-dark-800 border border-dark-700 rounded-lg p-2 text-xs text-gray-100 focus:outline-none focus:border-brand-500">
+                        <input id="elevenVoiceId" aria-label="ElevenLabs voice ID" value="21m00Tcm4TlvDq8ikWAM" maxlength="100" hidden>
+                        <select id="ttsVoiceSelect" aria-label="Speech voice" class="w-full bg-dark-800 border border-dark-700 rounded-lg p-2 text-xs text-gray-100 focus:outline-none focus:border-brand-500">
                             <option value="nova">Nova (Sharp & Friendly)</option>
                             <option value="alloy">Alloy (Neutral & Balanced)</option>
                             <option value="echo">Echo (Warm)</option>
@@ -431,10 +634,10 @@
                             </label>
                         </div>
                         <div class="relative">
-                            <input type="password" id="ttsApiKeyInput" placeholder="sk-... or ElevenLabs key" class="w-full bg-dark-800 border border-dark-700 rounded-lg p-2.5 pr-10 text-xs text-gray-100 focus:outline-none focus:border-brand-500">
-                            <button type="button" onclick="togglePasswordVisibility('ttsApiKeyInput')" class="absolute right-3 top-2.5 text-gray-400 hover:text-white text-xs">
+                            <input type="password" id="ttsApiKeyInput" aria-label="Speech API key" placeholder="sk-... or ElevenLabs key" class="w-full bg-dark-800 border border-dark-700 rounded-lg p-2.5 pr-10 text-xs text-gray-100 focus:outline-none focus:border-brand-500">
+                            <button type="button" aria-label="Show or hide speech key" onclick="togglePasswordVisibility('ttsApiKeyInput')" class="absolute right-3 top-2.5 text-gray-400 hover:text-white text-xs">
                                 <i class="fa-regular fa-eye"></i>
-                            </button>
+                            <span class="sr-only">Show or hide speech key</span></button>
                         </div>
                     </div>
 
@@ -463,8 +666,9 @@
     <script>
         // State Management
         let currentPhase = 0;
+        let sending = false;
         let isListening = false;
-        let autoTTS = true;
+        let autoTTS = false;
         let recognition = null;
         let synth = window.speechSynthesis;
         let accumulatedContext = {
@@ -472,7 +676,7 @@
             phases: {}
         };
 
-        // Voice Configuration (Local Use Only - Stored in localStorage)
+        // Voice preferences may persist; provider keys stay in tab memory.
         let voiceConfig = {
             sttProvider: "web",        // "web", "openai", "groq"
             sttApiKey: "",
@@ -491,7 +695,13 @@
             try {
                 const saved = localStorage.getItem('socratic_gtm_voice_config');
                 if (saved) {
-                    voiceConfig = { ...voiceConfig, ...jsonSafeParse(saved, {}) };
+                    const preferences = jsonSafeParse(saved, {}) || {};
+                    for (const key of ['sttProvider', 'ttsProvider', 'ttsVoice']) {
+                        if (typeof preferences[key] === 'string') voiceConfig[key] = preferences[key];
+                    }
+                    // Strip credentials from a legacy saved configuration.
+                    localStorage.setItem('socratic_gtm_voice_config', JSON.stringify({
+                        sttProvider: voiceConfig.sttProvider, ttsProvider: voiceConfig.ttsProvider, ttsVoice: voiceConfig.ttsVoice}));
                 }
             } catch (e) {
                 console.warn("Could not read from localStorage:", e);
@@ -500,7 +710,8 @@
             document.getElementById('sttProviderSelect').value = voiceConfig.sttProvider || "web";
             document.getElementById('sttApiKeyInput').value = voiceConfig.sttApiKey || "";
             document.getElementById('ttsProviderSelect').value = voiceConfig.ttsProvider || "web";
-            document.getElementById('ttsVoiceSelect').value = voiceConfig.ttsVoice || "nova";
+            document.getElementById('ttsVoiceSelect').value = voiceConfig.ttsProvider === 'elevenlabs' ? 'nova' : (voiceConfig.ttsVoice || 'nova');
+            document.getElementById('elevenVoiceId').value = voiceConfig.ttsProvider === 'elevenlabs' ? voiceConfig.ttsVoice : '21m00Tcm4TlvDq8ikWAM';
             document.getElementById('ttsApiKeyInput').value = voiceConfig.ttsApiKey || "";
 
             onSttProviderChange();
@@ -516,11 +727,11 @@
             voiceConfig.sttProvider = document.getElementById('sttProviderSelect').value;
             voiceConfig.sttApiKey = document.getElementById('sttApiKeyInput').value.trim();
             voiceConfig.ttsProvider = document.getElementById('ttsProviderSelect').value;
-            voiceConfig.ttsVoice = document.getElementById('ttsVoiceSelect').value;
+            voiceConfig.ttsVoice = voiceConfig.ttsProvider === 'elevenlabs' ? document.getElementById('elevenVoiceId').value.trim() : document.getElementById('ttsVoiceSelect').value;
             voiceConfig.ttsApiKey = document.getElementById('ttsApiKeyInput').value.trim();
 
             try {
-                localStorage.setItem('socratic_gtm_voice_config', JSON.stringify(voiceConfig));
+                localStorage.setItem('socratic_gtm_voice_config', JSON.stringify({sttProvider: voiceConfig.sttProvider, ttsProvider: voiceConfig.ttsProvider, ttsVoice: voiceConfig.ttsVoice}));
             } catch (e) {
                 console.warn("Could not save to localStorage:", e);
             }
@@ -572,6 +783,8 @@
             const val = document.getElementById('ttsProviderSelect').value;
             const keyGroup = document.getElementById('ttsKeyGroup');
             const voiceGroup = document.getElementById('ttsVoiceGroup');
+            document.getElementById('ttsVoiceSelect').hidden = val === 'elevenlabs';
+            document.getElementById('elevenVoiceId').hidden = val !== 'elevenlabs';
             const label = document.getElementById('ttsKeyLabel');
 
             if (val === 'web') {
@@ -597,6 +810,7 @@
 
         function openSettingsModal() {
             document.getElementById('settingsModal').classList.remove('hidden');
+            document.getElementById('sttProviderSelect').focus();
         }
 
         function closeSettingsModal() {
@@ -874,7 +1088,7 @@
                 res = await fetch("/api/tts", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ text: text, provider: "openai", apiKey: voiceConfig.ttsApiKey, voice: voiceConfig.ttsVoice })
+                    body: JSON.stringify({ text: text.slice(0, 4000), provider: "openai", apiKey: voiceConfig.ttsApiKey, voice: voiceConfig.ttsVoice })
                 });
             }
 
@@ -907,7 +1121,7 @@
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({
-                        text: text,
+                        text: text.slice(0, 4000),
                         provider: "elevenlabs",
                         apiKey: voiceConfig.ttsApiKey,
                         voice: voiceId
@@ -1002,7 +1216,10 @@
         async function handleSend() {
             const input = document.getElementById('userInput');
             const text = input.value.trim();
-            if (!text) return;
+            if (!text || sending) return;
+            sending = true;
+            document.getElementById('sendBtn').disabled = true;
+            input.disabled = true;
 
             input.value = '';
             stopSpeechToText();
@@ -1011,7 +1228,12 @@
             appendUserMessage(text);
 
             // Execute Socratic Agent Response
-            await processAgentTurn(text);
+            try { await processAgentTurn(text); }
+            finally {
+                sending = false;
+                input.disabled = false;
+                document.getElementById('sendBtn').disabled = false;
+            }
         }
 
         function appendUserMessage(text) {
@@ -1042,7 +1264,7 @@
             msgEl.className = 'chat-message flex items-start space-x-4 max-w-4xl mx-auto';
 
             const badgeClass = confidence >= 85 ? "text-brand-400 border-brand-500/30 bg-brand-500/10" : "text-yellow-400 border-yellow-500/30 bg-yellow-500/10";
-            const gateText = confidence >= 85 ? `Gate Passed (${confidence}%)` : `Drill Down (${confidence}%)`;
+            const gateText = "Review required";
 
             msgEl.innerHTML = `
                 <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-brand-500 to-cyan-500 flex-shrink-0 flex items-center justify-center text-white shadow-md shadow-brand-500/30">
@@ -1050,7 +1272,7 @@
                 </div>
                 <div class="flex-1">
                     <div class="flex items-center space-x-2 mb-1">
-                        <span class="font-semibold text-sm text-gray-200">Socratic GTM Advisor</span>
+                        <span class="font-semibold text-sm text-gray-200">GTM thinking partner</span>
                         <span class="text-[10px] text-gray-400">Phase ${phase}</span>
                         <span class="text-[10px] px-2 py-0.2 rounded border font-mono ${badgeClass}">${gateText}</span>
                     </div>
@@ -1059,7 +1281,7 @@
                     <div class="mb-3">
                         <button onclick="toggleThought(this)" class="flex items-center space-x-1.5 text-xs text-brand-400 hover:text-brand-300 font-mono focus:outline-none">
                             <i class="fa-solid fa-angle-right transition-transform duration-200 thought-chevron"></i>
-                            <span>View Strategic Thought & Accumulator</span>
+                            <span>View intake summary</span>
                         </button>
                         <div class="thought-content hidden mt-2 p-3 rounded-lg bg-dark-800 border border-dark-700 font-mono text-xs text-gray-400 whitespace-pre-wrap leading-relaxed">${escapeHtml(monologue)}</div>
                     </div>
@@ -1088,97 +1310,34 @@
             speakText(responseText);
         }
 
-        // Backend or Client-Side Simulated Socratic Engine Turn
+        // Local intake is explicit; unavailable APIs cannot validate strategy.
         async function processAgentTurn(userInput) {
-            // Check for quick slash commands
-            if (userInput.startsWith('/stress-test ciso')) {
-                executeAdversarialMode("ciso");
-                return;
-            } else if (userInput.startsWith('/stress-test vc')) {
-                executeAdversarialMode("vc");
-                return;
-            }
-
-            // Call local API if server is running, or fall back to client-side Socratic engine
+            if (userInput.startsWith('/stress-test ciso')) return executeAdversarialMode("ciso");
+            if (userInput.startsWith('/stress-test vc')) return executeAdversarialMode("vc");
             try {
                 const res = await fetch('/api/chat', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ message: userInput, phase: currentPhase, context: accumulatedContext })
+                    method: 'POST', headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({message: userInput, phase: currentPhase, context: accumulatedContext})
                 });
-                if (res.ok) {
-                    const data = await res.json();
-                    updatePhaseUI(data.phase, data.confidence);
-                    appendAgentMessage(data.monologue, data.reply, data.phase, data.confidence);
-                    return;
-                }
+                const data = await res.json();
+                if (!res.ok) throw new Error(data.error || 'Request failed');
+                currentPhase = data.phase;
+                accumulatedContext = data.context;
+                accumulatedContext.name = (accumulatedContext.concept || accumulatedContext.name || 'AI Startup').slice(0, 200);
+                persistSession();
+                updatePhaseUI(currentPhase, null);
+                appendAgentMessage(data.monologue, data.reply, currentPhase, null);
             } catch (err) {
-                // Server not running, proceed with native client-side Socratic engine
+                document.getElementById('userInput').value = userInput;
+                persistSession();
+                appendAgentMessage("Request failed; interview phase unchanged.",
+                    "Your answer is still here. We could not save this turn; check the local connection and try again. " + err.message,
+                    currentPhase, null);
             }
-
-            // Native Client-Side Socratic Engine (Runs fully offline without backend dependencies)
-            const words = userInput.split(/\s+/).length;
-            const confidence = Math.min(95, Math.max(65, 60 + words * 2));
-
-            let monologue = "";
-            let reply = "";
-
-            if (currentPhase === 0) {
-                currentPhase = 1;
-                accumulatedContext.name = userInput.slice(0, 30);
-                monologue = `- Current Phase: Phase 1 (Interaction Frequency & WoM)\n- Evaluation: Captured startup concept. Advancing to test usage frequency.\n- Phase Confidence Score: 88%\n- Gating Decision: ADVANCE to Phase 1.\n- Accumulated State:\n    * Concept: ${userInput}\n- Next Action: Ask the Rule of Two frequency questions.`;
-                reply = `That gives us a clear initial wedge. Let's stress-test the growth engine in **Phase 1: Interaction Frequency & Word-of-Mouth Physics**.\n\nHistorically, products that are touched only monthly or annually suffer from the "Annual Trap" and cannot sustain organic word-of-mouth.\n\n1. *How often does an end-user naturally touch or get value from your product (Daily, Weekly, Monthly, or Annual)?*\n2. *When a user experiences a 'magic moment', how naturally do they brag about it to peers during their active buying cycle?*`;
-            } else if (currentPhase < 8) {
-                if (confidence >= 85) {
-                    currentPhase += 1;
-                    const phaseTitles = [
-                        "", "Interaction Frequency", "Incumbent Threat & Distribution", "PLG vs CISO Wedge",
-                        "Expansion Vector", "Proactive Routines vs Chatbox", "Model Neutrality",
-                        "AI Pricing Paradox", "Data Gravity Moats"
-                    ];
-                    monologue = `- Current Phase: Phase ${currentPhase}\n- Evaluation: Founder provided concrete mechanics. Confidence exceeds 85% threshold.\n- Phase Confidence Score: ${confidence}%\n- Gating Decision: ADVANCE to Phase ${currentPhase}.\n- Accumulated State:\n    * Validated Phase ${currentPhase - 1}: ${userInput.slice(0, 60)}...\n- Next Action: Pivot to ${phaseTitles[currentPhase]}.`;
-                    
-                    if (currentPhase === 2) {
-                        reply = `Your frequency mechanics are solid. Let's move to **Phase 2: The Ticking Clock vs. Incumbent Distribution**.\n\nIncumbents (e.g. Salesforce, Notion, Zendesk) already own the enterprise relationship. If they ship an AI button that accomplishes 70% of your value next year, why do customers stay?\n\n1. *What is the primary distribution advantage of your top incumbent?*\n2. *If the incumbent adds a 'good-enough' agent in 12 months, what is your structural defense?*`;
-                    } else if (currentPhase === 3) {
-                        reply = `Understood. Now testing **Phase 3: The Adoption Vector (PLG vs. CISO Governance)**.\n\nMany AI startups fall into the CISO trap on Day 1—getting paralyzed by 9-month enterprise procurement before any end-user loves the tool.\n\n1. *Who uses the tool daily versus who signs the check?*\n2. *Are you designing v1 for practitioner delight, or to satisfy an IT/compliance checklist?*`;
-                    } else if (currentPhase === 4) {
-                        reply = `Good distinction. Let's evaluate **Phase 4: Expansion Strategy (Horizontal to Vertical)**.\n\n1. *Are you forcing a narrow niche on Day 1, or starting horizontal across common workflows?*\n2. *How will you extract the hidden 'routines' of power users to turn them into vertical templates?*`;
-                    } else if (currentPhase === 5) {
-                        reply = `Let's tackle **Phase 5: Value Architecture (Proactive Routines vs. Text-Box Friction)**.\n\nChat boxes produce prompt fatigue. Autonomous routines deliver ROI while the user sleeps.\n\n1. *Does your user have to type into a prompt box to get value, or does your app proactively surface ROI in the background?*\n2. *What is a low-cost background task your app can run continuously that yields high ROI?*`;
-                    } else if (currentPhase === 6) {
-                        reply = `Now de-risking **Phase 6: Defensive Layer (Model Neutrality & Context Ownership)**.\n\n1. *Are you tied to a single foundation model API, or can you dynamically route tasks to the optimal model?*\n2. *How do you guarantee the customer owns their contextual data and memory graph?*`;
-                    } else if (currentPhase === 7) {
-                        reply = `Critical junction: **Phase 7: Pricing & Value Capture (The AI Pricing Paradox)**.\n\nAI agents inherently destroy seat-based SaaS pricing because automation reduces needed headcount.\n\n1. *Are you pricing per-seat, or pricing on consumption, outcomes, or completed tasks?*\n2. *How do you prevent margin collapse if user token consumption spikes?*`;
-                    } else if (currentPhase === 8) {
-                        reply = `Final diagnostic gate: **Phase 8: Integration & Data Gravity (The Moat of Context)**.\n\n1. *What existing systems (CRM, ERP, Slack, Data Warehouse) does your agent read from and write to natively?*\n2. *How deep is the bi-directional sync? Does deleting your tool break existing workflows?*`;
-                    }
-                } else {
-                    monologue = `- Current Phase: Phase ${currentPhase}\n- Evaluation: Response was high-level or aspirational. Missing operational mechanics.\n- Phase Confidence Score: ${confidence}%\n- Gating Decision: DRILL DOWN (Score < 85%).\n- Next Action: Enforce Rule of Two with a focused follow-up.`;
-                    reply = `That's a sound high-level vision, but we are missing the operational mechanics needed to de-risk this vector (Confidence: ${confidence}% / required 85%).\n\nSpecifically: *What exact workflow metrics, APIs, or daily triggers ensure this occurs repeatedly?*`;
-                }
-            } else {
-                // Phase 9 Synthesis
-                currentPhase = 9;
-                monologue = `- Current Phase: Phase 9 (Multi-Module Synthesis)\n- Evaluation: All 8 vectors de-risked and validated.\n- Phase Confidence Score: 92%\n- Gating Decision: COMPLETE.\n- Next Action: Generate 5-Piece Operational Suite.`;
-                reply = `### 🎯 Strategy Fully De-Risked: GTM Playbook & Suite Generated!\n\nAll 8 phases have met the **85% confidence gating threshold**. The complete execution suite is ready:\n\n* **1. Interactive Simulator & Radar:** Visualizes your 8-vector moats and real-time AI Unit Economics.\n* **2. Linear / Jira Sprint Backlog:** Prioritized Sprint 0-2 issues with acceptance criteria.\n* **3. Seed/Series A Pitch Deck:** 5-slide narrative copy.\n* **4. Enterprise CISO Readiness Brief:** Pre-meeting security defenses.\n\nUse the sidebar quick actions to inspect the radar simulator or download your sprint issues!`;
-            }
-
-            updatePhaseUI(currentPhase, confidence);
-            appendAgentMessage(monologue, reply, currentPhase, confidence);
         }
 
         function executeAdversarialMode(mode) {
-            const isCiso = mode === "ciso";
-            const title = isCiso ? "Enterprise CISO Security Inquisition" : "Tier-1 VC Partner Stress Test";
-            const q = isCiso 
-                ? "Does our proprietary enterprise context ever hit public foundation model APIs, and what legally binding guarantee prevents our IP from training future model weights?"
-                : "If OpenAI or Google releases an update next month that does this natively inside their UI, why doesn't your business go to zero?";
-
-            const monologue = `- Mode: Adversarial Grilling (${mode.toUpperCase()})\n- Persona: ${isCiso ? 'Fortune 500 CISO' : 'Tier-1 General Partner'}\n- Objective: High-stakes objection stress test.`;
-            const reply = `### ⚠️ ADVERSARIAL STRESS TEST: ${title.toUpperCase()}\n\n*Persona:* ${isCiso ? 'Fortune 500 Enterprise CISO' : 'Tier-1 Enterprise AI Venture Partner'}\n\n> *"${q}"*\n\nProvide your institutional defense:`;
-
-            appendAgentMessage(monologue, reply, `Stress-Test (${mode.toUpperCase()})`, 90);
+            GTMPrepUI.quickStart(mode === 'vc' ? 'investor' : mode);
         }
 
         function updatePhaseUI(phase, confidence) {
@@ -1189,7 +1348,7 @@
             const pNum = Math.min(8, phase);
             label.innerText = `Phase ${pNum}/8`;
             bar.style.width = `${(pNum / 8) * 100}%`;
-            pill.innerText = `Phase ${phase}: In Progress`;
+            pill.innerText = phase >= 9 ? "Intake complete — review required" : `Phase ${phase}: Intake`;
 
             for (let i = 1; i <= 8; i++) {
                 const el = document.getElementById(`phaseItem${i}`);
@@ -1197,13 +1356,13 @@
                 const icon = el.querySelector('.phase-status-icon');
                 if (i < phase) {
                     el.className = "phase-item p-2 rounded-lg flex items-center justify-between bg-brand-500/10 text-brand-400 border border-brand-500/20";
-                    icon.className = "fa-solid fa-circle-check text-brand-400 text-xs";
+                    icon.className = "phase-status-icon fa-solid fa-circle-check text-brand-400 text-xs";
                 } else if (i === phase) {
                     el.className = "phase-item p-2 rounded-lg flex items-center justify-between bg-dark-700 text-white border border-brand-500/50 shadow-sm";
-                    icon.className = "fa-solid fa-spinner fa-spin text-brand-400 text-xs";
+                    icon.className = "phase-status-icon fa-solid fa-spinner fa-spin text-brand-400 text-xs";
                 } else {
                     el.className = "phase-item p-2 rounded-lg flex items-center justify-between bg-dark-700/50 text-gray-400 border border-transparent";
-                    icon.className = "fa-regular fa-circle text-gray-400 text-xs";
+                    icon.className = "phase-status-icon fa-regular fa-circle text-gray-400 text-xs";
                 }
             }
         }
@@ -1214,7 +1373,8 @@
         }
 
         function resetConversation() {
-            if (confirm("Reset Socratic GTM audit session?")) {
+            if (confirm("Reset this interview? Save a session file first if you need to keep the current answers.")) {
+                try { localStorage.removeItem(SESSION_KEY); } catch (err) { workspaceStatus(err.message); return; }
                 currentPhase = 0;
                 accumulatedContext = { name: "AI Startup", phases: {} };
                 document.getElementById('chatHistory').innerHTML = '';
@@ -1223,12 +1383,42 @@
             }
         }
 
-        function openSimulatorModal() {
-            window.open('gtm_simulator.html', '_blank') || alert("Launch local server via 'python cli.py ui' to view live simulator.");
+        async function openSimulatorModal() {
+            try {
+                const res = await fetch('/api/simulate', {
+                    method: 'POST', headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({project_name: accumulatedContext.name || 'AI Startup'})
+                });
+                const data = await res.json();
+                if (!res.ok) throw new Error(data.error || 'Generation failed');
+                const link = document.createElement('a');
+                link.href = data.path;
+                link.target = '_blank';
+                link.rel = 'noopener';
+                link.textContent = 'Open generated simulator (not assessed)';
+                document.getElementById('chatHistory').appendChild(link);
+                link.click();
+            } catch (err) {
+                appendAgentMessage("Artifact unavailable.", err.message, currentPhase, null);
+            }
         }
 
-        function triggerExport(type) {
-            sendQuickPrompt(`/export ${type}`);
+        async function triggerExport(type) {
+            try {
+                const res = await fetch('/api/export', {
+                    method: 'POST', headers: {'Content-Type': 'application/json'}, body: '{}'
+                });
+                const data = await res.json();
+                if (!res.ok) throw new Error(data.error || 'Export failed');
+                const link = document.createElement('a');
+                link.href = type === 'json' ? data.json : data.csv;
+                link.download = link.href.split('/').pop();
+                link.textContent = 'Download draft backlog';
+                document.getElementById('chatHistory').appendChild(link);
+                link.click();
+            } catch (err) {
+                appendAgentMessage("Export unavailable.", err.message, currentPhase, null);
+            }
         }
 
         function escapeHtml(text) {
@@ -1249,6 +1439,262 @@
             html = html.replace(/\n/g, '<br>');
             return html;
         }
+        let practiceState = GTMPrep.empty();
+        let workflowMode = 'auto';
+        let prepReady = false;
+        const SESSION_KEY = 'socratic-gtm-session-v1';
+        let sessionReviews = {};
+        let displayedReviewPhase = '1';
+
+        function workspaceStatus(message) {
+            document.getElementById('workspaceStatus').textContent = message;
+        }
+        function snapshotSession() {
+            return GTMSession.normalize({schema: GTMSession.schema,
+                name: document.getElementById('projectName').value,
+                phase: currentPhase, draft: document.getElementById('userInput').value,
+                context: {concept: accumulatedContext.concept || '', phases: accumulatedContext.phases || {}},
+                reviews: sessionReviews, prep: practiceState});
+        }
+        function refreshWorkspace() {
+            refreshWorkflow();
+            const answers = accumulatedContext.phases || {};
+            const count = Object.values(answers).filter(answer => answer.trim()).length;
+            const evidence = Object.values(sessionReviews).filter(r => r.evidence.trim()).length;
+            workspaceStatus(count + ' of 8 answers recorded · ' + evidence + ' evidence notes · Review required');
+            document.getElementById('sessionHeaderTitle').textContent = document.getElementById('projectName').value || 'GTM review';
+        }
+        function refreshWorkflow() {
+            const completed = practiceState.runs.filter(run => run.status === 'complete').at(-1);
+            const active = GTMPrep.active(practiceState);
+            const step = active ? 3 : completed && workflowMode !== 'interview' ? 4 : currentPhase === 0 ? 1 : currentPhase >= 9 ? 3 : 2;
+            document.body.dataset.flowStep = String(step);
+            document.getElementById('interviewComposer').hidden = step >= 3;
+            for (let i = 1; i <= 4; i++) {
+                const el = document.getElementById('flowStep' + i);
+                if (i === step) el.setAttribute('aria-current', 'step'); else el.removeAttribute('aria-current');
+            }
+            const title = document.getElementById('workflowTitle'), help = document.getElementById('workflowHelp');
+            const primary = document.getElementById('workflowPrimary');
+            const input = document.getElementById('userInput');
+            if (step === 1) {
+                title.textContent = 'Start with your idea';
+                help.textContent = 'Tell us who you help and what problem you solve. Example: I help small agencies turn customer interviews into a weekly action plan.';
+                primary.textContent = 'Write my idea';
+                input.placeholder = 'I help [who] with [problem] by [what your product does]...';
+            } else if (step === 2) {
+                title.textContent = 'Question ' + currentPhase + ' of 8: ' + GTMSession.titles[currentPhase - 1];
+                help.textContent = 'Read the question below. Write a short answer, or say "I do not know yet," then press Continue. You can skip ahead to practice at any time.';
+                primary.textContent = 'Answer this question';
+                input.placeholder = 'Your answer - "I do not know yet" is fine...';
+            } else if (step === 3) {
+                title.textContent = active ? 'Continue your practice' : 'Now try a hard question';
+                help.textContent = 'We will use your latest answer and ask you to defend it. Missing evidence becomes a next step.';
+                primary.textContent = active ? 'Resume practice' : 'Start my practice';
+            } else {
+                title.textContent = 'Your next steps are ready';
+                const d = GTMPrep.debrief(practiceState, completed.id);
+                help.textContent = d.claim.action ? 'Your next test: ' + d.claim.action : 'Your rehearsal and evidence gaps are saved. Download your notes, then choose one thing to verify before your meeting.';
+                primary.textContent = 'Download my next steps';
+            }
+            document.getElementById('workflowPractice').hidden = step !== 2;
+            primary.hidden = step <= 2;
+            primary.dataset.step = String(step);
+        }
+        function runWorkflowPrimary() {
+            const step = document.getElementById('workflowPrimary').dataset.step || '1';
+            if (step === '3') { GTMPrepUI.quickStart(); return; }
+            if (step === '4') {
+                const run = practiceState.runs.filter(r => r.status === 'complete').at(-1);
+                downloadText('GTM_NEXT_STEPS.md', GTMSession.playbook(snapshotSession()) + '\n' + GTMPrep.markdown(practiceState, run.id), 'text/markdown');
+                return;
+            }
+            document.getElementById('userInput').focus();
+        }
+        function persistSession() {
+            refreshWorkspace();
+            if (!document.getElementById('rememberSession').checked) return;
+            try {
+                localStorage.setItem(SESSION_KEY, GTMSession.serialize(snapshotSession()));
+            } catch (err) {
+                workspaceStatus('Device save failed: ' + err.message + ' Use Save session file to preserve your work.');
+            }
+        }
+        function downloadText(filename, body, type) {
+            const url = URL.createObjectURL(new Blob([body], {type}));
+            const a = document.createElement('a');
+            a.href = url; a.download = filename;
+            document.body.appendChild(a); a.click(); a.remove();
+            setTimeout(() => URL.revokeObjectURL(url), 1000);
+        }
+        function downloadSession() {
+            try {
+                downloadText('gtm-session.json', GTMSession.serialize(snapshotSession()), 'application/json');
+                workspaceStatus('Session file prepared with your answers and evidence. Keep it private.');
+            } catch (err) { workspaceStatus(err.message); }
+        }
+        function downloadPlaybook() {
+            try {
+                downloadText('GTM_PLAYBOOK.md', GTMSession.playbook(snapshotSession()), 'text/markdown');
+                workspaceStatus('Draft playbook prepared from your answers and evidence notes.');
+            } catch (err) { workspaceStatus(err.message); }
+        }
+        function downloadExperiments() {
+            try {
+                downloadText('gtm_experiments.csv', GTMSession.experimentsCSV(snapshotSession()), 'text/csv');
+                workspaceStatus('Experiment CSV prepared. All rows remain review-required.');
+            } catch (err) { workspaceStatus(err.message); }
+        }
+        function applySession(session) {
+            const clean = GTMSession.normalize(session);
+            document.getElementById('projectName').value = clean.name;
+            currentPhase = clean.phase;
+            accumulatedContext = {...clean.context, name: clean.name};
+            sessionReviews = clean.reviews;
+            practiceState = clean.prep || GTMPrep.empty();
+            if (prepReady) GTMPrepUI.render();
+            document.getElementById('userInput').value = clean.draft;
+            document.getElementById('chatHistory').replaceChildren();
+            if (clean.context.concept) appendUserMessage(clean.context.concept);
+            for (const key of Object.keys(clean.context.phases).sort()) {
+                appendAgentMessage('Founder-reported answer; review required.',
+                    'Phase ' + key + ': ' + GTMSession.titles[Number(key) - 1], Number(key), null);
+                appendUserMessage(clean.context.phases[key]);
+            }
+            const next = currentPhase >= 1 && currentPhase <= 8 ? GTMSession.titles[currentPhase - 1] : 'Startup concept or final review';
+            appendAgentMessage('Session restored from local data.',
+                'Resume: ' + next + '. Use Review answers to revise inputs and evidence.', currentPhase, null);
+            updatePhaseUI(currentPhase, null);
+            persistSession();
+        }
+        function showReviewPhase(key) {
+            displayedReviewPhase = key;
+            const r = sessionReviews[key] || {};
+            document.getElementById('reviewAnswer').value = accumulatedContext.phases[key] || '';
+            document.getElementById('reviewEvidence').value = r.evidence || '';
+            document.getElementById('reviewExperiment').value = r.experiment || '';
+            document.getElementById('reviewOwner').value = r.owner || '';
+            document.getElementById('reviewDate').value = r.date || '';
+            document.getElementById('reviewStatus').textContent = 'Changes apply when you select Save changes.';
+        }
+        function saveReview() {
+            const key = displayedReviewPhase;
+            const candidate = snapshotSession();
+            candidate.context.phases[key] = document.getElementById('reviewAnswer').value;
+            candidate.reviews[key] = {
+                evidence: document.getElementById('reviewEvidence').value,
+                experiment: document.getElementById('reviewExperiment').value,
+                owner: document.getElementById('reviewOwner').value,
+                date: document.getElementById('reviewDate').value};
+            const clean = GTMSession.normalize(candidate);
+            accumulatedContext.phases = clean.context.phases;
+            sessionReviews = clean.reviews;
+            persistSession();
+            document.getElementById('reviewStatus').textContent = 'Answer and evidence notes saved in this session. Review required.';
+        }
+        function openReview() {
+            showReviewPhase(document.getElementById('reviewPhase').value || '1');
+            document.getElementById('reviewDialog').showModal();
+        }
+        function continueAtReviewPhase() {
+            try {
+                workflowMode = 'interview';
+                saveReview();
+                currentPhase = Number(displayedReviewPhase);
+                updatePhaseUI(currentPhase, null);
+                persistSession();
+                document.getElementById('reviewDialog').close();
+                appendAgentMessage('Revising founder-reported input.',
+                    'Revisit Phase ' + currentPhase + ': ' + GTMSession.titles[currentPhase - 1] +
+                    '. Enter an updated answer, or edit its evidence in Review answers.', currentPhase, null);
+                document.getElementById('userInput').focus();
+            } catch (err) { document.getElementById('reviewStatus').textContent = err.message; }
+        }
+        function runWorkspaceTool(select) {
+            const action = select.value; select.value = '';
+            if (action === 'experiments') downloadExperiments();
+            if (action === 'simulator') openSimulatorModal();
+            if (action === 'backlog') triggerExport('csv');
+            if (action === 'ciso' || action === 'vc') executeAdversarialMode(action);
+        }
+        GTMSession.titles.forEach((title, i) => {
+            const option = document.createElement('option');
+            option.value = String(i + 1); option.textContent = (i + 1) + '. ' + title;
+            document.getElementById('reviewPhase').appendChild(option);
+        });
+        document.getElementById('reviewPhase').addEventListener('change', event => {
+            // Preserve edits when changing the selected review phase.
+            const selected = event.target.value;
+            try { saveReview(); showReviewPhase(selected); }
+            catch (err) { event.target.value = displayedReviewPhase; document.getElementById('reviewStatus').textContent = err.message; }
+        });
+        document.getElementById('reviewForm').addEventListener('submit', event => {
+            event.preventDefault();
+            try { saveReview(); } catch (err) { document.getElementById('reviewStatus').textContent = err.message; }
+        });
+        document.getElementById('rememberSession').addEventListener('change', event => {
+            if (event.target.checked) persistSession();
+            else {
+                try { localStorage.removeItem(SESSION_KEY); workspaceStatus('Device copy removed. This session stays in memory.'); }
+                catch (err) { workspaceStatus('Could not remove device copy: ' + err.message); }
+            }
+        });
+        document.getElementById('projectName').addEventListener('input', persistSession);
+        document.getElementById('userInput').addEventListener('input', persistSession);
+        document.getElementById('sessionFile').addEventListener('change', async event => {
+            const file = event.target.files[0];
+            try {
+                if (!file) return;
+                if (file.size > GTMSession.maxBytes) throw new Error('Session exceeds 256 KiB.');
+                const candidate = GTMSession.parse(await file.text());
+                if ((currentPhase > 0 || practiceState.claims.length || practiceState.runs.length || document.getElementById('userInput').value) &&
+                    !confirm('Replace the active session? Save a session file first if you need to retain it.')) return;
+                applySession(candidate);
+                workspaceStatus('Session loaded. Imported inputs and notes remain unverified.');
+            } catch (err) { workspaceStatus('Import failed; current session retained. ' + err.message); }
+            finally { event.target.value = ''; }
+        });
+        try {
+            const raw = localStorage.getItem(SESSION_KEY);
+            if (raw) {
+                const candidate = GTMSession.parse(raw);
+                document.getElementById('rememberSession').checked = true;
+                applySession(candidate);
+            }
+        } catch (err) { workspaceStatus('Saved session could not be loaded. Use a valid session file. ' + err.message); }
+
+        GTMPrepUI.init({
+            read: () => practiceState,
+            context: () => accumulatedContext,
+            download: downloadText,
+            finished: () => {
+                workflowMode = 'auto';
+                document.getElementById('prepDialog').close();
+                refreshWorkflow();
+                document.getElementById('workflowPrimary').focus();
+            },
+            write: candidate => {
+                const session = snapshotSession();
+                session.prep = candidate;
+                const clean = GTMSession.parse(GTMSession.serialize(session));
+                practiceState = clean.prep;
+                persistSession();
+            }
+        });
+        prepReady = true;
+        refreshWorkflow();
+        document.getElementById('workflowExtras').addEventListener('toggle', event => {
+            document.body.classList.toggle('tools-open', event.target.open);
+        });
+
+        document.getElementById('settingsModal').addEventListener('keydown', event => {
+            if (event.key === 'Escape') { closeSettingsModal(); return; }
+            if (event.key !== 'Tab') return;
+            const controls = [...event.currentTarget.querySelectorAll('button,input,select')].filter(el => !el.hidden && el.offsetParent !== null);
+            const first = controls[0], last = controls[controls.length - 1];
+            if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+            if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+        });
     </script>
 </body>
 </html>

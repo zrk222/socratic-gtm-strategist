@@ -13,6 +13,9 @@ Usage:
 import sys
 import os
 import argparse
+import re
+from pathlib import Path
+from socratic_gtm.assessment import PHASES, assess_answer, render_playbook
 
 if sys.stdout.encoding != 'utf-8':
     try:
@@ -34,16 +37,7 @@ import mcp_server
 
 def cmd_simulate(args):
     scores = [int(s.strip()) for s in args.scores.split(",")]
-    notes = [
-        "Validated daily active value loop.",
-        "Incumbent distribution counter-measured via novel agentic UX.",
-        "Bottom-up PLG practitioner adoption isolated from CISO friction.",
-        "Horizontal workflow discovery mapped to vertical templates.",
-        "Proactive asynchronous background routine established.",
-        "Neutral multi-model router prevents vendor lock-in.",
-        "Hybrid/outcome pricing mitigates margin compression.",
-        "Bi-directional integration establishes high data gravity."
-    ]
+    notes = ["User-supplied scenario; evidence review required."] * 8
     generate_dashboard(args.project, scores, notes, args.output)
 
 def cmd_recon(args):
@@ -59,73 +53,34 @@ def cmd_pitch_deck(args):
     generate_pitch_deck(args.startup, args.output)
 
 def cmd_start(args):
-    """Interactive terminal Socratic interview mode."""
-    banner = r"""
-  ____                  _   _         ____ _____ __  __ 
- / ___|  ___   ___ _ __| |_(_) ___   / ___|_   _|  \/  |
- \___ \ / _ \ / __| '__| __| |/ __| | |  _  | | | |\/| |
-  ___) | (_) | (__| |  | |_| | (__  | |_| | | | | |  | |
- |____/ \___/ \___|_|   \__|_|\___|  \____| |_| |_|  |_|
-  AI Startup GTM Partner & Socratic Risk Auditor (v3.0)
-=========================================================
-"""
-    print(banner)
+    """Collect founder-reported answers; do not infer strategic validation."""
+    print("Socratic GTM interview intake (review required)")
     startup_name = input("Enter your AI Startup / Project Name: ").strip() or "MyAI"
-    print(f"\n[+] Initializing Socratic Review for: {startup_name}\n")
-    print("Answer the questions below to evaluate your GTM motion and build your execution suite.\n")
-
-    phases = [
-        ("Phase 1: Interaction Frequency & Virality", "How often does an end-user naturally touch or get value from your product (Daily, Weekly, Monthly, or Annual)? And how naturally do users brag about 'magic moments'?"),
-        ("Phase 2: Ticking Clock vs Incumbents", "What is the primary distribution advantage of your top incumbent, and why would users stay with you if they ship an AI copycat in 12 months?"),
-        ("Phase 3: The Adoption Vector (PLG vs CISO)", "Who uses the app day-to-day versus who signs the check? Are you designing for practitioner delight or enterprise IT compliance checklists on Day 1?"),
-        ("Phase 4: Expansion Vector", "Are you forcing a narrow niche on Day 1, or starting horizontal to extract power-user routines before verticalizing?"),
-        ("Phase 5: Proactive Routines vs Chatbox", "Does your user have to remember to prompt a text box, or does your app run scheduled background routines delivering ROI?"),
-        ("Phase 6: Defensive Layer & Moats", "Are you tied to a single foundation model, and how do you guarantee customer ownership of context data?"),
-        ("Phase 7: AI Pricing Paradox", "Are you pricing per-seat (which AI destroys), or pricing on consumption, outcomes, or tasks?"),
-        ("Phase 8: Data Gravity & Integrations", "What existing systems does your agent read/write natively, and how deep is the bi-directional sync?")
-    ]
-
-    scores = []
     answers = []
+    for phase, (title, question) in enumerate(PHASES, 1):
+        print(f"\n--- Phase {phase}: {title} ---\n{question}")
+        answer = input("\nYour Answer: ").strip()
+        if not answer:
+            answer = "Not supplied"
+        assessment = assess_answer(phase, answer)
+        answers.append(answer)
+        print(f"[{assessment['status']}: founder-reported; no confidence score assigned]")
 
-    for name, question in phases:
-        print(f"\n--- {name} ---")
-        print(f"Q: {question}")
-        ans = input("\nYour Answer: ").strip()
-        answers.append(ans)
-        # Heuristic confidence calculation
-        words = len(ans.split())
-        score = min(95, max(60, 60 + words))
-        scores.append(score)
-        status = "PASSED (>= 85%)" if score >= 85 else "BORDERLINE (< 85%)"
-        print(f"[Score: {score}/100 - {status}]")
-
-    print("\n=========================================================")
-    print("[+] All 8 phases completed. Synthesizing 5-Piece Operational Suite...")
-    
-    # 1. Simulator
-    sim_path = f"{startup_name.lower().replace(' ', '_')}_gtm_simulator.html"
-    generate_dashboard(startup_name, scores, [f"Score: {s}/100" for s in scores], sim_path)
-    print(f"  [✓] Interactive HTML Simulator: {sim_path}")
-
-    # 2. Issues Backlog
-    csv_path = f"{startup_name.lower().replace(' ', '_')}_sprint_issues.csv"
-    json_path = f"{startup_name.lower().replace(' ', '_')}_sprint_issues.json"
-    export_issues(DEFAULT_ISSUES, csv_path, json_path)
-    print(f"  [✓] Linear/Jira Sprint Backlog: {csv_path}")
-
-    # 3. Pitch Deck
-    deck_path = f"{startup_name.lower().replace(' ', '_')}_GTM_PITCH_DECK.md"
-    generate_pitch_deck(startup_name, deck_path)
-    print(f"  [✓] Investor Pitch Deck Copy: {deck_path}")
-
-    # 4. Adversarial Brief
-    brief_path = f"{startup_name.lower().replace(' ', '_')}_adversarial_brief.md"
-    generate_adversarial_brief("ciso", startup_name, brief_path)
-    print(f"  [✓] Enterprise CISO Readiness Brief: {brief_path}")
-
-    avg_score = round(sum(scores) / len(scores))
-    print(f"\n[+] Audit Complete! Overall GTM Resilience Score: {avg_score}/100\n")
+    # Only the filename is normalized; the original startup name is retained.
+    stem = re.sub(r"[^a-z0-9_-]+", "_", startup_name.lower()).strip("_")[:80] or "startup"
+    if stem.upper() in {"CON", "PRN", "AUX", "NUL", *(f"COM{i}" for i in range(1, 10)),
+                        *(f"LPT{i}" for i in range(1, 10))}:
+        stem = "startup_" + stem
+    playbook = Path(f"{stem}_GTM_PLAYBOOK.md")
+    playbook.write_text(render_playbook(startup_name, answers), encoding="utf-8")
+    generate_dashboard(startup_name, [None] * 8,
+                       ["Not assessed; review the draft playbook."] * 8,
+                       f"{stem}_gtm_simulator.html")
+    export_issues(DEFAULT_ISSUES, f"{stem}_sprint_issues.csv", f"{stem}_sprint_issues.json")
+    generate_pitch_deck(startup_name, f"{stem}_GTM_PITCH_DECK.md")
+    generate_adversarial_brief("ciso", startup_name, f"{stem}_adversarial_brief.md")
+    print(f"\nInterview intake complete. Draft playbook: {playbook}")
+    print("Generated files are templates and founder-reported inputs. Strategic review remains required.")
 
 def cmd_mcp(args):
     mcp_server.main()
@@ -133,7 +88,7 @@ def cmd_mcp(args):
 def cmd_ui(args):
     """Launch the Web UI Dashboard with Voice STT/TTS."""
     import server
-    server.start_server(port=args.port, open_browser=not args.no_browser)
+    server.start_server(port=args.port, open_browser=not args.no_browser, host=args.host)
 
 def main():
     parser = argparse.ArgumentParser(
@@ -185,6 +140,7 @@ def main():
 
     # ui / dashboard
     p_ui = subparsers.add_parser("ui", help="Launch the ChatGPT-style Web UI Dashboard with Voice STT/TTS")
+    p_ui.add_argument("--host", choices=["127.0.0.1", "0.0.0.0"], default="127.0.0.1", help="Local by default; 0.0.0.0 is for a loopback-published container")
     p_ui.add_argument("--port", type=int, default=8000, help="Web server port (default: 8000)")
     p_ui.add_argument("--no-browser", action="store_true", help="Do not open browser automatically")
     p_ui.set_defaults(func=cmd_ui)
@@ -194,7 +150,10 @@ def main():
         parser.print_help()
         sys.exit(1)
 
-    args.func(args)
+    try:
+        args.func(args)
+    except (ValueError, EOFError) as exc:
+        parser.error(str(exc))
 
 if __name__ == "__main__":
     main()

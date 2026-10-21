@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "<string>", line 14, in <module>
+  File "<string>", line 10, in <lambda>
+  File "C:\Users\rkatz\AppData\Local\Programs\Python\Python311\Lib\site-packages\forgeline\orchestrator.py", line 396, in review
+    return self._finish_review(True, attempt, qa, all_findings, review_attr,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rkatz\AppData\Local\Programs\Python\Python311\Lib\site-packages\forgeline\orchestrator.py", line 347, in _finish_review
+    result = (self._review_success(attempt, qa, attribution) if passed else
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rkatz\AppData\Local\Programs\Python\Python311\Lib\site-packages\forgeline\orchestrator.py", line 323, in _review_success
+    self._advance(State.REVIEWED, f"review pass (attempt {attempt}, QA={qa.grade})")
+  File "C:\Users\rkatz\AppData\Local\Programs\Python\Python311\Lib\site-packages\forgeline\orchestrator.py", line 196, in _advance
+    raise IllegalTransition(f"{frm.value} -> {to.value}")
+forgeline.states.IllegalTransition: smoked -> reviewed

@@ -1,8 +1,8 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "Socratic GTM Strategist Cloud Agent API",
-    "description": "Cloud Agent and REST API for the Socratic GTM Strategist (v3.0). De-risks AI startup Go-To-Market strategies across an 8-phase framework with confidence gating, unit economics simulations, and competitive intelligence.",
+    "title": "Socratic GTM Strategist Local Intake API",
+    "description": "Local single-user interview intake and artifact templates. No authentication or strategic validation; do not expose publicly.",
     "version": "3.0.0"
   },
   "servers": [
@@ -16,7 +16,7 @@
       "post": {
         "operationId": "socraticChatTurn",
         "summary": "Process a Socratic GTM advisory turn",
-        "description": "Submits a founder response to the Socratic GTM state machine. Evaluates operational depth, returns updated phase, confidence score, internal monologue, and the next focused question(s).",
+        "description": "Collect founder-reported answers and return the next intake question. Confidence is null. The monologue field is a concise intake summary; no internal reasoning is exposed.",
         "requestBody": {
           "required": true,
           "content": {
@@ -24,27 +24,60 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "message": { "type": "string", "description": "The founder's response" },
-                  "phase": { "type": "integer", "description": "Current diagnostic phase (0 to 8)" },
-                  "context": { "type": "object", "description": "Accumulated strategic context" }
+                  "message": {
+                    "type": "string",
+                    "description": "The founder's response"
+                  },
+                  "phase": {
+                    "type": "integer",
+                    "description": "Current interview phase (0 through 9)",
+                    "minimum": 0,
+                    "maximum": 9
+                  },
+                  "context": {
+                    "type": "object",
+                    "description": "Accumulated strategic context"
+                  }
                 },
-                "required": ["message"]
+                "required": [
+                  "message"
+                ]
               }
             }
           }
         },
         "responses": {
           "200": {
-            "description": "Agent evaluation and next Socratic prompt",
+            "description": "Recorded input and next intake question; review remains required.",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "reply": { "type": "string" },
-                    "monologue": { "type": "string" },
-                    "phase": { "type": "integer" },
-                    "confidence": { "type": "integer" }
+                    "reply": {
+                      "type": "string"
+                    },
+                    "monologue": {
+                      "type": "string"
+                    },
+                    "phase": {
+                      "type": "integer"
+                    },
+                    "confidence": {
+                      "type": "null",
+                      "description": "No calibrated confidence is computed"
+                    },
+                    "context": {
+                      "type": "object",
+                      "description": "Client-carried interview inputs, not trusted verification state"
+                    },
+                    "assessment": {
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "description": "Review-required intake assessment"
+                    }
                   }
                 }
               }
@@ -64,14 +97,27 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "project_name": { "type": "string" },
+                  "project_name": {
+                    "type": "string"
+                  },
                   "scores": {
                     "type": "array",
-                    "items": { "type": "integer" },
-                    "description": "8 integer scores (0-100)"
+                    "items": {
+                      "type": [
+                        "integer",
+                        "null"
+                      ],
+                      "minimum": 0,
+                      "maximum": 100
+                    },
+                    "description": "Self-reported scenario values; null means not assessed.",
+                    "minItems": 8,
+                    "maxItems": 8
                   }
                 },
-                "required": ["project_name"]
+                "required": [
+                  "project_name"
+                ]
               }
             }
           }
@@ -84,8 +130,12 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "success": { "type": "boolean" },
-                    "path": { "type": "string" }
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "path": {
+                      "type": "string"
+                    }
                   }
                 }
               }
@@ -105,10 +155,16 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "incumbent": { "type": "string" },
-                  "domain": { "type": "string" }
+                  "incumbent": {
+                    "type": "string"
+                  },
+                  "domain": {
+                    "type": "string"
+                  }
                 },
-                "required": ["incumbent"]
+                "required": [
+                  "incumbent"
+                ]
               }
             }
           }
@@ -121,7 +177,9 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "report": { "type": "string" }
+                    "report": {
+                      "type": "string"
+                    }
                   }
                 }
               }
@@ -141,10 +199,21 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "mode": { "type": "string", "enum": ["ciso", "vc"] },
-                  "startup_name": { "type": "string" }
+                  "mode": {
+                    "type": "string",
+                    "enum": [
+                      "ciso",
+                      "vc"
+                    ]
+                  },
+                  "startup_name": {
+                    "type": "string"
+                  }
                 },
-                "required": ["mode", "startup_name"]
+                "required": [
+                  "mode",
+                  "startup_name"
+                ]
               }
             }
           }
@@ -157,7 +226,9 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "brief": { "type": "string" }
+                    "brief": {
+                      "type": "string"
+                    }
                   }
                 }
               }
@@ -178,9 +249,15 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "success": { "type": "boolean" },
-                    "csv": { "type": "string" },
-                    "json": { "type": "string" }
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "csv": {
+                      "type": "string"
+                    },
+                    "json": {
+                      "type": "string"
+                    }
                   }
                 }
               }
@@ -200,9 +277,13 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "startup_name": { "type": "string" }
+                  "startup_name": {
+                    "type": "string"
+                  }
                 },
-                "required": ["startup_name"]
+                "required": [
+                  "startup_name"
+                ]
               }
             }
           }
@@ -215,7 +296,9 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "deck": { "type": "string" }
+                    "deck": {
+                      "type": "string"
+                    }
                   }
                 }
               }

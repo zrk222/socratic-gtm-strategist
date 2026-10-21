@@ -1,0 +1,76 @@
+{
+  "passed": true,
+  "attribution": {
+    "stage": "drift_audit",
+    "n_checked": 9,
+    "n_passed": 9,
+    "units": [
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\ui\\index.html:<module>",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\ui\\prep-ui.js:<module>",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\ui\\prep.css:<module>",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\scripts\\generate_dashboard.py:generate_dashboard",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\scripts\\generate_dashboard.py:safe_json",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\scripts\\generate_dashboard.py:main",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\tests\\browser_smoke.cjs:<module>",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\tests\\prep_browser.cjs:<module>",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\tests\\guided_browser.cjs:<module>",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      }
+    ],
+    "rate": 1.0,
+    "dominant_failure_class": null
+  }
+}
+AUDIT OK — no drift (0 warns).

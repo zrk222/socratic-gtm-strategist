@@ -1,0 +1,70 @@
+test (macos-latest, 3.9)	Run Unit Tests	﻿2026-10-21T05:21:23.5185450Z ##[group]Run python -m unittest discover tests
+test (macos-latest, 3.9)	Run Unit Tests	2026-10-21T05:21:23.5185820Z [36;1mpython -m unittest discover tests[0m
+test (macos-latest, 3.9)	Run Unit Tests	2026-10-21T05:21:23.5223380Z shell: /bin/bash -e {0}
+test (macos-latest, 3.9)	Run Unit Tests	2026-10-21T05:21:23.5223670Z env:
+test (macos-latest, 3.9)	Run Unit Tests	2026-10-21T05:21:23.5223980Z   pythonLocation: /Users/runner/hostedtoolcache/Python/3.9.13/arm64
+test (macos-latest, 3.9)	Run Unit Tests	2026-10-21T05:21:23.5224500Z   PKG_CONFIG_PATH: /Users/runner/hostedtoolcache/Python/3.9.13/arm64/lib/pkgconfig
+test (macos-latest, 3.9)	Run Unit Tests	2026-10-21T05:21:23.5225030Z   Python_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.9.13/arm64
+test (macos-latest, 3.9)	Run Unit Tests	2026-10-21T05:21:23.5225430Z   Python2_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.9.13/arm64
+test (macos-latest, 3.9)	Run Unit Tests	2026-10-21T05:21:23.5225910Z   Python3_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.9.13/arm64
+test (macos-latest, 3.9)	Run Unit Tests	2026-10-21T05:21:23.5226290Z ##[endgroup]
+test (macos-latest, 3.9)	Run Unit Tests	2026-10-21T05:21:59.2171580Z .[+] Linear/Jira CSV exported to: /private/var/folders/n6/hn37q6pj7sj_9dmqqc2113800000gn/T/tmpfqjow4xj/gtm_sprint_issues.csv
+test (macos-latest, 3.9)	Run Unit Tests	2026-10-21T05:21:59.2176110Z [+] JSON backlog exported to: /private/var/folders/n6/hn37q6pj7sj_9dmqqc2113800000gn/T/tmpfqjow4xj/gtm_sprint_issues.json
+test (macos-latest, 3.9)	Run Unit Tests	2026-10-21T05:22:05.3801370Z ................Pitch template written to: /var/folders/n6/hn37q6pj7sj_9dmqqc2113800000gn/T/tmpxtjde4rp/deck.md
+test (macos-latest, 3.9)	Run Unit Tests	2026-10-21T05:22:05.3813750Z .Dashboard successfully generated at: /var/folders/n6/hn37q6pj7sj_9dmqqc2113800000gn/T/tmpwobjbfbx/radar.html
+test (macos-latest, 3.9)	Run Unit Tests	2026-10-21T05:22:05.4633060Z .....[+] Linear/Jira CSV exported to: /var/folders/n6/hn37q6pj7sj_9dmqqc2113800000gn/T/tmpu22hyxyp/test_issues.csv
+test (macos-latest, 3.9)	Run Unit Tests	2026-10-21T05:22:05.4634960Z [+] JSON backlog exported to: /var/folders/n6/hn37q6pj7sj_9dmqqc2113800000gn/T/tmpu22hyxyp/test_issues.json
+test (macos-latest, 3.9)	Run Unit Tests	2026-10-21T05:22:05.4639010Z .Dashboard successfully generated at: /var/folders/n6/hn37q6pj7sj_9dmqqc2113800000gn/T/tmphszzowsk/test_sim.html
+test (macos-latest, 3.9)	Run Unit Tests	2026-10-21T05:22:05.4644840Z .Pitch template written to: /var/folders/n6/hn37q6pj7sj_9dmqqc2113800000gn/T/tmps48kjnub/test_deck.md
+test (macos-latest, 3.9)	Run Unit Tests	2026-10-21T05:22:12.2153360Z .....E[+] Adversarial Brief generated at: /var/folders/n6/hn37q6pj7sj_9dmqqc2113800000gn/T/tmpbfs7mayi/test_ciso.md
+test (macos-latest, 3.9)	Run Unit Tests	2026-10-21T05:22:12.2156550Z .[+] Adversarial Brief generated at: /var/folders/n6/hn37q6pj7sj_9dmqqc2113800000gn/T/tmpoxtt_0xc/test_vc.md
+test (macos-latest, 3.9)	Run Unit Tests	2026-10-21T05:22:12.2158540Z .
+test (macos-latest, 3.9)	Run Unit Tests	2026-10-21T05:22:12.2159150Z ======================================================================
+test (macos-latest, 3.9)	Run Unit Tests	2026-10-21T05:22:12.2159940Z ERROR: test_server_api_endpoints (test_socratic_gtm.TestSocraticGTM)
+test (macos-latest, 3.9)	Run Unit Tests	2026-10-21T05:22:12.2160670Z Test the local web server REST endpoints including fallback voice behavior.
+test (macos-latest, 3.9)	Run Unit Tests	2026-10-21T05:22:12.2161340Z ----------------------------------------------------------------------
+test (macos-latest, 3.9)	Run Unit Tests	2026-10-21T05:22:12.2161920Z Traceback (most recent call last):
+test (macos-latest, 3.9)	Run Unit Tests	2026-10-21T05:22:12.2169280Z   File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/urllib/request.py", line 1346, in do_open
+test (macos-latest, 3.9)	Run Unit Tests	2026-10-21T05:22:12.2170920Z     h.request(req.get_method(), req.selector, req.data, headers,
+test (macos-latest, 3.9)	Run Unit Tests	2026-10-21T05:22:12.2171670Z   File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/http/client.py", line 1285, in request
+test (macos-latest, 3.9)	Run Unit Tests	2026-10-21T05:22:12.2172290Z     self._send_request(method, url, body, headers, encode_chunked)
+test (macos-latest, 3.9)	Run Unit Tests	2026-10-21T05:22:12.2173090Z   File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/http/client.py", line 1331, in _send_request
+test (macos-latest, 3.9)	Run Unit Tests	2026-10-21T05:22:12.2173750Z     self.endheaders(body, encode_chunked=encode_chunked)
+test (macos-latest, 3.9)	Run Unit Tests	2026-10-21T05:22:12.2174300Z   File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/http/client.py", line 1280, in endheaders
+test (macos-latest, 3.9)	Run Unit Tests	2026-10-21T05:22:12.2174950Z     self._send_output(message_body, encode_chunked=encode_chunked)
+test (macos-latest, 3.9)	Run Unit Tests	2026-10-21T05:22:12.2175480Z   File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/http/client.py", line 1040, in _send_output
+test (macos-latest, 3.9)	Run Unit Tests	2026-10-21T05:22:12.2275490Z     self.send(msg)
+test (macos-latest, 3.9)	Run Unit Tests	2026-10-21T05:22:12.2276260Z   File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/http/client.py", line 980, in send
+test (macos-latest, 3.9)	Run Unit Tests	2026-10-21T05:22:12.2276740Z     self.connect()
+test (macos-latest, 3.9)	Run Unit Tests	2026-10-21T05:22:12.2277190Z   File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/http/client.py", line 946, in connect
+test (macos-latest, 3.9)	Run Unit Tests	2026-10-21T05:22:12.2278540Z     self.sock = self._create_connection(
+test (macos-latest, 3.9)	Run Unit Tests	2026-10-21T05:22:12.2279040Z   File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/socket.py", line 844, in create_connection
+test (macos-latest, 3.9)	Run Unit Tests	2026-10-21T05:22:12.2279530Z     raise err
+test (macos-latest, 3.9)	Run Unit Tests	2026-10-21T05:22:12.2280100Z   File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/socket.py", line 832, in create_connection
+test (macos-latest, 3.9)	Run Unit Tests	2026-10-21T05:22:12.2280640Z     sock.connect(sa)
+test (macos-latest, 3.9)	Run Unit Tests	2026-10-21T05:22:12.2280860Z socket.timeout: timed out
+test (macos-latest, 3.9)	Run Unit Tests	2026-10-21T05:22:12.2280970Z
+test (macos-latest, 3.9)	Run Unit Tests	2026-10-21T05:22:12.2281170Z During handling of the above exception, another exception occurred:
+test (macos-latest, 3.9)	Run Unit Tests	2026-10-21T05:22:12.2281510Z
+test (macos-latest, 3.9)	Run Unit Tests	2026-10-21T05:22:12.2281670Z Traceback (most recent call last):
+test (macos-latest, 3.9)	Run Unit Tests	2026-10-21T05:22:12.2282300Z   File "/Users/runner/work/socratic-gtm-strategist/socratic-gtm-strategist/tests/test_socratic_gtm.py", line 190, in test_server_api_endpoints
+test (macos-latest, 3.9)	Run Unit Tests	2026-10-21T05:22:12.2285310Z     with urllib.request.urlopen(f"http://127.0.0.1:{port}/api/status", timeout=5) as resp:
+test (macos-latest, 3.9)	Run Unit Tests	2026-10-21T05:22:12.2286070Z   File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/urllib/request.py", line 214, in urlopen
+test (macos-latest, 3.9)	Run Unit Tests	2026-10-21T05:22:12.2286550Z     return opener.open(url, data, timeout)
+test (macos-latest, 3.9)	Run Unit Tests	2026-10-21T05:22:12.2287120Z   File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/urllib/request.py", line 517, in open
+test (macos-latest, 3.9)	Run Unit Tests	2026-10-21T05:22:12.2287580Z     response = self._open(req, data)
+test (macos-latest, 3.9)	Run Unit Tests	2026-10-21T05:22:12.2288120Z   File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/urllib/request.py", line 534, in _open
+test (macos-latest, 3.9)	Run Unit Tests	2026-10-21T05:22:12.2288710Z     result = self._call_chain(self.handle_open, protocol, protocol +
+test (macos-latest, 3.9)	Run Unit Tests	2026-10-21T05:22:12.2289370Z   File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/urllib/request.py", line 494, in _call_chain
+test (macos-latest, 3.9)	Run Unit Tests	2026-10-21T05:22:12.2289900Z     result = func(*args)
+test (macos-latest, 3.9)	Run Unit Tests	2026-10-21T05:22:12.2290370Z   File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/urllib/request.py", line 1375, in http_open
+test (macos-latest, 3.9)	Run Unit Tests	2026-10-21T05:22:12.2290900Z     return self.do_open(http.client.HTTPConnection, req)
+test (macos-latest, 3.9)	Run Unit Tests	2026-10-21T05:22:12.2291450Z   File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/urllib/request.py", line 1349, in do_open
+test (macos-latest, 3.9)	Run Unit Tests	2026-10-21T05:22:12.2291980Z     raise URLError(err)
+test (macos-latest, 3.9)	Run Unit Tests	2026-10-21T05:22:12.2292210Z urllib.error.URLError: <urlopen error timed out>
+test (macos-latest, 3.9)	Run Unit Tests	2026-10-21T05:22:12.2292400Z
+test (macos-latest, 3.9)	Run Unit Tests	2026-10-21T05:22:12.2292520Z ----------------------------------------------------------------------
+test (macos-latest, 3.9)	Run Unit Tests	2026-10-21T05:22:12.2292910Z Ran 33 tests in 48.511s
+test (macos-latest, 3.9)	Run Unit Tests	2026-10-21T05:22:12.2293090Z
+test (macos-latest, 3.9)	Run Unit Tests	2026-10-21T05:22:12.2293150Z FAILED (errors=1)
+test (macos-latest, 3.9)	Run Unit Tests	2026-10-21T05:22:12.2434630Z ##[error]Process completed with exit code 1.

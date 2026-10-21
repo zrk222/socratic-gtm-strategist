@@ -20,19 +20,19 @@ CISO_QUESTIONS = [
         "domain": "Data Egress & Model Training",
         "question": "Does our proprietary enterprise context ever hit public foundation model APIs, and what legally binding guarantee prevents our IP from training future model weights?",
         "weak_answer": "We use OpenAI Enterprise with zero data retention turned on.",
-        "strong_answer": "All inference routes through dedicated VPC endpoints with customer-managed encryption keys (CMEK) and zero-day data retention agreements; data in flight never leaves our boundary."
+        "strong_answer": "EVIDENCE REQUIRED: Map the actual data flow, provider terms, retention settings and encryption controls. State unsupported deployment options explicitly."
     },
     {
         "domain": "Agentic Tool Execution & Blast Radius",
         "question": "If your agent has write-access to our CRM or ERP, how do you prevent prompt-injection attacks from hallucinating an unintended database update or bulk exfiltration?",
         "weak_answer": "Our system prompt tells the LLM not to delete records.",
-        "strong_answer": "Tool execution is sandboxed behind deterministic RBAC policies, read-only defaults, dual-human approval gates on destructive operations, and cryptographic action auditing."
+        "strong_answer": "EVIDENCE REQUIRED: Demonstrate the implemented permission boundary, destructive-action approval and audit logs using a reproducible negative test."
     },
     {
         "domain": "Tenant Isolation & Compliance",
         "question": "Can you provide your SOC2 Type II report, and do you support single-tenant isolation or on-prem deployment for regulated data?",
         "weak_answer": "We're SOC2 compliant in spirit and working on the audit.",
-        "strong_answer": "SOC2 Type II report available under mutual NDA, with complete logical database sharding per tenant and optional VPC-peered private deployment."
+        "strong_answer": "EVIDENCE REQUIRED: State actual audit status and scope; provide a report only if one exists. Demonstrate tenant isolation and list available deployment options."
     }
 ]
 
@@ -41,23 +41,25 @@ VC_QUESTIONS = [
         "domain": "Defensibility vs Foundation Labs",
         "question": "If OpenAI or Google releases an update next month that does this natively inside their chat UI or OS, why doesn't your business go to zero?",
         "weak_answer": "Our UI is cleaner and we focus on this specific niche.",
-        "strong_answer": "Foundation labs build horizontal models, not deep bi-directional enterprise data integrations. Our switching cost is not the model—it's the accumulated context graph, custom workflows, and system-of-record sync that labs cannot replicate."
+        "strong_answer": "EVIDENCE REQUIRED: Compare dated primary sources and customer alternatives. Test whether customers value a differentiated workflow; do not assume competitors cannot copy it."
     },
     {
         "domain": "Gross Margin Collapse Under Scale",
         "question": "As users automate more tasks, your token consumption increases exponentially. How does your unit economics survive without per-seat expansion?",
         "weak_answer": "API prices drop 50% every year, so margins will improve.",
-        "strong_answer": "We price on an outcome/work-unit basis that scales directly with customer value capture, while dynamic task routing sends 80% of routine jobs to low-cost specialized SLMs, keeping gross margins above 75%."
+        "strong_answer": "EVIDENCE REQUIRED: Supply measured costs, usage distribution and willingness to pay. Label pricing and routing scenarios as hypotheses."
     },
     {
         "domain": "Distribution Velocity & CAC Payback",
         "question": "Enterprise sales cycles take 9 months. How do you reach $1M ARR before burning through your seed round?",
         "weak_answer": "We are hiring two enterprise SDRs to do outbound cold outreach.",
-        "strong_answer": "We use a bottom-up PLG wedge where individual practitioners adopt free local tools, creating internal power-user champions before procurement is ever engaged."
+        "strong_answer": "EVIDENCE REQUIRED: Show observed channel conversion, retention and sales-cycle data. Compare PLG and sales-led approaches for this customer."
     }
 ]
 
 def generate_adversarial_brief(mode, startup_name, output_path=None):
+    if not isinstance(mode, str) or mode.lower() not in {"ciso", "vc"}:
+        raise ValueError("mode must be ciso or vc")
     is_ciso = mode.lower() == "ciso"
     role_title = "Enterprise CISO Security Inquisition" if is_ciso else "Tier-1 VC Partner Stress Test"
     questions = CISO_QUESTIONS if is_ciso else VC_QUESTIONS
@@ -65,7 +67,7 @@ def generate_adversarial_brief(mode, startup_name, output_path=None):
     brief = f"""# ADVERSARIAL STRESS TEST: {role_title.upper()}
 **Startup Under Audit:** {startup_name}  
 **Persona:** {"Fortune 500 Chief Information Security Officer" if is_ciso else "General Partner (Enterprise AI Fund)"}  
-**Format:** High-stakes objection handling and defense readiness  
+**Format:** Hypothetical practice questions. EVIDENCE REQUIRED; no controls or financial results are verified.
 
 ---
 
@@ -76,7 +78,7 @@ def generate_adversarial_brief(mode, startup_name, output_path=None):
   > *"{item['question']}"*
 * **❌ The Fatal Red Flag Response (Why Deals Die):**
   > "{item['weak_answer']}"
-* **✅ The Institutional Defense (Winning Response):**
+* **✅ Evidence to Prepare (not a claim about your startup):**
   > "{item['strong_answer']}"
 
 ---

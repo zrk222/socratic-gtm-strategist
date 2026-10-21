@@ -1,0 +1,46 @@
+{
+  "schema": "prestige.render_receipt.v1",
+  "target": "file:///C:/Users/rkatz/Documents/Codex/2026-10-20/g/work/socratic-gtm-strategist/ui/index.html",
+  "passed": true,
+  "viewports": [
+    {
+      "viewport": "desktop",
+      "size": {
+        "width": 1440,
+        "height": 900
+      },
+      "passed": true,
+      "findings": [],
+      "evidence": {
+        "title": "Socratic GTM Strategist - AI Advisory Dashboard",
+        "text_chars": 1568,
+        "body_hidden": false,
+        "horizontal_overflow_px": 0,
+        "visible_actions": 18,
+        "regions": 1,
+        "overlaps": []
+      },
+      "screenshot": ".prestige\\render\\desktop.png"
+    },
+    {
+      "viewport": "mobile",
+      "size": {
+        "width": 390,
+        "height": 844
+      },
+      "passed": true,
+      "findings": [],
+      "evidence": {
+        "title": "Socratic GTM Strategist - AI Advisory Dashboard",
+        "text_chars": 1158,
+        "body_hidden": false,
+        "horizontal_overflow_px": 0,
+        "visible_actions": 12,
+        "regions": 1,
+        "overlaps": []
+      },
+      "screenshot": ".prestige\\render\\mobile.png"
+    }
+  ],
+  "receipt_path": ".prestige\\render\\render-receipt.json"
+}

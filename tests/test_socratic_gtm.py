@@ -1,10 +1,12 @@
 import unittest
+from unittest.mock import patch
 import os
 import sys
 import json
 import subprocess
 import tempfile
 import shutil
+from pathlib import Path
 
 # Add root directory to sys.path
 ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -43,7 +45,8 @@ class TestSocraticGTM(unittest.TestCase):
 
     def test_incumbent_recon(self):
         out = os.path.join(self.test_dir, "test_recon.md")
-        report = generate_recon_report("Salesforce", "CRM AI", out)
+        with patch("urllib.request.urlopen", side_effect=OSError("offline fixture")):
+            report = generate_recon_report("Salesforce", "CRM AI", out)
         self.assertTrue(os.path.exists(out))
         self.assertIn("SALESFORCE", report)
         self.assertIn("Strategic Pressure Points", report)
@@ -158,7 +161,13 @@ class TestSocraticGTM(unittest.TestCase):
         )
         stdout, stderr = proc.communicate(input=mock_inputs, timeout=10)
         self.assertEqual(proc.returncode, 0)
-        self.assertIn("Audit Complete!", stdout)
+        self.assertIn("Interview intake complete.", stdout)
+        playbook = Path(self.test_dir) / "auditco_GTM_PLAYBOOK.md"
+        self.assertTrue(playbook.exists())
+        content = playbook.read_text(encoding="utf-8")
+        for answer in mock_inputs.splitlines()[1:]:
+            self.assertIn(answer, content)
+        self.assertNotIn("Resilience Score", stdout)
         self.assertTrue(os.path.exists(os.path.join(self.test_dir, "auditco_gtm_simulator.html")))
         self.assertTrue(os.path.exists(os.path.join(self.test_dir, "auditco_sprint_issues.csv")))
         self.assertTrue(os.path.exists(os.path.join(self.test_dir, "auditco_GTM_PITCH_DECK.md")))
@@ -167,16 +176,29 @@ class TestSocraticGTM(unittest.TestCase):
     def test_server_api_endpoints(self):
         """Test the local web server REST endpoints including fallback voice behavior."""
         import urllib.request
-        import time
+        import queue
+        import re
+        import threading
 
-        port = 8991
         proc = subprocess.Popen(
-            [sys.executable, os.path.join(ROOT_DIR, "server.py"), "--port", str(port), "--no-browser"],
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE
+            [sys.executable, "-u", os.path.join(ROOT_DIR, "server.py"), "--port", "0", "--no-browser"],
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.PIPE,
+            text=True,
+            encoding="utf-8",
+            cwd=self.test_dir,
         )
-        time.sleep(1.5)
+        startup = queue.Queue()
+        reader = threading.Thread(target=lambda: startup.put(proc.stderr.readline()), daemon=True)
+        reader.start()
         try:
+            try:
+                line = startup.get(timeout=20)
+            except queue.Empty:
+                self.fail("Server did not emit its startup URL within 20 seconds")
+            match = re.search(r"http://127\.0\.0\.1:(\d+)/ui/index\.html", line)
+            self.assertIsNotNone(match, "Server startup failed: " + line)
+            port = int(match.group(1))
             # 1. Test /api/status
             with urllib.request.urlopen(f"http://127.0.0.1:{port}/api/status", timeout=5) as resp:
                 self.assertEqual(resp.status, 200)
@@ -217,8 +239,10 @@ class TestSocraticGTM(unittest.TestCase):
             proc.terminate()
             try:
                 proc.communicate(timeout=5)
-            except Exception:
+            except subprocess.TimeoutExpired:
                 proc.kill()
+                proc.communicate(timeout=5)
+            reader.join(timeout=1)
 
 if __name__ == "__main__":
     unittest.main()

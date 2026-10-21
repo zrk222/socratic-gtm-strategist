@@ -1,0 +1,1822 @@
+{
+  "schema": "factory.workflow-audit.observations.v1",
+  "contract_sha256": "2c8fbf52f59de6b00c18bc75bf6c77e5532cf5ce74379f88597e44c2fd83879c",
+  "candidate_sha256": "fb321a1eb0b9e0d861f201d19df5f7a43d79222171f352a1d6fa364d158f01a5",
+  "observations": [
+    {
+      "id": "simple_entry",
+      "profile": "windows-py311-node22-chrome-desktop-390px",
+      "status": "PASS",
+      "reason": "An empty workspace shows one idea field/Continue and four steps with extras closed. Observed: source-bound test assertions and actual downloads/navigation passed; review raw logs for exact scope.",
+      "execution_identity": "Codex local Windows Python/Node runner and headless Chrome; no independent human approval.",
+      "observed_at": "2026-10-21T06:55:32.811018+00:00",
+      "artifacts": [
+        {
+          "path": ".factory/guided-workflow/check-0.txt",
+          "sha256": "6a4bcc988aa169c5b24adacea986fb7ce3ff6b1721d3921a371304e70aecbd5c",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-1.txt",
+          "sha256": "34493a197330b88ac66a946767ac5c645757b4d55260bdfc5f7d3527ae0286b8",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-2.txt",
+          "sha256": "42a74e1fc7ff0c241eea256e5ea2040d7ac6a8ee5020ad190b26361ef00974b2",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-3.txt",
+          "sha256": "27405899749691d526e564a493ce72a8699474b724d9e6ff5c611e9e60a9ee2b",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-4.txt",
+          "sha256": "35371a01e9cc83083ca50f5ca0a20203f704a5555b2758b031299e9eed3ba857",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-5.txt",
+          "sha256": "c4507aea2e1e2f47bed8f6d9711409db45b892ec933b96cb5b6e9c6f8698d9a1",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-6.txt",
+          "sha256": "8e16661e55e0ec6228ef3e46a8eb4d7c2c2f1323e342624580aac38e36b5a3c2",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-7.txt",
+          "sha256": "52ef129919d844dda649da827c507e22c1271b3e00c0bfbd50e150b9a1ba0aa5",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-8.txt",
+          "sha256": "9739ce8fd344990cbc05259138385bd70eaff28a7250f10daeaf20d93ab79dd5",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-9.txt",
+          "sha256": "231cb938e5d453a72283207db7e8afaf585a9af0d9e2ce1d2b171526d5ad0bf2",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-10.txt",
+          "sha256": "330278e0dd4ed3ee0bbe5c8ac0ac12efc876ac65007918ca197412882337905b",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-11.txt",
+          "sha256": "e1e8eeda8e0313e2aea1021bf01f41ea3c709c0a6d3afea7059c52900c75abc3",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-12.txt",
+          "sha256": "2fae318e414c966b6fac4cd3cffc0d03c7dbe22000f2504bc01e3ec095c8d99b",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-0.txt",
+          "sha256": "330278e0dd4ed3ee0bbe5c8ac0ac12efc876ac65007918ca197412882337905b",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-1.txt",
+          "sha256": "9739ce8fd344990cbc05259138385bd70eaff28a7250f10daeaf20d93ab79dd5",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-2.txt",
+          "sha256": "231cb938e5d453a72283207db7e8afaf585a9af0d9e2ce1d2b171526d5ad0bf2",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-3.txt",
+          "sha256": "acf584b3ea1eb77f36e775f22929dcd4056acd69295a0f21b378847013974063",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-4.txt",
+          "sha256": "c60ec17f9a9eec411c53d39e81852ba14960bb872254f7e33c2690d9cffe814b",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-5.txt",
+          "sha256": "37d12034c03eb6d29abccf40952b2a86936df338eb5dd24d2ff91b92aa21aa02",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-6.txt",
+          "sha256": "cd2d1ff70f467a1a6baa093a727761c645c37f06b41a789e7a9bddb0aed54ba9",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/design-final-0.txt",
+          "sha256": "35371a01e9cc83083ca50f5ca0a20203f704a5555b2758b031299e9eed3ba857",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/design-final-1.txt",
+          "sha256": "e81ce211983a54a24a1c04cf0cc218fcab052c028ca69c8d3f374de871cbe9f6",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/design-final-2.txt",
+          "sha256": "bd83388d978fc88bc0e5477c08ee0c27300d731e2ce0afc2b12d3aa65052d823",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/design-final-3.txt",
+          "sha256": "52ef129919d844dda649da827c507e22c1271b3e00c0bfbd50e150b9a1ba0aa5",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/verification.json",
+          "sha256": "a6bb1e2aae83db90374a5769edecb02275d6cb54e048d515dec496321b79c41d",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-verification.json",
+          "sha256": "1b9fee9bda7bcfd1067a91155901e9743e60c39fcf518e043cfc649455946d4e",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/design-verification.json",
+          "sha256": "f4726dfa684af05620228aac86440f234b24014b43b7bfc0b6275a1d087d8a00",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/browser/next-steps-desktop.png",
+          "sha256": "9fb114feca9e29ab79c8b5e4d3bf7c1d1356e83337727e732d6019b22a546bb7",
+          "kind": "screenshot"
+        },
+        {
+          "path": ".factory/guided-workflow/browser/next-steps-mobile.png",
+          "sha256": "86e035cb855107e8cfec31bca7a19a6a31f6e8aae47e6259357043def7825551",
+          "kind": "screenshot"
+        },
+        {
+          "path": ".factory/guided-workflow/browser/start-desktop.png",
+          "sha256": "ffe274095ed85f04b57bb30a9eed5d54755d5ac937dade7c3dbd8ba4e62033b1",
+          "kind": "screenshot"
+        },
+        {
+          "path": ".factory/guided-workflow/review.md",
+          "sha256": "7b4b58efcad08e241e441d787f6de82753391f5e86205a57c01359b57b954fa1",
+          "kind": "review"
+        }
+      ]
+    },
+    {
+      "id": "guided_questions",
+      "profile": "windows-py311-node22-chrome-desktop-390px",
+      "status": "PASS",
+      "reason": "Idea and answers retain phase and next-question guidance. Observed: source-bound test assertions and actual downloads/navigation passed; review raw logs for exact scope.",
+      "execution_identity": "Codex local Windows Python/Node runner and headless Chrome; no independent human approval.",
+      "observed_at": "2026-10-21T06:55:32.823018+00:00",
+      "artifacts": [
+        {
+          "path": ".factory/guided-workflow/check-0.txt",
+          "sha256": "6a4bcc988aa169c5b24adacea986fb7ce3ff6b1721d3921a371304e70aecbd5c",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-1.txt",
+          "sha256": "34493a197330b88ac66a946767ac5c645757b4d55260bdfc5f7d3527ae0286b8",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-2.txt",
+          "sha256": "42a74e1fc7ff0c241eea256e5ea2040d7ac6a8ee5020ad190b26361ef00974b2",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-3.txt",
+          "sha256": "27405899749691d526e564a493ce72a8699474b724d9e6ff5c611e9e60a9ee2b",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-4.txt",
+          "sha256": "35371a01e9cc83083ca50f5ca0a20203f704a5555b2758b031299e9eed3ba857",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-5.txt",
+          "sha256": "c4507aea2e1e2f47bed8f6d9711409db45b892ec933b96cb5b6e9c6f8698d9a1",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-6.txt",
+          "sha256": "8e16661e55e0ec6228ef3e46a8eb4d7c2c2f1323e342624580aac38e36b5a3c2",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-7.txt",
+          "sha256": "52ef129919d844dda649da827c507e22c1271b3e00c0bfbd50e150b9a1ba0aa5",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-8.txt",
+          "sha256": "9739ce8fd344990cbc05259138385bd70eaff28a7250f10daeaf20d93ab79dd5",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-9.txt",
+          "sha256": "231cb938e5d453a72283207db7e8afaf585a9af0d9e2ce1d2b171526d5ad0bf2",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-10.txt",
+          "sha256": "330278e0dd4ed3ee0bbe5c8ac0ac12efc876ac65007918ca197412882337905b",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-11.txt",
+          "sha256": "e1e8eeda8e0313e2aea1021bf01f41ea3c709c0a6d3afea7059c52900c75abc3",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-12.txt",
+          "sha256": "2fae318e414c966b6fac4cd3cffc0d03c7dbe22000f2504bc01e3ec095c8d99b",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-0.txt",
+          "sha256": "330278e0dd4ed3ee0bbe5c8ac0ac12efc876ac65007918ca197412882337905b",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-1.txt",
+          "sha256": "9739ce8fd344990cbc05259138385bd70eaff28a7250f10daeaf20d93ab79dd5",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-2.txt",
+          "sha256": "231cb938e5d453a72283207db7e8afaf585a9af0d9e2ce1d2b171526d5ad0bf2",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-3.txt",
+          "sha256": "acf584b3ea1eb77f36e775f22929dcd4056acd69295a0f21b378847013974063",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-4.txt",
+          "sha256": "c60ec17f9a9eec411c53d39e81852ba14960bb872254f7e33c2690d9cffe814b",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-5.txt",
+          "sha256": "37d12034c03eb6d29abccf40952b2a86936df338eb5dd24d2ff91b92aa21aa02",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-6.txt",
+          "sha256": "cd2d1ff70f467a1a6baa093a727761c645c37f06b41a789e7a9bddb0aed54ba9",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/design-final-0.txt",
+          "sha256": "35371a01e9cc83083ca50f5ca0a20203f704a5555b2758b031299e9eed3ba857",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/design-final-1.txt",
+          "sha256": "e81ce211983a54a24a1c04cf0cc218fcab052c028ca69c8d3f374de871cbe9f6",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/design-final-2.txt",
+          "sha256": "bd83388d978fc88bc0e5477c08ee0c27300d731e2ce0afc2b12d3aa65052d823",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/design-final-3.txt",
+          "sha256": "52ef129919d844dda649da827c507e22c1271b3e00c0bfbd50e150b9a1ba0aa5",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/verification.json",
+          "sha256": "a6bb1e2aae83db90374a5769edecb02275d6cb54e048d515dec496321b79c41d",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-verification.json",
+          "sha256": "1b9fee9bda7bcfd1067a91155901e9743e60c39fcf518e043cfc649455946d4e",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/design-verification.json",
+          "sha256": "f4726dfa684af05620228aac86440f234b24014b43b7bfc0b6275a1d087d8a00",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/browser/next-steps-desktop.png",
+          "sha256": "9fb114feca9e29ab79c8b5e4d3bf7c1d1356e83337727e732d6019b22a546bb7",
+          "kind": "screenshot"
+        },
+        {
+          "path": ".factory/guided-workflow/browser/next-steps-mobile.png",
+          "sha256": "86e035cb855107e8cfec31bca7a19a6a31f6e8aae47e6259357043def7825551",
+          "kind": "screenshot"
+        },
+        {
+          "path": ".factory/guided-workflow/browser/start-desktop.png",
+          "sha256": "ffe274095ed85f04b57bb30a9eed5d54755d5ac937dade7c3dbd8ba4e62033b1",
+          "kind": "screenshot"
+        },
+        {
+          "path": ".factory/guided-workflow/review.md",
+          "sha256": "7b4b58efcad08e241e441d787f6de82753391f5e86205a57c01359b57b954fa1",
+          "kind": "review"
+        }
+      ]
+    },
+    {
+      "id": "direct_practice",
+      "profile": "windows-py311-node22-chrome-desktop-390px",
+      "status": "PASS",
+      "reason": "Latest answer starts buyer practice without ledger/persona setup. Observed: source-bound test assertions and actual downloads/navigation passed; review raw logs for exact scope.",
+      "execution_identity": "Codex local Windows Python/Node runner and headless Chrome; no independent human approval.",
+      "observed_at": "2026-10-21T06:55:32.823018+00:00",
+      "artifacts": [
+        {
+          "path": ".factory/guided-workflow/check-0.txt",
+          "sha256": "6a4bcc988aa169c5b24adacea986fb7ce3ff6b1721d3921a371304e70aecbd5c",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-1.txt",
+          "sha256": "34493a197330b88ac66a946767ac5c645757b4d55260bdfc5f7d3527ae0286b8",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-2.txt",
+          "sha256": "42a74e1fc7ff0c241eea256e5ea2040d7ac6a8ee5020ad190b26361ef00974b2",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-3.txt",
+          "sha256": "27405899749691d526e564a493ce72a8699474b724d9e6ff5c611e9e60a9ee2b",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-4.txt",
+          "sha256": "35371a01e9cc83083ca50f5ca0a20203f704a5555b2758b031299e9eed3ba857",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-5.txt",
+          "sha256": "c4507aea2e1e2f47bed8f6d9711409db45b892ec933b96cb5b6e9c6f8698d9a1",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-6.txt",
+          "sha256": "8e16661e55e0ec6228ef3e46a8eb4d7c2c2f1323e342624580aac38e36b5a3c2",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-7.txt",
+          "sha256": "52ef129919d844dda649da827c507e22c1271b3e00c0bfbd50e150b9a1ba0aa5",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-8.txt",
+          "sha256": "9739ce8fd344990cbc05259138385bd70eaff28a7250f10daeaf20d93ab79dd5",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-9.txt",
+          "sha256": "231cb938e5d453a72283207db7e8afaf585a9af0d9e2ce1d2b171526d5ad0bf2",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-10.txt",
+          "sha256": "330278e0dd4ed3ee0bbe5c8ac0ac12efc876ac65007918ca197412882337905b",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-11.txt",
+          "sha256": "e1e8eeda8e0313e2aea1021bf01f41ea3c709c0a6d3afea7059c52900c75abc3",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-12.txt",
+          "sha256": "2fae318e414c966b6fac4cd3cffc0d03c7dbe22000f2504bc01e3ec095c8d99b",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-0.txt",
+          "sha256": "330278e0dd4ed3ee0bbe5c8ac0ac12efc876ac65007918ca197412882337905b",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-1.txt",
+          "sha256": "9739ce8fd344990cbc05259138385bd70eaff28a7250f10daeaf20d93ab79dd5",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-2.txt",
+          "sha256": "231cb938e5d453a72283207db7e8afaf585a9af0d9e2ce1d2b171526d5ad0bf2",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-3.txt",
+          "sha256": "acf584b3ea1eb77f36e775f22929dcd4056acd69295a0f21b378847013974063",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-4.txt",
+          "sha256": "c60ec17f9a9eec411c53d39e81852ba14960bb872254f7e33c2690d9cffe814b",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-5.txt",
+          "sha256": "37d12034c03eb6d29abccf40952b2a86936df338eb5dd24d2ff91b92aa21aa02",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-6.txt",
+          "sha256": "cd2d1ff70f467a1a6baa093a727761c645c37f06b41a789e7a9bddb0aed54ba9",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/design-final-0.txt",
+          "sha256": "35371a01e9cc83083ca50f5ca0a20203f704a5555b2758b031299e9eed3ba857",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/design-final-1.txt",
+          "sha256": "e81ce211983a54a24a1c04cf0cc218fcab052c028ca69c8d3f374de871cbe9f6",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/design-final-2.txt",
+          "sha256": "bd83388d978fc88bc0e5477c08ee0c27300d731e2ce0afc2b12d3aa65052d823",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/design-final-3.txt",
+          "sha256": "52ef129919d844dda649da827c507e22c1271b3e00c0bfbd50e150b9a1ba0aa5",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/verification.json",
+          "sha256": "a6bb1e2aae83db90374a5769edecb02275d6cb54e048d515dec496321b79c41d",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-verification.json",
+          "sha256": "1b9fee9bda7bcfd1067a91155901e9743e60c39fcf518e043cfc649455946d4e",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/design-verification.json",
+          "sha256": "f4726dfa684af05620228aac86440f234b24014b43b7bfc0b6275a1d087d8a00",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/browser/next-steps-desktop.png",
+          "sha256": "9fb114feca9e29ab79c8b5e4d3bf7c1d1356e83337727e732d6019b22a546bb7",
+          "kind": "screenshot"
+        },
+        {
+          "path": ".factory/guided-workflow/browser/next-steps-mobile.png",
+          "sha256": "86e035cb855107e8cfec31bca7a19a6a31f6e8aae47e6259357043def7825551",
+          "kind": "screenshot"
+        },
+        {
+          "path": ".factory/guided-workflow/browser/start-desktop.png",
+          "sha256": "ffe274095ed85f04b57bb30a9eed5d54755d5ac937dade7c3dbd8ba4e62033b1",
+          "kind": "screenshot"
+        },
+        {
+          "path": ".factory/guided-workflow/review.md",
+          "sha256": "7b4b58efcad08e241e441d787f6de82753391f5e86205a57c01359b57b954fa1",
+          "kind": "review"
+        }
+      ]
+    },
+    {
+      "id": "guided_finish",
+      "profile": "windows-py311-node22-chrome-desktop-390px",
+      "status": "PASS",
+      "reason": "Finish closes practice; actual download contains entered interview and practice notes. Observed: source-bound test assertions and actual downloads/navigation passed; review raw logs for exact scope.",
+      "execution_identity": "Codex local Windows Python/Node runner and headless Chrome; no independent human approval.",
+      "observed_at": "2026-10-21T06:55:32.823018+00:00",
+      "artifacts": [
+        {
+          "path": ".factory/guided-workflow/check-0.txt",
+          "sha256": "6a4bcc988aa169c5b24adacea986fb7ce3ff6b1721d3921a371304e70aecbd5c",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-1.txt",
+          "sha256": "34493a197330b88ac66a946767ac5c645757b4d55260bdfc5f7d3527ae0286b8",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-2.txt",
+          "sha256": "42a74e1fc7ff0c241eea256e5ea2040d7ac6a8ee5020ad190b26361ef00974b2",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-3.txt",
+          "sha256": "27405899749691d526e564a493ce72a8699474b724d9e6ff5c611e9e60a9ee2b",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-4.txt",
+          "sha256": "35371a01e9cc83083ca50f5ca0a20203f704a5555b2758b031299e9eed3ba857",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-5.txt",
+          "sha256": "c4507aea2e1e2f47bed8f6d9711409db45b892ec933b96cb5b6e9c6f8698d9a1",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-6.txt",
+          "sha256": "8e16661e55e0ec6228ef3e46a8eb4d7c2c2f1323e342624580aac38e36b5a3c2",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-7.txt",
+          "sha256": "52ef129919d844dda649da827c507e22c1271b3e00c0bfbd50e150b9a1ba0aa5",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-8.txt",
+          "sha256": "9739ce8fd344990cbc05259138385bd70eaff28a7250f10daeaf20d93ab79dd5",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-9.txt",
+          "sha256": "231cb938e5d453a72283207db7e8afaf585a9af0d9e2ce1d2b171526d5ad0bf2",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-10.txt",
+          "sha256": "330278e0dd4ed3ee0bbe5c8ac0ac12efc876ac65007918ca197412882337905b",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-11.txt",
+          "sha256": "e1e8eeda8e0313e2aea1021bf01f41ea3c709c0a6d3afea7059c52900c75abc3",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-12.txt",
+          "sha256": "2fae318e414c966b6fac4cd3cffc0d03c7dbe22000f2504bc01e3ec095c8d99b",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-0.txt",
+          "sha256": "330278e0dd4ed3ee0bbe5c8ac0ac12efc876ac65007918ca197412882337905b",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-1.txt",
+          "sha256": "9739ce8fd344990cbc05259138385bd70eaff28a7250f10daeaf20d93ab79dd5",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-2.txt",
+          "sha256": "231cb938e5d453a72283207db7e8afaf585a9af0d9e2ce1d2b171526d5ad0bf2",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-3.txt",
+          "sha256": "acf584b3ea1eb77f36e775f22929dcd4056acd69295a0f21b378847013974063",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-4.txt",
+          "sha256": "c60ec17f9a9eec411c53d39e81852ba14960bb872254f7e33c2690d9cffe814b",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-5.txt",
+          "sha256": "37d12034c03eb6d29abccf40952b2a86936df338eb5dd24d2ff91b92aa21aa02",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-6.txt",
+          "sha256": "cd2d1ff70f467a1a6baa093a727761c645c37f06b41a789e7a9bddb0aed54ba9",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/design-final-0.txt",
+          "sha256": "35371a01e9cc83083ca50f5ca0a20203f704a5555b2758b031299e9eed3ba857",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/design-final-1.txt",
+          "sha256": "e81ce211983a54a24a1c04cf0cc218fcab052c028ca69c8d3f374de871cbe9f6",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/design-final-2.txt",
+          "sha256": "bd83388d978fc88bc0e5477c08ee0c27300d731e2ce0afc2b12d3aa65052d823",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/design-final-3.txt",
+          "sha256": "52ef129919d844dda649da827c507e22c1271b3e00c0bfbd50e150b9a1ba0aa5",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/verification.json",
+          "sha256": "a6bb1e2aae83db90374a5769edecb02275d6cb54e048d515dec496321b79c41d",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-verification.json",
+          "sha256": "1b9fee9bda7bcfd1067a91155901e9743e60c39fcf518e043cfc649455946d4e",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/design-verification.json",
+          "sha256": "f4726dfa684af05620228aac86440f234b24014b43b7bfc0b6275a1d087d8a00",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/browser/next-steps-desktop.png",
+          "sha256": "9fb114feca9e29ab79c8b5e4d3bf7c1d1356e83337727e732d6019b22a546bb7",
+          "kind": "screenshot"
+        },
+        {
+          "path": ".factory/guided-workflow/browser/next-steps-mobile.png",
+          "sha256": "86e035cb855107e8cfec31bca7a19a6a31f6e8aae47e6259357043def7825551",
+          "kind": "screenshot"
+        },
+        {
+          "path": ".factory/guided-workflow/browser/start-desktop.png",
+          "sha256": "ffe274095ed85f04b57bb30a9eed5d54755d5ac937dade7c3dbd8ba4e62033b1",
+          "kind": "screenshot"
+        },
+        {
+          "path": ".factory/guided-workflow/review.md",
+          "sha256": "7b4b58efcad08e241e441d787f6de82753391f5e86205a57c01359b57b954fa1",
+          "kind": "review"
+        }
+      ]
+    },
+    {
+      "id": "simulator_orientation",
+      "profile": "windows-py311-node22-chrome-desktop-390px",
+      "status": "PASS",
+      "reason": "Optional calculator explains its role and navigates back. Observed: source-bound test assertions and actual downloads/navigation passed; review raw logs for exact scope.",
+      "execution_identity": "Codex local Windows Python/Node runner and headless Chrome; no independent human approval.",
+      "observed_at": "2026-10-21T06:55:32.823018+00:00",
+      "artifacts": [
+        {
+          "path": ".factory/guided-workflow/check-0.txt",
+          "sha256": "6a4bcc988aa169c5b24adacea986fb7ce3ff6b1721d3921a371304e70aecbd5c",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-1.txt",
+          "sha256": "34493a197330b88ac66a946767ac5c645757b4d55260bdfc5f7d3527ae0286b8",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-2.txt",
+          "sha256": "42a74e1fc7ff0c241eea256e5ea2040d7ac6a8ee5020ad190b26361ef00974b2",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-3.txt",
+          "sha256": "27405899749691d526e564a493ce72a8699474b724d9e6ff5c611e9e60a9ee2b",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-4.txt",
+          "sha256": "35371a01e9cc83083ca50f5ca0a20203f704a5555b2758b031299e9eed3ba857",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-5.txt",
+          "sha256": "c4507aea2e1e2f47bed8f6d9711409db45b892ec933b96cb5b6e9c6f8698d9a1",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-6.txt",
+          "sha256": "8e16661e55e0ec6228ef3e46a8eb4d7c2c2f1323e342624580aac38e36b5a3c2",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-7.txt",
+          "sha256": "52ef129919d844dda649da827c507e22c1271b3e00c0bfbd50e150b9a1ba0aa5",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-8.txt",
+          "sha256": "9739ce8fd344990cbc05259138385bd70eaff28a7250f10daeaf20d93ab79dd5",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-9.txt",
+          "sha256": "231cb938e5d453a72283207db7e8afaf585a9af0d9e2ce1d2b171526d5ad0bf2",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-10.txt",
+          "sha256": "330278e0dd4ed3ee0bbe5c8ac0ac12efc876ac65007918ca197412882337905b",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-11.txt",
+          "sha256": "e1e8eeda8e0313e2aea1021bf01f41ea3c709c0a6d3afea7059c52900c75abc3",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-12.txt",
+          "sha256": "2fae318e414c966b6fac4cd3cffc0d03c7dbe22000f2504bc01e3ec095c8d99b",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-0.txt",
+          "sha256": "330278e0dd4ed3ee0bbe5c8ac0ac12efc876ac65007918ca197412882337905b",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-1.txt",
+          "sha256": "9739ce8fd344990cbc05259138385bd70eaff28a7250f10daeaf20d93ab79dd5",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-2.txt",
+          "sha256": "231cb938e5d453a72283207db7e8afaf585a9af0d9e2ce1d2b171526d5ad0bf2",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-3.txt",
+          "sha256": "acf584b3ea1eb77f36e775f22929dcd4056acd69295a0f21b378847013974063",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-4.txt",
+          "sha256": "c60ec17f9a9eec411c53d39e81852ba14960bb872254f7e33c2690d9cffe814b",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-5.txt",
+          "sha256": "37d12034c03eb6d29abccf40952b2a86936df338eb5dd24d2ff91b92aa21aa02",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-6.txt",
+          "sha256": "cd2d1ff70f467a1a6baa093a727761c645c37f06b41a789e7a9bddb0aed54ba9",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/design-final-0.txt",
+          "sha256": "35371a01e9cc83083ca50f5ca0a20203f704a5555b2758b031299e9eed3ba857",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/design-final-1.txt",
+          "sha256": "e81ce211983a54a24a1c04cf0cc218fcab052c028ca69c8d3f374de871cbe9f6",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/design-final-2.txt",
+          "sha256": "bd83388d978fc88bc0e5477c08ee0c27300d731e2ce0afc2b12d3aa65052d823",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/design-final-3.txt",
+          "sha256": "52ef129919d844dda649da827c507e22c1271b3e00c0bfbd50e150b9a1ba0aa5",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/verification.json",
+          "sha256": "a6bb1e2aae83db90374a5769edecb02275d6cb54e048d515dec496321b79c41d",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-verification.json",
+          "sha256": "1b9fee9bda7bcfd1067a91155901e9743e60c39fcf518e043cfc649455946d4e",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/design-verification.json",
+          "sha256": "f4726dfa684af05620228aac86440f234b24014b43b7bfc0b6275a1d087d8a00",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/browser/next-steps-desktop.png",
+          "sha256": "9fb114feca9e29ab79c8b5e4d3bf7c1d1356e83337727e732d6019b22a546bb7",
+          "kind": "screenshot"
+        },
+        {
+          "path": ".factory/guided-workflow/browser/next-steps-mobile.png",
+          "sha256": "86e035cb855107e8cfec31bca7a19a6a31f6e8aae47e6259357043def7825551",
+          "kind": "screenshot"
+        },
+        {
+          "path": ".factory/guided-workflow/browser/start-desktop.png",
+          "sha256": "ffe274095ed85f04b57bb30a9eed5d54755d5ac937dade7c3dbd8ba4e62033b1",
+          "kind": "screenshot"
+        },
+        {
+          "path": ".factory/guided-workflow/review.md",
+          "sha256": "7b4b58efcad08e241e441d787f6de82753391f5e86205a57c01359b57b954fa1",
+          "kind": "review"
+        }
+      ]
+    },
+    {
+      "id": "workflow_recovery",
+      "profile": "windows-py311-node22-chrome-desktop-390px",
+      "status": "PASS",
+      "reason": "390px overflow, named controls and preserved optional tools/regressions. Observed: source-bound test assertions and actual downloads/navigation passed; review raw logs for exact scope.",
+      "execution_identity": "Codex local Windows Python/Node runner and headless Chrome; no independent human approval.",
+      "observed_at": "2026-10-21T06:55:32.823018+00:00",
+      "artifacts": [
+        {
+          "path": ".factory/guided-workflow/check-0.txt",
+          "sha256": "6a4bcc988aa169c5b24adacea986fb7ce3ff6b1721d3921a371304e70aecbd5c",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-1.txt",
+          "sha256": "34493a197330b88ac66a946767ac5c645757b4d55260bdfc5f7d3527ae0286b8",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-2.txt",
+          "sha256": "42a74e1fc7ff0c241eea256e5ea2040d7ac6a8ee5020ad190b26361ef00974b2",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-3.txt",
+          "sha256": "27405899749691d526e564a493ce72a8699474b724d9e6ff5c611e9e60a9ee2b",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-4.txt",
+          "sha256": "35371a01e9cc83083ca50f5ca0a20203f704a5555b2758b031299e9eed3ba857",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-5.txt",
+          "sha256": "c4507aea2e1e2f47bed8f6d9711409db45b892ec933b96cb5b6e9c6f8698d9a1",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-6.txt",
+          "sha256": "8e16661e55e0ec6228ef3e46a8eb4d7c2c2f1323e342624580aac38e36b5a3c2",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-7.txt",
+          "sha256": "52ef129919d844dda649da827c507e22c1271b3e00c0bfbd50e150b9a1ba0aa5",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-8.txt",
+          "sha256": "9739ce8fd344990cbc05259138385bd70eaff28a7250f10daeaf20d93ab79dd5",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-9.txt",
+          "sha256": "231cb938e5d453a72283207db7e8afaf585a9af0d9e2ce1d2b171526d5ad0bf2",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-10.txt",
+          "sha256": "330278e0dd4ed3ee0bbe5c8ac0ac12efc876ac65007918ca197412882337905b",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-11.txt",
+          "sha256": "e1e8eeda8e0313e2aea1021bf01f41ea3c709c0a6d3afea7059c52900c75abc3",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-12.txt",
+          "sha256": "2fae318e414c966b6fac4cd3cffc0d03c7dbe22000f2504bc01e3ec095c8d99b",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-0.txt",
+          "sha256": "330278e0dd4ed3ee0bbe5c8ac0ac12efc876ac65007918ca197412882337905b",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-1.txt",
+          "sha256": "9739ce8fd344990cbc05259138385bd70eaff28a7250f10daeaf20d93ab79dd5",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-2.txt",
+          "sha256": "231cb938e5d453a72283207db7e8afaf585a9af0d9e2ce1d2b171526d5ad0bf2",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-3.txt",
+          "sha256": "acf584b3ea1eb77f36e775f22929dcd4056acd69295a0f21b378847013974063",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-4.txt",
+          "sha256": "c60ec17f9a9eec411c53d39e81852ba14960bb872254f7e33c2690d9cffe814b",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-5.txt",
+          "sha256": "37d12034c03eb6d29abccf40952b2a86936df338eb5dd24d2ff91b92aa21aa02",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-6.txt",
+          "sha256": "cd2d1ff70f467a1a6baa093a727761c645c37f06b41a789e7a9bddb0aed54ba9",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/design-final-0.txt",
+          "sha256": "35371a01e9cc83083ca50f5ca0a20203f704a5555b2758b031299e9eed3ba857",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/design-final-1.txt",
+          "sha256": "e81ce211983a54a24a1c04cf0cc218fcab052c028ca69c8d3f374de871cbe9f6",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/design-final-2.txt",
+          "sha256": "bd83388d978fc88bc0e5477c08ee0c27300d731e2ce0afc2b12d3aa65052d823",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/design-final-3.txt",
+          "sha256": "52ef129919d844dda649da827c507e22c1271b3e00c0bfbd50e150b9a1ba0aa5",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/verification.json",
+          "sha256": "a6bb1e2aae83db90374a5769edecb02275d6cb54e048d515dec496321b79c41d",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-verification.json",
+          "sha256": "1b9fee9bda7bcfd1067a91155901e9743e60c39fcf518e043cfc649455946d4e",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/design-verification.json",
+          "sha256": "f4726dfa684af05620228aac86440f234b24014b43b7bfc0b6275a1d087d8a00",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/browser/next-steps-desktop.png",
+          "sha256": "9fb114feca9e29ab79c8b5e4d3bf7c1d1356e83337727e732d6019b22a546bb7",
+          "kind": "screenshot"
+        },
+        {
+          "path": ".factory/guided-workflow/browser/next-steps-mobile.png",
+          "sha256": "86e035cb855107e8cfec31bca7a19a6a31f6e8aae47e6259357043def7825551",
+          "kind": "screenshot"
+        },
+        {
+          "path": ".factory/guided-workflow/browser/start-desktop.png",
+          "sha256": "ffe274095ed85f04b57bb30a9eed5d54755d5ac937dade7c3dbd8ba4e62033b1",
+          "kind": "screenshot"
+        },
+        {
+          "path": ".factory/guided-workflow/review.md",
+          "sha256": "7b4b58efcad08e241e441d787f6de82753391f5e86205a57c01359b57b954fa1",
+          "kind": "review"
+        }
+      ]
+    },
+    {
+      "id": "validation",
+      "profile": "windows-py311-node22-chrome-desktop-390px",
+      "status": "PASS",
+      "reason": "Existing state/import/field validation tests pass. Observed: source-bound test assertions and actual downloads/navigation passed; review raw logs for exact scope.",
+      "execution_identity": "Codex local Windows Python/Node runner and headless Chrome; no independent human approval.",
+      "observed_at": "2026-10-21T06:55:32.824018+00:00",
+      "artifacts": [
+        {
+          "path": ".factory/guided-workflow/check-0.txt",
+          "sha256": "6a4bcc988aa169c5b24adacea986fb7ce3ff6b1721d3921a371304e70aecbd5c",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-1.txt",
+          "sha256": "34493a197330b88ac66a946767ac5c645757b4d55260bdfc5f7d3527ae0286b8",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-2.txt",
+          "sha256": "42a74e1fc7ff0c241eea256e5ea2040d7ac6a8ee5020ad190b26361ef00974b2",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-3.txt",
+          "sha256": "27405899749691d526e564a493ce72a8699474b724d9e6ff5c611e9e60a9ee2b",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-4.txt",
+          "sha256": "35371a01e9cc83083ca50f5ca0a20203f704a5555b2758b031299e9eed3ba857",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-5.txt",
+          "sha256": "c4507aea2e1e2f47bed8f6d9711409db45b892ec933b96cb5b6e9c6f8698d9a1",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-6.txt",
+          "sha256": "8e16661e55e0ec6228ef3e46a8eb4d7c2c2f1323e342624580aac38e36b5a3c2",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-7.txt",
+          "sha256": "52ef129919d844dda649da827c507e22c1271b3e00c0bfbd50e150b9a1ba0aa5",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-8.txt",
+          "sha256": "9739ce8fd344990cbc05259138385bd70eaff28a7250f10daeaf20d93ab79dd5",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-9.txt",
+          "sha256": "231cb938e5d453a72283207db7e8afaf585a9af0d9e2ce1d2b171526d5ad0bf2",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-10.txt",
+          "sha256": "330278e0dd4ed3ee0bbe5c8ac0ac12efc876ac65007918ca197412882337905b",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-11.txt",
+          "sha256": "e1e8eeda8e0313e2aea1021bf01f41ea3c709c0a6d3afea7059c52900c75abc3",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-12.txt",
+          "sha256": "2fae318e414c966b6fac4cd3cffc0d03c7dbe22000f2504bc01e3ec095c8d99b",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-0.txt",
+          "sha256": "330278e0dd4ed3ee0bbe5c8ac0ac12efc876ac65007918ca197412882337905b",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-1.txt",
+          "sha256": "9739ce8fd344990cbc05259138385bd70eaff28a7250f10daeaf20d93ab79dd5",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-2.txt",
+          "sha256": "231cb938e5d453a72283207db7e8afaf585a9af0d9e2ce1d2b171526d5ad0bf2",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-3.txt",
+          "sha256": "acf584b3ea1eb77f36e775f22929dcd4056acd69295a0f21b378847013974063",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-4.txt",
+          "sha256": "c60ec17f9a9eec411c53d39e81852ba14960bb872254f7e33c2690d9cffe814b",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-5.txt",
+          "sha256": "37d12034c03eb6d29abccf40952b2a86936df338eb5dd24d2ff91b92aa21aa02",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-6.txt",
+          "sha256": "cd2d1ff70f467a1a6baa093a727761c645c37f06b41a789e7a9bddb0aed54ba9",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/design-final-0.txt",
+          "sha256": "35371a01e9cc83083ca50f5ca0a20203f704a5555b2758b031299e9eed3ba857",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/design-final-1.txt",
+          "sha256": "e81ce211983a54a24a1c04cf0cc218fcab052c028ca69c8d3f374de871cbe9f6",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/design-final-2.txt",
+          "sha256": "bd83388d978fc88bc0e5477c08ee0c27300d731e2ce0afc2b12d3aa65052d823",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/design-final-3.txt",
+          "sha256": "52ef129919d844dda649da827c507e22c1271b3e00c0bfbd50e150b9a1ba0aa5",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/verification.json",
+          "sha256": "a6bb1e2aae83db90374a5769edecb02275d6cb54e048d515dec496321b79c41d",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-verification.json",
+          "sha256": "1b9fee9bda7bcfd1067a91155901e9743e60c39fcf518e043cfc649455946d4e",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/design-verification.json",
+          "sha256": "f4726dfa684af05620228aac86440f234b24014b43b7bfc0b6275a1d087d8a00",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/browser/next-steps-desktop.png",
+          "sha256": "9fb114feca9e29ab79c8b5e4d3bf7c1d1356e83337727e732d6019b22a546bb7",
+          "kind": "screenshot"
+        },
+        {
+          "path": ".factory/guided-workflow/browser/next-steps-mobile.png",
+          "sha256": "86e035cb855107e8cfec31bca7a19a6a31f6e8aae47e6259357043def7825551",
+          "kind": "screenshot"
+        },
+        {
+          "path": ".factory/guided-workflow/browser/start-desktop.png",
+          "sha256": "ffe274095ed85f04b57bb30a9eed5d54755d5ac937dade7c3dbd8ba4e62033b1",
+          "kind": "screenshot"
+        },
+        {
+          "path": ".factory/guided-workflow/review.md",
+          "sha256": "7b4b58efcad08e241e441d787f6de82753391f5e86205a57c01359b57b954fa1",
+          "kind": "review"
+        }
+      ]
+    },
+    {
+      "id": "failure_recovery",
+      "profile": "windows-py311-node22-chrome-desktop-390px",
+      "status": "PASS",
+      "reason": "Existing API/import recovery and retained drafts pass. Observed: source-bound test assertions and actual downloads/navigation passed; review raw logs for exact scope.",
+      "execution_identity": "Codex local Windows Python/Node runner and headless Chrome; no independent human approval.",
+      "observed_at": "2026-10-21T06:55:32.824018+00:00",
+      "artifacts": [
+        {
+          "path": ".factory/guided-workflow/check-0.txt",
+          "sha256": "6a4bcc988aa169c5b24adacea986fb7ce3ff6b1721d3921a371304e70aecbd5c",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-1.txt",
+          "sha256": "34493a197330b88ac66a946767ac5c645757b4d55260bdfc5f7d3527ae0286b8",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-2.txt",
+          "sha256": "42a74e1fc7ff0c241eea256e5ea2040d7ac6a8ee5020ad190b26361ef00974b2",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-3.txt",
+          "sha256": "27405899749691d526e564a493ce72a8699474b724d9e6ff5c611e9e60a9ee2b",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-4.txt",
+          "sha256": "35371a01e9cc83083ca50f5ca0a20203f704a5555b2758b031299e9eed3ba857",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-5.txt",
+          "sha256": "c4507aea2e1e2f47bed8f6d9711409db45b892ec933b96cb5b6e9c6f8698d9a1",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-6.txt",
+          "sha256": "8e16661e55e0ec6228ef3e46a8eb4d7c2c2f1323e342624580aac38e36b5a3c2",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-7.txt",
+          "sha256": "52ef129919d844dda649da827c507e22c1271b3e00c0bfbd50e150b9a1ba0aa5",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-8.txt",
+          "sha256": "9739ce8fd344990cbc05259138385bd70eaff28a7250f10daeaf20d93ab79dd5",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-9.txt",
+          "sha256": "231cb938e5d453a72283207db7e8afaf585a9af0d9e2ce1d2b171526d5ad0bf2",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-10.txt",
+          "sha256": "330278e0dd4ed3ee0bbe5c8ac0ac12efc876ac65007918ca197412882337905b",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-11.txt",
+          "sha256": "e1e8eeda8e0313e2aea1021bf01f41ea3c709c0a6d3afea7059c52900c75abc3",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-12.txt",
+          "sha256": "2fae318e414c966b6fac4cd3cffc0d03c7dbe22000f2504bc01e3ec095c8d99b",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-0.txt",
+          "sha256": "330278e0dd4ed3ee0bbe5c8ac0ac12efc876ac65007918ca197412882337905b",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-1.txt",
+          "sha256": "9739ce8fd344990cbc05259138385bd70eaff28a7250f10daeaf20d93ab79dd5",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-2.txt",
+          "sha256": "231cb938e5d453a72283207db7e8afaf585a9af0d9e2ce1d2b171526d5ad0bf2",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-3.txt",
+          "sha256": "acf584b3ea1eb77f36e775f22929dcd4056acd69295a0f21b378847013974063",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-4.txt",
+          "sha256": "c60ec17f9a9eec411c53d39e81852ba14960bb872254f7e33c2690d9cffe814b",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-5.txt",
+          "sha256": "37d12034c03eb6d29abccf40952b2a86936df338eb5dd24d2ff91b92aa21aa02",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-6.txt",
+          "sha256": "cd2d1ff70f467a1a6baa093a727761c645c37f06b41a789e7a9bddb0aed54ba9",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/design-final-0.txt",
+          "sha256": "35371a01e9cc83083ca50f5ca0a20203f704a5555b2758b031299e9eed3ba857",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/design-final-1.txt",
+          "sha256": "e81ce211983a54a24a1c04cf0cc218fcab052c028ca69c8d3f374de871cbe9f6",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/design-final-2.txt",
+          "sha256": "bd83388d978fc88bc0e5477c08ee0c27300d731e2ce0afc2b12d3aa65052d823",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/design-final-3.txt",
+          "sha256": "52ef129919d844dda649da827c507e22c1271b3e00c0bfbd50e150b9a1ba0aa5",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/verification.json",
+          "sha256": "a6bb1e2aae83db90374a5769edecb02275d6cb54e048d515dec496321b79c41d",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-verification.json",
+          "sha256": "1b9fee9bda7bcfd1067a91155901e9743e60c39fcf518e043cfc649455946d4e",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/design-verification.json",
+          "sha256": "f4726dfa684af05620228aac86440f234b24014b43b7bfc0b6275a1d087d8a00",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/browser/next-steps-desktop.png",
+          "sha256": "9fb114feca9e29ab79c8b5e4d3bf7c1d1356e83337727e732d6019b22a546bb7",
+          "kind": "screenshot"
+        },
+        {
+          "path": ".factory/guided-workflow/browser/next-steps-mobile.png",
+          "sha256": "86e035cb855107e8cfec31bca7a19a6a31f6e8aae47e6259357043def7825551",
+          "kind": "screenshot"
+        },
+        {
+          "path": ".factory/guided-workflow/browser/start-desktop.png",
+          "sha256": "ffe274095ed85f04b57bb30a9eed5d54755d5ac937dade7c3dbd8ba4e62033b1",
+          "kind": "screenshot"
+        },
+        {
+          "path": ".factory/guided-workflow/review.md",
+          "sha256": "7b4b58efcad08e241e441d787f6de82753391f5e86205a57c01359b57b954fa1",
+          "kind": "review"
+        }
+      ]
+    },
+    {
+      "id": "privacy",
+      "profile": "windows-py311-node22-chrome-desktop-390px",
+      "status": "PASS",
+      "reason": "Existing privacy/origin/XSS/provider-key exclusions pass; no new provider calls. Observed: source-bound test assertions and actual downloads/navigation passed; review raw logs for exact scope.",
+      "execution_identity": "Codex local Windows Python/Node runner and headless Chrome; no independent human approval.",
+      "observed_at": "2026-10-21T06:55:32.824018+00:00",
+      "artifacts": [
+        {
+          "path": ".factory/guided-workflow/check-0.txt",
+          "sha256": "6a4bcc988aa169c5b24adacea986fb7ce3ff6b1721d3921a371304e70aecbd5c",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-1.txt",
+          "sha256": "34493a197330b88ac66a946767ac5c645757b4d55260bdfc5f7d3527ae0286b8",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-2.txt",
+          "sha256": "42a74e1fc7ff0c241eea256e5ea2040d7ac6a8ee5020ad190b26361ef00974b2",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-3.txt",
+          "sha256": "27405899749691d526e564a493ce72a8699474b724d9e6ff5c611e9e60a9ee2b",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-4.txt",
+          "sha256": "35371a01e9cc83083ca50f5ca0a20203f704a5555b2758b031299e9eed3ba857",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-5.txt",
+          "sha256": "c4507aea2e1e2f47bed8f6d9711409db45b892ec933b96cb5b6e9c6f8698d9a1",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-6.txt",
+          "sha256": "8e16661e55e0ec6228ef3e46a8eb4d7c2c2f1323e342624580aac38e36b5a3c2",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-7.txt",
+          "sha256": "52ef129919d844dda649da827c507e22c1271b3e00c0bfbd50e150b9a1ba0aa5",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-8.txt",
+          "sha256": "9739ce8fd344990cbc05259138385bd70eaff28a7250f10daeaf20d93ab79dd5",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-9.txt",
+          "sha256": "231cb938e5d453a72283207db7e8afaf585a9af0d9e2ce1d2b171526d5ad0bf2",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-10.txt",
+          "sha256": "330278e0dd4ed3ee0bbe5c8ac0ac12efc876ac65007918ca197412882337905b",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-11.txt",
+          "sha256": "e1e8eeda8e0313e2aea1021bf01f41ea3c709c0a6d3afea7059c52900c75abc3",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-12.txt",
+          "sha256": "2fae318e414c966b6fac4cd3cffc0d03c7dbe22000f2504bc01e3ec095c8d99b",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-0.txt",
+          "sha256": "330278e0dd4ed3ee0bbe5c8ac0ac12efc876ac65007918ca197412882337905b",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-1.txt",
+          "sha256": "9739ce8fd344990cbc05259138385bd70eaff28a7250f10daeaf20d93ab79dd5",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-2.txt",
+          "sha256": "231cb938e5d453a72283207db7e8afaf585a9af0d9e2ce1d2b171526d5ad0bf2",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-3.txt",
+          "sha256": "acf584b3ea1eb77f36e775f22929dcd4056acd69295a0f21b378847013974063",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-4.txt",
+          "sha256": "c60ec17f9a9eec411c53d39e81852ba14960bb872254f7e33c2690d9cffe814b",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-5.txt",
+          "sha256": "37d12034c03eb6d29abccf40952b2a86936df338eb5dd24d2ff91b92aa21aa02",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-6.txt",
+          "sha256": "cd2d1ff70f467a1a6baa093a727761c645c37f06b41a789e7a9bddb0aed54ba9",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/design-final-0.txt",
+          "sha256": "35371a01e9cc83083ca50f5ca0a20203f704a5555b2758b031299e9eed3ba857",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/design-final-1.txt",
+          "sha256": "e81ce211983a54a24a1c04cf0cc218fcab052c028ca69c8d3f374de871cbe9f6",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/design-final-2.txt",
+          "sha256": "bd83388d978fc88bc0e5477c08ee0c27300d731e2ce0afc2b12d3aa65052d823",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/design-final-3.txt",
+          "sha256": "52ef129919d844dda649da827c507e22c1271b3e00c0bfbd50e150b9a1ba0aa5",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/verification.json",
+          "sha256": "a6bb1e2aae83db90374a5769edecb02275d6cb54e048d515dec496321b79c41d",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-verification.json",
+          "sha256": "1b9fee9bda7bcfd1067a91155901e9743e60c39fcf518e043cfc649455946d4e",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/design-verification.json",
+          "sha256": "f4726dfa684af05620228aac86440f234b24014b43b7bfc0b6275a1d087d8a00",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/browser/next-steps-desktop.png",
+          "sha256": "9fb114feca9e29ab79c8b5e4d3bf7c1d1356e83337727e732d6019b22a546bb7",
+          "kind": "screenshot"
+        },
+        {
+          "path": ".factory/guided-workflow/browser/next-steps-mobile.png",
+          "sha256": "86e035cb855107e8cfec31bca7a19a6a31f6e8aae47e6259357043def7825551",
+          "kind": "screenshot"
+        },
+        {
+          "path": ".factory/guided-workflow/browser/start-desktop.png",
+          "sha256": "ffe274095ed85f04b57bb30a9eed5d54755d5ac937dade7c3dbd8ba4e62033b1",
+          "kind": "screenshot"
+        },
+        {
+          "path": ".factory/guided-workflow/review.md",
+          "sha256": "7b4b58efcad08e241e441d787f6de82753391f5e86205a57c01359b57b954fa1",
+          "kind": "review"
+        }
+      ]
+    },
+    {
+      "id": "bounded_execution",
+      "profile": "windows-py311-node22-chrome-desktop-390px",
+      "status": "PASS",
+      "reason": "Browser workflow finishes within the runner's 120-second bound; no user-latency benchmark claim. Observed: source-bound test assertions and actual downloads/navigation passed; review raw logs for exact scope.",
+      "execution_identity": "Codex local Windows Python/Node runner and headless Chrome; no independent human approval.",
+      "observed_at": "2026-10-21T06:55:32.824018+00:00",
+      "artifacts": [
+        {
+          "path": ".factory/guided-workflow/check-0.txt",
+          "sha256": "6a4bcc988aa169c5b24adacea986fb7ce3ff6b1721d3921a371304e70aecbd5c",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-1.txt",
+          "sha256": "34493a197330b88ac66a946767ac5c645757b4d55260bdfc5f7d3527ae0286b8",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-2.txt",
+          "sha256": "42a74e1fc7ff0c241eea256e5ea2040d7ac6a8ee5020ad190b26361ef00974b2",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-3.txt",
+          "sha256": "27405899749691d526e564a493ce72a8699474b724d9e6ff5c611e9e60a9ee2b",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-4.txt",
+          "sha256": "35371a01e9cc83083ca50f5ca0a20203f704a5555b2758b031299e9eed3ba857",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-5.txt",
+          "sha256": "c4507aea2e1e2f47bed8f6d9711409db45b892ec933b96cb5b6e9c6f8698d9a1",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-6.txt",
+          "sha256": "8e16661e55e0ec6228ef3e46a8eb4d7c2c2f1323e342624580aac38e36b5a3c2",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-7.txt",
+          "sha256": "52ef129919d844dda649da827c507e22c1271b3e00c0bfbd50e150b9a1ba0aa5",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-8.txt",
+          "sha256": "9739ce8fd344990cbc05259138385bd70eaff28a7250f10daeaf20d93ab79dd5",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-9.txt",
+          "sha256": "231cb938e5d453a72283207db7e8afaf585a9af0d9e2ce1d2b171526d5ad0bf2",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-10.txt",
+          "sha256": "330278e0dd4ed3ee0bbe5c8ac0ac12efc876ac65007918ca197412882337905b",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-11.txt",
+          "sha256": "e1e8eeda8e0313e2aea1021bf01f41ea3c709c0a6d3afea7059c52900c75abc3",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-12.txt",
+          "sha256": "2fae318e414c966b6fac4cd3cffc0d03c7dbe22000f2504bc01e3ec095c8d99b",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-0.txt",
+          "sha256": "330278e0dd4ed3ee0bbe5c8ac0ac12efc876ac65007918ca197412882337905b",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-1.txt",
+          "sha256": "9739ce8fd344990cbc05259138385bd70eaff28a7250f10daeaf20d93ab79dd5",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-2.txt",
+          "sha256": "231cb938e5d453a72283207db7e8afaf585a9af0d9e2ce1d2b171526d5ad0bf2",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-3.txt",
+          "sha256": "acf584b3ea1eb77f36e775f22929dcd4056acd69295a0f21b378847013974063",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-4.txt",
+          "sha256": "c60ec17f9a9eec411c53d39e81852ba14960bb872254f7e33c2690d9cffe814b",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-5.txt",
+          "sha256": "37d12034c03eb6d29abccf40952b2a86936df338eb5dd24d2ff91b92aa21aa02",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-6.txt",
+          "sha256": "cd2d1ff70f467a1a6baa093a727761c645c37f06b41a789e7a9bddb0aed54ba9",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/design-final-0.txt",
+          "sha256": "35371a01e9cc83083ca50f5ca0a20203f704a5555b2758b031299e9eed3ba857",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/design-final-1.txt",
+          "sha256": "e81ce211983a54a24a1c04cf0cc218fcab052c028ca69c8d3f374de871cbe9f6",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/design-final-2.txt",
+          "sha256": "bd83388d978fc88bc0e5477c08ee0c27300d731e2ce0afc2b12d3aa65052d823",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/design-final-3.txt",
+          "sha256": "52ef129919d844dda649da827c507e22c1271b3e00c0bfbd50e150b9a1ba0aa5",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/verification.json",
+          "sha256": "a6bb1e2aae83db90374a5769edecb02275d6cb54e048d515dec496321b79c41d",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-verification.json",
+          "sha256": "1b9fee9bda7bcfd1067a91155901e9743e60c39fcf518e043cfc649455946d4e",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/design-verification.json",
+          "sha256": "f4726dfa684af05620228aac86440f234b24014b43b7bfc0b6275a1d087d8a00",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/browser/next-steps-desktop.png",
+          "sha256": "9fb114feca9e29ab79c8b5e4d3bf7c1d1356e83337727e732d6019b22a546bb7",
+          "kind": "screenshot"
+        },
+        {
+          "path": ".factory/guided-workflow/browser/next-steps-mobile.png",
+          "sha256": "86e035cb855107e8cfec31bca7a19a6a31f6e8aae47e6259357043def7825551",
+          "kind": "screenshot"
+        },
+        {
+          "path": ".factory/guided-workflow/browser/start-desktop.png",
+          "sha256": "ffe274095ed85f04b57bb30a9eed5d54755d5ac937dade7c3dbd8ba4e62033b1",
+          "kind": "screenshot"
+        },
+        {
+          "path": ".factory/guided-workflow/review.md",
+          "sha256": "7b4b58efcad08e241e441d787f6de82753391f5e86205a57c01359b57b954fa1",
+          "kind": "review"
+        }
+      ]
+    },
+    {
+      "id": "design",
+      "profile": "windows-py311-node22-chrome-desktop-390px",
+      "status": "PASS",
+      "reason": "Current source audits, critique, render and sabotage checks pass. Observed: source-bound test assertions and actual downloads/navigation passed; review raw logs for exact scope.",
+      "execution_identity": "Codex local Windows Python/Node runner and headless Chrome; no independent human approval.",
+      "observed_at": "2026-10-21T06:55:32.824018+00:00",
+      "artifacts": [
+        {
+          "path": ".factory/guided-workflow/check-0.txt",
+          "sha256": "6a4bcc988aa169c5b24adacea986fb7ce3ff6b1721d3921a371304e70aecbd5c",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-1.txt",
+          "sha256": "34493a197330b88ac66a946767ac5c645757b4d55260bdfc5f7d3527ae0286b8",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-2.txt",
+          "sha256": "42a74e1fc7ff0c241eea256e5ea2040d7ac6a8ee5020ad190b26361ef00974b2",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-3.txt",
+          "sha256": "27405899749691d526e564a493ce72a8699474b724d9e6ff5c611e9e60a9ee2b",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-4.txt",
+          "sha256": "35371a01e9cc83083ca50f5ca0a20203f704a5555b2758b031299e9eed3ba857",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-5.txt",
+          "sha256": "c4507aea2e1e2f47bed8f6d9711409db45b892ec933b96cb5b6e9c6f8698d9a1",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-6.txt",
+          "sha256": "8e16661e55e0ec6228ef3e46a8eb4d7c2c2f1323e342624580aac38e36b5a3c2",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-7.txt",
+          "sha256": "52ef129919d844dda649da827c507e22c1271b3e00c0bfbd50e150b9a1ba0aa5",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-8.txt",
+          "sha256": "9739ce8fd344990cbc05259138385bd70eaff28a7250f10daeaf20d93ab79dd5",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-9.txt",
+          "sha256": "231cb938e5d453a72283207db7e8afaf585a9af0d9e2ce1d2b171526d5ad0bf2",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-10.txt",
+          "sha256": "330278e0dd4ed3ee0bbe5c8ac0ac12efc876ac65007918ca197412882337905b",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-11.txt",
+          "sha256": "e1e8eeda8e0313e2aea1021bf01f41ea3c709c0a6d3afea7059c52900c75abc3",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/check-12.txt",
+          "sha256": "2fae318e414c966b6fac4cd3cffc0d03c7dbe22000f2504bc01e3ec095c8d99b",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-0.txt",
+          "sha256": "330278e0dd4ed3ee0bbe5c8ac0ac12efc876ac65007918ca197412882337905b",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-1.txt",
+          "sha256": "9739ce8fd344990cbc05259138385bd70eaff28a7250f10daeaf20d93ab79dd5",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-2.txt",
+          "sha256": "231cb938e5d453a72283207db7e8afaf585a9af0d9e2ce1d2b171526d5ad0bf2",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-3.txt",
+          "sha256": "acf584b3ea1eb77f36e775f22929dcd4056acd69295a0f21b378847013974063",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-4.txt",
+          "sha256": "c60ec17f9a9eec411c53d39e81852ba14960bb872254f7e33c2690d9cffe814b",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-5.txt",
+          "sha256": "37d12034c03eb6d29abccf40952b2a86936df338eb5dd24d2ff91b92aa21aa02",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-6.txt",
+          "sha256": "cd2d1ff70f467a1a6baa093a727761c645c37f06b41a789e7a9bddb0aed54ba9",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/design-final-0.txt",
+          "sha256": "35371a01e9cc83083ca50f5ca0a20203f704a5555b2758b031299e9eed3ba857",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/design-final-1.txt",
+          "sha256": "e81ce211983a54a24a1c04cf0cc218fcab052c028ca69c8d3f374de871cbe9f6",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/design-final-2.txt",
+          "sha256": "bd83388d978fc88bc0e5477c08ee0c27300d731e2ce0afc2b12d3aa65052d823",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/design-final-3.txt",
+          "sha256": "52ef129919d844dda649da827c507e22c1271b3e00c0bfbd50e150b9a1ba0aa5",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/verification.json",
+          "sha256": "a6bb1e2aae83db90374a5769edecb02275d6cb54e048d515dec496321b79c41d",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/final-verification.json",
+          "sha256": "1b9fee9bda7bcfd1067a91155901e9743e60c39fcf518e043cfc649455946d4e",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/design-verification.json",
+          "sha256": "f4726dfa684af05620228aac86440f234b24014b43b7bfc0b6275a1d087d8a00",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/guided-workflow/browser/next-steps-desktop.png",
+          "sha256": "9fb114feca9e29ab79c8b5e4d3bf7c1d1356e83337727e732d6019b22a546bb7",
+          "kind": "screenshot"
+        },
+        {
+          "path": ".factory/guided-workflow/browser/next-steps-mobile.png",
+          "sha256": "86e035cb855107e8cfec31bca7a19a6a31f6e8aae47e6259357043def7825551",
+          "kind": "screenshot"
+        },
+        {
+          "path": ".factory/guided-workflow/browser/start-desktop.png",
+          "sha256": "ffe274095ed85f04b57bb30a9eed5d54755d5ac937dade7c3dbd8ba4e62033b1",
+          "kind": "screenshot"
+        },
+        {
+          "path": ".factory/guided-workflow/review.md",
+          "sha256": "7b4b58efcad08e241e441d787f6de82753391f5e86205a57c01359b57b954fa1",
+          "kind": "review"
+        }
+      ]
+    }
+  ]
+}

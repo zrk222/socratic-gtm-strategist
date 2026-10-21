@@ -24,6 +24,13 @@ dependencies = []
 [project.scripts]
 socratic-gtm = "cli:main"
 
+[tool.setuptools]
+py-modules = ["cli", "server", "mcp_server"]
+
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["scripts*", "socratic_gtm*"]
+include = ["scripts*", "socratic_gtm*", "ui", "skills"]
+
+[tool.setuptools.package-data]
+ui = ["*.html", "*.json", "*.js", "*.css"]
+skills = ["socratic-gtm-strategist/SKILL.md"]

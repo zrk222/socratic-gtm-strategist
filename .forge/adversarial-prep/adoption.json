@@ -1,0 +1,330 @@
+{
+  "feature": "adversarial-prep",
+  "languages": [
+    "python"
+  ],
+  "modules": [
+    {
+      "functions": [
+        {
+          "args": [
+            "args"
+          ],
+          "name": "cmd_simulate",
+          "returns": "unknown"
+        },
+        {
+          "args": [
+            "args"
+          ],
+          "name": "cmd_recon",
+          "returns": "unknown"
+        },
+        {
+          "args": [
+            "args"
+          ],
+          "name": "cmd_stress_test",
+          "returns": "unknown"
+        },
+        {
+          "args": [
+            "args"
+          ],
+          "name": "cmd_export",
+          "returns": "unknown"
+        },
+        {
+          "args": [
+            "args"
+          ],
+          "name": "cmd_pitch_deck",
+          "returns": "unknown"
+        },
+        {
+          "args": [
+            "args"
+          ],
+          "name": "cmd_start",
+          "returns": "unknown"
+        },
+        {
+          "args": [
+            "args"
+          ],
+          "name": "cmd_mcp",
+          "returns": "unknown"
+        },
+        {
+          "args": [
+            "args"
+          ],
+          "name": "cmd_ui",
+          "returns": "unknown"
+        },
+        {
+          "args": [],
+          "name": "main",
+          "returns": "unknown"
+        }
+      ],
+      "language": "python",
+      "name": "cli",
+      "path": "cli.py"
+    },
+    {
+      "functions": [
+        {
+          "args": [
+            "tool_name",
+            "args"
+          ],
+          "name": "validate_arguments",
+          "returns": "unknown"
+        },
+        {
+          "args": [
+            "tool_name",
+            "args"
+          ],
+          "name": "handle_tool_call",
+          "returns": "unknown"
+        },
+        {
+          "args": [
+            "response"
+          ],
+          "name": "send_response",
+          "returns": "unknown"
+        },
+        {
+          "args": [],
+          "name": "main",
+          "returns": "unknown"
+        }
+      ],
+      "language": "python",
+      "name": "mcp_server",
+      "path": "mcp_server.py"
+    },
+    {
+      "functions": [
+        {
+          "args": [
+            "value"
+          ],
+          "name": "reject_constant",
+          "returns": "unknown"
+        },
+        {
+          "args": [
+            "port=8000",
+            "open_browser=True",
+            "host=\"127.0.0.1\""
+          ],
+          "name": "start_server",
+          "returns": "unknown"
+        }
+      ],
+      "language": "python",
+      "name": "server",
+      "path": "server.py"
+    },
+    {
+      "functions": [
+        {
+          "args": [
+            "issues",
+            "output_csv=\"gtm_sprint_issues.csv\"",
+            "output_json=\"gtm_sprint_issues.json\""
+          ],
+          "name": "export_issues",
+          "returns": "unknown"
+        },
+        {
+          "args": [],
+          "name": "main",
+          "returns": "unknown"
+        }
+      ],
+      "language": "python",
+      "name": "scripts_export_issues",
+      "path": "scripts/export_issues.py"
+    },
+    {
+      "functions": [
+        {
+          "args": [
+            "project_name",
+            "scores",
+            "notes",
+            "output_path"
+          ],
+          "name": "generate_dashboard",
+          "returns": "unknown"
+        },
+        {
+          "args": [],
+          "name": "main",
+          "returns": "unknown"
+        }
+      ],
+      "language": "python",
+      "name": "scripts_generate_dashboard",
+      "path": "scripts/generate_dashboard.py"
+    },
+    {
+      "functions": [
+        {
+          "args": [
+            "startup_name=\"My AI Startup\"",
+            "output_path=\"GTM_PITCH_DECK.md\""
+          ],
+          "name": "generate_pitch_deck",
+          "returns": "unknown"
+        },
+        {
+          "args": [],
+          "name": "main",
+          "returns": "unknown"
+        }
+      ],
+      "language": "python",
+      "name": "scripts_generate_pitch_deck",
+      "path": "scripts/generate_pitch_deck.py"
+    },
+    {
+      "functions": [
+        {
+          "args": [
+            "query",
+            "max_results=5"
+          ],
+          "name": "search_incumbent",
+          "returns": "unknown"
+        },
+        {
+          "args": [
+            "incumbent",
+            "product_domain",
+            "output_path=None"
+          ],
+          "name": "generate_recon_report",
+          "returns": "unknown"
+        },
+        {
+          "args": [],
+          "name": "main",
+          "returns": "unknown"
+        }
+      ],
+      "language": "python",
+      "name": "scripts_incumbent_recon",
+      "path": "scripts/incumbent_recon.py"
+    },
+    {
+      "functions": [
+        {
+          "args": [
+            "mode",
+            "startup_name",
+            "output_path=None"
+          ],
+          "name": "generate_adversarial_brief",
+          "returns": "unknown"
+        },
+        {
+          "args": [],
+          "name": "main",
+          "returns": "unknown"
+        }
+      ],
+      "language": "python",
+      "name": "scripts_stress_test_simulator",
+      "path": "scripts/stress_test_simulator.py"
+    },
+    {
+      "functions": [
+        {
+          "args": [],
+          "name": "get_system_prompt",
+          "returns": "str"
+        },
+        {
+          "args": [],
+          "name": "get_langchain_tools",
+          "returns": "unknown"
+        }
+      ],
+      "language": "python",
+      "name": "socratic_gtm___init__",
+      "path": "socratic_gtm/__init__.py"
+    },
+    {
+      "functions": [
+        {
+          "args": [
+            "value",
+            "name",
+            "max_length=10000"
+          ],
+          "name": "validate_text",
+          "returns": "unknown"
+        },
+        {
+          "args": [
+            "scores"
+          ],
+          "name": "validate_scores",
+          "returns": "unknown"
+        },
+        {
+          "args": [
+            "phase",
+            "answer"
+          ],
+          "name": "assess_answer",
+          "returns": "unknown"
+        },
+        {
+          "args": [
+            "startup_name",
+            "answers"
+          ],
+          "name": "render_playbook",
+          "returns": "unknown"
+        }
+      ],
+      "language": "python",
+      "name": "socratic_gtm_assessment",
+      "path": "socratic_gtm/assessment.py"
+    },
+    {
+      "functions": [
+        {
+          "args": [],
+          "name": "main",
+          "returns": "unknown"
+        }
+      ],
+      "language": "python",
+      "name": "tests_package_smoke",
+      "path": "tests/package_smoke.py"
+    }
+  ],
+  "root": "C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist",
+  "schema": "forgeline.adoption.v1",
+  "scope_limits": [
+    "Architecture is inferred from static file and export signatures; it is not human-approved architecture.",
+    "Review the generated baseline before using it for any gate.",
+    "TypeScript reverse verification uses explicit reviewed mutants; it never rewrites the working tree."
+  ],
+  "test_commands": [
+    "python -m pytest -q"
+  ],
+  "test_files": [
+    "tests/package_smoke.py",
+    "tests/test_hardening.py",
+    "tests/test_socratic_gtm.py"
+  ]
+}

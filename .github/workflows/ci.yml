@@ -12,7 +12,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
-        python-version: ["3.10", "3.11", "3.12", "3.13"]
+        python-version: ["3.9", "3.10", "3.11", "3.12", "3.13"]
 
     steps:
     - uses: actions/checkout@v4
@@ -34,3 +34,15 @@ jobs:
     - name: Run Unit Tests
       run: |
         python -m unittest discover tests
+
+    - uses: actions/setup-node@v4
+      with:
+        node-version: "22"
+
+    - name: Session data regression tests
+      run: node --test tests/session.test.cjs tests/prep.test.cjs
+
+    - name: Build wheel and test isolated installation
+      run: |
+        python -m pip wheel . --no-deps --wheel-dir dist
+        python -c "import glob, subprocess, sys; subprocess.check_call([sys.executable, 'tests/package_smoke.py', glob.glob('dist/*.whl')[0]])"

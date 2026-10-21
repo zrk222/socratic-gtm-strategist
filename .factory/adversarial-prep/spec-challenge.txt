@@ -1,0 +1,138 @@
+{
+  "schema": "factory.challenge.v1",
+  "brick": "specline",
+  "feature": "adversarial-prep",
+  "stage": "validator_mutation",
+  "passed": true,
+  "mutants_total": 17,
+  "mutants_killed": 17,
+  "attribution": {
+    "stage": "validator_mutation",
+    "n_checked": 17,
+    "n_passed": 17,
+    "units": [
+      {
+        "unit": "R1",
+        "stage": "validator_mutation",
+        "passed": true,
+        "evidence": "deletion killed by S_UNTRACEABLE_STEP; inversion killed by S_UNTRACEABLE_STEP",
+        "failure_class": null
+      },
+      {
+        "unit": "R2",
+        "stage": "validator_mutation",
+        "passed": true,
+        "evidence": "deletion killed by S_UNTRACEABLE_STEP; inversion killed by S_UNTRACEABLE_STEP",
+        "failure_class": null
+      },
+      {
+        "unit": "R3",
+        "stage": "validator_mutation",
+        "passed": true,
+        "evidence": "deletion killed by S_UNTRACEABLE_STEP; inversion killed by S_UNTRACEABLE_STEP",
+        "failure_class": null
+      },
+      {
+        "unit": "R4",
+        "stage": "validator_mutation",
+        "passed": true,
+        "evidence": "deletion killed by S_UNTRACEABLE_STEP; inversion killed by S_UNTRACEABLE_STEP",
+        "failure_class": null
+      },
+      {
+        "unit": "R5",
+        "stage": "validator_mutation",
+        "passed": true,
+        "evidence": "deletion killed by S_UNTRACEABLE_STEP; inversion killed by S_UNTRACEABLE_STEP",
+        "failure_class": null
+      },
+      {
+        "unit": "R6",
+        "stage": "validator_mutation",
+        "passed": true,
+        "evidence": "deletion killed by S_UNTRACEABLE_STEP; inversion killed by S_UNTRACEABLE_STEP",
+        "failure_class": null
+      },
+      {
+        "unit": "R7",
+        "stage": "validator_mutation",
+        "passed": true,
+        "evidence": "deletion killed by S_UNTRACEABLE_STEP; inversion killed by S_UNTRACEABLE_STEP",
+        "failure_class": null
+      },
+      {
+        "unit": "R8",
+        "stage": "validator_mutation",
+        "passed": true,
+        "evidence": "deletion killed by S_UNTRACEABLE_STEP; inversion killed by S_UNTRACEABLE_STEP",
+        "failure_class": null
+      },
+      {
+        "unit": "R9",
+        "stage": "validator_mutation",
+        "passed": true,
+        "evidence": "deletion killed by S_UNTRACEABLE_STEP; inversion killed by S_UNTRACEABLE_STEP",
+        "failure_class": null
+      },
+      {
+        "unit": "R10",
+        "stage": "validator_mutation",
+        "passed": true,
+        "evidence": "deletion killed by S_UNTRACEABLE_STEP; inversion killed by S_UNTRACEABLE_STEP",
+        "failure_class": null
+      },
+      {
+        "unit": "R11",
+        "stage": "validator_mutation",
+        "passed": true,
+        "evidence": "deletion killed by S_UNTRACEABLE_STEP; inversion killed by S_UNTRACEABLE_STEP",
+        "failure_class": null
+      },
+      {
+        "unit": "R12",
+        "stage": "validator_mutation",
+        "passed": true,
+        "evidence": "deletion killed by S_UNTRACEABLE_STEP; inversion killed by S_UNTRACEABLE_STEP",
+        "failure_class": null
+      },
+      {
+        "unit": "R13",
+        "stage": "validator_mutation",
+        "passed": true,
+        "evidence": "deletion killed by S_UNTRACEABLE_STEP; inversion killed by S_UNTRACEABLE_STEP",
+        "failure_class": null
+      },
+      {
+        "unit": "R14",
+        "stage": "validator_mutation",
+        "passed": true,
+        "evidence": "deletion killed by S_UNTRACEABLE_STEP; inversion killed by S_UNTRACEABLE_STEP",
+        "failure_class": null
+      },
+      {
+        "unit": "R15",
+        "stage": "validator_mutation",
+        "passed": true,
+        "evidence": "deletion killed by S_UNTRACEABLE_STEP; inversion killed by S_UNTRACEABLE_STEP",
+        "failure_class": null
+      },
+      {
+        "unit": "R16",
+        "stage": "validator_mutation",
+        "passed": true,
+        "evidence": "deletion killed by S_UNTRACEABLE_STEP; inversion killed by S_UNTRACEABLE_STEP",
+        "failure_class": null
+      },
+      {
+        "unit": "R17",
+        "stage": "validator_mutation",
+        "passed": true,
+        "evidence": "deletion killed by S_UNTRACEABLE_STEP; inversion killed by S_UNTRACEABLE_STEP",
+        "failure_class": null
+      }
+    ],
+    "rate": 1.0,
+    "dominant_failure_class": null
+  },
+  "receipt_path": ".specline\\adversarial-prep\\challenge.json"
+}
