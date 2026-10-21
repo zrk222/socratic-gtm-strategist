@@ -7,6 +7,8 @@ import sys
 import webbrowser
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import urlsplit
+import urllib.request
+import re
 
 from scripts.generate_dashboard import generate_dashboard
 from scripts.incumbent_recon import generate_recon_report
@@ -17,6 +19,8 @@ from socratic_gtm.assessment import PHASES, assess_answer, validate_text
 
 CURRENT_DIR = Path(__file__).resolve().parent
 MAX_BODY = 65536
+MAX_AUDIO = 5242880
+MAX_PROVIDER_RESPONSE = 10485760
 ARTIFACTS = {
     "gtm_simulator.html": "text/html; charset=utf-8",
     "gtm_sprint_issues.csv": "text/csv; charset=utf-8",
@@ -68,7 +72,10 @@ class SocraticRequestHandler(BaseHTTPRequestHandler):
 
     def error(self, code, message, head=False):
         self.close_connection = True
-        self.send_json_response(code, {"error": message}, head=head)
+        body = {"error": message}
+        if urlsplit(self.path).path in {"/api/tts", "/api/stt"}:
+            body["fallback"] = True
+        self.send_json_response(code, body, head=head)
 
     def do_HEAD(self):
         self.serve_get(head=True)
@@ -90,7 +97,8 @@ class SocraticRequestHandler(BaseHTTPRequestHandler):
             return self.send_json_response(200, {
                 "status": "online", "framework": "Socratic GTM Strategist v3.0",
                 "assessment_mode": "founder_intake_review_required",
-                "speech_support": "browser-dependent; microphone permission required",
+                "speech_support": {"stt": "browser-dependent", "tts": "browser-dependent",
+                                   "note": "Microphone permission and optional provider credentials required"},
             }, head)
         if path == "/ui/index.html":
             file, content_type = CURRENT_DIR / "ui" / "index.html", "text/html; charset=utf-8"
@@ -121,6 +129,7 @@ class SocraticRequestHandler(BaseHTTPRequestHandler):
         if not self.trusted_request():
             return self.error(403, "Local same-origin requests only")
         try:
+            path = urlsplit(self.path).path
             if self.headers.get("Transfer-Encoding"):
                 return self.error(400, "Transfer-Encoding is unsupported")
             lengths = self.headers.get_all("Content-Length", [])
@@ -129,17 +138,24 @@ class SocraticRequestHandler(BaseHTTPRequestHandler):
             length = int(lengths[0])
             if length < 0:
                 return self.error(400, "Content-Length must be non-negative")
-            if length > MAX_BODY:
-                return self.error(413, "JSON body exceeds 65536 bytes")
-            if self.headers.get_content_type() != "application/json":
+            ceiling = MAX_AUDIO if path == "/api/stt" else MAX_BODY
+            if length > ceiling:
+                return self.error(413, f"Request body exceeds {ceiling} bytes")
+            if path == "/api/stt" and not self.headers.get("x-api-key"):
+                return self.error(400, "A provider key is required; browser fallback is available")
+            if path != "/api/stt" and self.headers.get_content_type() != "application/json":
                 return self.error(415, "Use application/json")
             body = self.rfile.read(length)
             if len(body) != length:
                 return self.error(400, "Incomplete request body")
+            if path == "/api/stt":
+                return self.voice_stt(body)
             data = json.loads(body.decode("utf-8"), parse_constant=reject_constant)
             if not isinstance(data, dict):
                 raise ValueError("JSON body must be an object")
-            result = self.execute(urlsplit(self.path).path, data)
+            if path == "/api/tts":
+                return self.voice_tts(data)
+            result = self.execute(path, data)
             self.send_json_response(200, result)
         except (ValueError, TypeError, UnicodeError, RecursionError) as exc:
             self.error(400, str(exc))
@@ -147,6 +163,59 @@ class SocraticRequestHandler(BaseHTTPRequestHandler):
             self.error(408, "Request body timed out")
         except OSError:
             self.error(500, "Local tool could not complete; retry after checking output access")
+
+    def provider_proxy(self, url, body, headers, content_type):
+        request = urllib.request.Request(url, data=body, headers=headers)
+        try:
+            with urllib.request.urlopen(request, timeout=20) as response:
+                payload = response.read(MAX_PROVIDER_RESPONSE + 1)
+            if len(payload) > MAX_PROVIDER_RESPONSE:
+                return self.error(502, "Provider response exceeded the local limit")
+            if content_type == "application/json":
+                # Validate the response without disclosing a provider error body.
+                result = json.loads(payload, parse_constant=reject_constant)
+                if not isinstance(result, dict):
+                    raise ValueError("Provider returned invalid transcription data")
+            self.respond(200, payload, content_type)
+        except (OSError, ValueError, RecursionError):
+            self.error(502, "Voice provider unavailable; use browser voice or check provider settings")
+
+    def voice_stt(self, body):
+        provider = self.headers.get("x-provider", "openai")
+        targets = {"openai": "https://api.openai.com/v1/audio/transcriptions",
+                   "groq": "https://api.groq.com/openai/v1/audio/transcriptions"}
+        if provider not in targets or not body:
+            raise ValueError("Choose a supported transcription provider and supply audio")
+        content_type = self.headers.get("Content-Type", "")
+        if not content_type.startswith("multipart/form-data;") or "boundary=" not in content_type:
+            return self.error(415, "Use multipart/form-data with a boundary")
+        key = validate_text(self.headers.get("x-api-key"), "provider key", 1000)
+        self.provider_proxy(targets[provider], body,
+                            {"Authorization": "Bearer " + key, "Content-Type": content_type},
+                            "application/json")
+
+    def voice_tts(self, data):
+        provider = data.get("provider", "openai")
+        key = validate_text(data.get("apiKey"), "provider key", 1000)
+        text = validate_text(data.get("text"), "speech text", 4000)
+        voice = validate_text(data.get("voice") or ("nova" if provider == "openai" else "21m00Tcm4TlvDq8ikWAM"), "voice", 100)
+        if provider == "openai":
+            if voice not in {"alloy", "echo", "fable", "onyx", "nova", "shimmer"}:
+                raise ValueError("Unsupported OpenAI voice")
+            url = "https://api.openai.com/v1/audio/speech"
+            body = {"model": "tts-1", "voice": voice, "input": text}
+            headers = {"Authorization": "Bearer " + key}
+        elif provider == "elevenlabs":
+            if not re.fullmatch(r"[A-Za-z0-9_-]+", voice):
+                raise ValueError("Voice ID contains invalid characters")
+            url = "https://api.elevenlabs.io/v1/text-to-speech/" + voice
+            body = {"model_id": "eleven_monolingual_v1", "text": text,
+                    "voice_settings": {"stability": 0.5, "similarity_boost": 0.75}}
+            headers = {"xi-api-key": key}
+        else:
+            raise ValueError("Unsupported speech provider")
+        headers["Content-Type"] = "application/json"
+        self.provider_proxy(url, json.dumps(body).encode("utf-8"), headers, "audio/mpeg")
 
     def execute(self, path, data):
         if path == "/api/chat":
@@ -227,8 +296,9 @@ def start_server(port=8000, open_browser=True, host="127.0.0.1"):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("port", nargs="?", default=8000, type=int)
+    parser.add_argument("port_pos", nargs="?", type=int)
+    parser.add_argument("--port", "-p", default=8000, type=int)
     parser.add_argument("--host", choices=["127.0.0.1", "0.0.0.0"], default="127.0.0.1")
     parser.add_argument("--no-browser", action="store_true")
     args = parser.parse_args()
-    start_server(args.port, not args.no_browser, args.host)
+    start_server(args.port_pos if args.port_pos is not None else args.port, not args.no_browser, args.host)

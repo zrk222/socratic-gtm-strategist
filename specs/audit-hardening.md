@@ -23,6 +23,7 @@ Repair reproduced installation, HTTP exposure, output injection and evidence-int
 - When a founder saves or imports a session, the system shall validate the version, phase range 0 through 9, eight answer keys, bounded text and a 262144-byte input ceiling before replacing active state (acceptance: `session_roundtrip`).
 - When a founder reviews an answer, the system shall allow revising the answer and recording evidence, next experiment, owner and decision date; local exports shall preserve entered values and label missing evidence (acceptance: `review_exports`).
 - When a founder opens the dashboard at a 390px viewport, the system shall display named keyboard-focusable session controls and review actions without horizontal overflow (acceptance: `mobile_session_controls`).
+- When optional voice settings are used, the system shall route the upstream provider choices, reject foreign requests, cap STT input at 5242880 bytes, and return a fallback response on provider failure; credentials shall remain outside session exports and device storage (acceptance: `voice_integration`).
 
 ### Acceptance criteria (Gherkin)
 ```gherkin
@@ -57,6 +58,7 @@ Scenario: Acceptance observations remain bound to declared behaviors
   And `session_roundtrip` rejects invalid imports without replacing state
   And `review_exports` preserves evidence notes and prevents spreadsheet formula execution
   And `mobile_session_controls` keeps the session actions accessible
+  And `voice_integration` proves proxy rejection, mocked forwarding, fallback and credential exclusion
 ```
 
 ## SHOULD — Technical/structural
@@ -80,6 +82,9 @@ The HTTP body ceiling is 65536 bytes. The tool schema declares eight scores
 between zero and 100, and interview phases one through eight.
 
 - MAX_BODY = 65536
+- MAX_AUDIO = 5242880
+- MAX_PROVIDER_RESPONSE = 10485760
+- timeout = 20
 - max_length = 10000
 - TOOLS_SCHEMA = 0
 - TOOLS_SCHEMA = 100

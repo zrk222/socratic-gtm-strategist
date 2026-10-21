@@ -126,6 +126,42 @@ class HTTPHardening(unittest.TestCase):
         self.assertNotIn("Access-Control-Allow-Origin", headers)
         self.assertEqual(self.request("GET", "/artifacts/../server.py")[0], 404)
 
+    def test_voice_fallback_and_origin(self):
+        status, _, body = self.post("/api/tts", {"text": "hello", "apiKey": ""})
+        self.assertEqual(status, 400)
+        self.assertTrue(json.loads(body)["fallback"])
+        with patch("server.urllib.request.urlopen") as provider:
+            self.assertEqual(self.post("/api/tts", {"text": "hello", "apiKey": "fixture"},
+                                       {"Origin": "https://evil.example"})[0], 403)
+            provider.assert_not_called()
+
+    def test_voice_mock_forwarding_and_failure(self):
+        with patch("server.urllib.request.urlopen", return_value=io.BytesIO(b"fixture-audio")) as provider:
+            status, headers, body = self.post("/api/tts", {
+                "provider": "openai", "apiKey": "fixture-key", "text": "hello", "voice": "nova"})
+            self.assertEqual((status, headers["Content-Type"], body), (200, "audio/mpeg", b"fixture-audio"))
+            self.assertEqual(provider.call_args.args[0].full_url, "https://api.openai.com/v1/audio/speech")
+        with patch("server.urllib.request.urlopen", side_effect=OSError("provider unavailable")):
+            status, _, body = self.post("/api/tts", {
+                "provider": "elevenlabs", "apiKey": "fixture", "text": "hello"})
+            self.assertEqual(status, 502)
+            self.assertTrue(json.loads(body)["fallback"])
+
+    def test_transcription_bounds_and_fixed_target(self):
+        self.assertEqual(self.request("POST", "/api/stt", b"x",
+                                     {"Content-Length": str(5242881), "x-api-key": "fixture"})[0], 413)
+        with patch("server.urllib.request.urlopen", return_value=io.BytesIO(b'{"text":"fixture transcript"}')) as provider:
+            status, _, body = self.request("POST", "/api/stt", b"fixture multipart",
+                {"Content-Type": "multipart/form-data; boundary=fixture", "x-api-key": "fixture", "x-provider": "groq"})
+            self.assertEqual(status, 200)
+            self.assertEqual(json.loads(body)["text"], "fixture transcript")
+            self.assertEqual(provider.call_args.args[0].full_url, "https://api.groq.com/openai/v1/audio/transcriptions")
+        with patch("server.urllib.request.urlopen") as provider:
+            status, _, _ = self.request("POST", "/api/stt", b"fixture",
+                {"Content-Type": "multipart/form-data; boundary=fixture", "x-api-key": "fixture", "x-provider": "evil"})
+            self.assertEqual(status, 400)
+            provider.assert_not_called()
+
 
 class OutputIntegrity(unittest.TestCase):
     def test_answer_integrity(self):

@@ -173,5 +173,61 @@ class TestSocraticGTM(unittest.TestCase):
         self.assertTrue(os.path.exists(os.path.join(self.test_dir, "auditco_GTM_PITCH_DECK.md")))
         self.assertTrue(os.path.exists(os.path.join(self.test_dir, "auditco_adversarial_brief.md")))
 
+    def test_server_api_endpoints(self):
+        """Test the local web server REST endpoints including fallback voice behavior."""
+        import urllib.request
+        import time
+
+        port = 8991
+        proc = subprocess.Popen(
+            [sys.executable, os.path.join(ROOT_DIR, "server.py"), "--port", str(port), "--no-browser"],
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE
+        )
+        time.sleep(1.5)
+        try:
+            # 1. Test /api/status
+            with urllib.request.urlopen(f"http://127.0.0.1:{port}/api/status", timeout=5) as resp:
+                self.assertEqual(resp.status, 200)
+                data = json.loads(resp.read().decode())
+                self.assertEqual(data.get("status"), "online")
+                self.assertTrue(data.get("speech_support", {}).get("stt"))
+
+            # 2. Test /api/chat
+            req_data = json.dumps({"message": "Building an automated AI agent for sales.", "phase": 0}).encode()
+            req = urllib.request.Request(f"http://127.0.0.1:{port}/api/chat", data=req_data, headers={"Content-Type": "application/json"})
+            with urllib.request.urlopen(req, timeout=5) as resp:
+                self.assertEqual(resp.status, 200)
+                data = json.loads(resp.read().decode())
+                self.assertIn("reply", data)
+                self.assertIn("Phase 1", data["reply"])
+
+            # 3. Test /api/tts missing key (triggers fallback response)
+            req_data = json.dumps({"text": "Hello world", "provider": "openai", "apiKey": ""}).encode()
+            req = urllib.request.Request(f"http://127.0.0.1:{port}/api/tts", data=req_data, headers={"Content-Type": "application/json"})
+            try:
+                urllib.request.urlopen(req, timeout=5)
+            except urllib.error.HTTPError as e:
+                self.assertEqual(e.code, 400)
+                body = json.loads(e.read().decode())
+                self.assertTrue(body.get("fallback"))
+
+            # 4. Test /api/stt missing key (triggers fallback response)
+            req_data = b"dummy audio content"
+            req = urllib.request.Request(f"http://127.0.0.1:{port}/api/stt", data=req_data, headers={"x-api-key": "", "Content-Type": "audio/webm"})
+            try:
+                urllib.request.urlopen(req, timeout=5)
+            except urllib.error.HTTPError as e:
+                self.assertEqual(e.code, 400)
+                body = json.loads(e.read().decode())
+                self.assertTrue(body.get("fallback"))
+
+        finally:
+            proc.terminate()
+            try:
+                proc.communicate(timeout=5)
+            except Exception:
+                proc.kill()
+
 if __name__ == "__main__":
     unittest.main()

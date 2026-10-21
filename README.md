@@ -115,6 +115,14 @@ interview data. Microphone and speech support depend on the browser; recognition
 may use its speech provider. Do not dictate confidential material without
 checking that provider's privacy behavior.
 
+Optional voice settings preserve the upstream OpenAI/Groq transcription and
+OpenAI/ElevenLabs speech choices with browser-voice fallback. API keys remain
+in tab memory and are excluded from session files and local storage. Explicit
+voice use sends audio or text to the selected provider and may incur charges.
+The local proxy is origin-restricted and caps uploaded audio at 5 MiB.
+Provider requests are covered with mocked tests; actual credentials, audio quality
+and provider availability have not been tested in this audit.
+
 For a local container:
 
 ```bash
