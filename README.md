@@ -1,13 +1,12 @@
-# Socratic GTM Strategist for AI Startups (v3.0 - Full-Spectrum OS)
+# Socratic GTM Strategist for AI Startups (v3.0)
+
+[![License: Apache-2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![Protocol: MCP](https://img.shields.io/badge/Protocol-MCP-green.svg)](https://modelcontextprotocol.io/)
+[![Platform Compatibility](https://img.shields.io/badge/Compatible-Codex%20%7C%20Claude%20Code%20%7C%20Cursor%20%7C%20VS%20Code%20%7C%20OpenCode%20%7C%20Antigravity-purple.svg)](#-universal-platform-compatibility)
 
 An elite AI Startup Strategy Partner, Socratic Advisor, and GTM Operating System designed to ruthlessly but constructively de-risk a founder's Go-To-Market (GTM) strategy before building unscalable or indefensible products.
 
-Version 3.0 integrates **Context Engineering** state management with **5 production-grade execution modules**:
-1. 📊 **Interactive GTM Risk Radar & Margin Collapse Simulator** (`gtm_simulator.html`)
-2. 🕵️ **Live Incumbent Reconnaissance** (Automated competitive intelligence)
-3. ⚔️ **Adversarial Stress Test Modes** (`/stress-test ciso` and `/stress-test vc`)
-4. 🚀 **Executable Sprint Backlog Export** (Importable CSV/JSON for Linear, Jira & GitHub)
-5. 🎙️ **Investor Pitch Deck Narrative Generator** (`GTM_PITCH_DECK.md`)
+Version 3.0 provides full **Universal Environment Compatibility** (Codex, Claude Code, Cursor, VS Code, OpenCode, and Antigravity) via both **CLI** and **Model Context Protocol (MCP)** stdio integration.
 
 ---
 
@@ -25,32 +24,87 @@ AI products face unique market dynamics that render traditional B2B SaaS playboo
 
 ## 🛠️ The 5 Operational Modules
 
-### 1. Interactive Risk Radar & Margin Collapse Simulator
-* **Script:** [`scripts/generate_dashboard.py`](./scripts/generate_dashboard.py)
-* **Output:** Standalone responsive dark-mode HTML file (`gtm_simulator.html`) with:
-  * Dynamic **8-Vector Radar (Spider) Chart** plotting your startup's moats and vulnerabilities.
-  * Real-time **AI Unit Economics Calculator**: Sliders for token counts, pricing, task frequencies, and user accounts that dynamically graphs Gross Margin % and triggers red alerts when margins drop below healthy software thresholds.
+| # | Module | What It Does | Tool / CLI Command |
+| :---: | :--- | :--- | :--- |
+| **1** | **Interactive GTM Radar & Margin Simulator** | Standalone dark-mode HTML dashboard featuring an **8-Vector Radar (Spider) Chart** and a **Live AI Unit Economics Calculator** with sliders for token costs, pricing, and tasks/day with dynamic margin health alerts. | `python cli.py simulate` |
+| **2** | **Live Incumbent Reconnaissance** | Automated competitive intelligence query hook in Phase 2 (`"[Incumbent] AI agent announcements 2026"`). Extracts real product releases to challenge founder assumptions. | `python cli.py recon --incumbent <Name>` |
+| **3** | **Adversarial Stress Test Modes** | On-demand subcommands: <br>• `/stress-test ciso` (Fortune 500 CISO interrogation on data egress, CMEK, SOC2)<br>• `/stress-test vc` (Tier-1 VC partner grilling on churn, margins, and lab commoditization). | `python cli.py stress-test --mode <ciso\|vc>` |
+| **4** | **Executable Sprint Backlog Export** | Generates importable CSV and JSON backlogs for Linear, Jira, GitHub Issues, and Notion mapping Sprint 0 (Telemetry), Sprint 1 (Webhooks/Routines), and Sprint 2 (Metering/Moats). | `python cli.py export` |
+| **5** | **Investor Pitch Deck Narrative Generator** | Transforms the strategic review into a 5-slide Seed/Series A narrative copy (The Wedge, The Agentic Shift, Incumbent Bypass, AI Economics, Data Gravity). | `python cli.py pitch-deck` |
 
-### 2. Live Incumbent Reconnaissance
-* **Script:** [`scripts/incumbent_recon.py`](./scripts/incumbent_recon.py)
-* **Function:** In Phase 2, queries real-time product updates and announcements for named competitors (`"[Incumbent] AI agent announcements 2026"`). 
-* **Value:** Protects founders from building features that incumbents already shipped or announced last quarter.
+---
 
-### 3. Adversarial Role-Playing Inquisitions
-* **Script:** [`scripts/stress_test_simulator.py`](./scripts/stress_test_simulator.py)
-* **Subcommands:**
-  * `/stress-test ciso`: Grills the founder from the perspective of an enterprise Fortune 500 CISO on data egress, tenant isolation, prompt injection blast radiuses, and SOC2 readiness.
-  * `/stress-test vc`: Grills the founder as a Tier-1 Venture Partner on unit economics, churn rate physics, TAM, and defensibility against foundation lab updates.
+## 🌐 Universal Platform Compatibility
 
-### 4. Executable GTM Runbook Export (Linear / Jira / GitHub)
-* **Script:** [`scripts/export_issues.py`](./scripts/export_issues.py)
-* **Outputs:** `gtm_sprint_issues.csv` and `gtm_sprint_issues.json`
-* **Value:** Instantly converts strategic advice into prioritized engineering tickets (Sprint 0 Telemetry, Sprint 1 Bi-Directional Webhooks, Sprint 2 Hybrid Metering) with acceptance criteria ready to import directly into your project tracker.
+### 1. Claude Code & Claude Desktop (MCP & Instructions)
+Claude Code automatically ingests [`CLAUDE.md`](./CLAUDE.md).
 
-### 5. Investor Pitch Deck Narrative Generator
-* **Script:** [`scripts/generate_pitch_deck.py`](./scripts/generate_pitch_deck.py)
-* **Output:** `GTM_PITCH_DECK.md`
-* **Value:** Translates the validated strategy into 5 battle-tested slide scripts for Seed/Series A fundraising (The Wedge, The Agentic Shift, Incumbent Bypass, AI Economics, Data Gravity).
+To connect as an **MCP Server** in Claude Desktop or Claude Code, add this to your `claude_desktop_config.json`:
+```json
+{
+  "mcpServers": {
+    "socratic-gtm": {
+      "command": "python",
+      "args": ["/path/to/socratic-gtm-strategist/cli.py", "mcp"]
+    }
+  }
+}
+```
+
+### 2. Cursor (Rules & MCP)
+* **Rules:** Automatically loaded via [`.cursorrules`](./.cursorrules).
+* **MCP Integration:** Add to `.cursor/mcp.json` or your Cursor Settings:
+```json
+{
+  "mcpServers": {
+    "socratic-gtm": {
+      "command": "python",
+      "args": ["cli.py", "mcp"]
+    }
+  }
+}
+```
+
+### 3. VS Code & GitHub Copilot
+* **Copilot Instructions:** Built-in via [`.github/copilot-instructions.md`](./.github/copilot-instructions.md).
+* **Tasks:** Run `Ctrl+Shift+P` -> `Tasks: Run Task` to trigger any GTM module directly via [`.vscode/tasks.json`](./.vscode/tasks.json).
+* **Roo / Cline / MCP Extensions:** Point to `python cli.py mcp` in your extension's MCP configuration.
+
+### 4. OpenCode
+* Uses [`opencode.json`](./opencode.json) for automatic tool discovery, skill mounting, and MCP orchestration.
+
+### 5. OpenAI Codex & Custom Agents
+* Ingests [`CODEX.md`](./CODEX.md) or [`SKILL.md`](./SKILL.md) directly for automated agent guidelines and tool boundaries.
+
+### 6. Antigravity & Gemini CLI
+```bash
+# Global skills installation:
+git clone https://github.com/zrk222/socratic-gtm-strategist.git ~/.gemini/config/skills/socratic-gtm-strategist
+```
+
+---
+
+## 💻 Unified CLI Usage
+
+```bash
+# 1. Generate the Interactive HTML Simulator & Risk Radar:
+python cli.py simulate --project "MyAI" --scores "85,60,90,75,80,70,85,90" --output gtm_simulator.html
+
+# 2. Run Live Competitor Recon:
+python cli.py recon --incumbent "Salesforce" --domain "Customer Support AI"
+
+# 3. Generate a CISO or VC Adversarial Defense Brief:
+python cli.py stress-test --mode ciso --startup "MyAI"
+
+# 4. Export Linear / Jira Sprint Backlog:
+python cli.py export --csv sprint_issues.csv
+
+# 5. Generate 5-Slide Pitch Deck Copy:
+python cli.py pitch-deck --startup "MyAI"
+
+# 6. Run the MCP Server over stdio:
+python cli.py mcp
+```
 
 ---
 
@@ -67,32 +121,22 @@ AI products face unique market dynamics that render traditional B2B SaaS playboo
 
 ---
 
-## 🔄 The 8-Phase Socratic Framework
-
-| Phase | Strategic Vector | Core Objective | Gating Threshold |
-| :--- | :--- | :--- | :---: |
-| **Phase 1** | **Interaction Frequency & WoM Physics** | Test for the annual/cyclical trap & organic virality | $\ge 85\%$ |
-| **Phase 2** | **"Ticking Clock" vs. Incumbent Distribution** | Live recon on competitor releases & architectural wedge | $\ge 85\%$ |
-| **Phase 3** | **Adoption Vector (PLG vs. CISO Governance)** | Ensure end-user wedge precedes compliance bloat | $\ge 85\%$ |
-| **Phase 4** | **Expansion Strategy** | De-risk vertical specialization via horizontal discovery | $\ge 85\%$ |
-| **Phase 5** | **Value Architecture** | Shift reactive prompt engineering to proactive routines | $\ge 85\%$ |
-| **Phase 6** | **Defensive Layer** | Ensure model neutrality & customer context ownership | $\ge 85\%$ |
-| **Phase 7** | **Pricing & Value Capture** | Align pricing models with autonomous work economics | $\ge 85\%$ |
-| **Phase 8** | **Integration & Data Gravity** | Establish bi-directional sync and switching barriers | $\ge 85\%$ |
-| **Phase 9** | **Full 5-Piece Deliverable Synthesis** | Playbook, HTML Simulator, Sprint Issues, Pitch Deck | Multi-Artifact |
-
----
-
 ## 📦 Repository Structure
 
 ```text
 socratic-gtm-strategist/
-├── SKILL.md                          # Full v3.0 agent system skill with module hooks
-├── skills/
-│   └── socratic-gtm-strategist/
-│       └── SKILL.md                  # Package distribution mirror
-├── README.md                         # Complete documentation
+├── cli.py                            # Unified CLI & MCP entrypoint
+├── mcp_server.py                     # Standard JSON-RPC 2.0 MCP Server (stdio)
+├── mcp.json                          # Standard MCP client configuration
+├── CLAUDE.md                         # Claude Code CLI runtime instructions
+├── CODEX.md                          # OpenAI Codex runtime instructions
+├── .cursorrules                      # Cursor AI development rules
+├── opencode.json                     # OpenCode plugin & skill manifest
+├── .github/copilot-instructions.md   # GitHub Copilot / VS Code instructions
+├── .vscode/tasks.json                # VS Code one-click execution tasks
+├── SKILL.md                          # Full v3.0 Socratic System Skill
 ├── LICENSE                           # Apache License 2.0
+├── README.md                         # Universal documentation
 ├── scripts/
 │   ├── generate_dashboard.py         # Generates interactive HTML Radar & Margin Simulator
 │   ├── incumbent_recon.py            # Automated competitor AI intelligence recon
@@ -108,34 +152,6 @@ socratic-gtm-strategist/
 
 ---
 
-## 🚀 Usage
-
-### 1. Run in Antigravity or Gemini CLI
-```bash
-# Global installation:
-git clone https://github.com/zrk222/socratic-gtm-strategist.git ~/.gemini/config/skills/socratic-gtm-strategist
-```
-
-### 2. Standalone Python CLI Tooling
-```bash
-# Generate the interactive HTML Radar & Margin Simulator:
-python scripts/generate_dashboard.py --project "MyAI" --scores "85,60,90,75,80,70,85,90" --output gtm_simulator.html
-
-# Run live incumbent recon:
-python scripts/incumbent_recon.py --incumbent "Salesforce" --domain "Customer Support AI"
-
-# Generate an Adversarial CISO or VC Brief:
-python scripts/stress_test_simulator.py --mode ciso --startup "MyAI"
-
-# Export Linear / Jira Sprint Backlog:
-python scripts/export_issues.py --csv sprint_issues.csv
-
-# Generate 5-Slide Pitch Deck Copy:
-python scripts/generate_pitch_deck.py --startup "MyAI"
-```
-
----
-
 ## 📄 License
 
-Apache License 2.0. See [LICENSE](./LICENSE) for details.
+Licensed under the Apache License, Version 2.0. See [LICENSE](./LICENSE) for details.

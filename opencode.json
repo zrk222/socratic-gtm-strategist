@@ -1,0 +1,24 @@
+{
+  "name": "socratic-gtm-strategist",
+  "version": "3.0.0",
+  "description": "Socratic GTM Strategist for AI Startups (v3.0) - Socratic advisor & 5-module execution toolkit",
+  "license": "Apache-2.0",
+  "entrypoint": "cli.py",
+  "mcp": {
+    "command": "python",
+    "args": ["cli.py", "mcp"]
+  },
+  "skills": [
+    {
+      "name": "socratic-gtm-strategist",
+      "path": "SKILL.md"
+    }
+  ],
+  "commands": {
+    "simulate": "python cli.py simulate",
+    "recon": "python cli.py recon",
+    "stress-test": "python cli.py stress-test",
+    "export": "python cli.py export",
+    "pitch-deck": "python cli.py pitch-deck"
+  }
+}

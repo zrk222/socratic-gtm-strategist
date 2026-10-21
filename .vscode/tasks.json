@@ -1,0 +1,48 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "GTM: Generate Simulator & Radar",
+      "type": "shell",
+      "command": "python cli.py simulate",
+      "problemMatcher": []
+    },
+    {
+      "label": "GTM: Run Incumbent Recon",
+      "type": "shell",
+      "command": "python cli.py recon --incumbent Salesforce",
+      "problemMatcher": []
+    },
+    {
+      "label": "GTM: Adversarial Stress Test (CISO)",
+      "type": "shell",
+      "command": "python cli.py stress-test --mode ciso",
+      "problemMatcher": []
+    },
+    {
+      "label": "GTM: Adversarial Stress Test (VC)",
+      "type": "shell",
+      "command": "python cli.py stress-test --mode vc",
+      "problemMatcher": []
+    },
+    {
+      "label": "GTM: Export Sprint Backlog (CSV/JSON)",
+      "type": "shell",
+      "command": "python cli.py export",
+      "problemMatcher": []
+    },
+    {
+      "label": "GTM: Generate Pitch Deck Narrative",
+      "type": "shell",
+      "command": "python cli.py pitch-deck",
+      "problemMatcher": []
+    },
+    {
+      "label": "GTM: Start MCP Server (stdio)",
+      "type": "shell",
+      "command": "python cli.py mcp",
+      "isBackground": true,
+      "problemMatcher": []
+    }
+  ]
+}
