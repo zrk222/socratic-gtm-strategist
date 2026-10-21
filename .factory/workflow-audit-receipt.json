@@ -3,13 +3,13 @@
   "project_id": "socratic-gtm-strategist/audit-hardening",
   "state": "PASS",
   "contract_sha256": "97293c8384fb1c5d5b3f849a77b1813a361e0d1379cad7003907018576f244a1",
-  "observations_sha256": "d2d60e171c7eb1ebd614ff7cd1ccf16fed7ec347f65fed22cda6510e13de5216",
+  "observations_sha256": "08c50c9c466c40786153f22e3d901e310230b0c29002a9f936fcd614ddfd011b",
   "candidate_sha256": "cf35f49e531218569ed3765808bedbf290cf48e9197831105b3f91e634d71e49",
   "checks": 19,
   "inapplicability_evidence": {},
   "resource_usage": {
-    "artifact_references": 70,
-    "bytes_hashed": 683704
+    "artifact_references": 72,
+    "bytes_hashed": 684654
   },
   "errors": [],
   "agent_actions": [],
@@ -32,5 +32,5 @@
     "No project command or provider is executed.",
     "No approval, certification or deployment authority."
   ],
-  "receipt_sha256": "3d4a344b0888be24cb36dccc5d8c71ecdda9f4e649444a8bfe9f6eeeec7482f6"
+  "receipt_sha256": "25e2b847d7d04252ad93c18766929371b5d0845adc2ff21e5f0d20ee94db73f2"
 }

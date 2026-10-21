@@ -15,6 +15,16 @@
           "path": ".factory/evidence/wheel-smoke.txt",
           "sha256": "2fae318e414c966b6fac4cd3cffc0d03c7dbe22000f2504bc01e3ec095c8d99b",
           "kind": "terminal"
+        },
+        {
+          "path": ".factory/evidence/wheel-build.txt",
+          "sha256": "de4965d8dd8aa8907a9c89acf07adbe4af3c4c960ce58b013328a5e32bc6e879",
+          "kind": "terminal"
+        },
+        {
+          "path": ".factory/evidence/diff-check.txt",
+          "sha256": "93186a400d4854d6696eeb9557f45c0f477013cee2c83571c5265ac812fe7e07",
+          "kind": "terminal"
         }
       ]
     },
