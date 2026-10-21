@@ -1,6 +1,8 @@
-# Socratic GTM Strategist for AI Startups (v2.0)
+# Socratic GTM Strategist for AI Startups (v2.1 - Context-Engineered)
 
 An elite AI Startup Strategy Partner and Socratic Advisor designed to ruthlessly but constructively de-risk a founder's Go-To-Market (GTM) strategy before building unscalable or indefensible products.
+
+Version 2.1 incorporates **Context Engineering** principles (pioneered by Dex Horthy and Carlos Kelkboom) to ensure high-fidelity execution, eliminate context degradation across multi-turn dialogues, and enforce quantitative confidence gating.
 
 ---
 
@@ -13,6 +15,19 @@ AI products face unique market dynamics that render traditional B2B SaaS playboo
 - Incumbent distribution advantages.
 
 **Socratic GTM Strategist** acts as an uncompromising peer-level strategic advisor that conducts a structured, 8-phase Socratic dialogue with the founder, evaluates answers against strict red/green flags, and synthesizes a production-grade **Customized AI GTM Playbook & Risk Matrix**.
+
+---
+
+## 🧠 Context Engineering Enhancements (v2.1)
+
+1. **Context State Accumulator (`<internal_monologue>`):**
+   Maintains a formal, structured state object across all conversational turns. Prevents "context loosening" where long transcripts cause models to forget early nuances by Phase 8.
+2. **Quantitative Confidence Gating ($\ge 85\%$ Threshold):**
+   Replaces subjective advancement with an operational score gate. The advisor will not advance to the next phase without concrete mechanics (APIs, DAU mechanisms, integration depth).
+3. **Open-Mode Execution Fence:**
+   Strict separation between diagnostic discovery and execution. File creation and raw playbook dumps are locked behind the completion of all 8 phases to prevent premature generation.
+4. **Artifact Containment:**
+   The final deliverable is written cleanly to `GTM_PLAYBOOK.md` rather than dumped into the conversational window, preserving context cleanliness for subsequent iterative refinement.
 
 ---
 
@@ -31,17 +46,17 @@ AI products face unique market dynamics that render traditional B2B SaaS playboo
 
 ## 🔄 The 8-Phase Socratic Framework
 
-| Phase | Strategic Vector | Core Objective |
-| :--- | :--- | :--- |
-| **Phase 1** | **Interaction Frequency & WoM Physics** | Test for the annual/cyclical trap & organic virality |
-| **Phase 2** | **"Ticking Clock" vs. Incumbent Distribution** | Pressure-test durability against incumbent feature copies |
-| **Phase 3** | **Adoption Vector (PLG vs. CISO Governance)** | Ensure end-user wedge precedes compliance bloat |
-| **Phase 4** | **Expansion Strategy** | De-risk vertical specialization via horizontal discovery |
-| **Phase 5** | **Value Architecture** | Shift reactive prompt engineering to proactive routines |
-| **Phase 6** | **Defensive Layer** | Ensure model neutrality & context ownership |
-| **Phase 7** | **Pricing & Value Capture** | Align pricing models with autonomous work economics |
-| **Phase 8** | **Integration & Data Gravity** | Establish bi-directional sync and switching barriers |
-| **Phase 9** | **Final Playbook Deliverable** | Auto-generate the customized Playbook, Matrix & Stress Test |
+| Phase | Strategic Vector | Core Objective | Confidence Gate |
+| :--- | :--- | :--- | :---: |
+| **Phase 1** | **Interaction Frequency & WoM Physics** | Test for the annual/cyclical trap & organic virality | $\ge 85\%$ |
+| **Phase 2** | **"Ticking Clock" vs. Incumbent Distribution** | Pressure-test durability against incumbent feature copies | $\ge 85\%$ |
+| **Phase 3** | **Adoption Vector (PLG vs. CISO Governance)** | Ensure end-user wedge precedes compliance bloat | $\ge 85\%$ |
+| **Phase 4** | **Expansion Strategy** | De-risk vertical specialization via horizontal discovery | $\ge 85\%$ |
+| **Phase 5** | **Value Architecture** | Shift reactive prompt engineering to proactive routines | $\ge 85\%$ |
+| **Phase 6** | **Defensive Layer** | Ensure model neutrality & context ownership | $\ge 85\%$ |
+| **Phase 7** | **Pricing & Value Capture** | Align pricing models with autonomous work economics | $\ge 85\%$ |
+| **Phase 8** | **Integration & Data Gravity** | Establish bi-directional sync and switching barriers | $\ge 85\%$ |
+| **Phase 9** | **Final Playbook Deliverable** | Auto-generate the customized Playbook, Matrix & Stress Test to file | Synthesis |
 
 ---
 
