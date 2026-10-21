@@ -327,7 +327,7 @@ def generate_dashboard(project_name, scores, notes, output_path):
     os.makedirs(os.path.dirname(os.path.abspath(output_path)), exist_ok=True)
     with open(output_path, "w", encoding="utf-8") as f:
         f.write(html)
-    print(f"Dashboard successfully generated at: {output_path}")
+    print(f"Dashboard successfully generated at: {output_path}", file=sys.stderr)
 
 def main():
     parser = argparse.ArgumentParser(description="Generate GTM Risk Radar & Margin Simulator")

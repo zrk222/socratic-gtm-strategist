@@ -1,0 +1,14 @@
+# Auto-normalize line endings
+* text=auto eol=lf
+
+# Force LF on scripts, configs, and documentation
+*.py text eol=lf
+*.md text eol=lf
+*.json text eol=lf
+*.html text eol=lf
+*.csv text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+.gitignore text eol=lf
+.cursorrules text eol=lf
+.gitattributes text eol=lf

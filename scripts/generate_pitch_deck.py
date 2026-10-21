@@ -57,7 +57,7 @@ def generate_pitch_deck(startup_name="My AI Startup", output_path="GTM_PITCH_DEC
     os.makedirs(os.path.dirname(os.path.abspath(output_path)), exist_ok=True)
     with open(output_path, "w", encoding="utf-8") as f:
         f.write(deck)
-    print(f"[+] Pitch Deck Slide Copy generated at: {output_path}")
+    print(f"[+] Pitch Deck Slide Copy generated at: {output_path}", file=sys.stderr)
 
 def main():
     parser = argparse.ArgumentParser(description="Generate Investor Pitch Deck Slides")

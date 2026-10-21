@@ -47,7 +47,7 @@ def search_incumbent(query, max_results=5):
     return results
 
 def generate_recon_report(incumbent, product_domain, output_path=None):
-    print(f"[*] Running Incumbent Intelligence Recon on: {incumbent} ({product_domain})...")
+    print(f"[*] Running Incumbent Intelligence Recon on: {incumbent} ({product_domain})...", file=sys.stderr)
     findings = search_incumbent(f"{incumbent} {product_domain}")
 
     report = f"""# INCUMBENT INTELLIGENCE RECON: {incumbent.upper()}
@@ -74,7 +74,7 @@ def generate_recon_report(incumbent, product_domain, output_path=None):
         os.makedirs(os.path.dirname(os.path.abspath(output_path)), exist_ok=True)
         with open(output_path, "w", encoding="utf-8") as f:
             f.write(report)
-        print(f"[+] Recon report written to: {output_path}")
+        print(f"[+] Recon report written to: {output_path}", file=sys.stderr)
 
     return report
 

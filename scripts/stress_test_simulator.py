@@ -86,7 +86,7 @@ def generate_adversarial_brief(mode, startup_name, output_path=None):
         os.makedirs(os.path.dirname(os.path.abspath(output_path)), exist_ok=True)
         with open(output_path, "w", encoding="utf-8") as f:
             f.write(brief)
-        print(f"[+] Adversarial Brief generated at: {output_path}")
+        print(f"[+] Adversarial Brief generated at: {output_path}", file=sys.stderr)
 
     return brief
 

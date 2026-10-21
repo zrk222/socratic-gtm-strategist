@@ -194,7 +194,26 @@ def main():
 
         try:
             req = json.loads(line)
-        except Exception:
+        except Exception as e:
+            send_response({
+                "jsonrpc": "2.0",
+                "id": None,
+                "error": {
+                    "code": -32700,
+                    "message": f"Parse error: {str(e)}"
+                }
+            })
+            continue
+
+        if not isinstance(req, dict):
+            send_response({
+                "jsonrpc": "2.0",
+                "id": None,
+                "error": {
+                    "code": -32600,
+                    "message": "Invalid Request: root must be a JSON object"
+                }
+            })
             continue
 
         msg_id = req.get("id")
@@ -227,8 +246,28 @@ def main():
                 }
             })
         elif method == "tools/call":
+            if not isinstance(params, dict) or "name" not in params:
+                send_response({
+                    "jsonrpc": "2.0",
+                    "id": msg_id,
+                    "error": {
+                        "code": -32602,
+                        "message": "Invalid params: 'name' is required"
+                    }
+                })
+                continue
             tool_name = params.get("name")
             args = params.get("arguments", {})
+            if not isinstance(args, dict):
+                send_response({
+                    "jsonrpc": "2.0",
+                    "id": msg_id,
+                    "error": {
+                        "code": -32602,
+                        "message": "Invalid params: 'arguments' must be an object"
+                    }
+                })
+                continue
             try:
                 result_text = handle_tool_call(tool_name, args)
                 send_response({

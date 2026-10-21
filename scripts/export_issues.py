@@ -72,12 +72,12 @@ def export_issues(issues, output_csv="gtm_sprint_issues.csv", output_json="gtm_s
         writer.writeheader()
         for issue in issues:
             writer.writerow(issue)
-    print(f"[+] Linear/Jira CSV exported to: {output_csv}")
+    print(f"[+] Linear/Jira CSV exported to: {output_csv}", file=sys.stderr)
 
     # Export JSON
     with open(output_json, "w", encoding="utf-8") as f:
         json.dump(issues, f, indent=2)
-    print(f"[+] JSON backlog exported to: {output_json}")
+    print(f"[+] JSON backlog exported to: {output_json}", file=sys.stderr)
 
 def main():
     parser = argparse.ArgumentParser(description="Export GTM Runbook Issues")
