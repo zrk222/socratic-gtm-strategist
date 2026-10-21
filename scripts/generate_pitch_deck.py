@@ -1,71 +1,63 @@
 #!/usr/bin/env python3
-"""
-Investor Pitch Deck Slide Copy Generator
-Formats the strategic outputs of the Socratic review into clean,
-investor-ready slides for Seed and Series A pitch decks.
-"""
-
-import sys
-import os
+"""Generate an investor narrative template without inventing company facts."""
 import argparse
+from html import escape
+import os
+import sys
+
 
 def generate_pitch_deck(startup_name="My AI Startup", output_path="GTM_PITCH_DECK.md"):
-    deck = f"""# {startup_name.upper()}: GO-TO-MARKET & MOAT DECK COPY
-*5-Slide Series A / Seed Narrative Template*
+    if not isinstance(startup_name, str) or not startup_name.strip():
+        raise ValueError("startup_name must be a non-empty string")
+    deck = f"""# {escape(startup_name.upper())}: GO-TO-MARKET & MOAT DECK COPY
+*5-Slide Series A / Seed Narrative Template — EVIDENCE REQUIRED*
 
----
+Status: Draft template. No company traction, security controls, market size or
+financial outcome has been verified. Replace each field with a sourced fact or
+label it as a hypothesis before sharing.
 
-## SLIDE 1: THE WEDGE (High-Frequency Daily Interaction)
-* **Headline:** *"Why Legacy Solutions Fail: The Annual Trap vs. Daily Workflow Pull"*
-* **The Problem:** Incumbents are reactive databases and annual review tools. Users log in once a quarter under mandate, leading to zero organic advocacy.
-* **Our Wedge:** We enter through a high-frequency, daily-active practitioner utility. By delivering a measurable "magic moment" in under 60 seconds, we turn end-users into viral internal champions.
-* **Key Metric:** Daily Active Usage (DAU/MAU) ratio > 55%; 80% organic word-of-mouth adoption across teams.
+## SLIDE 1: THE WEDGE
+- Target customer and costly problem: EVIDENCE REQUIRED.
+- Current alternative and reason to switch: EVIDENCE REQUIRED.
+- Observed activation, retention and acquisition: EVIDENCE REQUIRED.
+- Include sample size, cohort, measurement window and source for each metric.
 
----
+## SLIDE 2: THE VALUE DELIVERY
+- Customer workflow and expected outcome: EVIDENCE REQUIRED.
+- User control, execution permissions and failure recovery: EVIDENCE REQUIRED.
+- Measured baseline and change in time, quality or cost: EVIDENCE REQUIRED.
 
-## SLIDE 2: THE AGENTIC SHIFT (Proactive Routines vs. Incumbent Chat-Boxes)
-* **Headline:** *"From Prompt Fatigue to Autonomous Background ROI"*
-* **The Incumbent Fallacy:** Incumbents slapped an AI text-box into their existing UI, requiring users to remember to type prompts.
-* **Our Architecture:** We deploy continuous, asynchronous background agents that proactively inspect, audit, and remediate issues while the user sleeps.
-* **The Moat:** We sell completed outcomes, not empty text fields.
+## SLIDE 3: INCUMBENT ALTERNATIVES & DISTRIBUTION
+- Dated primary-source comparison: EVIDENCE REQUIRED.
+- Acquisition channel and measured conversion: EVIDENCE REQUIRED.
+- Defensibility hypothesis and a falsifying experiment: EVIDENCE REQUIRED.
 
----
+## SLIDE 4: PRICING & UNIT ECONOMICS
+- Pricing hypothesis and willingness-to-pay evidence: EVIDENCE REQUIRED.
+- Measured inference, infrastructure, support and other variable costs: EVIDENCE REQUIRED.
+- Gross margin and sensitivity to usage: EVIDENCE REQUIRED.
+- Distinguish modeled scenarios from actual billed results.
 
-## SLIDE 3: INCUMBENT BYPASS & THE TICKING CLOCK
-* **Headline:** *"Outrunning Incumbent Distribution with System-of-Record Gravity"*
-* **Why Incumbents Can't Copy This:** Incumbents are handcuffed by legacy data silos, complex procurement channels, and seat-license revenue models that penalize automation.
-* **Our Advantage:** We deploy 10x faster via lightweight browser/API hooks and embed bi-directionally into their existing tech stack, turning incumbent databases into our raw input pipe.
+## SLIDE 5: INTEGRATIONS, RETENTION & CUSTOMER CONTROL
+- Integrations and permission boundaries actually implemented: EVIDENCE REQUIRED.
+- Evidence of recurring customer value: EVIDENCE REQUIRED.
+- Export, deletion and switching process: EVIDENCE REQUIRED.
 
----
-
-## SLIDE 4: THE MODERN AI PRICING PARADOX
-* **Headline:** *"Alignment with Outcomes: Defeating the Per-Seat Margin Trap"*
-* **The Shift:** Traditional SaaS charges per seat—which directly conflicts with AI agents that reduce needed headcount.
-* **Our Model:** Hybrid platform fee + metered value units (tasks solved, hours saved, or % of cost recovery). 
-* **The Economics:** 78%+ gross margins maintained via dynamic multi-model routing (SLMs for routine extraction, frontier models for complex reasoning).
-
----
-
-## SLIDE 5: DATA GRAVITY & SWITCHING COSTS
-* **Headline:** *"The Integration Moat: Why Rip-and-Replace is Impossible"*
-* **Accumulated Context:** As our agent operates, it indexes company-specific operational patterns, domain vocabulary, and bi-directional workflow connections.
-* **The Moat:** Disconnecting our agent breaks downstream automations in their CRM, ERP, and Slack workflows. Switching costs compound with every single execution.
-
----
-*Generated by Socratic GTM Strategist (v3.0)*
+Generated by Socratic GTM Strategist v3.0. Review required.
 """
     os.makedirs(os.path.dirname(os.path.abspath(output_path)), exist_ok=True)
-    with open(output_path, "w", encoding="utf-8") as f:
-        f.write(deck)
-    print(f"[+] Pitch Deck Slide Copy generated at: {output_path}", file=sys.stderr)
+    with open(output_path, "w", encoding="utf-8") as stream:
+        stream.write(deck)
+    print(f"Pitch template written to: {output_path}", file=sys.stderr)
+
 
 def main():
-    parser = argparse.ArgumentParser(description="Generate Investor Pitch Deck Slides")
-    parser.add_argument("--startup", default="My AI Startup", help="Startup name")
-    parser.add_argument("--output", default="GTM_PITCH_DECK.md", help="Output file path")
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--startup", default="My AI Startup")
+    parser.add_argument("--output", default="GTM_PITCH_DECK.md")
     args = parser.parse_args()
-
     generate_pitch_deck(args.startup, args.output)
+
 
 if __name__ == "__main__":
     main()

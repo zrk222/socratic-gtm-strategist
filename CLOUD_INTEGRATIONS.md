@@ -76,26 +76,13 @@ crew.kickoff()
 
 ---
 
-## 4. Cloud Container Deployment (1-Click)
+## 4. Deployment boundary
 
-### Run with Docker locally or on a cloud VM:
-```bash
-docker build -t socratic-gtm .
-docker run -p 8000:8000 socratic-gtm
-```
+The included HTTP adapter is a local, single-user tool without authentication.
+Public cloud deployment is not supported by this implementation. Do not expose
+it with an unauthenticated cloud service. Use the loopback-published container
+example in README.md for local use.
 
-### Deploy to GCP Cloud Run:
-```bash
-gcloud run deploy socratic-gtm \
-  --source . \
-  --port 8000 \
-  --allow-unauthenticated
-```
-
-### Deploy to Railway / Render / Fly.io:
-Point your Railway/Render service to the GitHub repository. It will automatically detect the `Dockerfile` and expose port `8000`.
-
-Once deployed, your cloud agents can access:
-- **Interactive UI Dashboard with STT/TTS:** `https://your-app.com/ui/index.html`
-- **OpenAPI Schema:** `https://your-app.com/openapi.json`
-- **REST Endpoints:** `https://your-app.com/api/chat`, `https://your-app.com/api/simulate`, etc.
+LangChain, LangGraph and CrewAI examples above are illustrative integrations;
+their provider calls, costs, versions and host behavior are not covered by
+the standard-library regression suite.

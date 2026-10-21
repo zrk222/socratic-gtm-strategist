@@ -11,4 +11,4 @@ RUN pip install --no-cache-dir -e .
 EXPOSE 8000
 
 # Run dashboard web server and cloud API
-CMD ["python", "server.py", "8000"]
+CMD ["python", "server.py", "8000", "--host", "0.0.0.0", "--no-browser"]

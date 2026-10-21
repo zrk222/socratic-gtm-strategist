@@ -1,10 +1,12 @@
 import unittest
+from unittest.mock import patch
 import os
 import sys
 import json
 import subprocess
 import tempfile
 import shutil
+from pathlib import Path
 
 # Add root directory to sys.path
 ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -43,7 +45,8 @@ class TestSocraticGTM(unittest.TestCase):
 
     def test_incumbent_recon(self):
         out = os.path.join(self.test_dir, "test_recon.md")
-        report = generate_recon_report("Salesforce", "CRM AI", out)
+        with patch("urllib.request.urlopen", side_effect=OSError("offline fixture")):
+            report = generate_recon_report("Salesforce", "CRM AI", out)
         self.assertTrue(os.path.exists(out))
         self.assertIn("SALESFORCE", report)
         self.assertIn("Strategic Pressure Points", report)
@@ -158,7 +161,13 @@ class TestSocraticGTM(unittest.TestCase):
         )
         stdout, stderr = proc.communicate(input=mock_inputs, timeout=10)
         self.assertEqual(proc.returncode, 0)
-        self.assertIn("Audit Complete!", stdout)
+        self.assertIn("Interview intake complete.", stdout)
+        playbook = Path(self.test_dir) / "auditco_GTM_PLAYBOOK.md"
+        self.assertTrue(playbook.exists())
+        content = playbook.read_text(encoding="utf-8")
+        for answer in mock_inputs.splitlines()[1:]:
+            self.assertIn(answer, content)
+        self.assertNotIn("Resilience Score", stdout)
         self.assertTrue(os.path.exists(os.path.join(self.test_dir, "auditco_gtm_simulator.html")))
         self.assertTrue(os.path.exists(os.path.join(self.test_dir, "auditco_sprint_issues.csv")))
         self.assertTrue(os.path.exists(os.path.join(self.test_dir, "auditco_GTM_PITCH_DECK.md")))

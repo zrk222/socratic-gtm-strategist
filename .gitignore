@@ -40,3 +40,9 @@ Thumbs.db
 *.log
 .agent/
 .system_generated/
+
+# Local founder data and verification build products
+gtm_outputs/
+.factory/wheels/
+.factory/evidence/browser/
+.prestige/render/

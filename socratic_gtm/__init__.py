@@ -25,7 +25,9 @@ def get_system_prompt() -> str:
     if os.path.exists(prompt_path):
         with open(prompt_path, "r", encoding="utf-8") as f:
             return f.read()
-    return ""
+    installed_prompt = os.path.join(_parent_dir, "skills", "socratic-gtm-strategist", "SKILL.md")
+    with open(installed_prompt, "r", encoding="utf-8") as f:
+        return f.read()
 
 def get_langchain_tools():
     """Return LangChain-compatible structured tool definitions."""
@@ -37,7 +39,7 @@ def get_langchain_tools():
     @tool
     def simulate_radar(project_name: str, scores: list[int], output_path: str = "gtm_simulator.html") -> str:
         """Generate interactive HTML GTM Radar & AI Margin Simulator."""
-        notes = ["Validated." for _ in scores]
+        notes = ["User-supplied scenario; evidence review required." for _ in scores]
         generate_dashboard(project_name, scores, notes, output_path)
         return f"Dashboard generated at {output_path}"
 

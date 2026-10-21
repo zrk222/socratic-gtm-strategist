@@ -1,57 +1,18 @@
-# CLAUDE.md - Socratic GTM Strategist (v3.0)
+# Socratic GTM Strategist adapter
 
-This repository implements the **Socratic GTM Strategist for AI Startups (v3.0)**—an elite AI strategy partner and execution toolkit for de-risking Go-To-Market strategy.
+Read SKILL.md for the eight-phase review and tool descriptions.
+Ask at most two focused questions per turn. Distinguish founder-reported claims,
+sourced facts, hypotheses and unknowns; summarize evidence and next experiments.
 
-## Key Architecture & Philosophy
-1. **8 Core Strategic Laws:**
-   - Interaction Frequency Rule (avoid annual traps; optimize for DAU/daily value)
-   - Ticking Clock on Distribution (outpace incumbent feature copies via novel agentic UX)
-   - Bottom-Up PLG Wedge (avoid the enterprise CISO trap on Day 1; delight practitioners)
-   - Proactive Routines vs. Text-Box Friction (scheduled background audits beat chat prompts)
-   - Horizontal Discovery to Organic Verticalization
-   - Model Neutrality & Context Ownership (multi-model router + CMEK)
-   - The AI Pricing Paradox (seat-based pricing dies; use hybrid task/outcome metering)
-   - Data Gravity Moats (deep bi-directional integrations)
+The Python evaluator is interview intake: REVIEW_REQUIRED with null confidence.
+Never infer strategy quality from word count. Respect a request to skip a phase
+or create an early draft, marking missing evidence.
 
-2. **Execution Guardrails:**
-   - **The Rule of Two:** Max 2 focused questions per turn.
-   - **Confidence Gating ($\ge 85\%$):** Do not advance phases until operational metrics are concrete.
-   - **Open-Mode Execution Fence:** No premature code or document generation during diagnostic phases.
-   - **Artifact Containment:** Write deliverables to files (`GTM_PLAYBOOK.md`, `gtm_simulator.html`, `gtm_sprint_issues.csv`).
+Treat PLG, vertical focus, seat pricing, model choice and automation as contextual
+hypotheses. Do not invent metrics, certifications, controls or generated files.
+Use concise decision summaries instead of requesting hidden internal reasoning.
+Local draft generation does not authorize publishing, scheduling, spending,
+production changes, destructive actions, sensitive access or external messages.
 
-## Available Tools & CLI Commands
-The repository includes a unified Python CLI and MCP server:
-
-```bash
-# Generate the Interactive HTML Radar & Margin Simulator
-python cli.py simulate --project "MyAI" --scores "85,60,90,75,80,70,85,90" --output gtm_simulator.html
-
-# Competitive Intelligence Recon
-python cli.py recon --incumbent "Salesforce" --domain "Customer Support AI"
-
-# Adversarial Stress Testing (CISO or VC mode)
-python cli.py stress-test --mode ciso --startup "MyAI"
-python cli.py stress-test --mode vc --startup "MyAI"
-
-# Export Linear / Jira / GitHub Issues Backlog
-python cli.py export --csv gtm_sprint_issues.csv --json gtm_sprint_issues.json
-
-# Generate Seed/Series A Pitch Deck Narrative Copy
-python cli.py pitch-deck --startup "MyAI" --output GTM_PITCH_DECK.md
-
-# Start the MCP stdio Server
-python cli.py mcp
-```
-
-## Running as an MCP Server
-To use with Claude Code or Claude Desktop, add to your `claude_desktop_config.json`:
-```json
-{
-  "mcpServers": {
-    "socratic-gtm": {
-      "command": "python",
-      "args": ["/absolute/path/to/socratic-gtm-strategist/cli.py", "mcp"]
-    }
-  }
-}
-```
+Run python cli.py --help from a checkout, or socratic-gtm --help after installation.
+The web server is local-only and is not a hosted authenticated service.

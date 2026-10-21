@@ -10,6 +10,8 @@ import sys
 import os
 import json
 import argparse
+import re
+from html import escape as html_escape
 
 HTML_TEMPLATE = """<!DOCTYPE html>
 <html lang="en">
@@ -125,7 +127,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
         <div class="card">
             <div class="card-header">
                 <span>1. 8-Vector GTM Resilience Radar</span>
-                <span id="overallScoreBadge" class="badge badge-green">Overall: 0/100</span>
+                <span id="overallScoreBadge" class="badge badge-yellow">Not assessed</span>
             </div>
             <div class="radar-box">
                 <canvas id="radarChart"></canvas>
@@ -220,36 +222,33 @@ const VECTOR_NOTES = __VECTOR_NOTES_JSON__;
 // Render table
 const tbody = document.getElementById("vectorTableBody");
 let totalScore = 0;
+let assessedCount = 0;
 VECTOR_NAMES.forEach((name, i) => {
-    const s = VECTOR_SCORES[i] || 75;
-    totalScore += s;
-    let badgeClass = s >= 80 ? "badge-green" : (s >= 65 ? "badge-yellow" : "badge-red");
-    let status = s >= 80 ? "Robust Moat" : (s >= 65 ? "Requires Tuning" : "Critical Risk");
-    let note = VECTOR_NOTES[i] || "Verified in Socratic session.";
-
+    const s = VECTOR_SCORES[i] ?? null;
+    if (s !== null) { totalScore += s; assessedCount++; }
     const tr = document.createElement("tr");
-    tr.innerHTML = `
-        <td><strong>${name}</strong></td>
-        <td><span class="badge ${badgeClass}">${s}/100</span></td>
-        <td>${status}</td>
-        <td>${note}</td>
-    `;
+    const values = [name, s === null ? "Not assessed" : s + "/100",
+        s === null ? "Review required" : "User-supplied scenario", VECTOR_NOTES[i]];
+    for (const value of values) {
+        const td = document.createElement("td");
+        td.textContent = value;
+        tr.appendChild(td);
+    }
     tbody.appendChild(tr);
 });
-
-const avgScore = Math.round(totalScore / VECTOR_NAMES.length);
+const avgScore = assessedCount ? Math.round(totalScore / assessedCount) : null;
 const overallBadge = document.getElementById("overallScoreBadge");
-overallBadge.innerText = `Overall: ${avgScore}/100`;
-overallBadge.className = `badge ${avgScore >= 80 ? 'badge-green' : (avgScore >= 65 ? 'badge-yellow' : 'badge-red')}`;
+overallBadge.innerText = avgScore === null ? "Not assessed" : `Scenario average: ${avgScore}/100`;
+overallBadge.className = "badge badge-yellow";
 
 // Render Radar Chart
 const ctx = document.getElementById('radarChart').getContext('2d');
-new Chart(ctx, {
+if (typeof Chart !== 'undefined') new Chart(ctx, {
     type: 'radar',
     data: {
         labels: VECTOR_NAMES,
         datasets: [{
-            label: 'Startup Moat Score',
+            label: 'User-supplied scenario',
             data: VECTOR_SCORES,
             backgroundColor: 'rgba(6, 182, 212, 0.25)',
             borderColor: '#06b6d4',
@@ -320,10 +319,24 @@ recalc();
 """
 
 def generate_dashboard(project_name, scores, notes, output_path):
-    html = HTML_TEMPLATE.replace("__PROJECT_NAME__", project_name)
-    html = html.replace("__VECTOR_SCORES_JSON__", json.dumps(scores))
-    html = html.replace("__VECTOR_NOTES_JSON__", json.dumps(notes))
-
+    if not isinstance(project_name, str) or not project_name.strip() or len(project_name) > 200:
+        raise ValueError("project_name must be a non-empty string of at most 200 characters")
+    if (not isinstance(scores, (list, tuple)) or len(scores) != 8
+            or any(s is not None and (type(s) is not int or not 0 <= s <= 100) for s in scores)):
+        raise ValueError("scores must contain exactly 8 integers from 0 to 100, or null for unassessed")
+    if (not isinstance(notes, (list, tuple)) or len(notes) != 8
+            or any(not isinstance(note, str) or len(note) > 10000 for note in notes)):
+        raise ValueError("notes must contain exactly 8 strings of at most 10000 characters")
+    def safe_json(value):
+        return (json.dumps(value, allow_nan=False).replace("&", "\\u0026")
+                .replace("<", "\\u003c").replace(">", "\\u003e"))
+    replacements = {
+        "__PROJECT_NAME__": html_escape(project_name),
+        "__VECTOR_SCORES_JSON__": safe_json(scores),
+        "__VECTOR_NOTES_JSON__": safe_json(notes),
+    }
+    html = re.sub(r"__(?:PROJECT_NAME|VECTOR_SCORES_JSON|VECTOR_NOTES_JSON)__",
+                  lambda match: replacements[match.group()], HTML_TEMPLATE)
     os.makedirs(os.path.dirname(os.path.abspath(output_path)), exist_ok=True)
     with open(output_path, "w", encoding="utf-8") as f:
         f.write(html)
@@ -337,16 +350,7 @@ def main():
     args = parser.parse_args()
 
     scores = [int(s.strip()) for s in args.scores.split(",")]
-    notes = [
-        "High interaction frequency validated.",
-        "Incumbent distribution counter-measured via novel agentic UX.",
-        "Bottom-up PLG wedge isolated from CISO friction.",
-        "Horizontal power-user discovery mapped to vertical templates.",
-        "Proactive asynchronous background routine established.",
-        "Neutral multi-model router prevents foundation vendor lock-in.",
-        "Hybrid/outcome pricing mitigates margin compression.",
-        "Bi-directional integration establishes high data gravity."
-    ]
+    notes = ["User-supplied scenario; evidence review required."] * 8
     generate_dashboard(args.project, scores, notes, args.output)
 
 if __name__ == "__main__":

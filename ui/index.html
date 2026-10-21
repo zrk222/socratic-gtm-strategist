@@ -42,6 +42,49 @@
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        :root { --focus-color: #67e8f9; --text-color: #f3f4f6; --page-color: #0b0f19; }
+        body { color: #f3f4f6; background: #0b0f19; line-height: 1.6; }
+        button, a { min-height: 44px; min-width: 44px; transition: color .2s ease; }
+        button:focus-visible, a:focus-visible, textarea:focus-visible {
+            outline: 3px solid var(--focus-color); outline-offset: 3px;
+        }
+        main { min-width: 0; }
+        .chat-message { display: flex; gap: 1rem; }
+        .chat-bubble-agent, .chat-bubble-user { max-width: 70ch; overflow-wrap: anywhere; }
+        @media (max-width: 768px) {
+            aside { display: none; }
+            main { width: 100%; }
+            textarea { font-size: 16px; }
+        }
+
+        .session-tools { padding: .8rem 1.25rem; border-bottom: 1px solid #374151; background: #111827; }
+        .session-topline, .session-actions, .review-details, .review-header { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; }
+        .session-topline { justify-content: space-between; margin-bottom: .5rem; }
+        .session-tools input, .session-tools select, dialog input, dialog textarea, dialog select {
+            background: #0b0f19; color: #f3f4f6; border: 1px solid #64748b; border-radius: .5rem; padding: .5rem; max-width: 100%;
+        }
+        .session-tools button, dialog button { border: 1px solid #64748b; border-radius: .5rem; padding: .5rem .75rem; color: #f3f4f6; }
+        button.workspace-primary { background: #0e7490; border-color: #67e8f9; font-weight: 600; }
+        .remember-label { display: inline-flex; gap: .5rem; align-items: center; min-height: 44px; }
+        .privacy-note, #workspaceStatus { font-size: .8rem; margin-top: .35rem; color: #cbd5e1; }
+        #workspaceStatus { color: #a5f3fc; }
+        dialog { width: min(94vw, 780px); max-height: 90vh; overflow-y: auto; background: #111827; color: #f3f4f6; border: 1px solid #64748b; border-radius: 1rem; padding: 1.25rem; margin: auto; }
+        dialog::backdrop { background: rgba(0,0,0,.75); }
+        .review-header { justify-content: space-between; margin-bottom: .5rem; }
+        #reviewForm { display: grid; gap: .65rem; margin-top: 1rem; }
+        #reviewForm textarea, #reviewForm select { width: 100%; }
+        #reviewForm label { font-weight: 600; }
+        #reviewForm input { display: block; }
+        @media (max-width: 768px) {
+            main > header { padding: .5rem; height: auto; min-height: 56px; }
+            #sessionHeaderTitle { display: none; }
+            .session-tools { padding: .5rem; }
+            .session-topline { gap: .25rem; }
+            #projectName { width: 170px; }
+            .session-actions { gap: .3rem; }
+            .session-actions button, .session-actions select { font-size: .8rem; padding: .3rem .5rem; }
+            .session-tools .privacy-note { font-size: .72rem; }
+        }
         /* Custom scrollbar */
         ::-webkit-scrollbar { width: 6px; height: 6px; }
         ::-webkit-scrollbar-track { background: #0b0f19; }
@@ -83,7 +126,7 @@
                 </div>
                 <button onclick="resetConversation()" title="New Audit Session" class="text-gray-400 hover:text-white transition p-1.5 rounded-lg hover:bg-dark-700">
                     <i class="fa-solid fa-pen-to-square"></i>
-                </button>
+                <span class="sr-only">New Audit Session</span></button>
             </div>
 
             <!-- Phase Tracker -->
@@ -96,8 +139,8 @@
                     <div id="phaseProgressBar" class="bg-gradient-to-r from-brand-500 to-cyan-400 h-full w-0 transition-all duration-500"></div>
                 </div>
                 <div class="flex items-center justify-between text-[11px] text-gray-400 mt-2">
-                    <span>Confidence Gate:</span>
-                    <span id="confidenceGateBadge" class="px-2 py-0.5 rounded bg-brand-500/10 text-brand-500 border border-brand-500/30 font-bold">&ge; 85% Required</span>
+                    <span>Evidence review:</span>
+                    <span id="confidenceGateBadge" class="px-2 py-0.5 rounded bg-brand-500/10 text-brand-500 border border-brand-500/30 font-bold">Human review required</span>
                 </div>
             </div>
 
@@ -180,7 +223,7 @@
                 <!-- Auto-TTS Toggle -->
                 <button id="toggleTtsBtn" onclick="toggleAutoTTS()" class="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-dark-700 hover:bg-dark-600 text-gray-300 transition text-xs font-medium">
                     <i id="ttsIcon" class="fa-solid fa-volume-high text-brand-400"></i>
-                    <span id="ttsLabel">Voice: ON</span>
+                    <span id="ttsLabel">Voice: MUTED</span>
                 </button>
 
                 <!-- ChatGPT Fullscreen Voice Mode Trigger -->
@@ -190,6 +233,31 @@
                 </button>
             </div>
         </header>
+
+        <section class="session-tools" aria-label="Session workspace">
+            <div class="session-topline">
+                <label for="projectName">Project <input id="projectName" maxlength="200" value="AI Startup" autocomplete="off"></label>
+                <label class="remember-label"><input type="checkbox" id="rememberSession"> Save on this device</label>
+            </div>
+            <div class="session-actions">
+                <button id="reviewAnswersBtn" type="button" class="workspace-primary" onclick="openReview()">Review answers</button>
+                <button type="button" onclick="downloadSession()">Save session file</button>
+                <button type="button" onclick="document.getElementById('sessionFile').click()">Load session</button>
+                <button type="button" onclick="downloadPlaybook()">Draft playbook</button>
+                <label class="sr-only" for="moreTools">More tools</label>
+                <select id="moreTools" aria-label="More tools" onchange="runWorkspaceTool(this)">
+                    <option value="">More tools…</option>
+                    <option value="experiments">Export experiment CSV</option>
+                    <option value="simulator">Generate scenario simulator</option>
+                    <option value="backlog">Download example backlog</option>
+                    <option value="ciso">CISO practice</option>
+                    <option value="vc">Investor practice</option>
+                </select>
+                <input type="file" id="sessionFile" accept=".json,application/json" hidden>
+            </div>
+            <p id="workspaceStatus" role="status" aria-live="polite">0 of 8 answers recorded. Evidence review required.</p>
+            <p class="privacy-note">Device saving is optional and unencrypted. Session files contain your answers and evidence notes.</p>
+        </section>
 
         <!-- Chat History Scroll View -->
         <div id="chatHistory" class="flex-1 overflow-y-auto px-4 md:px-12 py-6 space-y-6">
@@ -208,7 +276,7 @@
                     <div class="mb-3">
                         <button onclick="toggleThought(this)" class="flex items-center space-x-1.5 text-xs text-brand-400 hover:text-brand-300 font-mono focus:outline-none">
                             <i class="fa-solid fa-angle-right transition-transform duration-200 thought-chevron"></i>
-                            <span>View Strategic Thought & Accumulator</span>
+                            <span>View intake summary</span>
                         </button>
                         <div class="thought-content hidden mt-2 p-3 rounded-lg bg-dark-800 border border-dark-700 font-mono text-xs text-gray-400 whitespace-pre-wrap leading-relaxed">
 - Current Phase: Phase 0 (Initialization)
@@ -221,7 +289,7 @@
 
                     <div class="chat-bubble-agent p-4 rounded-2xl text-sm leading-relaxed text-gray-200 shadow-sm space-y-3">
                         <p>Hello. I'm your <strong>AI Startup Strategy Partner and Socratic Advisor</strong>.</p>
-                        <p>My role is to ruthlessly but constructively stress-test your Go-To-Market strategy across an 8-phase diagnostic framework (Interaction Frequency, Incumbent Distribution, PLG Wedges, Proactive Routines, Model Neutrality, Pricing Paradox, and Data Gravity).</p>
+                        <p>We will examine your customers, alternatives, adoption, initial market, value delivery, dependencies, pricing and integrations. Answers are founder-reported until supported by evidence.</p>
                         <p class="font-medium text-brand-400">To begin Phase 1: In 2 to 3 sentences, what is your AI startup idea, who is your core user, and what primary problem are you solving?</p>
                     </div>
 
@@ -251,7 +319,7 @@
         <div class="p-4 md:p-6 bg-dark-900/90 border-t border-dark-700/80 max-w-4xl w-full mx-auto">
             <div class="relative bg-dark-800 rounded-2xl border border-dark-700 focus-within:border-brand-500/60 focus-within:ring-2 focus-within:ring-brand-500/20 transition shadow-lg">
                 <textarea 
-                    id="userInput" 
+                    id="userInput" aria-label="Founder response" maxlength="10000"
                     rows="2" 
                     placeholder="Describe your startup idea or reply to the Socratic question..."
                     class="w-full bg-transparent px-4 py-3.5 pr-28 text-sm text-gray-100 placeholder-gray-400 focus:outline-none resize-none"
@@ -261,52 +329,52 @@
                 <div class="absolute right-3 bottom-3 flex items-center space-x-2">
                     <!-- STT Microphone Button -->
                     <button 
-                        id="micBtn" 
+                        id="micBtn" aria-label="Start voice input"
                         onclick="toggleSpeechToText()" 
                         title="Voice Input (Speech-to-Text)"
                         class="w-9 h-9 rounded-xl bg-dark-700 hover:bg-dark-600 text-gray-300 hover:text-brand-400 transition flex items-center justify-center focus:outline-none relative"
                     >
                         <i id="micIcon" class="fa-solid fa-microphone"></i>
                         <span id="micRing" class="hidden absolute inset-0 rounded-xl border-2 border-brand-500 animate-ping"></span>
-                    </button>
+                    <span class="sr-only">Start voice input</span></button>
 
                     <!-- Send Button -->
                     <button 
-                        id="sendBtn" 
+                        id="sendBtn" aria-label="Send founder response"
                         onclick="handleSend()" 
                         title="Send Message"
                         class="w-9 h-9 rounded-xl bg-brand-600 hover:bg-brand-500 text-white transition flex items-center justify-center shadow-md shadow-brand-600/30 focus:outline-none disabled:opacity-50"
                     >
                         <i class="fa-solid fa-arrow-up"></i>
-                    </button>
+                    <span class="sr-only">Send founder response</span></button>
                 </div>
             </div>
 
             <div class="flex items-center justify-between text-[11px] text-gray-400 mt-2 px-1">
                 <span class="flex items-center space-x-1.5">
                     <i class="fa-solid fa-shield text-brand-500/80"></i>
-                    <span>Enforcing Rule of Two & 85% Confidence Gating</span>
+                    <span>Two focused questions per phase; founder-reported answers</span>
                 </span>
                 <span>Press <kbd class="px-1.5 py-0.5 rounded bg-dark-800 border border-dark-700 font-mono text-[10px]">Enter</kbd> to send, <kbd class="px-1.5 py-0.5 rounded bg-dark-800 border border-dark-700 font-mono text-[10px]">Shift+Enter</kbd> for newline</span>
             </div>
         </div>
     </main>
 
-    <!-- Fullscreen ChatGPT-Style Voice Mode Overlay -->
+    <!-- Fullscreen Browser Voice Mode Overlay -->
     <div id="voiceModeOverlay" class="fixed inset-0 bg-dark-900/95 backdrop-blur-md z-50 flex flex-col justify-between p-8 hidden">
         <div class="flex items-center justify-between">
             <div class="flex items-center space-x-3">
                 <div class="w-8 h-8 rounded-lg bg-brand-500 flex items-center justify-center text-white font-bold">S</div>
                 <span class="font-semibold text-sm">Socratic GTM Voice Mode</span>
             </div>
-            <button onclick="closeVoiceMode()" class="text-gray-400 hover:text-white text-xl p-2 rounded-full hover:bg-dark-800">
+            <button aria-label="Close voice mode" onclick="closeVoiceMode()" class="text-gray-400 hover:text-white text-xl p-2 rounded-full hover:bg-dark-800">
                 <i class="fa-solid fa-xmark"></i>
-            </button>
+            <span class="sr-only">Close voice mode</span></button>
         </div>
 
         <!-- Center Glowing Interactive Voice Orb -->
         <div class="flex flex-col items-center justify-center space-y-6">
-            <div id="voiceOrb" class="w-44 h-44 rounded-full bg-gradient-to-tr from-brand-500 via-cyan-400 to-indigo-500 animate-voice-orb flex items-center justify-center shadow-2xl transition-all duration-300 cursor-pointer" onclick="toggleVoiceModeListening()">
+            <div id="voiceOrb" role="button" tabindex="0" aria-label="Toggle voice listening" onkeydown="if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); toggleVoiceModeListening(); }" class="w-44 h-44 rounded-full bg-gradient-to-tr from-brand-500 via-cyan-400 to-indigo-500 animate-voice-orb flex items-center justify-center shadow-2xl transition-all duration-300 cursor-pointer" onclick="toggleVoiceModeListening()">
                 <i id="voiceOrbIcon" class="fa-solid fa-microphone text-white text-4xl"></i>
             </div>
             <div class="text-center">
@@ -317,21 +385,50 @@
 
         <!-- Voice Mode Bottom Controls -->
         <div class="flex items-center justify-center space-x-6">
-            <button id="voiceMuteToggle" onclick="toggleVoiceModeMic()" class="w-14 h-14 rounded-full bg-dark-800 border border-dark-700 text-gray-200 hover:text-brand-400 text-xl flex items-center justify-center shadow transition">
+            <button id="voiceMuteToggle" aria-label="Toggle voice microphone" onclick="toggleVoiceModeMic()" class="w-14 h-14 rounded-full bg-dark-800 border border-dark-700 text-gray-200 hover:text-brand-400 text-xl flex items-center justify-center shadow transition">
                 <i id="voiceMuteIcon" class="fa-solid fa-microphone"></i>
-            </button>
-            <button onclick="closeVoiceMode()" class="w-14 h-14 rounded-full bg-red-600/20 border border-red-500/40 text-red-400 hover:bg-red-600 hover:text-white text-xl flex items-center justify-center shadow transition">
+            <span class="sr-only">Toggle voice microphone</span></button>
+            <button aria-label="Close voice mode" onclick="closeVoiceMode()" class="w-14 h-14 rounded-full bg-red-600/20 border border-red-500/40 text-red-400 hover:bg-red-600 hover:text-white text-xl flex items-center justify-center shadow transition">
                 <i class="fa-solid fa-phone-slash"></i>
-            </button>
+            <span class="sr-only">Close voice mode</span></button>
         </div>
     </div>
 
+    <dialog id="reviewDialog" aria-labelledby="reviewTitle">
+        <div class="review-header">
+            <h2 id="reviewTitle">Answers, evidence &amp; next experiments</h2>
+            <button type="button" aria-label="Close answer review" onclick="document.getElementById('reviewDialog').close()">Close</button>
+        </div>
+        <p>Record what you know, what could disprove it, and the next decision. Notes remain unverified.</p>
+        <form id="reviewForm">
+            <label for="reviewPhase">Review phase</label>
+            <select id="reviewPhase"></select>
+            <label for="reviewAnswer">Founder answer</label>
+            <textarea id="reviewAnswer" rows="4" maxlength="10000"></textarea>
+            <label for="reviewEvidence">Evidence, source &amp; counterexample</label>
+            <textarea id="reviewEvidence" rows="3" maxlength="10000" placeholder="Source URL or interview date, observation, sample size, and what remains uncertain"></textarea>
+            <label for="reviewExperiment">Next falsifiable experiment</label>
+            <textarea id="reviewExperiment" rows="2" maxlength="10000" placeholder="Action, measurable threshold and stop condition"></textarea>
+            <div class="review-details">
+                <label for="reviewOwner">Owner <input id="reviewOwner" maxlength="200" autocomplete="off"></label>
+                <label for="reviewDate">Decision date <input id="reviewDate" type="date"></label>
+            </div>
+            <div class="session-actions">
+                <button type="submit">Save changes</button>
+                <button type="button" onclick="continueAtReviewPhase()">Continue interview here</button>
+                <button type="button" onclick="downloadExperiments()">Export experiment CSV</button>
+            </div>
+            <p id="reviewStatus" role="status" aria-live="polite"></p>
+        </form>
+    </dialog>
+    <script src="/ui/session.js"></script>
     <!-- Script: Complete Voice, STT, TTS, Chat and Engine Logic -->
     <script>
         // State Management
         let currentPhase = 0;
+        let sending = false;
         let isListening = false;
-        let autoTTS = true;
+        let autoTTS = false;
         let recognition = null;
         let synth = window.speechSynthesis;
         let accumulatedContext = {
@@ -535,7 +632,10 @@
         async function handleSend() {
             const input = document.getElementById('userInput');
             const text = input.value.trim();
-            if (!text) return;
+            if (!text || sending) return;
+            sending = true;
+            document.getElementById('sendBtn').disabled = true;
+            input.disabled = true;
 
             input.value = '';
             stopSpeechToText();
@@ -544,7 +644,12 @@
             appendUserMessage(text);
 
             // Execute Socratic Agent Response
-            await processAgentTurn(text);
+            try { await processAgentTurn(text); }
+            finally {
+                sending = false;
+                input.disabled = false;
+                document.getElementById('sendBtn').disabled = false;
+            }
         }
 
         function appendUserMessage(text) {
@@ -575,7 +680,7 @@
             msgEl.className = 'chat-message flex items-start space-x-4 max-w-4xl mx-auto';
 
             const badgeClass = confidence >= 85 ? "text-brand-400 border-brand-500/30 bg-brand-500/10" : "text-yellow-400 border-yellow-500/30 bg-yellow-500/10";
-            const gateText = confidence >= 85 ? `Gate Passed (${confidence}%)` : `Drill Down (${confidence}%)`;
+            const gateText = "Review required";
 
             msgEl.innerHTML = `
                 <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-brand-500 to-cyan-500 flex-shrink-0 flex items-center justify-center text-white shadow-md shadow-brand-500/30">
@@ -592,7 +697,7 @@
                     <div class="mb-3">
                         <button onclick="toggleThought(this)" class="flex items-center space-x-1.5 text-xs text-brand-400 hover:text-brand-300 font-mono focus:outline-none">
                             <i class="fa-solid fa-angle-right transition-transform duration-200 thought-chevron"></i>
-                            <span>View Strategic Thought & Accumulator</span>
+                            <span>View intake summary</span>
                         </button>
                         <div class="thought-content hidden mt-2 p-3 rounded-lg bg-dark-800 border border-dark-700 font-mono text-xs text-gray-400 whitespace-pre-wrap leading-relaxed">${escapeHtml(monologue)}</div>
                     </div>
@@ -621,84 +726,30 @@
             speakText(responseText);
         }
 
-        // Backend or Client-Side Simulated Socratic Engine Turn
+        // Local intake is explicit; unavailable APIs cannot validate strategy.
         async function processAgentTurn(userInput) {
-            // Check for quick slash commands
-            if (userInput.startsWith('/stress-test ciso')) {
-                executeAdversarialMode("ciso");
-                return;
-            } else if (userInput.startsWith('/stress-test vc')) {
-                executeAdversarialMode("vc");
-                return;
-            }
-
-            // Call local API if server is running, or fall back to client-side Socratic engine
+            if (userInput.startsWith('/stress-test ciso')) return executeAdversarialMode("ciso");
+            if (userInput.startsWith('/stress-test vc')) return executeAdversarialMode("vc");
             try {
                 const res = await fetch('/api/chat', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ message: userInput, phase: currentPhase, context: accumulatedContext })
+                    method: 'POST', headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({message: userInput, phase: currentPhase, context: accumulatedContext})
                 });
-                if (res.ok) {
-                    const data = await res.json();
-                    updatePhaseUI(data.phase, data.confidence);
-                    appendAgentMessage(data.monologue, data.reply, data.phase, data.confidence);
-                    return;
-                }
+                const data = await res.json();
+                if (!res.ok) throw new Error(data.error || 'Request failed');
+                currentPhase = data.phase;
+                accumulatedContext = data.context;
+                accumulatedContext.name = (accumulatedContext.concept || accumulatedContext.name || 'AI Startup').slice(0, 200);
+                persistSession();
+                updatePhaseUI(currentPhase, null);
+                appendAgentMessage(data.monologue, data.reply, currentPhase, null);
             } catch (err) {
-                // Server not running, proceed with native client-side Socratic engine
+                document.getElementById('userInput').value = userInput;
+                persistSession();
+                appendAgentMessage("Request failed; interview phase unchanged.",
+                    "The local API could not complete this turn. Start python cli.py ui and retry. " + err.message,
+                    currentPhase, null);
             }
-
-            // Native Client-Side Socratic Engine (Runs fully offline without backend dependencies)
-            const words = userInput.split(/\s+/).length;
-            const confidence = Math.min(95, Math.max(65, 60 + words * 2));
-
-            let monologue = "";
-            let reply = "";
-
-            if (currentPhase === 0) {
-                currentPhase = 1;
-                accumulatedContext.name = userInput.slice(0, 30);
-                monologue = `- Current Phase: Phase 1 (Interaction Frequency & WoM)\n- Evaluation: Captured startup concept. Advancing to test usage frequency.\n- Phase Confidence Score: 88%\n- Gating Decision: ADVANCE to Phase 1.\n- Accumulated State:\n    * Concept: ${userInput}\n- Next Action: Ask the Rule of Two frequency questions.`;
-                reply = `That gives us a clear initial wedge. Let's stress-test the growth engine in **Phase 1: Interaction Frequency & Word-of-Mouth Physics**.\n\nHistorically, products that are touched only monthly or annually suffer from the "Annual Trap" and cannot sustain organic word-of-mouth.\n\n1. *How often does an end-user naturally touch or get value from your product (Daily, Weekly, Monthly, or Annual)?*\n2. *When a user experiences a 'magic moment', how naturally do they brag about it to peers during their active buying cycle?*`;
-            } else if (currentPhase < 8) {
-                if (confidence >= 85) {
-                    currentPhase += 1;
-                    const phaseTitles = [
-                        "", "Interaction Frequency", "Incumbent Threat & Distribution", "PLG vs CISO Wedge",
-                        "Expansion Vector", "Proactive Routines vs Chatbox", "Model Neutrality",
-                        "AI Pricing Paradox", "Data Gravity Moats"
-                    ];
-                    monologue = `- Current Phase: Phase ${currentPhase}\n- Evaluation: Founder provided concrete mechanics. Confidence exceeds 85% threshold.\n- Phase Confidence Score: ${confidence}%\n- Gating Decision: ADVANCE to Phase ${currentPhase}.\n- Accumulated State:\n    * Validated Phase ${currentPhase - 1}: ${userInput.slice(0, 60)}...\n- Next Action: Pivot to ${phaseTitles[currentPhase]}.`;
-                    
-                    if (currentPhase === 2) {
-                        reply = `Your frequency mechanics are solid. Let's move to **Phase 2: The Ticking Clock vs. Incumbent Distribution**.\n\nIncumbents (e.g. Salesforce, Notion, Zendesk) already own the enterprise relationship. If they ship an AI button that accomplishes 70% of your value next year, why do customers stay?\n\n1. *What is the primary distribution advantage of your top incumbent?*\n2. *If the incumbent adds a 'good-enough' agent in 12 months, what is your structural defense?*`;
-                    } else if (currentPhase === 3) {
-                        reply = `Understood. Now testing **Phase 3: The Adoption Vector (PLG vs. CISO Governance)**.\n\nMany AI startups fall into the CISO trap on Day 1—getting paralyzed by 9-month enterprise procurement before any end-user loves the tool.\n\n1. *Who uses the tool daily versus who signs the check?*\n2. *Are you designing v1 for practitioner delight, or to satisfy an IT/compliance checklist?*`;
-                    } else if (currentPhase === 4) {
-                        reply = `Good distinction. Let's evaluate **Phase 4: Expansion Strategy (Horizontal to Vertical)**.\n\n1. *Are you forcing a narrow niche on Day 1, or starting horizontal across common workflows?*\n2. *How will you extract the hidden 'routines' of power users to turn them into vertical templates?*`;
-                    } else if (currentPhase === 5) {
-                        reply = `Let's tackle **Phase 5: Value Architecture (Proactive Routines vs. Text-Box Friction)**.\n\nChat boxes produce prompt fatigue. Autonomous routines deliver ROI while the user sleeps.\n\n1. *Does your user have to type into a prompt box to get value, or does your app proactively surface ROI in the background?*\n2. *What is a low-cost background task your app can run continuously that yields high ROI?*`;
-                    } else if (currentPhase === 6) {
-                        reply = `Now de-risking **Phase 6: Defensive Layer (Model Neutrality & Context Ownership)**.\n\n1. *Are you tied to a single foundation model API, or can you dynamically route tasks to the optimal model?*\n2. *How do you guarantee the customer owns their contextual data and memory graph?*`;
-                    } else if (currentPhase === 7) {
-                        reply = `Critical junction: **Phase 7: Pricing & Value Capture (The AI Pricing Paradox)**.\n\nAI agents inherently destroy seat-based SaaS pricing because automation reduces needed headcount.\n\n1. *Are you pricing per-seat, or pricing on consumption, outcomes, or completed tasks?*\n2. *How do you prevent margin collapse if user token consumption spikes?*`;
-                    } else if (currentPhase === 8) {
-                        reply = `Final diagnostic gate: **Phase 8: Integration & Data Gravity (The Moat of Context)**.\n\n1. *What existing systems (CRM, ERP, Slack, Data Warehouse) does your agent read from and write to natively?*\n2. *How deep is the bi-directional sync? Does deleting your tool break existing workflows?*`;
-                    }
-                } else {
-                    monologue = `- Current Phase: Phase ${currentPhase}\n- Evaluation: Response was high-level or aspirational. Missing operational mechanics.\n- Phase Confidence Score: ${confidence}%\n- Gating Decision: DRILL DOWN (Score < 85%).\n- Next Action: Enforce Rule of Two with a focused follow-up.`;
-                    reply = `That's a sound high-level vision, but we are missing the operational mechanics needed to de-risk this vector (Confidence: ${confidence}% / required 85%).\n\nSpecifically: *What exact workflow metrics, APIs, or daily triggers ensure this occurs repeatedly?*`;
-                }
-            } else {
-                // Phase 9 Synthesis
-                currentPhase = 9;
-                monologue = `- Current Phase: Phase 9 (Multi-Module Synthesis)\n- Evaluation: All 8 vectors de-risked and validated.\n- Phase Confidence Score: 92%\n- Gating Decision: COMPLETE.\n- Next Action: Generate 5-Piece Operational Suite.`;
-                reply = `### 🎯 Strategy Fully De-Risked: GTM Playbook & Suite Generated!\n\nAll 8 phases have met the **85% confidence gating threshold**. The complete execution suite is ready:\n\n* **1. Interactive Simulator & Radar:** Visualizes your 8-vector moats and real-time AI Unit Economics.\n* **2. Linear / Jira Sprint Backlog:** Prioritized Sprint 0-2 issues with acceptance criteria.\n* **3. Seed/Series A Pitch Deck:** 5-slide narrative copy.\n* **4. Enterprise CISO Readiness Brief:** Pre-meeting security defenses.\n\nUse the sidebar quick actions to inspect the radar simulator or download your sprint issues!`;
-            }
-
-            updatePhaseUI(currentPhase, confidence);
-            appendAgentMessage(monologue, reply, currentPhase, confidence);
         }
 
         function executeAdversarialMode(mode) {
@@ -711,7 +762,7 @@
             const monologue = `- Mode: Adversarial Grilling (${mode.toUpperCase()})\n- Persona: ${isCiso ? 'Fortune 500 CISO' : 'Tier-1 General Partner'}\n- Objective: High-stakes objection stress test.`;
             const reply = `### ⚠️ ADVERSARIAL STRESS TEST: ${title.toUpperCase()}\n\n*Persona:* ${isCiso ? 'Fortune 500 Enterprise CISO' : 'Tier-1 Enterprise AI Venture Partner'}\n\n> *"${q}"*\n\nProvide your institutional defense:`;
 
-            appendAgentMessage(monologue, reply, `Stress-Test (${mode.toUpperCase()})`, 90);
+            appendAgentMessage(monologue, reply, `Stress-Test (${mode.toUpperCase()})`, null);
         }
 
         function updatePhaseUI(phase, confidence) {
@@ -722,7 +773,7 @@
             const pNum = Math.min(8, phase);
             label.innerText = `Phase ${pNum}/8`;
             bar.style.width = `${(pNum / 8) * 100}%`;
-            pill.innerText = `Phase ${phase}: In Progress`;
+            pill.innerText = phase >= 9 ? "Intake complete — review required" : `Phase ${phase}: Intake`;
 
             for (let i = 1; i <= 8; i++) {
                 const el = document.getElementById(`phaseItem${i}`);
@@ -730,13 +781,13 @@
                 const icon = el.querySelector('.phase-status-icon');
                 if (i < phase) {
                     el.className = "phase-item p-2 rounded-lg flex items-center justify-between bg-brand-500/10 text-brand-400 border border-brand-500/20";
-                    icon.className = "fa-solid fa-circle-check text-brand-400 text-xs";
+                    icon.className = "phase-status-icon fa-solid fa-circle-check text-brand-400 text-xs";
                 } else if (i === phase) {
                     el.className = "phase-item p-2 rounded-lg flex items-center justify-between bg-dark-700 text-white border border-brand-500/50 shadow-sm";
-                    icon.className = "fa-solid fa-spinner fa-spin text-brand-400 text-xs";
+                    icon.className = "phase-status-icon fa-solid fa-spinner fa-spin text-brand-400 text-xs";
                 } else {
                     el.className = "phase-item p-2 rounded-lg flex items-center justify-between bg-dark-700/50 text-gray-400 border border-transparent";
-                    icon.className = "fa-regular fa-circle text-gray-400 text-xs";
+                    icon.className = "phase-status-icon fa-regular fa-circle text-gray-400 text-xs";
                 }
             }
         }
@@ -747,7 +798,8 @@
         }
 
         function resetConversation() {
-            if (confirm("Reset Socratic GTM audit session?")) {
+            if (confirm("Reset this interview? Save a session file first if you need to keep the current answers.")) {
+                try { localStorage.removeItem(SESSION_KEY); } catch (err) { workspaceStatus(err.message); return; }
                 currentPhase = 0;
                 accumulatedContext = { name: "AI Startup", phases: {} };
                 document.getElementById('chatHistory').innerHTML = '';
@@ -756,12 +808,42 @@
             }
         }
 
-        function openSimulatorModal() {
-            window.open('gtm_simulator.html', '_blank') || alert("Launch local server via 'python cli.py ui' to view live simulator.");
+        async function openSimulatorModal() {
+            try {
+                const res = await fetch('/api/simulate', {
+                    method: 'POST', headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({project_name: accumulatedContext.name || 'AI Startup'})
+                });
+                const data = await res.json();
+                if (!res.ok) throw new Error(data.error || 'Generation failed');
+                const link = document.createElement('a');
+                link.href = data.path;
+                link.target = '_blank';
+                link.rel = 'noopener';
+                link.textContent = 'Open generated simulator (not assessed)';
+                document.getElementById('chatHistory').appendChild(link);
+                link.click();
+            } catch (err) {
+                appendAgentMessage("Artifact unavailable.", err.message, currentPhase, null);
+            }
         }
 
-        function triggerExport(type) {
-            sendQuickPrompt(`/export ${type}`);
+        async function triggerExport(type) {
+            try {
+                const res = await fetch('/api/export', {
+                    method: 'POST', headers: {'Content-Type': 'application/json'}, body: '{}'
+                });
+                const data = await res.json();
+                if (!res.ok) throw new Error(data.error || 'Export failed');
+                const link = document.createElement('a');
+                link.href = type === 'json' ? data.json : data.csv;
+                link.download = link.href.split('/').pop();
+                link.textContent = 'Download draft backlog';
+                document.getElementById('chatHistory').appendChild(link);
+                link.click();
+            } catch (err) {
+                appendAgentMessage("Export unavailable.", err.message, currentPhase, null);
+            }
         }
 
         function escapeHtml(text) {
@@ -782,6 +864,176 @@
             html = html.replace(/\n/g, '<br>');
             return html;
         }
+        const SESSION_KEY = 'socratic-gtm-session-v1';
+        let sessionReviews = {};
+        let displayedReviewPhase = '1';
+
+        function workspaceStatus(message) {
+            document.getElementById('workspaceStatus').textContent = message;
+        }
+        function snapshotSession() {
+            return GTMSession.normalize({schema: GTMSession.schema,
+                name: document.getElementById('projectName').value,
+                phase: currentPhase, draft: document.getElementById('userInput').value,
+                context: {concept: accumulatedContext.concept || '', phases: accumulatedContext.phases || {}},
+                reviews: sessionReviews});
+        }
+        function refreshWorkspace() {
+            const answers = accumulatedContext.phases || {};
+            const count = Object.values(answers).filter(answer => answer.trim()).length;
+            const evidence = Object.values(sessionReviews).filter(r => r.evidence.trim()).length;
+            workspaceStatus(count + ' of 8 answers recorded · ' + evidence + ' evidence notes · Review required');
+            document.getElementById('sessionHeaderTitle').textContent = document.getElementById('projectName').value || 'GTM review';
+        }
+        function persistSession() {
+            refreshWorkspace();
+            if (!document.getElementById('rememberSession').checked) return;
+            try {
+                localStorage.setItem(SESSION_KEY, GTMSession.serialize(snapshotSession()));
+            } catch (err) {
+                workspaceStatus('Device save failed: ' + err.message + ' Use Save session file to preserve your work.');
+            }
+        }
+        function downloadText(filename, body, type) {
+            const url = URL.createObjectURL(new Blob([body], {type}));
+            const a = document.createElement('a');
+            a.href = url; a.download = filename;
+            document.body.appendChild(a); a.click(); a.remove();
+            setTimeout(() => URL.revokeObjectURL(url), 1000);
+        }
+        function downloadSession() {
+            try {
+                downloadText('gtm-session.json', GTMSession.serialize(snapshotSession()), 'application/json');
+                workspaceStatus('Session file prepared with your answers and evidence. Keep it private.');
+            } catch (err) { workspaceStatus(err.message); }
+        }
+        function downloadPlaybook() {
+            try {
+                downloadText('GTM_PLAYBOOK.md', GTMSession.playbook(snapshotSession()), 'text/markdown');
+                workspaceStatus('Draft playbook prepared from your answers and evidence notes.');
+            } catch (err) { workspaceStatus(err.message); }
+        }
+        function downloadExperiments() {
+            try {
+                downloadText('gtm_experiments.csv', GTMSession.experimentsCSV(snapshotSession()), 'text/csv');
+                workspaceStatus('Experiment CSV prepared. All rows remain review-required.');
+            } catch (err) { workspaceStatus(err.message); }
+        }
+        function applySession(session) {
+            const clean = GTMSession.normalize(session);
+            document.getElementById('projectName').value = clean.name;
+            currentPhase = clean.phase;
+            accumulatedContext = {...clean.context, name: clean.name};
+            sessionReviews = clean.reviews;
+            document.getElementById('userInput').value = clean.draft;
+            document.getElementById('chatHistory').replaceChildren();
+            if (clean.context.concept) appendUserMessage(clean.context.concept);
+            for (const key of Object.keys(clean.context.phases).sort()) {
+                appendAgentMessage('Founder-reported answer; review required.',
+                    'Phase ' + key + ': ' + GTMSession.titles[Number(key) - 1], Number(key), null);
+                appendUserMessage(clean.context.phases[key]);
+            }
+            const next = currentPhase >= 1 && currentPhase <= 8 ? GTMSession.titles[currentPhase - 1] : 'Startup concept or final review';
+            appendAgentMessage('Session restored from local data.',
+                'Resume: ' + next + '. Use Review answers to revise inputs and evidence.', currentPhase, null);
+            updatePhaseUI(currentPhase, null);
+            persistSession();
+        }
+        function showReviewPhase(key) {
+            displayedReviewPhase = key;
+            const r = sessionReviews[key] || {};
+            document.getElementById('reviewAnswer').value = accumulatedContext.phases[key] || '';
+            document.getElementById('reviewEvidence').value = r.evidence || '';
+            document.getElementById('reviewExperiment').value = r.experiment || '';
+            document.getElementById('reviewOwner').value = r.owner || '';
+            document.getElementById('reviewDate').value = r.date || '';
+            document.getElementById('reviewStatus').textContent = 'Changes apply when you select Save changes.';
+        }
+        function saveReview() {
+            const key = displayedReviewPhase;
+            const candidate = snapshotSession();
+            candidate.context.phases[key] = document.getElementById('reviewAnswer').value;
+            candidate.reviews[key] = {
+                evidence: document.getElementById('reviewEvidence').value,
+                experiment: document.getElementById('reviewExperiment').value,
+                owner: document.getElementById('reviewOwner').value,
+                date: document.getElementById('reviewDate').value};
+            const clean = GTMSession.normalize(candidate);
+            accumulatedContext.phases = clean.context.phases;
+            sessionReviews = clean.reviews;
+            persistSession();
+            document.getElementById('reviewStatus').textContent = 'Answer and evidence notes saved in this session. Review required.';
+        }
+        function openReview() {
+            showReviewPhase(document.getElementById('reviewPhase').value || '1');
+            document.getElementById('reviewDialog').showModal();
+        }
+        function continueAtReviewPhase() {
+            try {
+                saveReview();
+                currentPhase = Number(displayedReviewPhase);
+                updatePhaseUI(currentPhase, null);
+                persistSession();
+                document.getElementById('reviewDialog').close();
+                appendAgentMessage('Revising founder-reported input.',
+                    'Revisit Phase ' + currentPhase + ': ' + GTMSession.titles[currentPhase - 1] +
+                    '. Enter an updated answer, or edit its evidence in Review answers.', currentPhase, null);
+                document.getElementById('userInput').focus();
+            } catch (err) { document.getElementById('reviewStatus').textContent = err.message; }
+        }
+        function runWorkspaceTool(select) {
+            const action = select.value; select.value = '';
+            if (action === 'experiments') downloadExperiments();
+            if (action === 'simulator') openSimulatorModal();
+            if (action === 'backlog') triggerExport('csv');
+            if (action === 'ciso' || action === 'vc') executeAdversarialMode(action);
+        }
+        GTMSession.titles.forEach((title, i) => {
+            const option = document.createElement('option');
+            option.value = String(i + 1); option.textContent = (i + 1) + '. ' + title;
+            document.getElementById('reviewPhase').appendChild(option);
+        });
+        document.getElementById('reviewPhase').addEventListener('change', event => {
+            // Preserve edits when changing the selected review phase.
+            const selected = event.target.value;
+            try { saveReview(); showReviewPhase(selected); }
+            catch (err) { event.target.value = displayedReviewPhase; document.getElementById('reviewStatus').textContent = err.message; }
+        });
+        document.getElementById('reviewForm').addEventListener('submit', event => {
+            event.preventDefault();
+            try { saveReview(); } catch (err) { document.getElementById('reviewStatus').textContent = err.message; }
+        });
+        document.getElementById('rememberSession').addEventListener('change', event => {
+            if (event.target.checked) persistSession();
+            else {
+                try { localStorage.removeItem(SESSION_KEY); workspaceStatus('Device copy removed. This session stays in memory.'); }
+                catch (err) { workspaceStatus('Could not remove device copy: ' + err.message); }
+            }
+        });
+        document.getElementById('projectName').addEventListener('input', persistSession);
+        document.getElementById('userInput').addEventListener('input', persistSession);
+        document.getElementById('sessionFile').addEventListener('change', async event => {
+            const file = event.target.files[0];
+            try {
+                if (!file) return;
+                if (file.size > GTMSession.maxBytes) throw new Error('Session exceeds 256 KiB.');
+                const candidate = GTMSession.parse(await file.text());
+                if ((currentPhase > 0 || document.getElementById('userInput').value) &&
+                    !confirm('Replace the active session? Save a session file first if you need to retain it.')) return;
+                applySession(candidate);
+                workspaceStatus('Session loaded. Imported inputs and notes remain unverified.');
+            } catch (err) { workspaceStatus('Import failed; current session retained. ' + err.message); }
+            finally { event.target.value = ''; }
+        });
+        try {
+            const raw = localStorage.getItem(SESSION_KEY);
+            if (raw) {
+                const candidate = GTMSession.parse(raw);
+                document.getElementById('rememberSession').checked = true;
+                applySession(candidate);
+            }
+        } catch (err) { workspaceStatus('Saved session could not be loaded. Use a valid session file. ' + err.message); }
+
     </script>
 </body>
 </html>
