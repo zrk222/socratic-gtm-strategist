@@ -20,6 +20,11 @@ if sys.stdout.encoding != 'utf-8':
     except Exception:
         pass
 
+# Preserve real stdout for JSON-RPC framing only
+_mcp_stdout = sys.stdout
+# Route default stdout to stderr so library prints don't corrupt JSON-RPC transport
+sys.stdout = sys.stderr
+
 # Import helper functions from scripts
 current_dir = os.path.dirname(os.path.abspath(__file__))
 scripts_dir = os.path.join(current_dir, "scripts")
@@ -175,8 +180,8 @@ def handle_tool_call(tool_name, args):
 
 def send_response(response):
     body = json.dumps(response)
-    sys.stdout.write(body + "\n")
-    sys.stdout.flush()
+    _mcp_stdout.write(body + "\n")
+    _mcp_stdout.flush()
 
 def main():
     while True:
