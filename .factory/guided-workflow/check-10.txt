@@ -1,0 +1,1 @@
+PASS: first-use entry, guided questions, direct practice, next-step download, simulator return and mobile layout.

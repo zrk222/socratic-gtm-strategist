@@ -1,0 +1,188 @@
+{
+  "schema": "factory.workflow-audit.contract.v1",
+  "project_id": "socratic-gtm-strategist/guided-workflow",
+  "candidate": [
+    {
+      "path": "ui/index.html",
+      "sha256": "a1caf75fb92e181f0f556f0b70f6e122d647fd687b3522aa8b6e4fc5e216cdb5",
+      "kind": "source"
+    },
+    {
+      "path": "ui/prep-ui.js",
+      "sha256": "7f686c3a67dfe3482eeeb17aa71aa2b5c6caa7be1ad1f3d3e73bc7a17ca20328",
+      "kind": "source"
+    },
+    {
+      "path": "ui/prep.css",
+      "sha256": "7b73a456b98425653d4242a4c57b0123b9882f5d1c5fece8f6e03bc09c79bc47",
+      "kind": "source"
+    },
+    {
+      "path": "scripts/generate_dashboard.py",
+      "sha256": "17e120a81615952c2b52389811804d35c94ee4470d1a20a6a872618739d697af",
+      "kind": "source"
+    },
+    {
+      "path": "tests/browser_smoke.cjs",
+      "sha256": "f5fb33e936404d368513211d9007056251302183f0648a815885edba6d0e7d90",
+      "kind": "source"
+    },
+    {
+      "path": "tests/prep_browser.cjs",
+      "sha256": "39e8391d0da6b2bbc79c63b2a8e5de9023a30fbc2d692a9594164d65184a3d24",
+      "kind": "source"
+    },
+    {
+      "path": "tests/guided_browser.cjs",
+      "sha256": "fef83fc42f936e44a8bdaa373ac7bf00dcf3716d90e861af430bccad06f8d867",
+      "kind": "source"
+    },
+    {
+      "path": "specs/guided-workflow.md",
+      "sha256": "387c4002b48c9f843a03adca77a5a937d7b9c08382fe8ea46086aa43c945ecd3",
+      "kind": "source"
+    },
+    {
+      "path": "plans/guided-workflow.md",
+      "sha256": "1b21feea491b7ee52ac56e38b47cbad3c222c00b377672d6d2e3a567ba598941",
+      "kind": "source"
+    },
+    {
+      "path": "context/PROGRESS.md",
+      "sha256": "f9888d899f9b6fb24e88004c82c0b1fb57f6395acff2a084e1d654162d8ee1ad",
+      "kind": "source"
+    }
+  ],
+  "applicability": [
+    {
+      "category": "accessibility",
+      "applicable": true,
+      "reason": "Declared accessibility checks cover this local UI simplification within recorded fixtures."
+    },
+    {
+      "category": "external_effects",
+      "applicable": true,
+      "reason": "Declared external_effects checks cover this local UI simplification within recorded fixtures."
+    },
+    {
+      "category": "failure_recovery",
+      "applicable": true,
+      "reason": "Declared failure_recovery checks cover this local UI simplification within recorded fixtures."
+    },
+    {
+      "category": "happy_path",
+      "applicable": true,
+      "reason": "Declared happy_path checks cover this local UI simplification within recorded fixtures."
+    },
+    {
+      "category": "performance",
+      "applicable": true,
+      "reason": "Declared performance checks cover this local UI simplification within recorded fixtures."
+    },
+    {
+      "category": "security_privacy",
+      "applicable": true,
+      "reason": "Declared security_privacy checks cover this local UI simplification within recorded fixtures."
+    },
+    {
+      "category": "state_consistency",
+      "applicable": true,
+      "reason": "Declared state_consistency checks cover this local UI simplification within recorded fixtures."
+    },
+    {
+      "category": "validation",
+      "applicable": true,
+      "reason": "Declared validation checks cover this local UI simplification within recorded fixtures."
+    }
+  ],
+  "checks": [
+    {
+      "id": "simple_entry",
+      "category": "happy_path",
+      "requirement": "An empty workspace shows one idea field/Continue and four steps with extras closed.",
+      "profiles": [
+        "windows-py311-node22-chrome-desktop-390px"
+      ]
+    },
+    {
+      "id": "guided_questions",
+      "category": "state_consistency",
+      "requirement": "Idea and answers retain phase and next-question guidance.",
+      "profiles": [
+        "windows-py311-node22-chrome-desktop-390px"
+      ]
+    },
+    {
+      "id": "direct_practice",
+      "category": "happy_path",
+      "requirement": "Latest answer starts buyer practice without ledger/persona setup.",
+      "profiles": [
+        "windows-py311-node22-chrome-desktop-390px"
+      ]
+    },
+    {
+      "id": "guided_finish",
+      "category": "external_effects",
+      "requirement": "Finish closes practice; actual download contains entered interview and practice notes.",
+      "profiles": [
+        "windows-py311-node22-chrome-desktop-390px"
+      ]
+    },
+    {
+      "id": "simulator_orientation",
+      "category": "happy_path",
+      "requirement": "Optional calculator explains its role and navigates back.",
+      "profiles": [
+        "windows-py311-node22-chrome-desktop-390px"
+      ]
+    },
+    {
+      "id": "workflow_recovery",
+      "category": "accessibility",
+      "requirement": "390px overflow, named controls and preserved optional tools/regressions.",
+      "profiles": [
+        "windows-py311-node22-chrome-desktop-390px"
+      ]
+    },
+    {
+      "id": "validation",
+      "category": "validation",
+      "requirement": "Existing state/import/field validation tests pass.",
+      "profiles": [
+        "windows-py311-node22-chrome-desktop-390px"
+      ]
+    },
+    {
+      "id": "failure_recovery",
+      "category": "failure_recovery",
+      "requirement": "Existing API/import recovery and retained drafts pass.",
+      "profiles": [
+        "windows-py311-node22-chrome-desktop-390px"
+      ]
+    },
+    {
+      "id": "privacy",
+      "category": "security_privacy",
+      "requirement": "Existing privacy/origin/XSS/provider-key exclusions pass; no new provider calls.",
+      "profiles": [
+        "windows-py311-node22-chrome-desktop-390px"
+      ]
+    },
+    {
+      "id": "bounded_execution",
+      "category": "performance",
+      "requirement": "Browser workflow finishes within the runner's 120-second bound; no user-latency benchmark claim.",
+      "profiles": [
+        "windows-py311-node22-chrome-desktop-390px"
+      ]
+    },
+    {
+      "id": "design",
+      "category": "accessibility",
+      "requirement": "Current source audits, critique, render and sabotage checks pass.",
+      "profiles": [
+        "windows-py311-node22-chrome-desktop-390px"
+      ]
+    }
+  ]
+}

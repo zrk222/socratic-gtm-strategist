@@ -1,0 +1,167 @@
+[
+  {
+    "argv": [
+      "python",
+      "-m",
+      "unittest",
+      "discover",
+      "tests",
+      "-q"
+    ],
+    "observed_at": "2026-10-21T06:51:29.218309+00:00",
+    "elapsed_seconds": 12.487,
+    "exit_code": 0,
+    "log": ".factory/guided-workflow/check-0.txt"
+  },
+  {
+    "argv": [
+      "node",
+      "--test",
+      "tests/session.test.cjs",
+      "tests/prep.test.cjs"
+    ],
+    "observed_at": "2026-10-21T06:51:32.821102+00:00",
+    "elapsed_seconds": 3.602,
+    "exit_code": 0,
+    "log": ".factory/guided-workflow/check-1.txt"
+  },
+  {
+    "argv": [
+      "node",
+      "tests/browser_smoke.cjs"
+    ],
+    "observed_at": "2026-10-21T06:52:47.672390+00:00",
+    "elapsed_seconds": 7.064,
+    "exit_code": 0,
+    "log": ".factory/guided-workflow/check-2.txt"
+  },
+  {
+    "argv": [
+      "node",
+      "tests/prep_browser.cjs"
+    ],
+    "observed_at": "2026-10-21T06:52:53.631819+00:00",
+    "elapsed_seconds": 5.958,
+    "exit_code": 0,
+    "log": ".factory/guided-workflow/check-3.txt"
+  },
+  {
+    "argv": [
+      "prestige",
+      "audit",
+      "ui/index.html"
+    ],
+    "observed_at": "2026-10-21T06:52:53.921538+00:00",
+    "elapsed_seconds": 0.289,
+    "exit_code": 0,
+    "log": ".factory/guided-workflow/check-4.txt"
+  },
+  {
+    "argv": [
+      "prestige",
+      "critique",
+      "ui/index.html",
+      "--challenge",
+      "--strict",
+      "--out",
+      ".factory/guided-workflow/critique.json"
+    ],
+    "observed_at": "2026-10-21T06:52:54.342494+00:00",
+    "elapsed_seconds": 0.42,
+    "exit_code": 0,
+    "log": ".factory/guided-workflow/check-5.txt"
+  },
+  {
+    "argv": [
+      "prestige",
+      "render-audit",
+      "ui/index.html",
+      "--out-dir",
+      ".factory/guided-workflow/render",
+      "--json"
+    ],
+    "observed_at": "2026-10-21T06:53:00.096358+00:00",
+    "elapsed_seconds": 5.754,
+    "exit_code": 0,
+    "log": ".factory/guided-workflow/check-6.txt"
+  },
+  {
+    "argv": [
+      "prestige",
+      "challenge",
+      "ui/index.html",
+      "--workflow",
+      "product",
+      "--out",
+      ".factory/guided-workflow/challenge.json"
+    ],
+    "observed_at": "2026-10-21T06:53:00.931216+00:00",
+    "elapsed_seconds": 0.834,
+    "exit_code": 0,
+    "log": ".factory/guided-workflow/check-7.txt"
+  },
+  {
+    "argv": [
+      "specline",
+      "strict",
+      "guided-workflow",
+      "--root",
+      "."
+    ],
+    "observed_at": "2026-10-21T06:53:01.160038+00:00",
+    "elapsed_seconds": 0.228,
+    "exit_code": 0,
+    "log": ".factory/guided-workflow/check-8.txt"
+  },
+  {
+    "argv": [
+      "specline",
+      "verify-validators",
+      "guided-workflow",
+      "--root",
+      "."
+    ],
+    "observed_at": "2026-10-21T06:53:01.450855+00:00",
+    "elapsed_seconds": 0.29,
+    "exit_code": 0,
+    "log": ".factory/guided-workflow/check-9.txt"
+  },
+  {
+    "argv": [
+      "node",
+      "tests/guided_browser.cjs"
+    ],
+    "observed_at": "2026-10-21T06:53:06.849709+00:00",
+    "elapsed_seconds": 5.398,
+    "exit_code": 0,
+    "log": ".factory/guided-workflow/check-10.txt"
+  },
+  {
+    "argv": [
+      "python",
+      "-m",
+      "pip",
+      "wheel",
+      ".",
+      "--no-deps",
+      "--no-build-isolation",
+      "--wheel-dir",
+      ".factory/guided-workflow/wheels"
+    ],
+    "observed_at": "2026-10-21T06:53:23.385578+00:00",
+    "elapsed_seconds": 16.535,
+    "exit_code": 0,
+    "log": ".factory/guided-workflow/check-11.txt"
+  },
+  {
+    "argv": [
+      "python",
+      "tests/package_smoke.py",
+      ".factory/guided-workflow/wheels/socratic_gtm_strategist-3.0.0-py3-none-any.whl"
+    ],
+    "observed_at": "2026-10-21T06:53:39.202055+00:00",
+    "elapsed_seconds": 15.816,
+    "exit_code": 0,
+    "log": ".factory/guided-workflow/check-12.txt"
+  }
+]

@@ -44,6 +44,7 @@
         intro.append(element('p', 'ADVERSARIAL PRACTICE', 'prep-eyebrow'), title,
             element('p', 'Make a claim. Test your defense. Leave with the next thing to verify.'));
         header.append(intro, button('Close practice', 'prepClose', () => dialog.close()));
+        header.append(button('Show claim and settings', 'prepShowSetup', () => dialog.classList.toggle('prep-show-setup')));
         const note = element('p', 'Guided local practice. Follow-ups use your claim and missing supporting fields. Possible conflicts need your review; this engine does not verify facts or run a language model.', 'prep-note');
         note.id = 'prepDescription';
         const live = element('p', 'Add a claim or pull statements from your interview to begin.', 'prep-status');
@@ -110,6 +111,7 @@
     }
     function buildSetup(parent) {
         const setup = element('div', undefined, 'prep-grid');
+        setup.classList.add('prep-setup');
         select(setup, 'Opposing perspective', 'prepPersona', Object.entries(api.personas).map(([k, v]) => [k, v.name]));
         select(setup, 'Hypothetical scenario', 'prepScenario', Object.entries(api.scenarios).map(([k, v]) => [k, v.name]));
         select(setup, 'Answer rehearsal', 'prepLimit', [['0', 'Untimed'], ['30', '30 seconds'], ['120', '2 minutes']]);
@@ -139,10 +141,11 @@
         const label = element('label', undefined, 'prep-check'); label.append(contested, document.createTextNode(' I contest the premise; my answer explains the correction.'));
         const send = element('button', 'Answer and challenge further'); send.id = 'prepRespond'; send.type = 'submit';
         const actions = element('div', undefined, 'prep-actions');
-        actions.append(send, button('Finish and debrief', 'prepFinish', () => {
+        actions.append(send, button('Finish and get next steps', 'prepFinish', () => {
             saveDraft(); commit(api.finish(hooks.read()));
             status('Practice retained. Review gaps and record the next test below.');
             byId('prepDebrief').focus();
+            hooks.finished?.();
         }));
         form.prepend(question, criterion, timer); form.append(details, label, actions);
         form.addEventListener('submit', event => { event.preventDefault(); safely(submitAnswer); });
@@ -195,6 +198,28 @@
         if (!dialog.open) dialog.showModal();
         status('Your practice is saved with the session when device saving is enabled. Timers start paused and reset after reload.');
         byId('prepClaimSelect').focus();
+    }
+    function quickStart(persona = 'buyer') {
+        if (api.active(hooks.read())) { open(); byId('prepAnswer').focus(); return; }
+        const context = hooks.context();
+        const keys = Object.keys(context.phases || {}).sort((a, b) => Number(a) - Number(b));
+        const claimText = context.phases?.[keys.at(-1)] || context.concept || '';
+        if (!claimText.trim()) {
+            open(persona);
+            status('Write one sentence about your idea below, select Save claim, then Start cross-examination.');
+            byId('prepClaimText').focus(); return;
+        }
+        let state = hooks.read();
+        let claim = state.claims.find(c => c.text === claimText);
+        if (!claim) {
+            state = api.upsertClaim(state, {text: claimText, origin: 'Latest interview input'});
+            claim = state.claims.at(-1);
+        }
+        state = api.start(state, {claimId: claim.id, persona, scenario: 'baseline', limit: 0});
+        selectedClaim = claim.id; selectedRun = state.activeId;
+        commit(state); open();
+        byId('prepAnswer').focus();
+        status('Answer the question below. Evidence notes are optional. When you are done, choose Finish and get next steps.');
     }
     function renderClaim() {
         const claim = hooks.read().claims.find(c => c.id === selectedClaim) || {kind: 'assertion', resolution: 'open'};
@@ -270,6 +295,7 @@
     }
     function render() {
         const state = hooks.read();
+        dialog.classList.toggle('prep-running', !!api.active(state));
         if (!state.claims.some(c => c.id === selectedClaim)) selectedClaim = state.claims[0]?.id || '';
         if (!state.runs.some(r => r.id === selectedRun)) selectedRun = state.activeId || state.runs[state.runs.length - 1]?.id || '';
         replaceOptions('prepClaimSelect', state.claims.map(c => [c.id, c.text.slice(0, 80)]), selectedClaim, 'Add a new claim');
@@ -315,5 +341,5 @@
             status('Rehearsal time reached. Your draft is retained; submit when ready or keep refining it.');
         }
     }
-    root.GTMPrepUI = {init, open, render};
+    root.GTMPrepUI = {init, open, render, quickStart: (...args) => safely(() => quickStart(...args))};
 })(globalThis);

@@ -1,0 +1,53 @@
+[
+  {
+    "argv": [
+      "prestige",
+      "audit",
+      "ui/index.html"
+    ],
+    "exit_code": 0,
+    "observed_at": "2026-10-21T06:55:25.278049+00:00",
+    "log": ".factory/guided-workflow/design-final-0.txt"
+  },
+  {
+    "argv": [
+      "prestige",
+      "critique",
+      "ui/index.html",
+      "--challenge",
+      "--strict",
+      "--out",
+      ".factory/guided-workflow/critique.json"
+    ],
+    "exit_code": 0,
+    "observed_at": "2026-10-21T06:55:25.681154+00:00",
+    "log": ".factory/guided-workflow/design-final-1.txt"
+  },
+  {
+    "argv": [
+      "prestige",
+      "render-audit",
+      "ui/index.html",
+      "--out-dir",
+      ".factory/guided-workflow/render",
+      "--json"
+    ],
+    "exit_code": 0,
+    "observed_at": "2026-10-21T06:55:31.559570+00:00",
+    "log": ".factory/guided-workflow/design-final-2.txt"
+  },
+  {
+    "argv": [
+      "prestige",
+      "challenge",
+      "ui/index.html",
+      "--workflow",
+      "product",
+      "--out",
+      ".factory/guided-workflow/challenge.json"
+    ],
+    "exit_code": 0,
+    "observed_at": "2026-10-21T06:55:32.471448+00:00",
+    "log": ".factory/guided-workflow/design-final-3.txt"
+  }
+]

@@ -7,6 +7,9 @@
 .prep-note { color:#b3c6d6; font-size:16px; margin:12px 0; }
 .prep-status { border-left:3px solid #a2dfce; padding:8px 14px; min-height:44px; margin:20px 0; background:#172b3c; white-space:pre-wrap; }
 .prep-layout { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.3fr); gap:24px; align-items:start; }
+.prep-running:not(.prep-show-setup) #prepLedger,.prep-running:not(.prep-show-setup) .prep-setup,.prep-running:not(.prep-show-setup) #prepStart { display:none; }
+.prep-running:not(.prep-show-setup) .prep-layout { grid-template-columns:minmax(0,1fr); }
+#prepShowSetup { font-size:16px; }
 .prep-section { min-width:0; margin:16px 0; padding:20px; border:1px solid #344c60; border-radius:14px; background:#142332; }
 .prep-section h3 { font-size:20px; font-weight:600; margin:0 0 20px; color:#d0ede6; }
 .prep-section h4 { font-weight:600; margin:12px 0; }

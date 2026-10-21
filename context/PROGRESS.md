@@ -59,3 +59,7 @@ authorization, not independent human review or release approval.
 - [2026-10-21 06:18] GATE plan adversarial-prep approver=codex-local-review tasks=11 sha=2e491745311e9025
 - [2026-10-21 06:18] GATE spec adversarial-prep approver=codex-local-review strict=True sha=23a2ecc13dee80fe
 - [2026-10-21 06:18] GATE plan adversarial-prep approver=codex-local-review tasks=11 sha=23a2ecc13dee80fe
+- [2026-10-21 06:47] GATE spec guided-workflow approver=codex-local-review strict=True sha=16202cf111b4a9c0
+- [2026-10-21 06:47] GATE plan guided-workflow approver=codex-local-review tasks=3 sha=16202cf111b4a9c0
+- [2026-10-21 06:54] GATE spec guided-workflow approver=codex-local-review strict=True sha=387c4002b48c9f84
+- [2026-10-21 06:54] GATE plan guided-workflow approver=codex-local-review tasks=3 sha=387c4002b48c9f84

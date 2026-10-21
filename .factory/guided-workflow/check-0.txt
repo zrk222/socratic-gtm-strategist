@@ -1,0 +1,14 @@
+[+] Linear/Jira CSV exported to: C:\Users\rkatz\AppData\Local\Temp\tmpmmbdsp6q\gtm_sprint_issues.csv
+[+] JSON backlog exported to: C:\Users\rkatz\AppData\Local\Temp\tmpmmbdsp6q\gtm_sprint_issues.json
+Pitch template written to: C:\Users\rkatz\AppData\Local\Temp\tmpoz9peola\deck.md
+Dashboard successfully generated at: C:\Users\rkatz\AppData\Local\Temp\tmpv_5lj_5c\radar.html
+[+] Linear/Jira CSV exported to: C:\Users\rkatz\AppData\Local\Temp\tmpq0su7npy\test_issues.csv
+[+] JSON backlog exported to: C:\Users\rkatz\AppData\Local\Temp\tmpq0su7npy\test_issues.json
+Dashboard successfully generated at: C:\Users\rkatz\AppData\Local\Temp\tmpso5uw6ev\test_sim.html
+Pitch template written to: C:\Users\rkatz\AppData\Local\Temp\tmp_jidb6up\test_deck.md
+[+] Adversarial Brief generated at: C:\Users\rkatz\AppData\Local\Temp\tmp1wyev5vd\test_ciso.md
+[+] Adversarial Brief generated at: C:\Users\rkatz\AppData\Local\Temp\tmp1um7ei6m\test_vc.md
+----------------------------------------------------------------------
+Ran 36 tests in 12.124s
+
+OK

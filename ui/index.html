@@ -173,6 +173,24 @@
             .journey-track li { font-size:16px; }
         }
         @media(prefers-reduced-motion:reduce) { *,*::before,*::after { animation:none !important; transition:none !important; scroll-behavior:auto !important; } }
+        /* The main screen is a guided workflow; optional controls stay in Extra tools. */
+        body > aside { display:none !important; }
+        body:not(.tools-open) main > header > div:last-child { display:none; }
+        .workflow-guide { padding:16px 24px; border-bottom:1px solid #34485a; background:#142636; }
+        .workflow-guide ol { display:flex; flex-wrap:wrap; gap:8px 18px; color:#aebed0; font-size:16px; margin-bottom:8px; }
+        .workflow-guide li[aria-current=step] { color:#b6eadb; font-weight:700; }
+        .workflow-guide h2 { font-size:22px; font-weight:650; margin:6px 0; }
+        .workflow-guide p { font-size:16px; color:#c2d1dd; }
+        .workflow-guide button { padding:10px 16px; border:1px solid #6f918f; border-radius:8px; margin:12px 10px 0 0; font-size:16px; }
+        #workflowPrimary { background:#b6eadb; color:#092b25; font-weight:650; }
+        #workflowExtras summary { cursor:pointer; min-height:44px; padding:10px 0; color:#b4c6d6; font-size:16px; }
+        #sendBtn { width:auto; min-width:100px; padding:10px 14px; font-size:16px; font-weight:650; }
+        body[data-flow-step="1"] #chatHistory { display:none; }
+        body[data-flow-step="1"] #interviewComposer { margin:auto; border:1px solid #3c5869; border-radius:16px; max-width:720px; width:calc(100% - 24px); }
+        body:not(.tools-open) .mb-3:has(> button[onclick="toggleThought(this)"]) { display:none; }
+        #ideaFieldLabel { display:none; font-size:20px; font-weight:600; margin-bottom:12px; }
+        body[data-flow-step="1"] #ideaFieldLabel { display:block; }
+        @media(max-width:768px) { .workflow-guide { padding:12px; } .workflow-guide h2 { font-size:20px; } .workflow-guide ol { font-size:16px; gap:4px 10px; } }
     </style>
 </head>
 <body class="bg-dark-900 text-gray-100 flex h-screen overflow-hidden font-sans antialiased">
@@ -312,13 +330,21 @@
             </div>
         </header>
 
-        <section class="session-tools" aria-label="Session workspace">
+        <section class="workflow-guide" aria-label="Your preparation workflow">
+            <ol aria-label="Preparation steps"><li id="flowStep1" aria-current="step">1. Your idea</li><li id="flowStep2">2. Questions</li><li id="flowStep3">3. Practice</li><li id="flowStep4">4. Next steps</li></ol>
+            <h2 id="workflowTitle">Start with your idea</h2>
+            <p id="workflowHelp">Tell us who you help and what problem you solve. Then press Continue.</p>
+            <button id="workflowPrimary" type="button" onclick="runWorkflowPrimary()">Write my idea</button>
+            <button id="workflowPractice" type="button" onclick="GTMPrepUI.quickStart()" hidden>Skip ahead to practice</button>
+        </section>
+        <details id="workflowExtras" class="session-tools">
+            <summary>Extra tools: save, review, settings and calculator</summary>
             <div class="session-topline">
                 <label for="projectName">Project <input id="projectName" maxlength="200" value="AI Startup" autocomplete="off"></label>
                 <label class="remember-label"><input type="checkbox" id="rememberSession"> Save on this device</label>
             </div>
             <div class="session-actions">
-                <button id="reviewAnswersBtn" type="button" class="workspace-primary" onclick="openReview()">Review answers</button>
+                <button id="reviewAnswersBtn" type="button" onclick="openReview()">Review answers</button>
                 <button type="button" onclick="downloadSession()">Save session file</button>
                 <button type="button" onclick="document.getElementById('sessionFile').click()">Load session</button>
                 <button type="button" onclick="downloadPlaybook()">Draft playbook</button>
@@ -336,7 +362,7 @@
             </div>
             <p id="workspaceStatus" role="status" aria-live="polite">0 of 8 answers recorded. Evidence review required.</p>
             <p class="privacy-note">Device saving is optional and unencrypted. Session files contain your answers and evidence notes.</p>
-        </section>
+        </details>
 
         <!-- Chat History Scroll View -->
         <div id="chatHistory" class="flex-1 overflow-y-auto px-4 md:px-12 py-6 space-y-6">
@@ -403,7 +429,8 @@
         </div>
 
         <!-- Chat Input Controls Bar -->
-        <div class="p-4 md:p-6 bg-dark-900/90 border-t border-dark-700/80 max-w-4xl w-full mx-auto">
+        <div id="interviewComposer" class="p-4 md:p-6 bg-dark-900/90 border-t border-dark-700/80 max-w-4xl w-full mx-auto">
+            <label id="ideaFieldLabel" for="userInput">Who is your product for, and what does it help them do?</label>
             <div class="relative bg-dark-800 rounded-2xl border border-dark-700 focus-within:border-brand-500/60 focus-within:ring-2 focus-within:ring-brand-500/20 transition shadow-lg">
                 <textarea
                     id="userInput" aria-label="Founder response" maxlength="10000"
@@ -427,20 +454,20 @@
 
                     <!-- Send Button -->
                     <button
-                        id="sendBtn" aria-label="Send founder response"
+                        id="sendBtn" aria-label="Continue with my answer"
                         onclick="handleSend()"
                         title="Send Message"
                         class="w-9 h-9 rounded-xl bg-brand-600 hover:bg-brand-500 text-white transition flex items-center justify-center shadow-md shadow-brand-600/30 focus:outline-none disabled:opacity-50"
                     >
-                        <i class="fa-solid fa-arrow-up"></i>
-                    <span class="sr-only">Send founder response</span></button>
+                        <span>Continue</span>
+                    </button>
                 </div>
             </div>
 
             <div class="flex items-center justify-between text-[11px] text-gray-400 mt-2 px-1">
                 <span class="flex items-center space-x-1.5">
                     <i class="fa-solid fa-shield text-brand-500/80"></i>
-                    <span>Two focused questions per phase; founder-reported answers</span>
+                    <span>Your work stays in this session.</span>
                 </span>
                 <span>Press <kbd class="px-1.5 py-0.5 rounded bg-dark-800 border border-dark-700 font-mono text-[10px]">Enter</kbd> to send, <kbd class="px-1.5 py-0.5 rounded bg-dark-800 border border-dark-700 font-mono text-[10px]">Shift+Enter</kbd> for newline</span>
             </div>
@@ -1310,7 +1337,7 @@
         }
 
         function executeAdversarialMode(mode) {
-            GTMPrepUI.open(mode === 'vc' ? 'investor' : mode);
+            GTMPrepUI.quickStart(mode === 'vc' ? 'investor' : mode);
         }
 
         function updatePhaseUI(phase, confidence) {
@@ -1413,6 +1440,7 @@
             return html;
         }
         let practiceState = GTMPrep.empty();
+        let workflowMode = 'auto';
         let prepReady = false;
         const SESSION_KEY = 'socratic-gtm-session-v1';
         let sessionReviews = {};
@@ -1429,11 +1457,59 @@
                 reviews: sessionReviews, prep: practiceState});
         }
         function refreshWorkspace() {
+            refreshWorkflow();
             const answers = accumulatedContext.phases || {};
             const count = Object.values(answers).filter(answer => answer.trim()).length;
             const evidence = Object.values(sessionReviews).filter(r => r.evidence.trim()).length;
             workspaceStatus(count + ' of 8 answers recorded · ' + evidence + ' evidence notes · Review required');
             document.getElementById('sessionHeaderTitle').textContent = document.getElementById('projectName').value || 'GTM review';
+        }
+        function refreshWorkflow() {
+            const completed = practiceState.runs.filter(run => run.status === 'complete').at(-1);
+            const active = GTMPrep.active(practiceState);
+            const step = active ? 3 : completed && workflowMode !== 'interview' ? 4 : currentPhase === 0 ? 1 : currentPhase >= 9 ? 3 : 2;
+            document.body.dataset.flowStep = String(step);
+            document.getElementById('interviewComposer').hidden = step >= 3;
+            for (let i = 1; i <= 4; i++) {
+                const el = document.getElementById('flowStep' + i);
+                if (i === step) el.setAttribute('aria-current', 'step'); else el.removeAttribute('aria-current');
+            }
+            const title = document.getElementById('workflowTitle'), help = document.getElementById('workflowHelp');
+            const primary = document.getElementById('workflowPrimary');
+            const input = document.getElementById('userInput');
+            if (step === 1) {
+                title.textContent = 'Start with your idea';
+                help.textContent = 'Tell us who you help and what problem you solve. Example: I help small agencies turn customer interviews into a weekly action plan.';
+                primary.textContent = 'Write my idea';
+                input.placeholder = 'I help [who] with [problem] by [what your product does]...';
+            } else if (step === 2) {
+                title.textContent = 'Question ' + currentPhase + ' of 8: ' + GTMSession.titles[currentPhase - 1];
+                help.textContent = 'Read the question below. Write a short answer, or say "I do not know yet," then press Continue. You can skip ahead to practice at any time.';
+                primary.textContent = 'Answer this question';
+                input.placeholder = 'Your answer - "I do not know yet" is fine...';
+            } else if (step === 3) {
+                title.textContent = active ? 'Continue your practice' : 'Now try a hard question';
+                help.textContent = 'We will use your latest answer and ask you to defend it. Missing evidence becomes a next step.';
+                primary.textContent = active ? 'Resume practice' : 'Start my practice';
+            } else {
+                title.textContent = 'Your next steps are ready';
+                const d = GTMPrep.debrief(practiceState, completed.id);
+                help.textContent = d.claim.action ? 'Your next test: ' + d.claim.action : 'Your rehearsal and evidence gaps are saved. Download your notes, then choose one thing to verify before your meeting.';
+                primary.textContent = 'Download my next steps';
+            }
+            document.getElementById('workflowPractice').hidden = step !== 2;
+            primary.hidden = step <= 2;
+            primary.dataset.step = String(step);
+        }
+        function runWorkflowPrimary() {
+            const step = document.getElementById('workflowPrimary').dataset.step || '1';
+            if (step === '3') { GTMPrepUI.quickStart(); return; }
+            if (step === '4') {
+                const run = practiceState.runs.filter(r => r.status === 'complete').at(-1);
+                downloadText('GTM_NEXT_STEPS.md', GTMSession.playbook(snapshotSession()) + '\n' + GTMPrep.markdown(practiceState, run.id), 'text/markdown');
+                return;
+            }
+            document.getElementById('userInput').focus();
         }
         function persistSession() {
             refreshWorkspace();
@@ -1522,6 +1598,7 @@
         }
         function continueAtReviewPhase() {
             try {
+                workflowMode = 'interview';
                 saveReview();
                 currentPhase = Number(displayedReviewPhase);
                 updatePhaseUI(currentPhase, null);
@@ -1590,6 +1667,12 @@
             read: () => practiceState,
             context: () => accumulatedContext,
             download: downloadText,
+            finished: () => {
+                workflowMode = 'auto';
+                document.getElementById('prepDialog').close();
+                refreshWorkflow();
+                document.getElementById('workflowPrimary').focus();
+            },
             write: candidate => {
                 const session = snapshotSession();
                 session.prep = candidate;
@@ -1599,6 +1682,10 @@
             }
         });
         prepReady = true;
+        refreshWorkflow();
+        document.getElementById('workflowExtras').addEventListener('toggle', event => {
+            document.body.classList.toggle('tools-open', event.target.open);
+        });
 
         document.getElementById('settingsModal').addEventListener('keydown', event => {
             if (event.key === 'Escape') { closeSettingsModal(); return; }

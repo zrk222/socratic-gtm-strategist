@@ -1,0 +1,99 @@
+[
+  {
+    "argv": [
+      "node",
+      "tests/guided_browser.cjs"
+    ],
+    "exit_code": 0,
+    "observed_at": "2026-10-21T06:54:13.756521+00:00",
+    "log": ".factory/guided-workflow/final-0.txt"
+  },
+  {
+    "argv": [
+      "specline",
+      "strict",
+      "guided-workflow",
+      "--root",
+      "."
+    ],
+    "exit_code": 0,
+    "observed_at": "2026-10-21T06:54:13.968551+00:00",
+    "log": ".factory/guided-workflow/final-1.txt"
+  },
+  {
+    "argv": [
+      "specline",
+      "verify-validators",
+      "guided-workflow",
+      "--root",
+      "."
+    ],
+    "exit_code": 0,
+    "observed_at": "2026-10-21T06:54:14.203726+00:00",
+    "log": ".factory/guided-workflow/final-2.txt"
+  },
+  {
+    "argv": [
+      "specline",
+      "gate",
+      "spec",
+      "guided-workflow",
+      "--approver",
+      "codex-local-review",
+      "--root",
+      "."
+    ],
+    "exit_code": 0,
+    "observed_at": "2026-10-21T06:54:14.439056+00:00",
+    "log": ".factory/guided-workflow/final-3.txt"
+  },
+  {
+    "argv": [
+      "specline",
+      "gate",
+      "plan",
+      "guided-workflow",
+      "--approver",
+      "codex-local-review",
+      "--root",
+      "."
+    ],
+    "exit_code": 0,
+    "observed_at": "2026-10-21T06:54:14.677431+00:00",
+    "log": ".factory/guided-workflow/final-4.txt"
+  },
+  {
+    "argv": [
+      "specline",
+      "audit",
+      "guided-workflow",
+      "--root",
+      ".",
+      "--files",
+      "ui/index.html",
+      "ui/prep-ui.js",
+      "ui/prep.css",
+      "scripts/generate_dashboard.py",
+      "tests/browser_smoke.cjs",
+      "tests/prep_browser.cjs",
+      "tests/guided_browser.cjs",
+      "--base-commit",
+      "a9aac6956e93adea2126394ab25e5af320063943",
+      "--json"
+    ],
+    "exit_code": 0,
+    "observed_at": "2026-10-21T06:54:15.717423+00:00",
+    "log": ".factory/guided-workflow/final-5.txt"
+  },
+  {
+    "argv": [
+      "git",
+      "diff",
+      "--check",
+      "HEAD"
+    ],
+    "exit_code": 0,
+    "observed_at": "2026-10-21T06:54:15.798423+00:00",
+    "log": ".factory/guided-workflow/final-6.txt"
+  }
+]
