@@ -75,4 +75,4 @@ Copy the entire content of [`SKILL.md`](./SKILL.md) directly into your LLM's sys
 
 ## 📄 License
 
-MIT License. See [LICENSE](./LICENSE) for details.
+Apache License 2.0. See [LICENSE](./LICENSE) for details.
