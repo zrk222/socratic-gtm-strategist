@@ -106,6 +106,72 @@
             overflow-x: auto;
             border: 1px solid #1f2937;
         }
+
+        /* Founder workspace: a quiet, evidence-led narrative. */
+        :root { --story-ink:#0c1421; --story-panel:#131e2d; --story-line:#2b3b50; --story-text:#e9edf2; --story-muted:#aebed0; --story-mint:#83dfc4; --story-gold:#e8c68b; }
+        body { font-family:Inter,"Segoe UI",sans-serif; background:var(--story-ink); color:var(--story-text); }
+        aside { width:276px !important; background:#101b2a !important; border-color:var(--story-line) !important; }
+        aside h1 { font-size:17px !important; letter-spacing:-.04em; font-weight:650 !important; }
+        aside .phase-item { min-height:43px; border-radius:10px; font-size:16px; padding:.65rem .8rem; }
+        aside .phase-item:hover { background:#1c3040; }
+        main { background:var(--story-ink) !important; }
+        main > header { background:#101b2af2 !important; min-height:66px; border-color:var(--story-line) !important; }
+        #activePhasePill { color:#e8c68b; border-color:#66563d; background:#2d291f; white-space:nowrap; }
+        #voiceEngineBadge { max-width:165px; }
+        .session-tools { padding:.85rem 1.65rem; background:#111d2b; border-color:var(--story-line); }
+        .session-topline label { font-size:16px; font-weight:500; color:var(--story-muted); }
+        #projectName { background:transparent; border-color:#34485c; margin-left:.4rem; font-size:16px; }
+        .session-actions button, .session-actions select { font-size:16px; border-color:#3c5066; background:#152334; transition:background .15s ease,border-color .15s ease; }
+        .session-actions button:hover { border-color:#84cbb9; background:#1b3340; }
+        button.workspace-primary { background:#b6eadb; color:#092b25; border-color:#b6eadb; box-shadow:0 3px 12px #061c1840; }
+        button.workspace-primary:hover { background:#d0f3e9; color:#092b25; }
+        #workspaceStatus { font-size:16px; color:#91c5b7; letter-spacing:.01em; }
+        .privacy-note { font-size:16px; color:#aebed0; }
+        #chatHistory { padding-top:2rem; padding-bottom:2rem; background:radial-gradient(ellipse at 70% 0,#173a3b25,transparent 70%); }
+        .journey-card { border:1px solid #314659; background:linear-gradient(135deg,#1a2c3b,#132230); padding:2rem; border-radius:20px; position:relative; overflow:hidden; }
+        .journey-card::before { content:""; position:absolute; inset:0 auto 0 0; width:3px; background:#83dfc4; }
+        .story-eyebrow { color:#83dfc4; font-size:16px; letter-spacing:.18em; font-weight:700; margin-bottom:.9rem; text-transform:uppercase; }
+        .journey-card h2 { font-size:clamp(1.6rem,2.4vw,2.25rem); line-height:1.5; letter-spacing:-.04em; font-weight:550; max-width:19ch; margin-bottom:1rem; color:#f0f4f5; }
+        .journey-card p { color:#bfccd7; font-size:16px; line-height:1.8; max-width:62ch; }
+        .journey-track { display:grid; grid-template-columns:repeat(4,1fr); gap:.5rem; margin:1.5rem 0; padding:1rem 0; border-top:1px solid #33495a; border-bottom:1px solid #33495a; list-style:none; }
+        .journey-track li { font-size:16px; color:#d6dfe8; }
+        .journey-track span { display:block; color:#91b9b0; font-size:16px; margin-bottom:.25rem; font-variant-numeric:tabular-nums; }
+        .journey-card .story-prompt { color:#f0e0bc; font-size:16px; font-weight:500; }
+        .story-note { display:inline-block; margin-top:1rem; font-size:16px; color:#aebed0; }
+        .chat-bubble-agent { background:#142232; border-color:#2b4054; box-shadow:none !important; line-height:1.8; }
+        .chat-bubble-user { background:#1e3740; border-color:#3c5c62; }
+        #reviewDialog { border-color:#4a6576; box-shadow:0 25px 100px #0008; }
+        #reviewTitle { font-size:22px; letter-spacing:-.03em; }
+        #reviewForm label { color:#b6eadb; font-size:16px; }
+        #reviewForm textarea { background:#0f1b29; border-color:#395267; font-size:16px; line-height:1.65; }
+        #sendBtn { background:#b6eadb; color:#092b25; box-shadow:none; }
+        button,input,select,textarea { font-family:inherit; }
+        @media(max-width:768px) {
+            main > header { min-height:58px; gap:.4rem; }
+            main > header > div { gap:.35rem; }
+            main > header > div > * { margin-left:0 !important; }
+            #activePhasePill { font-size:16px; padding:.25rem .5rem; }
+            #voiceEngineBadge { display:none; }
+            #toggleTtsBtn { width:44px; padding:.4rem; justify-content:center; }
+            #toggleTtsBtn span { display:none; }
+            #currentStatusDot { display:none; }
+            .session-tools { padding:.65rem .75rem; }
+            .session-topline { align-items:center; flex-wrap:nowrap; }
+            #projectName { width:130px; margin-left:.15rem; min-height:38px; padding:.3rem; }
+            .remember-label { font-size:16px !important; gap:.25rem; min-width:0; }
+            .session-actions button,.session-actions select { font-size:16px; min-height:44px; padding:.35rem .45rem; }
+            #moreTools { max-width:170px; }
+            #workspaceStatus { font-size:16px; }
+            .privacy-note { font-size:16px; line-height:1.5; }
+            #chatHistory { padding:1rem .75rem; }
+            .chat-message { gap:.5rem; }
+            #chatHistory > .chat-message > div:first-child { display:none; }
+            .journey-card { padding:1.35rem; border-radius:16px; }
+            .journey-card h2 { font-size:27px; }
+            .journey-track { gap:.3rem; margin:1.1rem 0; }
+            .journey-track li { font-size:16px; }
+        }
+        @media(prefers-reduced-motion:reduce) { *,*::before,*::after { animation:none !important; transition:none !important; scroll-behavior:auto !important; } }
     </style>
 </head>
 <body class="bg-dark-900 text-gray-100 flex h-screen overflow-hidden font-sans antialiased">
@@ -121,7 +187,7 @@
                     </div>
                     <div>
                         <h1 class="font-bold text-sm tracking-wide text-white">Socratic GTM</h1>
-                        <p class="text-xs text-brand-500 font-medium">v3.0 Context-Engineered</p>
+                        <p class="text-xs text-brand-500 font-medium">A founder's thinking space</p>
                     </div>
                 </div>
                 <button onclick="resetConversation()" title="New Audit Session" class="text-gray-400 hover:text-white transition p-1.5 rounded-lg hover:bg-dark-700">
@@ -132,7 +198,7 @@
             <!-- Phase Tracker -->
             <div class="p-4 border-b border-dark-700">
                 <div class="flex items-center justify-between text-xs font-semibold mb-2">
-                    <span class="text-gray-400">ACTIVE DIAGNOSTIC PHASE</span>
+                    <span class="text-gray-400">YOUR REVIEW</span>
                     <span id="sidebarPhaseLabel" class="text-brand-500">Phase 0/8</span>
                 </div>
                 <div class="w-full bg-dark-700 h-2 rounded-full overflow-hidden">
@@ -146,38 +212,38 @@
 
             <!-- GTM Phase Checklist -->
             <div class="p-4 overflow-y-auto max-h-[calc(100vh-320px)] space-y-1.5 text-xs">
-                <p class="text-[11px] font-semibold text-gray-400 tracking-wider uppercase mb-2">Framework Checklist</p>
+                <p class="text-[11px] font-semibold text-gray-400 tracking-wider uppercase mb-2">Eight perspectives</p>
 
                 <div id="phaseItem1" class="phase-item p-2 rounded-lg flex items-center justify-between bg-dark-700/50 text-gray-400 border border-transparent">
-                    <span class="truncate">1. Interaction Frequency</span>
+                    <span class="truncate">1. Customer demand</span>
                     <i class="fa-regular fa-circle text-gray-400 text-xs phase-status-icon"></i>
                 </div>
                 <div id="phaseItem2" class="phase-item p-2 rounded-lg flex items-center justify-between bg-dark-700/50 text-gray-400 border border-transparent">
-                    <span class="truncate">2. Incumbent Recon</span>
+                    <span class="truncate">2. The alternatives</span>
                     <i class="fa-regular fa-circle text-gray-400 text-xs phase-status-icon"></i>
                 </div>
                 <div id="phaseItem3" class="phase-item p-2 rounded-lg flex items-center justify-between bg-dark-700/50 text-gray-400 border border-transparent">
-                    <span class="truncate">3. PLG vs CISO Wedge</span>
+                    <span class="truncate">3. Your adoption path</span>
                     <i class="fa-regular fa-circle text-gray-400 text-xs phase-status-icon"></i>
                 </div>
                 <div id="phaseItem4" class="phase-item p-2 rounded-lg flex items-center justify-between bg-dark-700/50 text-gray-400 border border-transparent">
-                    <span class="truncate">4. Expansion Vector</span>
+                    <span class="truncate">4. Market focus</span>
                     <i class="fa-regular fa-circle text-gray-400 text-xs phase-status-icon"></i>
                 </div>
                 <div id="phaseItem5" class="phase-item p-2 rounded-lg flex items-center justify-between bg-dark-700/50 text-gray-400 border border-transparent">
-                    <span class="truncate">5. Proactive Routines</span>
+                    <span class="truncate">5. Value delivered</span>
                     <i class="fa-regular fa-circle text-gray-400 text-xs phase-status-icon"></i>
                 </div>
                 <div id="phaseItem6" class="phase-item p-2 rounded-lg flex items-center justify-between bg-dark-700/50 text-gray-400 border border-transparent">
-                    <span class="truncate">6. Model Neutrality</span>
+                    <span class="truncate">6. Models & data</span>
                     <i class="fa-regular fa-circle text-gray-400 text-xs phase-status-icon"></i>
                 </div>
                 <div id="phaseItem7" class="phase-item p-2 rounded-lg flex items-center justify-between bg-dark-700/50 text-gray-400 border border-transparent">
-                    <span class="truncate">7. Pricing Paradox</span>
+                    <span class="truncate">7. Pricing & costs</span>
                     <i class="fa-regular fa-circle text-gray-400 text-xs phase-status-icon"></i>
                 </div>
                 <div id="phaseItem8" class="phase-item p-2 rounded-lg flex items-center justify-between bg-dark-700/50 text-gray-400 border border-transparent">
-                    <span class="truncate">8. Data Gravity Moats</span>
+                    <span class="truncate">8. Integration & exit</span>
                     <i class="fa-regular fa-circle text-gray-400 text-xs phase-status-icon"></i>
                 </div>
             </div>
@@ -214,8 +280,8 @@
         <header class="h-14 border-b border-dark-700 bg-dark-800/80 backdrop-blur px-6 flex items-center justify-between">
             <div class="flex items-center space-x-3">
                 <span id="currentStatusDot" class="w-2.5 h-2.5 rounded-full bg-brand-500 animate-pulse"></span>
-                <span id="sessionHeaderTitle" class="font-semibold text-sm text-gray-200">Socratic GTM Review Session</span>
-                <span id="activePhasePill" class="text-[11px] px-2.5 py-0.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 font-medium">Phase 0: Initialization</span>
+                <span id="sessionHeaderTitle" class="font-semibold text-sm text-gray-200">Your GTM workspace</span>
+                <span id="activePhasePill" class="text-[11px] px-2.5 py-0.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 font-medium">Your idea</span>
             </div>
 
             <!-- Controls (TTS Voice Toggle, Fullscreen Voice Mode, Settings) -->
@@ -279,8 +345,8 @@
                 </div>
                 <div class="flex-1">
                     <div class="flex items-center space-x-2 mb-1">
-                        <span class="font-semibold text-sm text-gray-200">Socratic GTM Advisor</span>
-                        <span class="text-[10px] text-gray-400">Phase 0 Kickoff</span>
+                        <span class="font-semibold text-sm text-gray-200">GTM thinking partner</span>
+                        <span class="text-[10px] text-gray-400">A place to begin</span>
                     </div>
 
                     <!-- Collapsible Monologue Block -->
@@ -298,10 +364,18 @@
 - Next Action: Prompt founder for 2-3 sentence overview.</div>
                     </div>
 
-                    <div class="chat-bubble-agent p-4 rounded-2xl text-sm leading-relaxed text-gray-200 shadow-sm space-y-3">
-                        <p>Hello. I'm your <strong>AI Startup Strategy Partner and Socratic Advisor</strong>.</p>
-                        <p>We will examine your customers, alternatives, adoption, initial market, value delivery, dependencies, pricing and integrations. Answers are founder-reported until supported by evidence.</p>
-                        <p class="font-medium text-brand-400">To begin Phase 1: In 2 to 3 sentences, what is your AI startup idea, who is your core user, and what primary problem are you solving?</p>
+                    <div class="chat-bubble-agent journey-card">
+                        <div class="story-eyebrow">Your next chapter</div>
+                        <h2>A good idea deserves a clear next step.</h2>
+                        <p>You have a product in mind. The uncertain part is who will choose it, why they will stay, and what to test first. Let's make those questions concrete, one conversation at a time.</p>
+                        <ol class="journey-track" aria-label="Your strategy journey">
+                            <li><span>01 / BEGIN</span>Your idea</li>
+                            <li><span>02 / EXPLORE</span>The assumptions</li>
+                            <li><span>03 / EXAMINE</span>Your evidence</li>
+                            <li><span>04 / CHOOSE</span>One next move</li>
+                        </ol>
+                        <p class="story-prompt">In two or three sentences, describe your idea, the person it helps, and the problem you want to solve.</p>
+                        <span class="story-note">Your answers, your evidence, your decision. Edit or pause whenever you need.</span>
                     </div>
 
                     <!-- Voice Speak Button for this message -->
@@ -332,7 +406,7 @@
                 <textarea
                     id="userInput" aria-label="Founder response" maxlength="10000"
                     rows="2"
-                    placeholder="Describe your startup idea or reply to the Socratic question..."
+                    placeholder="Start with your idea. We will take it one question at a time."
                     class="w-full bg-transparent px-4 py-3.5 pr-28 text-sm text-gray-100 placeholder-gray-400 focus:outline-none resize-none"
                     onkeydown="handleKeyDown(event)"
                 ></textarea>
@@ -1167,7 +1241,7 @@
                 </div>
                 <div class="flex-1">
                     <div class="flex items-center space-x-2 mb-1">
-                        <span class="font-semibold text-sm text-gray-200">Socratic GTM Advisor</span>
+                        <span class="font-semibold text-sm text-gray-200">GTM thinking partner</span>
                         <span class="text-[10px] text-gray-400">Phase ${phase}</span>
                         <span class="text-[10px] px-2 py-0.2 rounded border font-mono ${badgeClass}">${gateText}</span>
                     </div>
@@ -1226,7 +1300,7 @@
                 document.getElementById('userInput').value = userInput;
                 persistSession();
                 appendAgentMessage("Request failed; interview phase unchanged.",
-                    "The local API could not complete this turn. Start python cli.py ui and retry. " + err.message,
+                    "Your answer is still here. We could not save this turn; check the local connection and try again. " + err.message,
                     currentPhase, null);
             }
         }

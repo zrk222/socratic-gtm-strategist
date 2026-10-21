@@ -24,6 +24,7 @@ Repair reproduced installation, HTTP exposure, output injection and evidence-int
 - When a founder reviews an answer, the system shall allow revising the answer and recording evidence, next experiment, owner and decision date; local exports shall preserve entered values and label missing evidence (acceptance: `review_exports`).
 - When a founder opens the dashboard at a 390px viewport, the system shall display named keyboard-focusable session controls and review actions without horizontal overflow (acceptance: `mobile_session_controls`).
 - When optional voice settings are used, the system shall route the upstream provider choices, reject foreign requests, cap STT input at 5242880 bytes, and return a fallback response on provider failure; credentials shall remain outside session exports and device storage (acceptance: `voice_integration`).
+- When the preview opens, the system shall display the founder mission, an idea-to-evidence journey and a next action without asserting business outcomes; the interface shall respect reduced-motion preferences (acceptance: `story_preview`).
 
 ### Acceptance criteria (Gherkin)
 ```gherkin
@@ -59,6 +60,7 @@ Scenario: Acceptance observations remain bound to declared behaviors
   And `review_exports` preserves evidence notes and prevents spreadsheet formula execution
   And `mobile_session_controls` keeps the session actions accessible
   And `voice_integration` proves proxy rejection, mocked forwarding, fallback and credential exclusion
+  And `story_preview` presents honest onboarding and preserves usable desktop and mobile layouts
 ```
 
 ## SHOULD — Technical/structural

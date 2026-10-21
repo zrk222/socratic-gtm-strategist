@@ -32,6 +32,17 @@ const pass = (id, detail) => observations.push({id, status: 'PASS', detail});
     page.on('dialog', dialog => dialog.accept());
     await page.goto(url, {waitUntil: 'networkidle'});
     await page.waitForFunction(() => typeof GTMSession !== 'undefined');
+    assert.match(await page.locator('.journey-card').innerText(), /A good idea deserves a clear next step/);
+    assert.equal(await page.locator('.journey-track li').count(), 4);
+    await page.screenshot({path: path.join(out, 'welcome-desktop.png'), fullPage: true});
+    await page.setViewportSize({width: 390, height: 844});
+    assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true);
+    await page.screenshot({path: path.join(out, 'welcome-mobile.png'), fullPage: true});
+    await page.emulateMedia({reducedMotion: 'reduce'});
+    assert.equal(await page.locator('#currentStatusDot').evaluate(el => getComputedStyle(el).animationName), 'none');
+    await page.emulateMedia({reducedMotion: 'no-preference'});
+    await page.setViewportSize({width: 1440, height: 1000});
+    pass('story_preview', 'Founder mission and four-step idea-to-evidence journey render on desktop and mobile, with reduced motion honored.');
     await page.getByTitle('Voice & API Key Settings').click();
     await page.locator('#sttProviderSelect').selectOption('openai');
     await page.locator('#sttApiKeyInput').fill('fixture-transcription-key');
@@ -155,6 +166,9 @@ const pass = (id, detail) => observations.push({id, status: 'PASS', detail});
 })().catch(async error => {
     if (testPage) {
         console.error(await testPage.locator('#workspaceStatus').innerText());
+        console.error(await testPage.evaluate(() => [...document.querySelectorAll('body *')].filter(el => {
+            const r = el.getBoundingClientRect(); return r.width && r.right > innerWidth + 1;
+        }).map(el => ({tag: el.tagName, id: el.id, right: Math.round(el.getBoundingClientRect().right)})).slice(0,15)));
         await testPage.screenshot({path: path.join(out, 'failure.png'), fullPage: true});
     }
     observations.push({id: 'browser_runtime', status: 'FAIL', detail: error.stack});
