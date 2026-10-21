@@ -81,6 +81,18 @@ Launch an interactive Socratic audit session right inside your terminal:
 python cli.py start
 ```
 
+### 🖥️ Interactive ChatGPT-Style Web UI Dashboard
+Launch the full web dashboard with real-time chat history, visual progress tracker, and speech controls:
+```bash
+python cli.py ui
+# or
+python server.py --port 8000
+```
+* **Local-Only 3rd-Party Speech APIs:** Configure **OpenAI Whisper** or **Groq Whisper** for Speech-to-Text (STT) and **OpenAI TTS-1** or **ElevenLabs** for neural Text-to-Speech (TTS) via the Settings modal.
+* **Privacy-First Security:** All API keys are stored strictly in your browser's private `localStorage` and are never committed or exposed.
+* **Instant Web Speech Fallback:** When 3rd-party API keys are omitted or invalid, the UI automatically and gracefully falls back to your browser's native Web Speech API (`webkitSpeechRecognition` & `window.speechSynthesis`) for zero-configuration, 100% free voice interactions.
+* **ChatGPT-Style Fullscreen Voice Mode:** Click the waveform icon to engage in a hands-free, full-screen audio conversation with the strategist.
+
 ### Standalone CLI Subcommands
 ```bash
 # 1. Generate the Interactive HTML Simulator & Risk Radar:
@@ -171,13 +183,20 @@ git clone https://github.com/zrk222/socratic-gtm-strategist.git ~/.gemini/config
 
 ```text
 socratic-gtm-strategist/
-├── cli.py                            # Unified CLI & MCP entrypoint (includes 'start' mode)
+├── cli.py                            # Unified CLI & MCP entrypoint (includes 'start' & 'ui' modes)
+├── server.py                         # Zero-dependency local web & API server for UI
+├── ui/
+│   └── index.html                    # ChatGPT-style UI with dual-layer STT/TTS & local API keys
 ├── mcp_server.py                     # Standard JSON-RPC 2.0 MCP Server (stdio)
 ├── mcp.json                          # Standard MCP client configuration
 ├── CLAUDE.md                         # Claude Code CLI runtime instructions
 ├── CODEX.md                          # OpenAI Codex runtime instructions
 ├── .cursorrules                      # Cursor AI development rules
 ├── opencode.json                     # OpenCode plugin & skill manifest
+├── openapi.json                      # OpenAPI 3.0 specification for cloud agents
+├── CLOUD_INTEGRATIONS.md             # Integration guide for AWS Bedrock, GCP Vertex, LangGraph
+├── Dockerfile                        # Multi-cloud container image
+├── docker-compose.yml                # Single-command container orchestration
 ├── .github/copilot-instructions.md   # GitHub Copilot / VS Code instructions
 ├── .vscode/tasks.json                # VS Code one-click execution tasks
 ├── .editorconfig                     # Consistent editor formatting rules

@@ -175,8 +175,14 @@
                 <span id="activePhasePill" class="text-[11px] px-2.5 py-0.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 font-medium">Phase 0: Initialization</span>
             </div>
             
-            <!-- Controls (TTS Voice Toggle, Fullscreen Voice Mode, Clear) -->
+            <!-- Controls (TTS Voice Toggle, Fullscreen Voice Mode, Settings) -->
             <div class="flex items-center space-x-3 text-sm">
+                <!-- Active Engine Indicator Badge -->
+                <button onclick="openSettingsModal()" id="voiceEngineBadge" title="Click to configure 3rd-party STT/TTS APIs" class="hidden sm:flex items-center space-x-1 px-2.5 py-1 rounded-md bg-dark-700 hover:bg-dark-600 border border-dark-600 text-[11px] text-gray-300 transition">
+                    <span class="w-1.5 h-1.5 rounded-full bg-brand-400"></span>
+                    <span id="voiceEngineText">Web Voice (Free)</span>
+                </button>
+
                 <!-- Auto-TTS Toggle -->
                 <button id="toggleTtsBtn" onclick="toggleAutoTTS()" class="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-dark-700 hover:bg-dark-600 text-gray-300 transition text-xs font-medium">
                     <i id="ttsIcon" class="fa-solid fa-volume-high text-brand-400"></i>
@@ -187,6 +193,11 @@
                 <button onclick="openVoiceMode()" class="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-gradient-to-r from-brand-600 to-cyan-600 hover:from-brand-500 hover:to-cyan-500 text-white shadow-md shadow-brand-500/20 transition text-xs font-semibold">
                     <i class="fa-solid fa-waveform"></i>
                     <span>Voice Mode</span>
+                </button>
+
+                <!-- Voice & API Settings Gear Button -->
+                <button onclick="openSettingsModal()" title="Voice & API Key Settings" class="w-8 h-8 rounded-lg bg-dark-700 hover:bg-dark-600 text-gray-300 hover:text-white transition flex items-center justify-center">
+                    <i class="fa-solid fa-gear"></i>
                 </button>
             </div>
         </header>
@@ -326,6 +337,128 @@
         </div>
     </div>
 
+    <!-- Voice & 3rd-Party API Settings Modal (Local Use Only) -->
+    <div id="settingsModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-dark-800 border border-dark-700 rounded-2xl max-w-lg w-full p-6 shadow-2xl relative text-sm">
+            <div class="flex items-center justify-between pb-4 border-b border-dark-700">
+                <div class="flex items-center space-x-2.5">
+                    <div class="w-8 h-8 rounded-lg bg-brand-500/10 border border-brand-500/30 flex items-center justify-center text-brand-400">
+                        <i class="fa-solid fa-sliders"></i>
+                    </div>
+                    <div>
+                        <h2 class="font-bold text-white text-base">Voice & Speech API Settings</h2>
+                        <p class="text-xs text-gray-400">Local use only &bull; Web Speech fallback active</p>
+                    </div>
+                </div>
+                <button onclick="closeSettingsModal()" class="text-gray-400 hover:text-white text-lg p-1.5 rounded-lg hover:bg-dark-700">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Privacy Notice Banner -->
+            <div class="mt-4 p-3 rounded-xl bg-dark-900 border border-dark-700 text-xs text-gray-300 flex items-start space-x-2.5">
+                <i class="fa-solid fa-shield-halved text-brand-400 text-sm mt-0.5"></i>
+                <div>
+                    <span class="font-semibold text-white">Local Use Only Security:</span> Keys are stored exclusively in your browser's private <code class="text-brand-400">localStorage</code>. When an API key is omitted or invalid, the system automatically falls back to your browser's native Web Speech API.
+                </div>
+            </div>
+
+            <div class="mt-5 space-y-4 max-h-[60vh] overflow-y-auto pr-1">
+                <!-- STT Section -->
+                <div class="p-4 rounded-xl bg-dark-900/60 border border-dark-700/80 space-y-3">
+                    <div class="flex items-center justify-between">
+                        <label class="font-semibold text-xs text-gray-200 uppercase tracking-wider flex items-center space-x-1.5">
+                            <i class="fa-solid fa-microphone text-brand-400"></i>
+                            <span>Speech-to-Text (STT) Provider</span>
+                        </label>
+                        <span class="text-[10px] text-gray-400">User Mic Input</span>
+                    </div>
+
+                    <select id="sttProviderSelect" onchange="onSttProviderChange()" class="w-full bg-dark-800 border border-dark-700 rounded-lg p-2.5 text-xs text-gray-100 focus:outline-none focus:border-brand-500">
+                        <option value="web">Web Speech API (Browser Native - Free)</option>
+                        <option value="openai">OpenAI Whisper (Cloud Neural)</option>
+                        <option value="groq">Groq Whisper (Cloud High-Speed)</option>
+                    </select>
+
+                    <div id="sttKeyGroup" class="space-y-1 hidden">
+                        <div class="flex justify-between text-xs text-gray-400">
+                            <span id="sttKeyLabel">API Key</span>
+                            <span class="text-[10px] text-brand-400 italic">Saved locally</span>
+                        </div>
+                        <div class="relative">
+                            <input type="password" id="sttApiKeyInput" placeholder="sk-..." class="w-full bg-dark-800 border border-dark-700 rounded-lg p-2.5 pr-10 text-xs text-gray-100 focus:outline-none focus:border-brand-500">
+                            <button type="button" onclick="togglePasswordVisibility('sttApiKeyInput')" class="absolute right-3 top-2.5 text-gray-400 hover:text-white text-xs">
+                                <i class="fa-regular fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TTS Section -->
+                <div class="p-4 rounded-xl bg-dark-900/60 border border-dark-700/80 space-y-3">
+                    <div class="flex items-center justify-between">
+                        <label class="font-semibold text-xs text-gray-200 uppercase tracking-wider flex items-center space-x-1.5">
+                            <i class="fa-solid fa-volume-high text-cyan-400"></i>
+                            <span>Text-to-Speech (TTS) Provider</span>
+                        </label>
+                        <span class="text-[10px] text-gray-400">Agent Voice Output</span>
+                    </div>
+
+                    <select id="ttsProviderSelect" onchange="onTtsProviderChange()" class="w-full bg-dark-800 border border-dark-700 rounded-lg p-2.5 text-xs text-gray-100 focus:outline-none focus:border-brand-500">
+                        <option value="web">Web Speech Synthesis (Browser Native - Free)</option>
+                        <option value="openai">OpenAI TTS-1 (Cloud Neural)</option>
+                        <option value="elevenlabs">ElevenLabs (Hyper-Realistic Neural)</option>
+                    </select>
+
+                    <div id="ttsVoiceGroup" class="space-y-1 hidden">
+                        <div class="text-xs text-gray-400">Voice Selection</div>
+                        <select id="ttsVoiceSelect" class="w-full bg-dark-800 border border-dark-700 rounded-lg p-2 text-xs text-gray-100 focus:outline-none focus:border-brand-500">
+                            <option value="nova">Nova (Sharp & Friendly)</option>
+                            <option value="alloy">Alloy (Neutral & Balanced)</option>
+                            <option value="echo">Echo (Warm)</option>
+                            <option value="fable">Fable (Expressive)</option>
+                            <option value="onyx">Onyx (Deep & Authoritative)</option>
+                            <option value="shimmer">Shimmer (Clear)</option>
+                        </select>
+                    </div>
+
+                    <div id="ttsKeyGroup" class="space-y-1 hidden">
+                        <div class="flex justify-between text-xs text-gray-400">
+                            <span id="ttsKeyLabel">API Key</span>
+                            <label class="flex items-center space-x-1 text-[11px] text-gray-400 cursor-pointer">
+                                <input type="checkbox" id="syncKeyCheckbox" onchange="syncKeys(this)" class="rounded bg-dark-700 border-dark-600 text-brand-500 focus:ring-0">
+                                <span>Same as STT</span>
+                            </label>
+                        </div>
+                        <div class="relative">
+                            <input type="password" id="ttsApiKeyInput" placeholder="sk-... or ElevenLabs key" class="w-full bg-dark-800 border border-dark-700 rounded-lg p-2.5 pr-10 text-xs text-gray-100 focus:outline-none focus:border-brand-500">
+                            <button type="button" onclick="togglePasswordVisibility('ttsApiKeyInput')" class="absolute right-3 top-2.5 text-gray-400 hover:text-white text-xs">
+                                <i class="fa-regular fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Test Voice Button -->
+                    <button type="button" onclick="testVoicePreview()" class="w-full py-2 rounded-lg bg-dark-700 hover:bg-dark-600 text-xs text-gray-200 transition flex items-center justify-center space-x-1.5 border border-dark-600">
+                        <i class="fa-solid fa-play text-brand-400 text-[10px]"></i>
+                        <span>Test Voice Output</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Footer Buttons -->
+            <div class="mt-5 pt-4 border-t border-dark-700 flex items-center justify-between">
+                <button type="button" onclick="resetToWebSpeechDefaults()" class="text-xs text-gray-400 hover:text-red-400 transition">
+                    Reset to Free Defaults
+                </button>
+                <div class="flex space-x-2">
+                    <button type="button" onclick="closeSettingsModal()" class="px-4 py-2 rounded-lg bg-dark-700 hover:bg-dark-600 text-xs text-gray-300 transition">Cancel</button>
+                    <button type="button" onclick="saveSettings()" class="px-4 py-2 rounded-lg bg-brand-600 hover:bg-brand-500 text-xs text-white font-medium transition shadow-md shadow-brand-600/30">Save Settings</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Script: Complete Voice, STT, TTS, Chat and Engine Logic -->
     <script>
         // State Management
@@ -339,7 +472,138 @@
             phases: {}
         };
 
-        // Initialize Speech Recognition (STT)
+        // Voice Configuration (Local Use Only - Stored in localStorage)
+        let voiceConfig = {
+            sttProvider: "web",        // "web", "openai", "groq"
+            sttApiKey: "",
+            ttsProvider: "web",        // "web", "openai", "elevenlabs"
+            ttsVoice: "nova",
+            ttsApiKey: ""
+        };
+
+        let mediaRecorder = null;
+        let audioChunks = [];
+        let isRecordingAudio = false;
+        let activeAudio = null;
+
+        // Load settings from localStorage
+        function loadSettings() {
+            try {
+                const saved = localStorage.getItem('socratic_gtm_voice_config');
+                if (saved) {
+                    voiceConfig = { ...voiceConfig, ...jsonSafeParse(saved, {}) };
+                }
+            } catch (e) {
+                console.warn("Could not read from localStorage:", e);
+            }
+
+            document.getElementById('sttProviderSelect').value = voiceConfig.sttProvider || "web";
+            document.getElementById('sttApiKeyInput').value = voiceConfig.sttApiKey || "";
+            document.getElementById('ttsProviderSelect').value = voiceConfig.ttsProvider || "web";
+            document.getElementById('ttsVoiceSelect').value = voiceConfig.ttsVoice || "nova";
+            document.getElementById('ttsApiKeyInput').value = voiceConfig.ttsApiKey || "";
+
+            onSttProviderChange();
+            onTtsProviderChange();
+            updateEngineBadge();
+        }
+
+        function jsonSafeParse(str, fallback) {
+            try { return JSON.parse(str); } catch { return fallback; }
+        }
+
+        function saveSettings() {
+            voiceConfig.sttProvider = document.getElementById('sttProviderSelect').value;
+            voiceConfig.sttApiKey = document.getElementById('sttApiKeyInput').value.trim();
+            voiceConfig.ttsProvider = document.getElementById('ttsProviderSelect').value;
+            voiceConfig.ttsVoice = document.getElementById('ttsVoiceSelect').value;
+            voiceConfig.ttsApiKey = document.getElementById('ttsApiKeyInput').value.trim();
+
+            try {
+                localStorage.setItem('socratic_gtm_voice_config', JSON.stringify(voiceConfig));
+            } catch (e) {
+                console.warn("Could not save to localStorage:", e);
+            }
+
+            updateEngineBadge();
+            closeSettingsModal();
+        }
+
+        function resetToWebSpeechDefaults() {
+            voiceConfig = {
+                sttProvider: "web",
+                sttApiKey: "",
+                ttsProvider: "web",
+                ttsVoice: "nova",
+                ttsApiKey: ""
+            };
+            try {
+                localStorage.removeItem('socratic_gtm_voice_config');
+            } catch (e) {}
+            loadSettings();
+        }
+
+        function updateEngineBadge() {
+            const badgeText = document.getElementById('voiceEngineText');
+            if (voiceConfig.sttProvider !== 'web' && voiceConfig.sttApiKey && voiceConfig.ttsProvider !== 'web' && voiceConfig.ttsApiKey) {
+                badgeText.innerText = `${voiceConfig.sttProvider.toUpperCase()} / ${voiceConfig.ttsProvider.toUpperCase()}`;
+            } else if (voiceConfig.ttsProvider !== 'web' && voiceConfig.ttsApiKey) {
+                badgeText.innerText = `${voiceConfig.ttsProvider.toUpperCase()} Voice`;
+            } else if (voiceConfig.sttProvider !== 'web' && voiceConfig.sttApiKey) {
+                badgeText.innerText = `${voiceConfig.sttProvider.toUpperCase()} Whisper`;
+            } else {
+                badgeText.innerText = "Web Voice (Free Fallback)";
+            }
+        }
+
+        function onSttProviderChange() {
+            const val = document.getElementById('sttProviderSelect').value;
+            const keyGroup = document.getElementById('sttKeyGroup');
+            const label = document.getElementById('sttKeyLabel');
+            if (val === 'web') {
+                keyGroup.classList.add('hidden');
+            } else {
+                keyGroup.classList.remove('hidden');
+                label.innerText = val === 'openai' ? 'OpenAI API Key (Whisper)' : 'Groq API Key (Whisper)';
+            }
+        }
+
+        function onTtsProviderChange() {
+            const val = document.getElementById('ttsProviderSelect').value;
+            const keyGroup = document.getElementById('ttsKeyGroup');
+            const voiceGroup = document.getElementById('ttsVoiceGroup');
+            const label = document.getElementById('ttsKeyLabel');
+
+            if (val === 'web') {
+                keyGroup.classList.add('hidden');
+                voiceGroup.classList.add('hidden');
+            } else {
+                keyGroup.classList.remove('hidden');
+                voiceGroup.classList.remove('hidden');
+                label.innerText = val === 'openai' ? 'OpenAI API Key (TTS-1)' : 'ElevenLabs API Key';
+            }
+        }
+
+        function syncKeys(checkbox) {
+            if (checkbox.checked) {
+                document.getElementById('ttsApiKeyInput').value = document.getElementById('sttApiKeyInput').value;
+            }
+        }
+
+        function togglePasswordVisibility(id) {
+            const el = document.getElementById(id);
+            el.type = el.type === 'password' ? 'text' : 'password';
+        }
+
+        function openSettingsModal() {
+            document.getElementById('settingsModal').classList.remove('hidden');
+        }
+
+        function closeSettingsModal() {
+            document.getElementById('settingsModal').classList.add('hidden');
+        }
+
+        // Initialize Speech Recognition (Web Speech API Native Fallback)
         function initSTT() {
             const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
             if (!SpeechRecognition) {
@@ -353,7 +617,7 @@
 
             rec.onstart = () => {
                 isListening = true;
-                updateMicUI(true);
+                updateMicUI(true, "Listening (Web Speech)...");
             };
 
             rec.onresult = (event) => {
@@ -372,7 +636,7 @@
             };
 
             rec.onerror = (event) => {
-                console.error("STT Error:", event.error);
+                console.warn("Native STT Error:", event.error);
                 stopSpeechToText();
             };
 
@@ -386,34 +650,127 @@
 
         recognition = initSTT();
 
-        function toggleSpeechToText() {
-            if (!recognition) {
-                alert("Speech recognition is not supported in this browser. Please use Chrome, Edge, or Safari.");
-                return;
-            }
-            if (isListening) {
-                recognition.stop();
+        // Dual-Layer Speech-to-Text Handler (3rd-Party Whisper with Web Speech Fallback)
+        async function toggleSpeechToText() {
+            // Check if 3rd party STT (OpenAI or Groq) is active with API key
+            const useThirdParty = (voiceConfig.sttProvider === 'openai' || voiceConfig.sttProvider === 'groq') && voiceConfig.sttApiKey;
+
+            if (useThirdParty) {
+                if (isRecordingAudio) {
+                    stopAudioRecording();
+                } else {
+                    startAudioRecording();
+                }
             } else {
-                try {
-                    recognition.start();
-                } catch (e) {
+                // Native Web Speech API fallback
+                if (!recognition) {
+                    alert("Speech recognition is not supported in this browser. Please use Chrome, Edge, or Safari, or enter an OpenAI/Groq API key in Settings.");
+                    return;
+                }
+                if (isListening) {
                     recognition.stop();
+                } else {
+                    try {
+                        recognition.start();
+                    } catch (e) {
+                        recognition.stop();
+                    }
                 }
             }
         }
 
-        function stopSpeechToText() {
-            if (recognition && isListening) {
-                recognition.stop();
+        async function startAudioRecording() {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                audioChunks = [];
+                mediaRecorder = new MediaRecorder(stream);
+
+                mediaRecorder.ondataavailable = (e) => {
+                    if (e.data.size > 0) audioChunks.push(e.data);
+                };
+
+                mediaRecorder.onstop = async () => {
+                    const audioBlob = new Blob(audioChunks, { type: 'audio/webm' });
+                    stream.getTracks().forEach(track => track.stop());
+                    await transcribeAudioBlob(audioBlob);
+                };
+
+                mediaRecorder.start();
+                isRecordingAudio = true;
+                updateMicUI(true, `Recording for ${voiceConfig.sttProvider.toUpperCase()} Whisper...`);
+            } catch (err) {
+                console.warn("Microphone access failed for 3rd-party audio, falling back to Web Speech:", err);
+                // Graceful fallback to Web Speech API
+                if (recognition) recognition.start();
             }
+        }
+
+        function stopAudioRecording() {
+            if (mediaRecorder && isRecordingAudio) {
+                mediaRecorder.stop();
+                isRecordingAudio = false;
+                updateMicUI(false);
+            }
+        }
+
+        async function transcribeAudioBlob(blob) {
+            updateMicUI(true, "Transcribing with Whisper...");
+            const formData = new FormData();
+            formData.append("file", blob, "audio.webm");
+            formData.append("model", "whisper-1");
+
+            let url = "https://api.openai.com/v1/audio/transcriptions";
+            let headers = { "Authorization": `Bearer ${voiceConfig.sttApiKey}` };
+
+            if (voiceConfig.sttProvider === "groq") {
+                url = "https://api.groq.com/openai/v1/audio/transcriptions";
+                formData.set("model", "whisper-large-v3");
+            }
+
+            try {
+                // Try direct client API call, or proxy through local server if available
+                let res;
+                try {
+                    res = await fetch(url, { method: "POST", headers: headers, body: formData });
+                } catch (netErr) {
+                    // Try local server proxy fallback
+                    res = await fetch("/api/stt", {
+                        method: "POST",
+                        body: formData,
+                        headers: { "x-api-key": voiceConfig.sttApiKey, "x-provider": voiceConfig.sttProvider }
+                    });
+                }
+
+                if (res && res.ok) {
+                    const data = await res.json();
+                    if (data.text) {
+                        document.getElementById('userInput').value = data.text;
+                        document.getElementById('voiceLiveTranscript').innerText = data.text;
+                    }
+                } else {
+                    throw new Error("Whisper API returned error");
+                }
+            } catch (err) {
+                console.warn("3rd-party STT failed. Using fallback notice:", err);
+                // Fallback indication
+                document.getElementById('sttStatusText').innerText = "Whisper failed. Please try again with native browser voice.";
+            } finally {
+                updateMicUI(false);
+            }
+        }
+
+        function stopSpeechToText() {
+            if (isRecordingAudio) stopAudioRecording();
+            if (recognition && isListening) recognition.stop();
             updateMicUI(false);
         }
 
-        function updateMicUI(listening) {
+        function updateMicUI(listening, statusMsg) {
             const micBtn = document.getElementById('micBtn');
             const micIcon = document.getElementById('micIcon');
             const micRing = document.getElementById('micRing');
             const sttBar = document.getElementById('sttListeningBar');
+            const sttText = document.getElementById('sttStatusText');
             const voiceOrb = document.getElementById('voiceOrb');
             const voiceStatus = document.getElementById('voiceStatusText');
 
@@ -422,8 +779,9 @@
                 micIcon.className = 'fa-solid fa-microphone-lines';
                 micRing.classList.remove('hidden');
                 sttBar.classList.remove('hidden');
+                if (sttText && statusMsg) sttText.innerText = statusMsg;
                 if (voiceOrb) voiceOrb.classList.add('animate-pulse');
-                if (voiceStatus) voiceStatus.innerText = "Listening...";
+                if (voiceStatus) voiceStatus.innerText = statusMsg || "Listening...";
             } else {
                 micBtn.classList.remove('bg-red-600/20', 'text-red-400');
                 micIcon.className = 'fa-solid fa-microphone';
@@ -433,12 +791,13 @@
             }
         }
 
-        // Text-to-Speech (Agent TTS)
-        function speakText(text) {
-            if (!synth || !autoTTS) return;
-            synth.cancel(); // Stop any active utterance
+        // Dual-Layer Text-to-Speech (3rd-Party Neural TTS with Web Speech Fallback)
+        async function speakText(text) {
+            if (!autoTTS) return;
+            if (synth) synth.cancel();
+            if (activeAudio) { activeAudio.pause(); activeAudio = null; }
 
-            // Clean monologue blocks and markdown formatting from spoken audio
+            // Clean monologue blocks and markdown formatting
             const cleanText = text
                 .replace(/<internal_monologue>[\s\S]*?<\/internal_monologue>/gi, '')
                 .replace(/`{1,3}[\s\S]*?`{1,3}/g, '')
@@ -447,24 +806,124 @@
 
             if (!cleanText) return;
 
+            // Check if 3rd-party neural TTS (OpenAI or ElevenLabs) is configured
+            const useThirdPartyTTS = (voiceConfig.ttsProvider === 'openai' || voiceConfig.ttsProvider === 'elevenlabs') && voiceConfig.ttsApiKey;
+
+            if (useThirdPartyTTS) {
+                try {
+                    let audioUrl = null;
+                    if (voiceConfig.ttsProvider === 'openai') {
+                        audioUrl = await fetchOpenAITTS(cleanText);
+                    } else if (voiceConfig.ttsProvider === 'elevenlabs') {
+                        audioUrl = await fetchElevenLabsTTS(cleanText);
+                    }
+
+                    if (audioUrl) {
+                        activeAudio = new Audio(audioUrl);
+                        const voiceStatus = document.getElementById('voiceStatusText');
+                        activeAudio.onplay = () => { if (voiceStatus) voiceStatus.innerText = "Agent Speaking (Neural TTS)..."; };
+                        activeAudio.onended = () => { if (voiceStatus) voiceStatus.innerText = "Listening..."; };
+                        await activeAudio.play();
+                        return; // Successfully played neural TTS
+                    }
+                } catch (ttsErr) {
+                    console.warn("3rd-party TTS failed, gracefully falling back to Web Speech:", ttsErr);
+                }
+            }
+
+            // Fallback: Native Browser Web Speech Synthesis
+            speakWithBrowserNative(cleanText);
+        }
+
+        function speakWithBrowserNative(cleanText) {
+            if (!synth) return;
             const utterance = new SpeechSynthesisUtterance(cleanText);
             utterance.rate = 1.05;
             utterance.pitch = 1.0;
 
-            // Pick a crisp English voice
             const voices = synth.getVoices();
             const preferredVoice = voices.find(v => v.lang.startsWith('en') && (v.name.includes('Natural') || v.name.includes('Neural') || v.name.includes('Google') || v.name.includes('Samantha')));
             if (preferredVoice) utterance.voice = preferredVoice;
 
             const voiceStatus = document.getElementById('voiceStatusText');
-            utterance.onstart = () => {
-                if (voiceStatus) voiceStatus.innerText = "Agent Speaking...";
-            };
-            utterance.onend = () => {
-                if (voiceStatus) voiceStatus.innerText = "Listening...";
-            };
+            utterance.onstart = () => { if (voiceStatus) voiceStatus.innerText = "Agent Speaking (Browser Voice)..."; };
+            utterance.onend = () => { if (voiceStatus) voiceStatus.innerText = "Listening..."; };
 
             synth.speak(utterance);
+        }
+
+        async function fetchOpenAITTS(text) {
+            const body = JSON.stringify({
+                model: "tts-1",
+                voice: voiceConfig.ttsVoice || "nova",
+                input: text.slice(0, 4000)
+            });
+
+            let res;
+            try {
+                res = await fetch("https://api.openai.com/v1/audio/speech", {
+                    method: "POST",
+                    headers: {
+                        "Authorization": `Bearer ${voiceConfig.ttsApiKey}`,
+                        "Content-Type": "application/json"
+                    },
+                    body: body
+                });
+            } catch (e) {
+                // Try server proxy
+                res = await fetch("/api/tts", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ text: text, provider: "openai", apiKey: voiceConfig.ttsApiKey, voice: voiceConfig.ttsVoice })
+                });
+            }
+
+            if (res && res.ok) {
+                const blob = await res.blob();
+                return URL.createObjectURL(blob);
+            }
+            throw new Error(`OpenAI TTS error ${res ? res.status : 'network'}`);
+        }
+
+        async function fetchElevenLabsTTS(text) {
+            const voiceId = voiceConfig.ttsVoice || "21m00Tcm4TlvDq8ikWAM"; // Rachel
+            let res;
+            try {
+                res = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${voiceId}`, {
+                    method: "POST",
+                    headers: {
+                        "xi-api-key": voiceConfig.ttsApiKey,
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        text: text.slice(0, 4000),
+                        model_id: "eleven_monolingual_v1",
+                        voice_settings: { stability: 0.5, similarity_boost: 0.75 }
+                    })
+                });
+            } catch (netErr) {
+                // Try local server proxy fallback
+                res = await fetch("/api/tts", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        text: text,
+                        provider: "elevenlabs",
+                        apiKey: voiceConfig.ttsApiKey,
+                        voice: voiceId
+                    })
+                });
+            }
+            if (res && res.ok) {
+                const blob = await res.blob();
+                return URL.createObjectURL(blob);
+            }
+            throw new Error(`ElevenLabs TTS error: ${res ? res.status : 'network'}`);
+        }
+
+        function testVoicePreview() {
+            const testText = "Strategic resilience requires high interaction frequency, a bottom-up practitioner wedge, and deep integration data gravity.";
+            speakText(testText);
         }
 
         function speakMessage(btn) {
@@ -476,8 +935,16 @@
             autoTTS = !autoTTS;
             document.getElementById('ttsLabel').innerText = autoTTS ? "Voice: ON" : "Voice: MUTED";
             document.getElementById('ttsIcon').className = autoTTS ? "fa-solid fa-volume-high text-brand-400" : "fa-solid fa-volume-xmark text-gray-500";
-            if (!autoTTS && synth) synth.cancel();
+            if (!autoTTS) {
+                if (synth) synth.cancel();
+                if (activeAudio) { activeAudio.pause(); activeAudio = null; }
+            }
         }
+
+        // Initialize settings on load
+        window.addEventListener('DOMContentLoaded', () => {
+            loadSettings();
+        });
 
         // ChatGPT-Style Fullscreen Voice Mode
         function openVoiceMode() {

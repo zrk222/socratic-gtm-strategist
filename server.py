@@ -11,6 +11,7 @@ import json
 import webbrowser
 from http.server import HTTPServer, SimpleHTTPRequestHandler
 import urllib.parse
+import urllib.request
 
 # Set path to helper scripts
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -57,13 +58,20 @@ class SocraticRequestHandler(SimpleHTTPRequestHandler):
 
         super().do_GET()
 
+    def do_OPTIONS(self):
+        self.send_response(200)
+        self.send_header("Access-Control-Allow-Origin", "*")
+        self.send_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
+        self.send_header("Access-Control-Allow-Headers", "Content-Type, Authorization, x-api-key, x-provider")
+        self.end_headers()
+
     def do_POST(self):
         url = urllib.parse.urlparse(self.path)
         content_length = int(self.headers.get("Content-Length", 0))
-        body = self.rfile.read(content_length).decode("utf-8") if content_length > 0 else "{}"
+        raw_body = self.rfile.read(content_length) if content_length > 0 else b""
 
         try:
-            data = json.loads(body)
+            data = json.loads(raw_body.decode("utf-8", errors="ignore"))
         except Exception:
             data = {}
 
@@ -153,6 +161,94 @@ class SocraticRequestHandler(SimpleHTTPRequestHandler):
             self.send_json_response(200, {"deck": content, "path": out})
             return
 
+        elif url.path == "/api/tts":
+            text = data.get("text", "")
+            provider = data.get("provider", "openai")
+            api_key = data.get("apiKey", "")
+            voice = data.get("voice", "nova")
+
+            if provider == "openai" and api_key and text:
+                try:
+                    req_data = json.dumps({"model": "tts-1", "voice": voice, "input": text[:4000]}).encode("utf-8")
+                    req = urllib.request.Request(
+                        "https://api.openai.com/v1/audio/speech",
+                        data=req_data,
+                        headers={"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"}
+                    )
+                    with urllib.request.urlopen(req, timeout=12) as response:
+                        audio_bytes = response.read()
+                        self.send_response(200)
+                        self.send_header("Content-Type", "audio/mpeg")
+                        self.send_header("Content-Length", str(len(audio_bytes)))
+                        self.send_header("Access-Control-Allow-Origin", "*")
+                        self.end_headers()
+                        self.wfile.write(audio_bytes)
+                        return
+                except Exception as e:
+                    self.send_json_response(500, {"fallback": True, "error": str(e)})
+                    return
+            elif provider == "elevenlabs" and api_key and text:
+                try:
+                    voice_id = voice if voice else "21m00Tcm4TlvDq8ikWAM"
+                    req_data = json.dumps({
+                        "text": text[:4000],
+                        "model_id": "eleven_monolingual_v1",
+                        "voice_settings": {"stability": 0.5, "similarity_boost": 0.75}
+                    }).encode("utf-8")
+                    req = urllib.request.Request(
+                        f"https://api.elevenlabs.io/v1/text-to-speech/{voice_id}",
+                        data=req_data,
+                        headers={"xi-api-key": api_key, "Content-Type": "application/json"}
+                    )
+                    with urllib.request.urlopen(req, timeout=12) as response:
+                        audio_bytes = response.read()
+                        self.send_response(200)
+                        self.send_header("Content-Type", "audio/mpeg")
+                        self.send_header("Content-Length", str(len(audio_bytes)))
+                        self.send_header("Access-Control-Allow-Origin", "*")
+                        self.end_headers()
+                        self.wfile.write(audio_bytes)
+                        return
+                except Exception as e:
+                    self.send_json_response(500, {"fallback": True, "error": str(e)})
+                    return
+            self.send_json_response(400, {"fallback": True, "message": "Missing API key or text"})
+            return
+
+        elif url.path == "/api/stt":
+            api_key = self.headers.get("x-api-key") or ""
+            provider = self.headers.get("x-provider") or "openai"
+            content_type = self.headers.get("Content-Type") or "multipart/form-data"
+
+            if api_key and raw_body:
+                try:
+                    target_url = "https://api.openai.com/v1/audio/transcriptions"
+                    if provider == "groq":
+                        target_url = "https://api.groq.com/openai/v1/audio/transcriptions"
+
+                    req = urllib.request.Request(
+                        target_url,
+                        data=raw_body,
+                        headers={
+                            "Authorization": f"Bearer {api_key}",
+                            "Content-Type": content_type
+                        }
+                    )
+                    with urllib.request.urlopen(req, timeout=20) as response:
+                        resp_bytes = response.read()
+                        self.send_response(200)
+                        self.send_header("Content-Type", "application/json")
+                        self.send_header("Content-Length", str(len(resp_bytes)))
+                        self.send_header("Access-Control-Allow-Origin", "*")
+                        self.end_headers()
+                        self.wfile.write(resp_bytes)
+                        return
+                except Exception as e:
+                    self.send_json_response(500, {"fallback": True, "error": str(e)})
+                    return
+            self.send_json_response(400, {"fallback": True, "message": "Missing API key or audio data"})
+            return
+
         self.send_response(404)
         self.end_headers()
 
@@ -183,5 +279,12 @@ def start_server(port=8000, open_browser=True):
         httpd.server_close()
 
 if __name__ == "__main__":
-    port = int(sys.argv[1]) if len(sys.argv) > 1 else 8000
-    start_server(port=port)
+    import argparse
+    parser = argparse.ArgumentParser(description="Socratic GTM Dashboard Web Server")
+    parser.add_argument("port_pos", nargs="?", type=int, default=None, help="Port number")
+    parser.add_argument("--port", "-p", type=int, default=8000, help="Port number (default: 8000)")
+    parser.add_argument("--no-browser", action="store_true", help="Do not open browser automatically")
+    args = parser.parse_args()
+
+    chosen_port = args.port_pos if args.port_pos is not None else args.port
+    start_server(port=chosen_port, open_browser=not args.no_browser)
