@@ -1,0 +1,242 @@
+[
+  {
+    "id": "python-tests",
+    "argv": [
+      "C:\\Users\\rkatz\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "-m",
+      "unittest",
+      "discover",
+      "tests",
+      "-q"
+    ],
+    "observed_at": "2026-10-21T05:17:39.977572+00:00",
+    "elapsed_seconds": 11.419,
+    "exit_code": 0,
+    "status": "PASS",
+    "log": ".factory/evidence/python-tests.txt"
+  },
+  {
+    "id": "session-tests",
+    "argv": [
+      "node",
+      "--test",
+      "tests/session.test.cjs"
+    ],
+    "observed_at": "2026-10-21T05:17:51.397815+00:00",
+    "elapsed_seconds": 2.984,
+    "exit_code": 0,
+    "status": "PASS",
+    "log": ".factory/evidence/session-tests.txt"
+  },
+  {
+    "id": "browser-tests",
+    "argv": [
+      "node",
+      "tests/browser_smoke.cjs"
+    ],
+    "observed_at": "2026-10-21T05:17:54.381728+00:00",
+    "elapsed_seconds": 9.004,
+    "exit_code": 0,
+    "status": "PASS",
+    "log": ".factory/evidence/browser-tests.txt"
+  },
+  {
+    "id": "wheel-build",
+    "argv": [
+      "C:\\Users\\rkatz\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "-m",
+      "pip",
+      "wheel",
+      ".",
+      "--no-deps",
+      "--no-build-isolation",
+      "--wheel-dir",
+      ".factory/wheels"
+    ],
+    "observed_at": "2026-10-21T05:18:03.386790+00:00",
+    "elapsed_seconds": 24.695,
+    "exit_code": 0,
+    "status": "PASS",
+    "log": ".factory/evidence/wheel-build.txt"
+  },
+  {
+    "id": "wheel-smoke",
+    "argv": [
+      "C:\\Users\\rkatz\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "tests/package_smoke.py",
+      ".factory/wheels/socratic_gtm_strategist-3.0.0-py3-none-any.whl"
+    ],
+    "observed_at": "2026-10-21T05:18:28.082469+00:00",
+    "elapsed_seconds": 19.671,
+    "exit_code": 0,
+    "status": "PASS",
+    "log": ".factory/evidence/wheel-smoke.txt"
+  },
+  {
+    "id": "skill-validation",
+    "argv": [
+      "C:\\Users\\rkatz\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "C:\\Users\\rkatz\\.codex\\skills\\.system\\skill-creator\\scripts\\quick_validate.py",
+      "skills/socratic-gtm-strategist"
+    ],
+    "observed_at": "2026-10-21T05:18:47.754556+00:00",
+    "elapsed_seconds": 0.155,
+    "exit_code": 0,
+    "status": "PASS",
+    "log": ".factory/evidence/skill-validation.txt"
+  },
+  {
+    "id": "spec-strict",
+    "argv": [
+      "specline",
+      "strict",
+      "audit-hardening",
+      "--root",
+      "."
+    ],
+    "observed_at": "2026-10-21T05:18:47.909875+00:00",
+    "elapsed_seconds": 0.216,
+    "exit_code": 0,
+    "status": "PASS",
+    "log": ".factory/evidence/spec-strict.txt"
+  },
+  {
+    "id": "spec-mutations",
+    "argv": [
+      "specline",
+      "verify-validators",
+      "audit-hardening",
+      "--root",
+      "."
+    ],
+    "observed_at": "2026-10-21T05:18:48.126838+00:00",
+    "elapsed_seconds": 0.348,
+    "exit_code": 0,
+    "status": "PASS",
+    "log": ".factory/evidence/spec-mutations.txt"
+  },
+  {
+    "id": "drift",
+    "argv": [
+      "specline",
+      "audit",
+      "audit-hardening",
+      "--root",
+      ".",
+      "--files",
+      "cli.py",
+      "server.py",
+      "mcp_server.py",
+      "scripts/generate_dashboard.py",
+      "scripts/incumbent_recon.py",
+      "scripts/generate_pitch_deck.py",
+      "scripts/stress_test_simulator.py",
+      "socratic_gtm/__init__.py",
+      "socratic_gtm/assessment.py",
+      "ui/index.html",
+      "ui/session.js",
+      "pyproject.toml",
+      "--base-commit",
+      "3da14f872b9fb45058b6b388b19cc4a769405d25",
+      "--json"
+    ],
+    "observed_at": "2026-10-21T05:18:48.475014+00:00",
+    "elapsed_seconds": 1.603,
+    "exit_code": 0,
+    "status": "PASS",
+    "log": ".factory/evidence/drift.txt"
+  },
+  {
+    "id": "prestige-audit",
+    "argv": [
+      "prestige",
+      "audit",
+      "ui/index.html"
+    ],
+    "observed_at": "2026-10-21T05:18:50.079248+00:00",
+    "elapsed_seconds": 0.223,
+    "exit_code": 0,
+    "status": "PASS",
+    "log": ".factory/evidence/prestige-audit.txt"
+  },
+  {
+    "id": "prestige-critique",
+    "argv": [
+      "prestige",
+      "critique",
+      "ui/index.html",
+      "--challenge",
+      "--strict",
+      "--out",
+      ".prestige/critique.json"
+    ],
+    "observed_at": "2026-10-21T05:18:50.302699+00:00",
+    "elapsed_seconds": 0.314,
+    "exit_code": 0,
+    "status": "PASS",
+    "log": ".factory/evidence/prestige-critique.txt"
+  },
+  {
+    "id": "prestige-render",
+    "argv": [
+      "prestige",
+      "render-audit",
+      "ui/index.html",
+      "--out-dir",
+      ".prestige/render",
+      "--json"
+    ],
+    "observed_at": "2026-10-21T05:18:50.617901+00:00",
+    "elapsed_seconds": 8.391,
+    "exit_code": 0,
+    "status": "PASS",
+    "log": ".factory/evidence/prestige-render.txt"
+  },
+  {
+    "id": "prestige-challenge",
+    "argv": [
+      "prestige",
+      "challenge",
+      "ui/index.html",
+      "--workflow",
+      "product",
+      "--out",
+      ".prestige/challenge.json"
+    ],
+    "observed_at": "2026-10-21T05:18:59.009895+00:00",
+    "elapsed_seconds": 0.655,
+    "exit_code": 0,
+    "status": "PASS",
+    "log": ".factory/evidence/prestige-challenge.txt"
+  },
+  {
+    "id": "diff-check",
+    "argv": [
+      "git",
+      "diff",
+      "--check",
+      "origin/main"
+    ],
+    "observed_at": "2026-10-21T05:18:59.665171+00:00",
+    "elapsed_seconds": 0.074,
+    "exit_code": 0,
+    "status": "PASS",
+    "log": ".factory/evidence/diff-check.txt"
+  },
+  {
+    "id": "security",
+    "argv": [
+      "factory",
+      "audit",
+      "security",
+      "--root",
+      ".",
+      "--json"
+    ],
+    "observed_at": "2026-10-21T05:18:59.740765+00:00",
+    "elapsed_seconds": 2.584,
+    "exit_code": 0,
+    "status": "PASS",
+    "log": ".factory/evidence/security.txt"
+  }
+]

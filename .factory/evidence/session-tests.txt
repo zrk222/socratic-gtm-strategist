@@ -1,0 +1,40 @@
+TAP version 13
+# Subtest: session roundtrip preserves answers, draft and evidence
+ok 1 - session roundtrip preserves answers, draft and evidence
+  ---
+  duration_ms: 6.0574
+  type: 'test'
+  ...
+# Subtest: invalid imports are rejected
+ok 2 - invalid imports are rejected
+  ---
+  duration_ms: 1.9245
+  type: 'test'
+  ...
+# Subtest: unknown object properties cannot pollute prototypes
+ok 3 - unknown object properties cannot pollute prototypes
+  ---
+  duration_ms: 0.3745
+  type: 'test'
+  ...
+# Subtest: playbook retains inputs as text and marks unknown evidence
+ok 4 - playbook retains inputs as text and marks unknown evidence
+  ---
+  duration_ms: 2.18
+  type: 'test'
+  ...
+# Subtest: CSV preserves quotes, commas and multiline values; neutralizes formulas
+ok 5 - CSV preserves quotes, commas and multiline values; neutralizes formulas
+  ---
+  duration_ms: 1.0371
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 920.8698

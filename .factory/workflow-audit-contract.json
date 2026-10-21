@@ -1,0 +1,397 @@
+{
+  "schema": "factory.workflow-audit.contract.v1",
+  "project_id": "socratic-gtm-strategist/audit-hardening",
+  "candidate": [
+    {
+      "path": ".cursorrules",
+      "sha256": "3e936c5233359f38abe890ef9fcb9ccbc09173106defd612807e8cccf1f249f5",
+      "kind": "acceptance"
+    },
+    {
+      "path": ".factory/tenant-read-contract.json",
+      "sha256": "76427bb2479284796339e14bdac959e33653d9fa153965afc869ddf2c3242bea",
+      "kind": "acceptance"
+    },
+    {
+      "path": ".github/copilot-instructions.md",
+      "sha256": "3e936c5233359f38abe890ef9fcb9ccbc09173106defd612807e8cccf1f249f5",
+      "kind": "acceptance"
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "sha256": "f3756a3ec8ef0cb2dcabb97f815676df0a54d8f59f3d39f02a86e1a360f780b2",
+      "kind": "source"
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "cf882bb1144dfc793df326005877e2c6d6355a575c09261547692cf39d960366",
+      "kind": "acceptance"
+    },
+    {
+      "path": "AUDIT_REPORT.md",
+      "sha256": "fd10691d91208d7a48906efaf3656cbbc18338c039a83e3f736c4ae5235df98e",
+      "kind": "acceptance"
+    },
+    {
+      "path": "CLAUDE.md",
+      "sha256": "3e936c5233359f38abe890ef9fcb9ccbc09173106defd612807e8cccf1f249f5",
+      "kind": "acceptance"
+    },
+    {
+      "path": "CLOUD_INTEGRATIONS.md",
+      "sha256": "ed624d932bb39e8e75149d90332f47a5e95ce19a25ad36b519f6c471cec039ae",
+      "kind": "acceptance"
+    },
+    {
+      "path": "CODEX.md",
+      "sha256": "3e936c5233359f38abe890ef9fcb9ccbc09173106defd612807e8cccf1f249f5",
+      "kind": "acceptance"
+    },
+    {
+      "path": "Dockerfile",
+      "sha256": "352059ae971d8dffdb4a6745e0b4329c7426242c06e090a596f7bab806206778",
+      "kind": "acceptance"
+    },
+    {
+      "path": "README.md",
+      "sha256": "b9b73f361429fb9b15ef669b69cb2173861c224845447bcbf242d4ee22e03193",
+      "kind": "acceptance"
+    },
+    {
+      "path": "SKILL.md",
+      "sha256": "71d45437ad7c6d8cb48ba60fe7c1f3840834889e962d6a735ea5c3a4100b9051",
+      "kind": "acceptance"
+    },
+    {
+      "path": "cli.py",
+      "sha256": "89a28e360ebc2714d1ab5aad709e3e27c6892fbe147c5940ec789f66173baf7a",
+      "kind": "source"
+    },
+    {
+      "path": "context/PROGRESS.md",
+      "sha256": "81ead325a02adee59ef9d198605dc74333457ae279ee44f026838f783b337a53",
+      "kind": "acceptance"
+    },
+    {
+      "path": "docker-compose.yml",
+      "sha256": "b933d52db4cef734f442743ede1de38980cd87076f6d1de344ef516e89b7da4f",
+      "kind": "source"
+    },
+    {
+      "path": "mcp_server.py",
+      "sha256": "a8935358fbe60dbdb8b6f98f9791691026eb50bd426371444bc1b4addbcf3b49",
+      "kind": "source"
+    },
+    {
+      "path": "openapi.json",
+      "sha256": "aae6f7b88f7c773247de0f73c9fb40d93daffe72dbffe274f8f41f3ee0de608a",
+      "kind": "acceptance"
+    },
+    {
+      "path": "plans/audit-hardening.md",
+      "sha256": "5d5821a56daf2c7eceb779632132a321d414c62198f91f9fb7e168fe56889fd1",
+      "kind": "acceptance"
+    },
+    {
+      "path": "pyproject.toml",
+      "sha256": "8d2b301f9aaf7e445dc2ad9c3e58c6acbabb8783de6a186cedbbd0421aecd802",
+      "kind": "source"
+    },
+    {
+      "path": "scripts/generate_dashboard.py",
+      "sha256": "16038f1f666e68003377e6fac2304b0050b0e6b134de436b5e397e3db45c1028",
+      "kind": "source"
+    },
+    {
+      "path": "scripts/generate_pitch_deck.py",
+      "sha256": "e1b353763b875b29784703b978f8130cfe7e2b413921616ca606e0475f46a897",
+      "kind": "source"
+    },
+    {
+      "path": "scripts/incumbent_recon.py",
+      "sha256": "a6f1a7a0c36ff57c944db20ee9fad9d572cd8c494a04319d5331061a410a16d9",
+      "kind": "source"
+    },
+    {
+      "path": "scripts/stress_test_simulator.py",
+      "sha256": "298ee1e98011056f33ce3cc9caf309d22b2e667e5335d7f3fe2285a9b769f267",
+      "kind": "source"
+    },
+    {
+      "path": "server.py",
+      "sha256": "ffdf3d286f755dee050f73e8ba63c355ade41d10674e1badc4d70ead5399c195",
+      "kind": "source"
+    },
+    {
+      "path": "skills/socratic-gtm-strategist/SKILL.md",
+      "sha256": "71d45437ad7c6d8cb48ba60fe7c1f3840834889e962d6a735ea5c3a4100b9051",
+      "kind": "acceptance"
+    },
+    {
+      "path": "socratic_gtm/__init__.py",
+      "sha256": "65b097961c823fd76ccd0b9e4dbd12eba6b69c9f3d943bbc45cf0970c88ffa3b",
+      "kind": "source"
+    },
+    {
+      "path": "socratic_gtm/assessment.py",
+      "sha256": "35b1270253498c58ce4f1801239ee2eec8b5c6ade2986e145b74df2264a880dd",
+      "kind": "source"
+    },
+    {
+      "path": "specs/audit-hardening.md",
+      "sha256": "ad041c43f9e31c61ff3be740683ca8236a6043cd4fc8cef87d146a933c64b608",
+      "kind": "acceptance"
+    },
+    {
+      "path": "templates/GTM_PITCH_DECK.md",
+      "sha256": "752ce1dc2180c845d888718414d03f2c43f31d23e70ac2d0e7869458caacaab0",
+      "kind": "acceptance"
+    },
+    {
+      "path": "templates/GTM_PLAYBOOK.md",
+      "sha256": "20b70ee7a0a5cfbf420728416800df574e6bb7281f62ed4a0429a2a1bea15a2e",
+      "kind": "acceptance"
+    },
+    {
+      "path": "templates/gtm_simulator.html",
+      "sha256": "ac67374b81e963c594f687e4fb82a8f29288ee5c13c0032d18a734dc39f48547",
+      "kind": "source"
+    },
+    {
+      "path": "tests/browser_smoke.cjs",
+      "sha256": "587687bc7ade95b70fdbde5d75f6827d3248b2f69b7861e701aeab5432995d9c",
+      "kind": "acceptance"
+    },
+    {
+      "path": "tests/package_smoke.py",
+      "sha256": "59ff229cb8059e5d6950caee78dd387689f721d3b8f0805847d059fbc3a02060",
+      "kind": "source"
+    },
+    {
+      "path": "tests/session.test.cjs",
+      "sha256": "061c1a9d81e4dabf3faef7d6da94bff0268d74eb4e72c2c77cf241683940b7b9",
+      "kind": "acceptance"
+    },
+    {
+      "path": "tests/test_hardening.py",
+      "sha256": "e40b1fe8bb0d94eee105e406c55fe8754549cf4697d745cfcaa701b88f6b9581",
+      "kind": "source"
+    },
+    {
+      "path": "tests/test_socratic_gtm.py",
+      "sha256": "724b7875a98476f40a01270a2a91979dc81bcc77b8b1ab99c73d66c081d8ffa0",
+      "kind": "source"
+    },
+    {
+      "path": "ui/index.html",
+      "sha256": "b5a49787d2247ecebbb26e1dc0e558f9f8b182fcfff79f64f3f16cbdc5cec17a",
+      "kind": "source"
+    },
+    {
+      "path": "ui/openapi.json",
+      "sha256": "aae6f7b88f7c773247de0f73c9fb40d93daffe72dbffe274f8f41f3ee0de608a",
+      "kind": "acceptance"
+    },
+    {
+      "path": "ui/session.js",
+      "sha256": "7f139a1e533f35c0a4805f560b321e4b98936b764a6fabe31d71896f7ffb8400",
+      "kind": "source"
+    }
+  ],
+  "applicability": [
+    {
+      "category": "happy_path",
+      "applicable": true,
+      "reason": "Installed CLI, SDK, MCP and browser intake plus real artifact downloads are covered."
+    },
+    {
+      "category": "validation",
+      "applicable": true,
+      "reason": "Malformed HTTP/MCP payloads, session schema, field ranges, imports and score values are covered."
+    },
+    {
+      "category": "failure_recovery",
+      "applicable": true,
+      "reason": "Injected API 500, bad JSON, failed recon, voice provider error and preserved draft/state are covered."
+    },
+    {
+      "category": "state_consistency",
+      "applicable": true,
+      "reason": "API context, answer edits, save/reload, session roundtrip, device copy removal and export values are covered."
+    },
+    {
+      "category": "security_privacy",
+      "applicable": true,
+      "reason": "Private HTTP routes, origin/Host rejection, HTML/script injection and voice credential exclusion are covered."
+    },
+    {
+      "category": "performance",
+      "applicable": true,
+      "reason": "Only declared request/response resource ceilings and bounded parsing are assessed; no load/latency benchmark claim."
+    },
+    {
+      "category": "accessibility",
+      "applicable": true,
+      "reason": "Named controls, keyboard review, reduced motion and desktop/mobile layout are covered; assistive technology audit is outside scope."
+    },
+    {
+      "category": "external_effects",
+      "applicable": true,
+      "reason": "Local downloads, mocked provider forwarding/errors, no real provider credentials and explicit evidence state are covered."
+    }
+  ],
+  "checks": [
+    {
+      "id": "wheel_smoke",
+      "requirement": "Run the installed CLI, SDK and MCP outside the checkout with packaged resources.",
+      "category": "happy_path",
+      "profiles": [
+        "windows-py311"
+      ]
+    },
+    {
+      "id": "private_routes",
+      "requirement": "Reject repository disclosure, traversal and HEAD directory listing.",
+      "category": "security_privacy",
+      "profiles": [
+        "windows-py311"
+      ]
+    },
+    {
+      "id": "origin_host",
+      "requirement": "Reject foreign Origin and Host headers before generator/provider writes.",
+      "category": "security_privacy",
+      "profiles": [
+        "windows-py311"
+      ]
+    },
+    {
+      "id": "request_recovery",
+      "requirement": "Malformed, oversized and nested JSON return errors without losing service.",
+      "category": "failure_recovery",
+      "profiles": [
+        "windows-py311"
+      ]
+    },
+    {
+      "id": "answer_integrity",
+      "requirement": "Verbose filler remains founder-reported with null confidence.",
+      "category": "validation",
+      "profiles": [
+        "windows-py311"
+      ]
+    },
+    {
+      "id": "interview_artifacts",
+      "requirement": "CLI retains eight answers and creates only declared draft artifacts.",
+      "category": "happy_path",
+      "profiles": [
+        "windows-py311"
+      ]
+    },
+    {
+      "id": "html_injection",
+      "requirement": "Hostile project/notes render as text; zero remains zero with chart CDN blocked.",
+      "category": "security_privacy",
+      "profiles": [
+        "chrome-desktop-mobile"
+      ]
+    },
+    {
+      "id": "recon_provenance",
+      "requirement": "Controlled sourced results are UNVERIFIED; network failures are UNAVAILABLE with UTC timestamp.",
+      "category": "external_effects",
+      "profiles": [
+        "windows-py311"
+      ]
+    },
+    {
+      "id": "claim_integrity",
+      "requirement": "Pitch/security templates leave company claims evidence-required.",
+      "category": "validation",
+      "profiles": [
+        "windows-py311"
+      ]
+    },
+    {
+      "id": "mcp_recovery",
+      "requirement": "Invalid envelopes/arguments recover and notifications produce no response or tool mutation.",
+      "category": "failure_recovery",
+      "profiles": [
+        "windows-py311"
+      ]
+    },
+    {
+      "id": "session_roundtrip",
+      "requirement": "Validated portable sessions preserve draft, answers and evidence; invalid data rejects.",
+      "category": "state_consistency",
+      "profiles": [
+        "node22"
+      ]
+    },
+    {
+      "id": "review_exports",
+      "requirement": "Edit and save evidence, reload it and download matching playbook/CSV without formula execution.",
+      "category": "state_consistency",
+      "profiles": [
+        "chrome-desktop-mobile"
+      ]
+    },
+    {
+      "id": "mobile_session_controls",
+      "requirement": "Session and review actions remain visible and usable at 390px without overflow.",
+      "category": "accessibility",
+      "profiles": [
+        "chrome-desktop-mobile"
+      ]
+    },
+    {
+      "id": "voice_integration",
+      "requirement": "Fixed provider forwarding, upload bounds, failure fallback and credential exclusion use controlled fixtures.",
+      "category": "external_effects",
+      "profiles": [
+        "windows-py311-and-chrome"
+      ]
+    },
+    {
+      "id": "story_preview",
+      "requirement": "Mission, four-step journey and next action are honest and reduced motion is respected.",
+      "category": "accessibility",
+      "profiles": [
+        "chrome-desktop-mobile"
+      ]
+    },
+    {
+      "id": "bounded_resources",
+      "requirement": "Reject HTTP bodies above 65536 bytes, audio above 5242880 bytes and excessive nested JSON.",
+      "category": "performance",
+      "profiles": [
+        "windows-py311"
+      ]
+    },
+    {
+      "id": "static_security",
+      "requirement": "Bounded AST audit covers all discovered Python sources and reports no findings.",
+      "category": "security_privacy",
+      "profiles": [
+        "factory-local"
+      ]
+    },
+    {
+      "id": "visual_checks",
+      "requirement": "Prestige audit, critique, render and sabotage challenge pass; heuristic density note is acknowledged.",
+      "category": "accessibility",
+      "profiles": [
+        "prestige-chrome"
+      ]
+    },
+    {
+      "id": "spec_and_drift",
+      "requirement": "Strict spec, requirement mutation, source drift and skill validation pass.",
+      "category": "validation",
+      "profiles": [
+        "specline-local"
+      ]
+    }
+  ]
+}
