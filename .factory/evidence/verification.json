@@ -9,8 +9,8 @@
       "tests",
       "-q"
     ],
-    "observed_at": "2026-10-21T05:17:39.977572+00:00",
-    "elapsed_seconds": 11.419,
+    "observed_at": "2026-10-21T05:27:21.998787+00:00",
+    "elapsed_seconds": 9.462,
     "exit_code": 0,
     "status": "PASS",
     "log": ".factory/evidence/python-tests.txt"
@@ -94,8 +94,8 @@
       "--root",
       "."
     ],
-    "observed_at": "2026-10-21T05:18:47.909875+00:00",
-    "elapsed_seconds": 0.216,
+    "observed_at": "2026-10-21T05:27:31.461599+00:00",
+    "elapsed_seconds": 0.217,
     "exit_code": 0,
     "status": "PASS",
     "log": ".factory/evidence/spec-strict.txt"
@@ -109,8 +109,8 @@
       "--root",
       "."
     ],
-    "observed_at": "2026-10-21T05:18:48.126838+00:00",
-    "elapsed_seconds": 0.348,
+    "observed_at": "2026-10-21T05:27:31.679592+00:00",
+    "elapsed_seconds": 0.343,
     "exit_code": 0,
     "status": "PASS",
     "log": ".factory/evidence/spec-mutations.txt"
@@ -136,12 +136,14 @@
       "ui/index.html",
       "ui/session.js",
       "pyproject.toml",
+      "tests/test_socratic_gtm.py",
+      "tests/test_hardening.py",
       "--base-commit",
       "3da14f872b9fb45058b6b388b19cc4a769405d25",
       "--json"
     ],
-    "observed_at": "2026-10-21T05:18:48.475014+00:00",
-    "elapsed_seconds": 1.603,
+    "observed_at": "2026-10-21T05:27:32.023115+00:00",
+    "elapsed_seconds": 1.847,
     "exit_code": 0,
     "status": "PASS",
     "log": ".factory/evidence/drift.txt"
@@ -217,8 +219,8 @@
       "--check",
       "origin/main"
     ],
-    "observed_at": "2026-10-21T05:18:59.665171+00:00",
-    "elapsed_seconds": 0.074,
+    "observed_at": "2026-10-21T05:27:55.876011+00:00",
+    "elapsed_seconds": 0.078,
     "exit_code": 0,
     "status": "PASS",
     "log": ".factory/evidence/diff-check.txt"
@@ -233,8 +235,8 @@
       ".",
       "--json"
     ],
-    "observed_at": "2026-10-21T05:18:59.740765+00:00",
-    "elapsed_seconds": 2.584,
+    "observed_at": "2026-10-21T05:27:33.951900+00:00",
+    "elapsed_seconds": 2.568,
     "exit_code": 0,
     "status": "PASS",
     "log": ".factory/evidence/security.txt"

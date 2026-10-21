@@ -34,6 +34,7 @@ Architect verdict: PASS
 - [x] T24 | slice=server.py | files=server.py,tests/test_hardening.py,tests/test_socratic_gtm.py | verify=`python -m unittest discover tests -q` | Preserve concurrently added voice proxies within local origin and request bounds.
 - [x] T25 | slice=ui | files=ui/index.html,tests/browser_smoke.cjs | verify=`node tests/browser_smoke.cjs` | Integrate upstream voice settings, keep keys in memory and exclude keys from session exports.
 - [x] T26 | slice=ui | files=ui/index.html,tests/browser_smoke.cjs | verify=`node tests/browser_smoke.cjs` | Update preview with the Nanna product arc, Prestige hierarchy, responsive controls and reduced motion.
+- [x] T27 | slice=tests | files=tests/test_socratic_gtm.py,tests/test_hardening.py | verify=`python -m unittest discover tests -q` | Replace fixed-port/fixed-delay startup with bounded readiness evidence; assert early oversized-header rejection without racing a TCP reset.
 
 ## Review authority
 The user authorized audit, review and enhancement. Codex reviews this local plan; no separate human signoff or release approval is claimed.

@@ -57,6 +57,13 @@ elapsed time, exit codes and logs. Checks include:
 
 ## Remaining limits
 
+The first remote CI run passed 14 of 15 jobs; macOS Python 3.9 timed out in
+the inherited fixed-port, fixed-delay HTTP startup test. The test now uses an
+OS-assigned port and a bounded startup-message wait. The original failure is
+retained in .factory/evidence/ci-first-failure.txt. Oversized upload rejection
+is asserted from headers before a body is sent, avoiding a client/server
+early-close TCP race. The current remote run is reported separately in the PR.
+
 - This is not an authenticated public service or multi-tenant application.
 - The bundled evaluator collects answers; it does not run a model or establish
   that a strategy works. Market outcomes, confidence calibration and customer

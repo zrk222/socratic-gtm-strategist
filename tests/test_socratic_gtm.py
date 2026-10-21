@@ -176,16 +176,29 @@ class TestSocraticGTM(unittest.TestCase):
     def test_server_api_endpoints(self):
         """Test the local web server REST endpoints including fallback voice behavior."""
         import urllib.request
-        import time
+        import queue
+        import re
+        import threading
 
-        port = 8991
         proc = subprocess.Popen(
-            [sys.executable, os.path.join(ROOT_DIR, "server.py"), "--port", str(port), "--no-browser"],
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE
+            [sys.executable, "-u", os.path.join(ROOT_DIR, "server.py"), "--port", "0", "--no-browser"],
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.PIPE,
+            text=True,
+            encoding="utf-8",
+            cwd=self.test_dir,
         )
-        time.sleep(1.5)
+        startup = queue.Queue()
+        reader = threading.Thread(target=lambda: startup.put(proc.stderr.readline()), daemon=True)
+        reader.start()
         try:
+            try:
+                line = startup.get(timeout=20)
+            except queue.Empty:
+                self.fail("Server did not emit its startup URL within 20 seconds")
+            match = re.search(r"http://127\.0\.0\.1:(\d+)/ui/index\.html", line)
+            self.assertIsNotNone(match, "Server startup failed: " + line)
+            port = int(match.group(1))
             # 1. Test /api/status
             with urllib.request.urlopen(f"http://127.0.0.1:{port}/api/status", timeout=5) as resp:
                 self.assertEqual(resp.status, 200)
@@ -226,8 +239,10 @@ class TestSocraticGTM(unittest.TestCase):
             proc.terminate()
             try:
                 proc.communicate(timeout=5)
-            except Exception:
+            except subprocess.TimeoutExpired:
                 proc.kill()
+                proc.communicate(timeout=5)
+            reader.join(timeout=1)
 
 if __name__ == "__main__":
     unittest.main()

@@ -1,14 +1,14 @@
-[+] Linear/Jira CSV exported to: C:\Users\rkatz\AppData\Local\Temp\tmp8wlpvxqe\gtm_sprint_issues.csv
-[+] JSON backlog exported to: C:\Users\rkatz\AppData\Local\Temp\tmp8wlpvxqe\gtm_sprint_issues.json
-Pitch template written to: C:\Users\rkatz\AppData\Local\Temp\tmp80mcgqd9\deck.md
-Dashboard successfully generated at: C:\Users\rkatz\AppData\Local\Temp\tmp4jb6znfn\radar.html
-[+] Linear/Jira CSV exported to: C:\Users\rkatz\AppData\Local\Temp\tmpngh3yme8\test_issues.csv
-[+] JSON backlog exported to: C:\Users\rkatz\AppData\Local\Temp\tmpngh3yme8\test_issues.json
-Dashboard successfully generated at: C:\Users\rkatz\AppData\Local\Temp\tmp397fgc0g\test_sim.html
-Pitch template written to: C:\Users\rkatz\AppData\Local\Temp\tmp7do6s6q0\test_deck.md
-[+] Adversarial Brief generated at: C:\Users\rkatz\AppData\Local\Temp\tmpg0hdg5_e\test_ciso.md
-[+] Adversarial Brief generated at: C:\Users\rkatz\AppData\Local\Temp\tmpqon6yl2a\test_vc.md
+[+] Linear/Jira CSV exported to: C:\Users\rkatz\AppData\Local\Temp\tmpl0fzxkw9\gtm_sprint_issues.csv
+[+] JSON backlog exported to: C:\Users\rkatz\AppData\Local\Temp\tmpl0fzxkw9\gtm_sprint_issues.json
+Pitch template written to: C:\Users\rkatz\AppData\Local\Temp\tmpdjwqxnlp\deck.md
+Dashboard successfully generated at: C:\Users\rkatz\AppData\Local\Temp\tmpx8kxvaz_\radar.html
+[+] Linear/Jira CSV exported to: C:\Users\rkatz\AppData\Local\Temp\tmpce45w46k\test_issues.csv
+[+] JSON backlog exported to: C:\Users\rkatz\AppData\Local\Temp\tmpce45w46k\test_issues.json
+Dashboard successfully generated at: C:\Users\rkatz\AppData\Local\Temp\tmpwbtdzc9u\test_sim.html
+Pitch template written to: C:\Users\rkatz\AppData\Local\Temp\tmpb3miiol6\test_deck.md
+[+] Adversarial Brief generated at: C:\Users\rkatz\AppData\Local\Temp\tmppt10axl4\test_ciso.md
+[+] Adversarial Brief generated at: C:\Users\rkatz\AppData\Local\Temp\tmpedohvx3k\test_vc.md
 ----------------------------------------------------------------------
-Ran 33 tests in 11.029s
+Ran 33 tests in 9.122s
 
 OK

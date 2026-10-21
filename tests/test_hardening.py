@@ -83,8 +83,11 @@ class HTTPHardening(unittest.TestCase):
                 self.assertEqual(self.request("GET", "/api/status")[0], 200)
 
     def test_size_and_content_type(self):
-        self.assertEqual(self.request("POST", "/api/chat", "x" * 65537,
-                                      {"Content-Type": "application/json"})[0], 413)
+        # Oversized uploads must reject from headers before consuming a body.
+        # Sending a body while the server closes early races a TCP reset on Windows.
+        self.assertEqual(self.request("POST", "/api/chat", "",
+                                      {"Content-Type": "application/json",
+                                       "Content-Length": "65537"})[0], 413)
         self.assertEqual(self.request("POST", "/api/chat", "{}",
                                       {"Content-Type": "text/plain"})[0], 415)
         self.assertEqual(self.request("POST", "/api/chat", "{}",

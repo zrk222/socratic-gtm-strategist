@@ -1,1 +1,1 @@
-STRICT OK ï¿½ spec is unambiguous (0 warns). next: specline gate spec audit-hardening
+STRICT OK — spec is unambiguous (0 warns). next: specline gate spec audit-hardening

@@ -28,3 +28,8 @@ audit report. Codex local gate review is not an independent human signoff.
 Preview updated with Nanna product storytelling and Prestige hierarchy. The welcome screen uses an idea-to-assumptions-to-evidence-to-next-move arc. Reduced motion, session controls and responsive behavior are browser-verified. Upstream voice commit 479b07e was merged and preserved with memory-only credentials and bounded local proxies.
 
 - [2026-10-21 05:17] GATE plan audit-hardening approver=codex-local-review tasks=26 sha=ad041c43f9e31c61
+- [2026-10-21 05:24] GATE spec audit-hardening approver=codex-local-review strict=True sha=c81147795c904ef9
+- [2026-10-21 05:24] GATE plan audit-hardening approver=codex-local-review tasks=27 sha=c81147795c904ef9
+- [2026-10-21 05:25] GATE plan audit-hardening approver=codex-local-review tasks=27 sha=c81147795c904ef9
+- [2026-10-21 05:25] GATE spec audit-hardening approver=codex-local-review strict=True sha=68d705872058b5de
+- [2026-10-21 05:25] GATE plan audit-hardening approver=codex-local-review tasks=27 sha=68d705872058b5de

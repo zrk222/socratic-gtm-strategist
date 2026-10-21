@@ -87,8 +87,19 @@ between zero and 100, and interview phases one through eight.
 - MAX_AUDIO = 5242880
 - MAX_PROVIDER_RESPONSE = 10485760
 - timeout = 20
+- timeout = 5
+- timeout = 1
+- timeout = 3
+- timeout = 10
 - max_length = 10000
 - TOOLS_SCHEMA = 0
 - TOOLS_SCHEMA = 100
 - TOOLS_SCHEMA = 8
 - TOOLS_SCHEMA = 1
+
+## CI startup observation
+
+The subprocess HTTP smoke test uses an OS-assigned port and waits at most
+20 seconds for the server's startup URL before making requests. A fixed sleep
+or fixed port is not readiness evidence. The test retains startup diagnostics
+when readiness fails and terminates its own process on every exit path.

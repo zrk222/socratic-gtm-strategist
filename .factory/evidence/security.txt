@@ -13,14 +13,14 @@
     "measurement_state": "complete",
     "rate_defined": true
   },
-  "audit_sha256": "bb3e374cb88cfe5cc6784e7df4bc9ff006b7b35d2d958e5ba37fead801e7dfb8",
+  "audit_sha256": "219e7976271ae80345ec4cb844ed0191697c99f10e0d4d5c011dd6e410d0cafa",
   "authority": {
     "approval": false,
     "deployment": false,
     "execution": false,
     "publication": false
   },
-  "candidate_sha256": "e25b5b23e5b4d94f779a957224abc01727094de5ac57ca96298dbf019788b040",
+  "candidate_sha256": "6ca821e96d97909b6e29e8b086a2e1270914af4a28fc4523d4d4cd2c9bac8458",
   "claim_boundary": "Bounded Python AST pattern scan only. Declared tenant argument bindings verify syntactic pass-through, not tenant identity, authorization, or access isolation; this is not a penetration test, runtime exploit proof, dependency advisory, or release approval.",
   "database_context": {
     "configuration_sources": [],
@@ -71,7 +71,7 @@
   "oversized_sources": 0,
   "parse_errors": 0,
   "schema": "factory.security-audit.v1",
-  "source_manifest_sha256": "d30d498a6a54850e98f4ed99404a2fb015a344fd93771370a7690854d08c2d0b",
+  "source_manifest_sha256": "52f101c61a99478562b257bf1344387072e1fc8855222aff1881eb2e330243fd",
   "sources": [
     {
       "bytes": 7118,
@@ -129,14 +129,14 @@
       "sha256": "59ff229cb8059e5d6950caee78dd387689f721d3b8f0805847d059fbc3a02060"
     },
     {
-      "bytes": 13661,
+      "bytes": 13881,
       "path": "tests/test_hardening.py",
-      "sha256": "e40b1fe8bb0d94eee105e406c55fe8754549cf4697d745cfcaa701b88f6b9581"
+      "sha256": "9bdaad03ae7fd039cf714fe179f7b798c63fc065d3890054b2cef7cfa0581262"
     },
     {
-      "bytes": 10262,
+      "bytes": 10972,
       "path": "tests/test_socratic_gtm.py",
-      "sha256": "724b7875a98476f40a01270a2a91979dc81bcc77b8b1ab99c73d66c081d8ffa0"
+      "sha256": "e36ae282779676716137f465543b4df53bde226c09d72fe4e7db6ef44e116756"
     }
   ],
   "state": "CLEAN",
