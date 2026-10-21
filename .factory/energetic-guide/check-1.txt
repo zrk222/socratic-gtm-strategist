@@ -1,0 +1,118 @@
+TAP version 13
+# Subtest: practice_isolation: pure operations do not mutate input and roundtrip restores pending/draft
+ok 1 - practice_isolation: pure operations do not mutate input and roundtrip restores pending/draft
+  ---
+  duration_ms: 3.3716
+  type: 'test'
+  ...
+# Subtest: persona_selection and scenario_shocks: every combination is available and contextual
+ok 2 - persona_selection and scenario_shocks: every combination is available and contextual
+  ---
+  duration_ms: 4.1258
+  type: 'test'
+  ...
+# Subtest: claim_ledger and claim_candidates: retain exact source statements, labels and dated actions
+ok 3 - claim_ledger and claim_candidates: retain exact source statements, labels and dated actions
+  ---
+  duration_ms: 1.8214
+  type: 'test'
+  ...
+# Subtest: adaptive_followup: missing fields and explicit uncertainty choose distinct targeted follow-ups
+ok 4 - adaptive_followup: missing fields and explicit uncertainty choose distinct targeted follow-ups
+  ---
+  duration_ms: 1.0768
+  type: 'test'
+  ...
+# Subtest: fair_challenge and timed_rehearsal: contesting, interruption and elapsed time retain answer
+ok 5 - fair_challenge and timed_rehearsal: contesting, interruption and elapsed time retain answer
+  ---
+  duration_ms: 0.5807
+  type: 'test'
+  ...
+# Subtest: conflict_review: quotes candidate numeric and negation differences without truth claims
+ok 6 - conflict_review: quotes candidate numeric and negation differences without truth claims
+  ---
+  duration_ms: 1.1545
+  type: 'test'
+  ...
+# Subtest: practice_debrief and retest_comparison: exact original objection and both answers survive
+ok 7 - practice_debrief and retest_comparison: exact original objection and both answers survive
+  ---
+  duration_ms: 1.0415
+  type: 'test'
+  ...
+# Subtest: practice_exports: no invented evidence, unsafe Markdown is indented and CSV neutralizes formulas
+ok 8 - practice_exports: no invented evidence, unsafe Markdown is indented and CSV neutralizes formulas
+  ---
+  duration_ms: 1.0656
+  type: 'test'
+  ...
+# Subtest: practice_restore and practice_recovery: malformed records and dangling references reject atomically
+ok 9 - practice_restore and practice_recovery: malformed records and dangling references reject atomically
+  ---
+  duration_ms: 2.6422
+  type: 'test'
+  ...
+# Subtest: practice turn ceiling completes explicitly and does not grow without bound
+ok 10 - practice turn ceiling completes explicitly and does not grow without bound
+  ---
+  duration_ms: 3.7264
+  type: 'test'
+  ...
+# Subtest: scenario follows supporting questions and preserves the hypothetical condition
+ok 11 - scenario follows supporting questions and preserves the hypothetical condition
+  ---
+  duration_ms: 0.4581
+  type: 'test'
+  ...
+# Subtest: bounded history stays usable and rejects a ninth attempt without changing existing records
+ok 12 - bounded history stays usable and rejects a ninth attempt without changing existing records
+  ---
+  duration_ms: 16.7526
+  type: 'test'
+  ...
+# Subtest: session roundtrip preserves answers, draft and evidence
+ok 13 - session roundtrip preserves answers, draft and evidence
+  ---
+  duration_ms: 3.3527
+  type: 'test'
+  ...
+# Subtest: invalid imports are rejected
+ok 14 - invalid imports are rejected
+  ---
+  duration_ms: 1.7423
+  type: 'test'
+  ...
+# Subtest: unknown object properties cannot pollute prototypes
+ok 15 - unknown object properties cannot pollute prototypes
+  ---
+  duration_ms: 0.2719
+  type: 'test'
+  ...
+# Subtest: playbook retains inputs as text and marks unknown evidence
+ok 16 - playbook retains inputs as text and marks unknown evidence
+  ---
+  duration_ms: 0.5537
+  type: 'test'
+  ...
+# Subtest: CSV preserves quotes, commas and multiline values; neutralizes formulas
+ok 17 - CSV preserves quotes, commas and multiline values; neutralizes formulas
+  ---
+  duration_ms: 0.5076
+  type: 'test'
+  ...
+# Subtest: practice_restore: legacy files work and practice data is validated before replacement
+ok 18 - practice_restore: legacy files work and practice data is validated before replacement
+  ---
+  duration_ms: 1.2393
+  type: 'test'
+  ...
+1..18
+# tests 18
+# suites 0
+# pass 18
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 652.4485

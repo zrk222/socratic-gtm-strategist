@@ -1,0 +1,7 @@
+
+[96mPrestige audit - ui/index.html[0m
+Overall: 92/100   Verdict: [92mPASS[0m
+[2mhalo:80  fluency:80  trust:100  peak:100  horn:100[0m
+
+  [93mWARN[0m [halo] H_NO_COVER_IMG: No object-fit/background cover image ? hero imagery drives the halo.
+  [93mWARN[0m [fluency] F_NO_WHITESPACE: No generous section padding ? extreme whitespace signals premium.

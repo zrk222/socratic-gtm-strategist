@@ -1,0 +1,32 @@
+{
+  "baseline": {
+    "grade": "B",
+    "passed": true,
+    "score": 76
+  },
+  "brick": "prestige",
+  "feature": null,
+  "mutants_killed": 3,
+  "mutants_total": 3,
+  "mutations": [
+    {
+      "evidence": "audit_passed=False; score_passed=False; score=76; mobile=60; cta=80",
+      "killed": true,
+      "unit": "hidden_surface"
+    },
+    {
+      "evidence": "audit_passed=False; score_passed=False; score=68; mobile=0; cta=80",
+      "killed": true,
+      "unit": "broken_mobile"
+    },
+    {
+      "evidence": "audit_passed=False; score_passed=False; score=68; mobile=60; cta=0",
+      "killed": true,
+      "unit": "empty_primary_action"
+    }
+  ],
+  "passed": true,
+  "schema": "factory.challenge.v1",
+  "scope": "source challenge; pair with render-audit for browser evidence",
+  "stage": "design_counterfactual"
+}
