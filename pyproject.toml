@@ -26,4 +26,4 @@ socratic-gtm = "cli:main"
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["scripts*"]
+include = ["scripts*", "socratic_gtm*"]

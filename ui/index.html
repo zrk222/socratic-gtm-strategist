@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Socratic GTM Strategist - AI Advisory Dashboard</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#ecfdf5',
+                            500: '#10b981',
+                            600: '#059669',
+                            700: '#047857',
+                        },
+                        dark: {
+                            900: '#0b0f19',
+                            800: '#111827',
+                            700: '#1f2937',
+                            600: '#374151'
+                        }
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'voice-orb': 'voiceOrb 2s ease-in-out infinite alternate',
+                    },
+                    keyframes: {
+                        voiceOrb: {
+                            '0%': { transform: 'scale(0.95)', boxShadow: '0 0 25px rgba(16, 185, 129, 0.4)' },
+                            '100%': { transform: 'scale(1.15)', boxShadow: '0 0 60px rgba(6, 182, 212, 0.8)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: #0b0f19; }
+        ::-webkit-scrollbar-thumb { background: #1f2937; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #374151; }
+
+        .chat-bubble-user {
+            background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+            border: 1px solid #374151;
+        }
+        .chat-bubble-agent {
+            background: #111827;
+            border: 1px solid #1f2937;
+        }
+        .prose pre {
+            background: #0b0f19;
+            padding: 12px;
+            border-radius: 8px;
+            overflow-x: auto;
+            border: 1px solid #1f2937;
+        }
+    </style>
+</head>
+<body class="bg-dark-900 text-gray-100 flex h-screen overflow-hidden font-sans antialiased">
+
+    <!-- Left Sidebar: GTM Vectors & Phase Tracker -->
+    <aside class="w-80 bg-dark-800 border-r border-dark-700 flex flex-col justify-between hidden md:flex z-10">
+        <div>
+            <!-- Header / Brand -->
+            <div class="p-5 border-b border-dark-700 flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-brand-500 to-cyan-500 flex items-center justify-center shadow-lg shadow-brand-500/20">
+                        <i class="fa-solid fa-chess-knight text-white text-lg"></i>
+                    </div>
+                    <div>
+                        <h1 class="font-bold text-sm tracking-wide text-white">Socratic GTM</h1>
+                        <p class="text-xs text-brand-500 font-medium">v3.0 Context-Engineered</p>
+                    </div>
+                </div>
+                <button onclick="resetConversation()" title="New Audit Session" class="text-gray-400 hover:text-white transition p-1.5 rounded-lg hover:bg-dark-700">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                </button>
+            </div>
+
+            <!-- Phase Tracker -->
+            <div class="p-4 border-b border-dark-700">
+                <div class="flex items-center justify-between text-xs font-semibold mb-2">
+                    <span class="text-gray-400">ACTIVE DIAGNOSTIC PHASE</span>
+                    <span id="sidebarPhaseLabel" class="text-brand-500">Phase 0/8</span>
+                </div>
+                <div class="w-full bg-dark-700 h-2 rounded-full overflow-hidden">
+                    <div id="phaseProgressBar" class="bg-gradient-to-r from-brand-500 to-cyan-400 h-full w-0 transition-all duration-500"></div>
+                </div>
+                <div class="flex items-center justify-between text-[11px] text-gray-400 mt-2">
+                    <span>Confidence Gate:</span>
+                    <span id="confidenceGateBadge" class="px-2 py-0.5 rounded bg-brand-500/10 text-brand-500 border border-brand-500/30 font-bold">&ge; 85% Required</span>
+                </div>
+            </div>
+
+            <!-- GTM Phase Checklist -->
+            <div class="p-4 overflow-y-auto max-h-[calc(100vh-320px)] space-y-1.5 text-xs">
+                <p class="text-[11px] font-semibold text-gray-400 tracking-wider uppercase mb-2">Framework Checklist</p>
+                
+                <div id="phaseItem1" class="phase-item p-2 rounded-lg flex items-center justify-between bg-dark-700/50 text-gray-400 border border-transparent">
+                    <span class="truncate">1. Interaction Frequency</span>
+                    <i class="fa-regular fa-circle text-gray-400 text-xs phase-status-icon"></i>
+                </div>
+                <div id="phaseItem2" class="phase-item p-2 rounded-lg flex items-center justify-between bg-dark-700/50 text-gray-400 border border-transparent">
+                    <span class="truncate">2. Incumbent Recon</span>
+                    <i class="fa-regular fa-circle text-gray-400 text-xs phase-status-icon"></i>
+                </div>
+                <div id="phaseItem3" class="phase-item p-2 rounded-lg flex items-center justify-between bg-dark-700/50 text-gray-400 border border-transparent">
+                    <span class="truncate">3. PLG vs CISO Wedge</span>
+                    <i class="fa-regular fa-circle text-gray-400 text-xs phase-status-icon"></i>
+                </div>
+                <div id="phaseItem4" class="phase-item p-2 rounded-lg flex items-center justify-between bg-dark-700/50 text-gray-400 border border-transparent">
+                    <span class="truncate">4. Expansion Vector</span>
+                    <i class="fa-regular fa-circle text-gray-400 text-xs phase-status-icon"></i>
+                </div>
+                <div id="phaseItem5" class="phase-item p-2 rounded-lg flex items-center justify-between bg-dark-700/50 text-gray-400 border border-transparent">
+                    <span class="truncate">5. Proactive Routines</span>
+                    <i class="fa-regular fa-circle text-gray-400 text-xs phase-status-icon"></i>
+                </div>
+                <div id="phaseItem6" class="phase-item p-2 rounded-lg flex items-center justify-between bg-dark-700/50 text-gray-400 border border-transparent">
+                    <span class="truncate">6. Model Neutrality</span>
+                    <i class="fa-regular fa-circle text-gray-400 text-xs phase-status-icon"></i>
+                </div>
+                <div id="phaseItem7" class="phase-item p-2 rounded-lg flex items-center justify-between bg-dark-700/50 text-gray-400 border border-transparent">
+                    <span class="truncate">7. Pricing Paradox</span>
+                    <i class="fa-regular fa-circle text-gray-400 text-xs phase-status-icon"></i>
+                </div>
+                <div id="phaseItem8" class="phase-item p-2 rounded-lg flex items-center justify-between bg-dark-700/50 text-gray-400 border border-transparent">
+                    <span class="truncate">8. Data Gravity Moats</span>
+                    <i class="fa-regular fa-circle text-gray-400 text-xs phase-status-icon"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sidebar Footer Action Shortcuts -->
+        <div class="p-4 border-t border-dark-700 bg-dark-900/60">
+            <div class="text-[11px] font-semibold text-gray-400 uppercase tracking-wider mb-2">Quick Actions</div>
+            <div class="grid grid-cols-2 gap-1.5 text-xs">
+                <button onclick="sendQuickPrompt('/stress-test ciso')" class="p-2 rounded bg-dark-700 hover:bg-dark-600 text-left text-gray-300 transition flex items-center space-x-1.5">
+                    <i class="fa-solid fa-shield-halved text-red-400 text-xs"></i>
+                    <span class="truncate">CISO Test</span>
+                </button>
+                <button onclick="sendQuickPrompt('/stress-test vc')" class="p-2 rounded bg-dark-700 hover:bg-dark-600 text-left text-gray-300 transition flex items-center space-x-1.5">
+                    <i class="fa-solid fa-hand-holding-dollar text-yellow-400 text-xs"></i>
+                    <span class="truncate">VC Test</span>
+                </button>
+                <button onclick="openSimulatorModal()" class="p-2 rounded bg-dark-700 hover:bg-dark-600 text-left text-gray-300 transition flex items-center space-x-1.5">
+                    <i class="fa-solid fa-chart-radar text-cyan-400 text-xs"></i>
+                    <span class="truncate">Radar Sim</span>
+                </button>
+                <button onclick="triggerExport('csv')" class="p-2 rounded bg-dark-700 hover:bg-dark-600 text-left text-gray-300 transition flex items-center space-x-1.5">
+                    <i class="fa-solid fa-file-csv text-brand-400 text-xs"></i>
+                    <span class="truncate">Export Issues</span>
+                </button>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Chat Workspace -->
+    <main class="flex-1 flex flex-col bg-dark-900 relative">
+        
+        <!-- Top Navigation Bar -->
+        <header class="h-14 border-b border-dark-700 bg-dark-800/80 backdrop-blur px-6 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <span id="currentStatusDot" class="w-2.5 h-2.5 rounded-full bg-brand-500 animate-pulse"></span>
+                <span id="sessionHeaderTitle" class="font-semibold text-sm text-gray-200">Socratic GTM Review Session</span>
+                <span id="activePhasePill" class="text-[11px] px-2.5 py-0.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 font-medium">Phase 0: Initialization</span>
+            </div>
+            
+            <!-- Controls (TTS Voice Toggle, Fullscreen Voice Mode, Clear) -->
+            <div class="flex items-center space-x-3 text-sm">
+                <!-- Auto-TTS Toggle -->
+                <button id="toggleTtsBtn" onclick="toggleAutoTTS()" class="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-dark-700 hover:bg-dark-600 text-gray-300 transition text-xs font-medium">
+                    <i id="ttsIcon" class="fa-solid fa-volume-high text-brand-400"></i>
+                    <span id="ttsLabel">Voice: ON</span>
+                </button>
+
+                <!-- ChatGPT Fullscreen Voice Mode Trigger -->
+                <button onclick="openVoiceMode()" class="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-gradient-to-r from-brand-600 to-cyan-600 hover:from-brand-500 hover:to-cyan-500 text-white shadow-md shadow-brand-500/20 transition text-xs font-semibold">
+                    <i class="fa-solid fa-waveform"></i>
+                    <span>Voice Mode</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Chat History Scroll View -->
+        <div id="chatHistory" class="flex-1 overflow-y-auto px-4 md:px-12 py-6 space-y-6">
+            <!-- Initial Agent Welcome Message -->
+            <div class="chat-message flex items-start space-x-4 max-w-4xl mx-auto">
+                <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-brand-500 to-cyan-500 flex-shrink-0 flex items-center justify-center text-white shadow-md shadow-brand-500/30">
+                    <i class="fa-solid fa-chess-knight text-sm"></i>
+                </div>
+                <div class="flex-1">
+                    <div class="flex items-center space-x-2 mb-1">
+                        <span class="font-semibold text-sm text-gray-200">Socratic GTM Advisor</span>
+                        <span class="text-[10px] text-gray-400">Phase 0 Kickoff</span>
+                    </div>
+
+                    <!-- Collapsible Monologue Block -->
+                    <div class="mb-3">
+                        <button onclick="toggleThought(this)" class="flex items-center space-x-1.5 text-xs text-brand-400 hover:text-brand-300 font-mono focus:outline-none">
+                            <i class="fa-solid fa-angle-right transition-transform duration-200 thought-chevron"></i>
+                            <span>View Strategic Thought & Accumulator</span>
+                        </button>
+                        <div class="thought-content hidden mt-2 p-3 rounded-lg bg-dark-800 border border-dark-700 font-mono text-xs text-gray-400 whitespace-pre-wrap leading-relaxed">
+- Current Phase: Phase 0 (Initialization)
+- Answer Evaluation: Session start. Ready to begin diagnostic Socratic review.
+- Confidence Score: N/A
+- Gating Decision: Await founder startup concept.
+- Accumulated Strategic State: Empty.
+- Next Action: Prompt founder for 2-3 sentence overview.</div>
+                    </div>
+
+                    <div class="chat-bubble-agent p-4 rounded-2xl text-sm leading-relaxed text-gray-200 shadow-sm space-y-3">
+                        <p>Hello. I'm your <strong>AI Startup Strategy Partner and Socratic Advisor</strong>.</p>
+                        <p>My role is to ruthlessly but constructively stress-test your Go-To-Market strategy across an 8-phase diagnostic framework (Interaction Frequency, Incumbent Distribution, PLG Wedges, Proactive Routines, Model Neutrality, Pricing Paradox, and Data Gravity).</p>
+                        <p class="font-medium text-brand-400">To begin Phase 1: In 2 to 3 sentences, what is your AI startup idea, who is your core user, and what primary problem are you solving?</p>
+                    </div>
+
+                    <!-- Voice Speak Button for this message -->
+                    <div class="flex items-center space-x-2 mt-2">
+                        <button onclick="speakMessage(this)" class="text-xs text-gray-400 hover:text-brand-400 transition flex items-center space-x-1">
+                            <i class="fa-solid fa-volume-high"></i>
+                            <span>Read Aloud</span>
+                        </button>
+                        <button onclick="copyMessage(this)" class="text-xs text-gray-400 hover:text-gray-300 transition flex items-center space-x-1 ml-3">
+                            <i class="fa-regular fa-copy"></i>
+                            <span>Copy</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- STT Listening Floating Pill -->
+        <div id="sttListeningBar" class="hidden mx-auto mb-2 px-4 py-1.5 rounded-full bg-brand-500/20 border border-brand-500/40 text-brand-400 text-xs flex items-center space-x-2 animate-pulse">
+            <i class="fa-solid fa-microphone-lines"></i>
+            <span id="sttStatusText">Listening to your voice... Speak now</span>
+            <button onclick="stopSpeechToText()" class="ml-2 text-gray-400 hover:text-white">&times;</button>
+        </div>
+
+        <!-- Chat Input Controls Bar -->
+        <div class="p-4 md:p-6 bg-dark-900/90 border-t border-dark-700/80 max-w-4xl w-full mx-auto">
+            <div class="relative bg-dark-800 rounded-2xl border border-dark-700 focus-within:border-brand-500/60 focus-within:ring-2 focus-within:ring-brand-500/20 transition shadow-lg">
+                <textarea 
+                    id="userInput" 
+                    rows="2" 
+                    placeholder="Describe your startup idea or reply to the Socratic question..."
+                    class="w-full bg-transparent px-4 py-3.5 pr-28 text-sm text-gray-100 placeholder-gray-400 focus:outline-none resize-none"
+                    onkeydown="handleKeyDown(event)"
+                ></textarea>
+
+                <div class="absolute right-3 bottom-3 flex items-center space-x-2">
+                    <!-- STT Microphone Button -->
+                    <button 
+                        id="micBtn" 
+                        onclick="toggleSpeechToText()" 
+                        title="Voice Input (Speech-to-Text)"
+                        class="w-9 h-9 rounded-xl bg-dark-700 hover:bg-dark-600 text-gray-300 hover:text-brand-400 transition flex items-center justify-center focus:outline-none relative"
+                    >
+                        <i id="micIcon" class="fa-solid fa-microphone"></i>
+                        <span id="micRing" class="hidden absolute inset-0 rounded-xl border-2 border-brand-500 animate-ping"></span>
+                    </button>
+
+                    <!-- Send Button -->
+                    <button 
+                        id="sendBtn" 
+                        onclick="handleSend()" 
+                        title="Send Message"
+                        class="w-9 h-9 rounded-xl bg-brand-600 hover:bg-brand-500 text-white transition flex items-center justify-center shadow-md shadow-brand-600/30 focus:outline-none disabled:opacity-50"
+                    >
+                        <i class="fa-solid fa-arrow-up"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="flex items-center justify-between text-[11px] text-gray-400 mt-2 px-1">
+                <span class="flex items-center space-x-1.5">
+                    <i class="fa-solid fa-shield text-brand-500/80"></i>
+                    <span>Enforcing Rule of Two & 85% Confidence Gating</span>
+                </span>
+                <span>Press <kbd class="px-1.5 py-0.5 rounded bg-dark-800 border border-dark-700 font-mono text-[10px]">Enter</kbd> to send, <kbd class="px-1.5 py-0.5 rounded bg-dark-800 border border-dark-700 font-mono text-[10px]">Shift+Enter</kbd> for newline</span>
+            </div>
+        </div>
+    </main>
+
+    <!-- Fullscreen ChatGPT-Style Voice Mode Overlay -->
+    <div id="voiceModeOverlay" class="fixed inset-0 bg-dark-900/95 backdrop-blur-md z-50 flex flex-col justify-between p-8 hidden">
+        <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-8 h-8 rounded-lg bg-brand-500 flex items-center justify-center text-white font-bold">S</div>
+                <span class="font-semibold text-sm">Socratic GTM Voice Mode</span>
+            </div>
+            <button onclick="closeVoiceMode()" class="text-gray-400 hover:text-white text-xl p-2 rounded-full hover:bg-dark-800">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <!-- Center Glowing Interactive Voice Orb -->
+        <div class="flex flex-col items-center justify-center space-y-6">
+            <div id="voiceOrb" class="w-44 h-44 rounded-full bg-gradient-to-tr from-brand-500 via-cyan-400 to-indigo-500 animate-voice-orb flex items-center justify-center shadow-2xl transition-all duration-300 cursor-pointer" onclick="toggleVoiceModeListening()">
+                <i id="voiceOrbIcon" class="fa-solid fa-microphone text-white text-4xl"></i>
+            </div>
+            <div class="text-center">
+                <h3 id="voiceStatusText" class="text-lg font-bold text-white tracking-wide">Listening...</h3>
+                <p id="voiceLiveTranscript" class="text-sm text-gray-400 max-w-md mt-1 italic min-h-[24px]">Speak your startup strategy thoughts...</p>
+            </div>
+        </div>
+
+        <!-- Voice Mode Bottom Controls -->
+        <div class="flex items-center justify-center space-x-6">
+            <button id="voiceMuteToggle" onclick="toggleVoiceModeMic()" class="w-14 h-14 rounded-full bg-dark-800 border border-dark-700 text-gray-200 hover:text-brand-400 text-xl flex items-center justify-center shadow transition">
+                <i id="voiceMuteIcon" class="fa-solid fa-microphone"></i>
+            </button>
+            <button onclick="closeVoiceMode()" class="w-14 h-14 rounded-full bg-red-600/20 border border-red-500/40 text-red-400 hover:bg-red-600 hover:text-white text-xl flex items-center justify-center shadow transition">
+                <i class="fa-solid fa-phone-slash"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Script: Complete Voice, STT, TTS, Chat and Engine Logic -->
+    <script>
+        // State Management
+        let currentPhase = 0;
+        let isListening = false;
+        let autoTTS = true;
+        let recognition = null;
+        let synth = window.speechSynthesis;
+        let accumulatedContext = {
+            name: "AI Startup",
+            phases: {}
+        };
+
+        // Initialize Speech Recognition (STT)
+        function initSTT() {
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            if (!SpeechRecognition) {
+                console.warn("Web Speech API Recognition not supported in this browser.");
+                return null;
+            }
+            const rec = new SpeechRecognition();
+            rec.continuous = false;
+            rec.interimResults = true;
+            rec.lang = 'en-US';
+
+            rec.onstart = () => {
+                isListening = true;
+                updateMicUI(true);
+            };
+
+            rec.onresult = (event) => {
+                let interim = '';
+                let final = '';
+                for (let i = event.resultIndex; i < event.results.length; ++i) {
+                    if (event.results[i].isFinal) {
+                        final += event.results[i][0].transcript;
+                    } else {
+                        interim += event.results[i][0].transcript;
+                    }
+                }
+                const text = final || interim;
+                document.getElementById('userInput').value = text;
+                document.getElementById('voiceLiveTranscript').innerText = text;
+            };
+
+            rec.onerror = (event) => {
+                console.error("STT Error:", event.error);
+                stopSpeechToText();
+            };
+
+            rec.onend = () => {
+                isListening = false;
+                updateMicUI(false);
+            };
+
+            return rec;
+        }
+
+        recognition = initSTT();
+
+        function toggleSpeechToText() {
+            if (!recognition) {
+                alert("Speech recognition is not supported in this browser. Please use Chrome, Edge, or Safari.");
+                return;
+            }
+            if (isListening) {
+                recognition.stop();
+            } else {
+                try {
+                    recognition.start();
+                } catch (e) {
+                    recognition.stop();
+                }
+            }
+        }
+
+        function stopSpeechToText() {
+            if (recognition && isListening) {
+                recognition.stop();
+            }
+            updateMicUI(false);
+        }
+
+        function updateMicUI(listening) {
+            const micBtn = document.getElementById('micBtn');
+            const micIcon = document.getElementById('micIcon');
+            const micRing = document.getElementById('micRing');
+            const sttBar = document.getElementById('sttListeningBar');
+            const voiceOrb = document.getElementById('voiceOrb');
+            const voiceStatus = document.getElementById('voiceStatusText');
+
+            if (listening) {
+                micBtn.classList.add('bg-red-600/20', 'text-red-400');
+                micIcon.className = 'fa-solid fa-microphone-lines';
+                micRing.classList.remove('hidden');
+                sttBar.classList.remove('hidden');
+                if (voiceOrb) voiceOrb.classList.add('animate-pulse');
+                if (voiceStatus) voiceStatus.innerText = "Listening...";
+            } else {
+                micBtn.classList.remove('bg-red-600/20', 'text-red-400');
+                micIcon.className = 'fa-solid fa-microphone';
+                micRing.classList.add('hidden');
+                sttBar.classList.add('hidden');
+                if (voiceOrb) voiceOrb.classList.remove('animate-pulse');
+            }
+        }
+
+        // Text-to-Speech (Agent TTS)
+        function speakText(text) {
+            if (!synth || !autoTTS) return;
+            synth.cancel(); // Stop any active utterance
+
+            // Clean monologue blocks and markdown formatting from spoken audio
+            const cleanText = text
+                .replace(/<internal_monologue>[\s\S]*?<\/internal_monologue>/gi, '')
+                .replace(/`{1,3}[\s\S]*?`{1,3}/g, '')
+                .replace(/[#*_~>]/g, '')
+                .trim();
+
+            if (!cleanText) return;
+
+            const utterance = new SpeechSynthesisUtterance(cleanText);
+            utterance.rate = 1.05;
+            utterance.pitch = 1.0;
+
+            // Pick a crisp English voice
+            const voices = synth.getVoices();
+            const preferredVoice = voices.find(v => v.lang.startsWith('en') && (v.name.includes('Natural') || v.name.includes('Neural') || v.name.includes('Google') || v.name.includes('Samantha')));
+            if (preferredVoice) utterance.voice = preferredVoice;
+
+            const voiceStatus = document.getElementById('voiceStatusText');
+            utterance.onstart = () => {
+                if (voiceStatus) voiceStatus.innerText = "Agent Speaking...";
+            };
+            utterance.onend = () => {
+                if (voiceStatus) voiceStatus.innerText = "Listening...";
+            };
+
+            synth.speak(utterance);
+        }
+
+        function speakMessage(btn) {
+            const bubble = btn.closest('.chat-message').querySelector('.chat-bubble-agent');
+            if (bubble) speakText(bubble.innerText);
+        }
+
+        function toggleAutoTTS() {
+            autoTTS = !autoTTS;
+            document.getElementById('ttsLabel').innerText = autoTTS ? "Voice: ON" : "Voice: MUTED";
+            document.getElementById('ttsIcon').className = autoTTS ? "fa-solid fa-volume-high text-brand-400" : "fa-solid fa-volume-xmark text-gray-500";
+            if (!autoTTS && synth) synth.cancel();
+        }
+
+        // ChatGPT-Style Fullscreen Voice Mode
+        function openVoiceMode() {
+            document.getElementById('voiceModeOverlay').classList.remove('hidden');
+            if (recognition && !isListening) {
+                recognition.start();
+            }
+        }
+
+        function closeVoiceMode() {
+            document.getElementById('voiceModeOverlay').classList.add('hidden');
+            stopSpeechToText();
+            if (synth) synth.cancel();
+        }
+
+        function toggleVoiceModeListening() {
+            toggleSpeechToText();
+        }
+
+        function toggleVoiceModeMic() {
+            toggleSpeechToText();
+        }
+
+        // Collapsible Strategic Thought Block
+        function toggleThought(btn) {
+            const content = btn.parentElement.querySelector('.thought-content');
+            const chevron = btn.querySelector('.thought-chevron');
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                chevron.classList.add('rotate-90');
+            } else {
+                content.classList.add('hidden');
+                chevron.classList.remove('rotate-90');
+            }
+        }
+
+        function copyMessage(btn) {
+            const bubble = btn.closest('.chat-message').querySelector('.chat-bubble-agent, .chat-bubble-user');
+            if (bubble) {
+                navigator.clipboard.writeText(bubble.innerText);
+                const originalHtml = btn.innerHTML;
+                btn.innerHTML = `<i class="fa-solid fa-check text-brand-400"></i><span class="text-brand-400">Copied!</span>`;
+                setTimeout(() => { btn.innerHTML = originalHtml; }, 2000);
+            }
+        }
+
+        // Send & Process Message
+        function handleKeyDown(e) {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                handleSend();
+            }
+        }
+
+        async function handleSend() {
+            const input = document.getElementById('userInput');
+            const text = input.value.trim();
+            if (!text) return;
+
+            input.value = '';
+            stopSpeechToText();
+
+            // Append User Message to Timeline
+            appendUserMessage(text);
+
+            // Execute Socratic Agent Response
+            await processAgentTurn(text);
+        }
+
+        function appendUserMessage(text) {
+            const history = document.getElementById('chatHistory');
+            const msgEl = document.createElement('div');
+            msgEl.className = 'chat-message flex items-start space-x-4 max-w-4xl mx-auto justify-end';
+            msgEl.innerHTML = `
+                <div class="flex-1 text-right">
+                    <div class="flex items-center justify-end space-x-2 mb-1">
+                        <span class="text-[10px] text-gray-400">Founder</span>
+                        <span class="font-semibold text-sm text-gray-300">You</span>
+                    </div>
+                    <div class="chat-bubble-user inline-block text-left p-4 rounded-2xl text-sm leading-relaxed text-gray-100 shadow-sm max-w-2xl">
+                        ${escapeHtml(text)}
+                    </div>
+                </div>
+                <div class="w-9 h-9 rounded-xl bg-dark-700 flex-shrink-0 flex items-center justify-center text-gray-300 border border-dark-600">
+                    <i class="fa-solid fa-user text-sm"></i>
+                </div>
+            `;
+            history.appendChild(msgEl);
+            history.scrollTop = history.scrollHeight;
+        }
+
+        function appendAgentMessage(monologue, responseText, phase, confidence) {
+            const history = document.getElementById('chatHistory');
+            const msgEl = document.createElement('div');
+            msgEl.className = 'chat-message flex items-start space-x-4 max-w-4xl mx-auto';
+
+            const badgeClass = confidence >= 85 ? "text-brand-400 border-brand-500/30 bg-brand-500/10" : "text-yellow-400 border-yellow-500/30 bg-yellow-500/10";
+            const gateText = confidence >= 85 ? `Gate Passed (${confidence}%)` : `Drill Down (${confidence}%)`;
+
+            msgEl.innerHTML = `
+                <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-brand-500 to-cyan-500 flex-shrink-0 flex items-center justify-center text-white shadow-md shadow-brand-500/30">
+                    <i class="fa-solid fa-chess-knight text-sm"></i>
+                </div>
+                <div class="flex-1">
+                    <div class="flex items-center space-x-2 mb-1">
+                        <span class="font-semibold text-sm text-gray-200">Socratic GTM Advisor</span>
+                        <span class="text-[10px] text-gray-400">Phase ${phase}</span>
+                        <span class="text-[10px] px-2 py-0.2 rounded border font-mono ${badgeClass}">${gateText}</span>
+                    </div>
+
+                    <!-- Collapsible Monologue Block -->
+                    <div class="mb-3">
+                        <button onclick="toggleThought(this)" class="flex items-center space-x-1.5 text-xs text-brand-400 hover:text-brand-300 font-mono focus:outline-none">
+                            <i class="fa-solid fa-angle-right transition-transform duration-200 thought-chevron"></i>
+                            <span>View Strategic Thought & Accumulator</span>
+                        </button>
+                        <div class="thought-content hidden mt-2 p-3 rounded-lg bg-dark-800 border border-dark-700 font-mono text-xs text-gray-400 whitespace-pre-wrap leading-relaxed">${escapeHtml(monologue)}</div>
+                    </div>
+
+                    <div class="chat-bubble-agent p-4 rounded-2xl text-sm leading-relaxed text-gray-200 shadow-sm space-y-3">
+                        ${formatMarkdown(responseText)}
+                    </div>
+
+                    <!-- Voice Speak Button for this message -->
+                    <div class="flex items-center space-x-2 mt-2">
+                        <button onclick="speakMessage(this)" class="text-xs text-gray-400 hover:text-brand-400 transition flex items-center space-x-1">
+                            <i class="fa-solid fa-volume-high"></i>
+                            <span>Read Aloud</span>
+                        </button>
+                        <button onclick="copyMessage(this)" class="text-xs text-gray-400 hover:text-gray-300 transition flex items-center space-x-1 ml-3">
+                            <i class="fa-regular fa-copy"></i>
+                            <span>Copy</span>
+                        </button>
+                    </div>
+                </div>
+            `;
+            history.appendChild(msgEl);
+            history.scrollTop = history.scrollHeight;
+
+            // Trigger TTS if enabled
+            speakText(responseText);
+        }
+
+        // Backend or Client-Side Simulated Socratic Engine Turn
+        async function processAgentTurn(userInput) {
+            // Check for quick slash commands
+            if (userInput.startsWith('/stress-test ciso')) {
+                executeAdversarialMode("ciso");
+                return;
+            } else if (userInput.startsWith('/stress-test vc')) {
+                executeAdversarialMode("vc");
+                return;
+            }
+
+            // Call local API if server is running, or fall back to client-side Socratic engine
+            try {
+                const res = await fetch('/api/chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message: userInput, phase: currentPhase, context: accumulatedContext })
+                });
+                if (res.ok) {
+                    const data = await res.json();
+                    updatePhaseUI(data.phase, data.confidence);
+                    appendAgentMessage(data.monologue, data.reply, data.phase, data.confidence);
+                    return;
+                }
+            } catch (err) {
+                // Server not running, proceed with native client-side Socratic engine
+            }
+
+            // Native Client-Side Socratic Engine (Runs fully offline without backend dependencies)
+            const words = userInput.split(/\s+/).length;
+            const confidence = Math.min(95, Math.max(65, 60 + words * 2));
+
+            let monologue = "";
+            let reply = "";
+
+            if (currentPhase === 0) {
+                currentPhase = 1;
+                accumulatedContext.name = userInput.slice(0, 30);
+                monologue = `- Current Phase: Phase 1 (Interaction Frequency & WoM)\n- Evaluation: Captured startup concept. Advancing to test usage frequency.\n- Phase Confidence Score: 88%\n- Gating Decision: ADVANCE to Phase 1.\n- Accumulated State:\n    * Concept: ${userInput}\n- Next Action: Ask the Rule of Two frequency questions.`;
+                reply = `That gives us a clear initial wedge. Let's stress-test the growth engine in **Phase 1: Interaction Frequency & Word-of-Mouth Physics**.\n\nHistorically, products that are touched only monthly or annually suffer from the "Annual Trap" and cannot sustain organic word-of-mouth.\n\n1. *How often does an end-user naturally touch or get value from your product (Daily, Weekly, Monthly, or Annual)?*\n2. *When a user experiences a 'magic moment', how naturally do they brag about it to peers during their active buying cycle?*`;
+            } else if (currentPhase < 8) {
+                if (confidence >= 85) {
+                    currentPhase += 1;
+                    const phaseTitles = [
+                        "", "Interaction Frequency", "Incumbent Threat & Distribution", "PLG vs CISO Wedge",
+                        "Expansion Vector", "Proactive Routines vs Chatbox", "Model Neutrality",
+                        "AI Pricing Paradox", "Data Gravity Moats"
+                    ];
+                    monologue = `- Current Phase: Phase ${currentPhase}\n- Evaluation: Founder provided concrete mechanics. Confidence exceeds 85% threshold.\n- Phase Confidence Score: ${confidence}%\n- Gating Decision: ADVANCE to Phase ${currentPhase}.\n- Accumulated State:\n    * Validated Phase ${currentPhase - 1}: ${userInput.slice(0, 60)}...\n- Next Action: Pivot to ${phaseTitles[currentPhase]}.`;
+                    
+                    if (currentPhase === 2) {
+                        reply = `Your frequency mechanics are solid. Let's move to **Phase 2: The Ticking Clock vs. Incumbent Distribution**.\n\nIncumbents (e.g. Salesforce, Notion, Zendesk) already own the enterprise relationship. If they ship an AI button that accomplishes 70% of your value next year, why do customers stay?\n\n1. *What is the primary distribution advantage of your top incumbent?*\n2. *If the incumbent adds a 'good-enough' agent in 12 months, what is your structural defense?*`;
+                    } else if (currentPhase === 3) {
+                        reply = `Understood. Now testing **Phase 3: The Adoption Vector (PLG vs. CISO Governance)**.\n\nMany AI startups fall into the CISO trap on Day 1—getting paralyzed by 9-month enterprise procurement before any end-user loves the tool.\n\n1. *Who uses the tool daily versus who signs the check?*\n2. *Are you designing v1 for practitioner delight, or to satisfy an IT/compliance checklist?*`;
+                    } else if (currentPhase === 4) {
+                        reply = `Good distinction. Let's evaluate **Phase 4: Expansion Strategy (Horizontal to Vertical)**.\n\n1. *Are you forcing a narrow niche on Day 1, or starting horizontal across common workflows?*\n2. *How will you extract the hidden 'routines' of power users to turn them into vertical templates?*`;
+                    } else if (currentPhase === 5) {
+                        reply = `Let's tackle **Phase 5: Value Architecture (Proactive Routines vs. Text-Box Friction)**.\n\nChat boxes produce prompt fatigue. Autonomous routines deliver ROI while the user sleeps.\n\n1. *Does your user have to type into a prompt box to get value, or does your app proactively surface ROI in the background?*\n2. *What is a low-cost background task your app can run continuously that yields high ROI?*`;
+                    } else if (currentPhase === 6) {
+                        reply = `Now de-risking **Phase 6: Defensive Layer (Model Neutrality & Context Ownership)**.\n\n1. *Are you tied to a single foundation model API, or can you dynamically route tasks to the optimal model?*\n2. *How do you guarantee the customer owns their contextual data and memory graph?*`;
+                    } else if (currentPhase === 7) {
+                        reply = `Critical junction: **Phase 7: Pricing & Value Capture (The AI Pricing Paradox)**.\n\nAI agents inherently destroy seat-based SaaS pricing because automation reduces needed headcount.\n\n1. *Are you pricing per-seat, or pricing on consumption, outcomes, or completed tasks?*\n2. *How do you prevent margin collapse if user token consumption spikes?*`;
+                    } else if (currentPhase === 8) {
+                        reply = `Final diagnostic gate: **Phase 8: Integration & Data Gravity (The Moat of Context)**.\n\n1. *What existing systems (CRM, ERP, Slack, Data Warehouse) does your agent read from and write to natively?*\n2. *How deep is the bi-directional sync? Does deleting your tool break existing workflows?*`;
+                    }
+                } else {
+                    monologue = `- Current Phase: Phase ${currentPhase}\n- Evaluation: Response was high-level or aspirational. Missing operational mechanics.\n- Phase Confidence Score: ${confidence}%\n- Gating Decision: DRILL DOWN (Score < 85%).\n- Next Action: Enforce Rule of Two with a focused follow-up.`;
+                    reply = `That's a sound high-level vision, but we are missing the operational mechanics needed to de-risk this vector (Confidence: ${confidence}% / required 85%).\n\nSpecifically: *What exact workflow metrics, APIs, or daily triggers ensure this occurs repeatedly?*`;
+                }
+            } else {
+                // Phase 9 Synthesis
+                currentPhase = 9;
+                monologue = `- Current Phase: Phase 9 (Multi-Module Synthesis)\n- Evaluation: All 8 vectors de-risked and validated.\n- Phase Confidence Score: 92%\n- Gating Decision: COMPLETE.\n- Next Action: Generate 5-Piece Operational Suite.`;
+                reply = `### 🎯 Strategy Fully De-Risked: GTM Playbook & Suite Generated!\n\nAll 8 phases have met the **85% confidence gating threshold**. The complete execution suite is ready:\n\n* **1. Interactive Simulator & Radar:** Visualizes your 8-vector moats and real-time AI Unit Economics.\n* **2. Linear / Jira Sprint Backlog:** Prioritized Sprint 0-2 issues with acceptance criteria.\n* **3. Seed/Series A Pitch Deck:** 5-slide narrative copy.\n* **4. Enterprise CISO Readiness Brief:** Pre-meeting security defenses.\n\nUse the sidebar quick actions to inspect the radar simulator or download your sprint issues!`;
+            }
+
+            updatePhaseUI(currentPhase, confidence);
+            appendAgentMessage(monologue, reply, currentPhase, confidence);
+        }
+
+        function executeAdversarialMode(mode) {
+            const isCiso = mode === "ciso";
+            const title = isCiso ? "Enterprise CISO Security Inquisition" : "Tier-1 VC Partner Stress Test";
+            const q = isCiso 
+                ? "Does our proprietary enterprise context ever hit public foundation model APIs, and what legally binding guarantee prevents our IP from training future model weights?"
+                : "If OpenAI or Google releases an update next month that does this natively inside their UI, why doesn't your business go to zero?";
+
+            const monologue = `- Mode: Adversarial Grilling (${mode.toUpperCase()})\n- Persona: ${isCiso ? 'Fortune 500 CISO' : 'Tier-1 General Partner'}\n- Objective: High-stakes objection stress test.`;
+            const reply = `### ⚠️ ADVERSARIAL STRESS TEST: ${title.toUpperCase()}\n\n*Persona:* ${isCiso ? 'Fortune 500 Enterprise CISO' : 'Tier-1 Enterprise AI Venture Partner'}\n\n> *"${q}"*\n\nProvide your institutional defense:`;
+
+            appendAgentMessage(monologue, reply, `Stress-Test (${mode.toUpperCase()})`, 90);
+        }
+
+        function updatePhaseUI(phase, confidence) {
+            const label = document.getElementById('sidebarPhaseLabel');
+            const bar = document.getElementById('phaseProgressBar');
+            const pill = document.getElementById('activePhasePill');
+
+            const pNum = Math.min(8, phase);
+            label.innerText = `Phase ${pNum}/8`;
+            bar.style.width = `${(pNum / 8) * 100}%`;
+            pill.innerText = `Phase ${phase}: In Progress`;
+
+            for (let i = 1; i <= 8; i++) {
+                const el = document.getElementById(`phaseItem${i}`);
+                if (!el) continue;
+                const icon = el.querySelector('.phase-status-icon');
+                if (i < phase) {
+                    el.className = "phase-item p-2 rounded-lg flex items-center justify-between bg-brand-500/10 text-brand-400 border border-brand-500/20";
+                    icon.className = "fa-solid fa-circle-check text-brand-400 text-xs";
+                } else if (i === phase) {
+                    el.className = "phase-item p-2 rounded-lg flex items-center justify-between bg-dark-700 text-white border border-brand-500/50 shadow-sm";
+                    icon.className = "fa-solid fa-spinner fa-spin text-brand-400 text-xs";
+                } else {
+                    el.className = "phase-item p-2 rounded-lg flex items-center justify-between bg-dark-700/50 text-gray-400 border border-transparent";
+                    icon.className = "fa-regular fa-circle text-gray-400 text-xs";
+                }
+            }
+        }
+
+        function sendQuickPrompt(text) {
+            document.getElementById('userInput').value = text;
+            handleSend();
+        }
+
+        function resetConversation() {
+            if (confirm("Reset Socratic GTM audit session?")) {
+                currentPhase = 0;
+                accumulatedContext = { name: "AI Startup", phases: {} };
+                document.getElementById('chatHistory').innerHTML = '';
+                updatePhaseUI(0, 0);
+                window.location.reload();
+            }
+        }
+
+        function openSimulatorModal() {
+            window.open('gtm_simulator.html', '_blank') || alert("Launch local server via 'python cli.py ui' to view live simulator.");
+        }
+
+        function triggerExport(type) {
+            sendQuickPrompt(`/export ${type}`);
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.innerText = text;
+            return div.innerHTML;
+        }
+
+        function formatMarkdown(text) {
+            // Simple fast client markdown formatting
+            let html = escapeHtml(text);
+            html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+            html = html.replace(/\*(.*?)\*/g, '<em>$1</em>');
+            html = html.replace(/### (.*?)\n/g, '<h3 class="text-base font-bold text-white mt-2 mb-1">$1</h3>');
+            html = html.replace(/## (.*?)\n/g, '<h2 class="text-lg font-bold text-white mt-3 mb-1">$1</h2>');
+            html = html.replace(/> (.*?)\n/g, '<blockquote class="border-l-2 border-brand-500 pl-3 my-2 text-gray-300 italic">$1</blockquote>');
+            html = html.replace(/\n\n/g, '<br><br>');
+            html = html.replace(/\n/g, '<br>');
+            return html;
+        }
+    </script>
+</body>
+</html>

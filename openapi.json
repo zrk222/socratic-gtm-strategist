@@ -1,0 +1,228 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Socratic GTM Strategist Cloud Agent API",
+    "description": "Cloud Agent and REST API for the Socratic GTM Strategist (v3.0). De-risks AI startup Go-To-Market strategies across an 8-phase framework with confidence gating, unit economics simulations, and competitive intelligence.",
+    "version": "3.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8000",
+      "description": "Local server"
+    }
+  ],
+  "paths": {
+    "/api/chat": {
+      "post": {
+        "operationId": "socraticChatTurn",
+        "summary": "Process a Socratic GTM advisory turn",
+        "description": "Submits a founder response to the Socratic GTM state machine. Evaluates operational depth, returns updated phase, confidence score, internal monologue, and the next focused question(s).",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "message": { "type": "string", "description": "The founder's response" },
+                  "phase": { "type": "integer", "description": "Current diagnostic phase (0 to 8)" },
+                  "context": { "type": "object", "description": "Accumulated strategic context" }
+                },
+                "required": ["message"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Agent evaluation and next Socratic prompt",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "reply": { "type": "string" },
+                    "monologue": { "type": "string" },
+                    "phase": { "type": "integer" },
+                    "confidence": { "type": "integer" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/simulate": {
+      "post": {
+        "operationId": "generateGtmSimulator",
+        "summary": "Generate interactive HTML GTM Radar & Margin Collapse Simulator",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "project_name": { "type": "string" },
+                  "scores": {
+                    "type": "array",
+                    "items": { "type": "integer" },
+                    "description": "8 integer scores (0-100)"
+                  }
+                },
+                "required": ["project_name"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Generated simulator file details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": { "type": "boolean" },
+                    "path": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/recon": {
+      "post": {
+        "operationId": "runIncumbentRecon",
+        "summary": "Run competitive AI reconnaissance on an incumbent",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "incumbent": { "type": "string" },
+                  "domain": { "type": "string" }
+                },
+                "required": ["incumbent"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Reconnaissance briefing markdown",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "report": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/stress-test": {
+      "post": {
+        "operationId": "runStressTest",
+        "summary": "Execute an adversarial stress test (CISO or VC mode)",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "mode": { "type": "string", "enum": ["ciso", "vc"] },
+                  "startup_name": { "type": "string" }
+                },
+                "required": ["mode", "startup_name"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Adversarial defense brief",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "brief": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/export": {
+      "post": {
+        "operationId": "exportSprintIssues",
+        "summary": "Export Linear/Jira/GitHub Issues Backlog",
+        "responses": {
+          "200": {
+            "description": "Export status and file paths",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": { "type": "boolean" },
+                    "csv": { "type": "string" },
+                    "json": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/pitch-deck": {
+      "post": {
+        "operationId": "generatePitchDeck",
+        "summary": "Generate 5-slide Seed/Series A pitch deck copy",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "startup_name": { "type": "string" }
+                },
+                "required": ["startup_name"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Pitch deck markdown copy",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "deck": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

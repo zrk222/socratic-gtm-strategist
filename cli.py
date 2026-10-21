@@ -130,6 +130,11 @@ def cmd_start(args):
 def cmd_mcp(args):
     mcp_server.main()
 
+def cmd_ui(args):
+    """Launch the Web UI Dashboard with Voice STT/TTS."""
+    import server
+    server.start_server(port=args.port, open_browser=not args.no_browser)
+
 def main():
     parser = argparse.ArgumentParser(
         prog="socratic-gtm",
@@ -177,6 +182,12 @@ def main():
     # mcp
     p_mcp = subparsers.add_parser("mcp", help="Run the Model Context Protocol (MCP) stdio server")
     p_mcp.set_defaults(func=cmd_mcp)
+
+    # ui / dashboard
+    p_ui = subparsers.add_parser("ui", help="Launch the ChatGPT-style Web UI Dashboard with Voice STT/TTS")
+    p_ui.add_argument("--port", type=int, default=8000, help="Web server port (default: 8000)")
+    p_ui.add_argument("--no-browser", action="store_true", help="Do not open browser automatically")
+    p_ui.set_defaults(func=cmd_ui)
 
     args = parser.parse_args()
     if not args.command:
