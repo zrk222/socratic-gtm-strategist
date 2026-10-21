@@ -40,7 +40,7 @@ jobs:
         node-version: "22"
 
     - name: Session data regression tests
-      run: node --test tests/session.test.cjs
+      run: node --test tests/session.test.cjs tests/prep.test.cjs
 
     - name: Build wheel and test isolated installation
       run: |

@@ -1,0 +1,1 @@
+{"status": "PASS", "wheel": "socratic_gtm_strategist-3.0.0-py3-none-any.whl", "python": "3.11.9", "checks": ["isolated-install", "console-entrypoint", "html-generation", "sdk-prompt", "packaged-ui-schema-js", "mcp-initialize", "mcp-evaluation", "mcp-ping"]}

@@ -1,0 +1,85 @@
+{
+  "feature": "adversarial-prep",
+  "state": "smoked",
+  "created": "2026-10-21T06:06:57.189652+00:00",
+  "attempts": {
+    "review": 3
+  },
+  "history": [
+    {
+      "ts": "2026-10-21T06:13:07.316898+00:00",
+      "state": "expanded",
+      "note": "use cases drafted"
+    },
+    {
+      "ts": "2026-10-21T06:13:08.907379+00:00",
+      "state": "architected",
+      "note": "architecture approved by CLI operator"
+    },
+    {
+      "ts": "2026-10-21T06:13:11.276809+00:00",
+      "state": "scaffolded",
+      "note": "adopt existing modules from SSAT"
+    },
+    {
+      "ts": "2026-10-21T06:13:33.693674+00:00",
+      "state": "filled",
+      "note": "implemented bodies verified"
+    },
+    {
+      "ts": "2026-10-21T06:14:05.493083+00:00",
+      "state": "reviewed",
+      "note": "review pass (attempt 1, QA=B)"
+    },
+    {
+      "ts": "2026-10-21T06:14:12.533525+00:00",
+      "state": "arch_gated",
+      "note": "architecture CI gate passed"
+    },
+    {
+      "ts": "2026-10-21T06:14:14.549973+00:00",
+      "state": "tests_verified",
+      "note": "smoke checks proven non-hollow"
+    },
+    {
+      "ts": "2026-10-21T06:14:21.481025+00:00",
+      "state": "blocked",
+      "note": "runtime smoke gate failed"
+    },
+    {
+      "ts": "2026-10-21T06:18:58.204685+00:00",
+      "state": "reviewed",
+      "note": "review pass (attempt 2, QA=B)"
+    },
+    {
+      "ts": "2026-10-21T06:18:58.248441+00:00",
+      "state": "arch_gated",
+      "note": "architecture CI gate passed"
+    },
+    {
+      "ts": "2026-10-21T06:18:58.847680+00:00",
+      "state": "tests_verified",
+      "note": "smoke checks proven non-hollow"
+    },
+    {
+      "ts": "2026-10-21T06:18:59.536077+00:00",
+      "state": "smoked",
+      "note": "runtime behavior verified"
+    },
+    {
+      "ts": "2026-10-21T06:21:06.787357+00:00",
+      "state": "arch_gated",
+      "note": "verify-tests inputs changed; stale receipt invalidated"
+    },
+    {
+      "ts": "2026-10-21T06:21:07.350775+00:00",
+      "state": "tests_verified",
+      "note": "smoke checks proven non-hollow"
+    },
+    {
+      "ts": "2026-10-21T06:21:07.951425+00:00",
+      "state": "smoked",
+      "note": "runtime behavior verified"
+    }
+  ]
+}

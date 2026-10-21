@@ -1,0 +1,36 @@
+{
+  "schema": "factory.workflow-audit.receipt.v1",
+  "project_id": "socratic-gtm-strategist/adversarial-prep",
+  "state": "PASS",
+  "contract_sha256": "301e4e0b43a2ad5910148a73c7770837ec0d6fd2d804f82593fd99be6becd598",
+  "observations_sha256": "7fc13ff54881e8432c594680d0ab9691b7f446c1d7c03addb28843af0c1fc3d8",
+  "candidate_sha256": "afd06ac6704fffbaca35dec4dd8cbe93eaffd4a0fbb18d8adf76d2d61e420d45",
+  "checks": 23,
+  "inapplicability_evidence": {},
+  "resource_usage": {
+    "artifact_references": 102,
+    "bytes_hashed": 1943433
+  },
+  "errors": [],
+  "agent_actions": [],
+  "authority": {
+    "repair": false,
+    "approval": false,
+    "merge": false,
+    "publication": false,
+    "deployment": false,
+    "signing": false,
+    "messaging": false,
+    "credential": false,
+    "connector": false,
+    "execution": false
+  },
+  "limits": [
+    "Recorded evidence completeness and hashes only; observations require review.",
+    "Inapplicability review evidence is hash-bound but its judgment and identity are not authenticated.",
+    "Each contract/observation JSON input and evidence artifact is limited to 16 MiB; total evidence hashing is limited to 128 MiB, 4096 artifact references, and 4096 required check/profile pairs.",
+    "No project command or provider is executed.",
+    "No approval, certification or deployment authority."
+  ],
+  "receipt_sha256": "0beeb09e64076b58d73b245be32870957b74158831309f09d35cb7f0642cfec2"
+}

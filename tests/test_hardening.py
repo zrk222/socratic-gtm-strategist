@@ -67,6 +67,17 @@ class HTTPHardening(unittest.TestCase):
             finally:
                 httpd.server_close()
 
+    def test_practice_assets_are_allowlisted(self):
+        for path, content_type in (("/ui/prep.js", "application/javascript"),
+                                   ("/ui/prep-ui.js", "application/javascript"),
+                                   ("/ui/prep.css", "text/css")):
+            with self.subTest(path=path):
+                status, headers, body = self.request("GET", path)
+                self.assertEqual(status, 200)
+                self.assertIn(content_type, headers["Content-Type"])
+                self.assertTrue(body)
+        self.assertEqual(self.request("GET", "/ui/../server.py")[0], 404)
+
     def test_no_directory_listing_or_head_disclosure(self):
         for path in ("/ui/", "/.git/", "/server.py"):
             with self.subTest(path=path):

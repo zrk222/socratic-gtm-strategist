@@ -32,5 +32,5 @@ where = ["."]
 include = ["scripts*", "socratic_gtm*", "ui", "skills"]
 
 [tool.setuptools.package-data]
-ui = ["*.html", "*.json", "*.js"]
+ui = ["*.html", "*.json", "*.js", "*.css"]
 skills = ["socratic-gtm-strategist/SKILL.md"]

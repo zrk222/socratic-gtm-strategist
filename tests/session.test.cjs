@@ -3,6 +3,7 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const vm = require('node:vm');
 const context = vm.createContext({TextEncoder});
+vm.runInContext(fs.readFileSync(require('node:path').join(__dirname, '../ui/prep.js'), 'utf8'), context);
 vm.runInContext(fs.readFileSync(require('node:path').join(__dirname, '../ui/session.js'), 'utf8'), context);
 const api = context.GTMSession;
 const base = () => ({schema: api.schema, name: 'Pilot', phase: 2, draft: 'Unsent',
@@ -49,4 +50,15 @@ test('CSV preserves quotes, commas and multiline values; neutralizes formulas', 
     assert.ok(csv.includes('"\'=HYPERLINK(""evil"", ""click"")\nsecond line"'));
     assert.ok(csv.includes('"\'  +SUM(1,2)"'));
     assert.ok(csv.includes('"REVIEW_REQUIRED"'));
+});
+
+test('practice_restore: legacy files work and practice data is validated before replacement', () => {
+    assert.equal(api.normalize(base()).prep, undefined);
+    const session = base();
+    session.prep = context.GTMPrep.upsertClaim(context.GTMPrep.empty(), {text: 'Observed weekly need.'});
+    assert.equal(api.parse(api.serialize(session)).prep.claims[0].text, 'Observed weekly need.');
+    const original = api.serialize(session);
+    session.prep.activeId = 'r99';
+    assert.throws(() => api.normalize(session));
+    assert.equal(api.parse(original).prep.activeId, '');
 });

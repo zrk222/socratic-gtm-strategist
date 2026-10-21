@@ -39,3 +39,23 @@ Preview updated with Nanna product storytelling and Prestige hierarchy. The welc
 - [2026-10-21 05:40] GATE spec audit-hardening approver=codex-local-review strict=True sha=157706dd64c7d0e8
 - [2026-10-21 05:40] GATE plan audit-hardening approver=codex-local-review tasks=29 sha=157706dd64c7d0e8
 - [2026-10-21 05:41] GATE plan audit-hardening approver=codex-local-review tasks=29 sha=157706dd64c7d0e8
+- [2026-10-21 06:00] GATE spec adversarial-prep approver=codex-local-review strict=True sha=eff4647f78cafd26
+- [2026-10-21 06:00] GATE plan adversarial-prep approver=codex-local-review tasks=10 sha=eff4647f78cafd26
+- [2026-10-21 06:15] GATE spec adversarial-prep approver=codex-local-review strict=True sha=04e78c27b5014c19
+- [2026-10-21 06:15] GATE plan adversarial-prep approver=codex-local-review tasks=11 sha=04e78c27b5014c19
+
+Adversarial-prep goal: persistent separate practice state, seven personas,
+hypothetical shocks/premortem, evidence ledger, field-driven follow-ups,
+possible-conflict review, contested premises, optional timer, debrief/retest and
+exports are implemented. Local engine is deterministic and makes no model calls.
+Feature requirements and exact proofs are in specs/adversarial-prep.md and
+.factory/adversarial-prep. ForgeLine's operator gate labels its operator human;
+this run's review is Codex acting within the user's explicit implementation
+authorization, not independent human review or release approval.
+
+- [2026-10-21 06:16] GATE spec adversarial-prep approver=codex-local-review strict=True sha=3ecf48cfba43e318
+- [2026-10-21 06:16] GATE plan adversarial-prep approver=codex-local-review tasks=11 sha=3ecf48cfba43e318
+- [2026-10-21 06:18] GATE spec adversarial-prep approver=codex-local-review strict=True sha=2e491745311e9025
+- [2026-10-21 06:18] GATE plan adversarial-prep approver=codex-local-review tasks=11 sha=2e491745311e9025
+- [2026-10-21 06:18] GATE spec adversarial-prep approver=codex-local-review strict=True sha=23a2ecc13dee80fe
+- [2026-10-21 06:18] GATE plan adversarial-prep approver=codex-local-review tasks=11 sha=23a2ecc13dee80fe

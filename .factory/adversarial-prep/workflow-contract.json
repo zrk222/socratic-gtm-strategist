@@ -1,0 +1,349 @@
+{
+  "schema": "factory.workflow-audit.contract.v1",
+  "project_id": "socratic-gtm-strategist/adversarial-prep",
+  "candidate": [
+    {
+      "path": ".github/workflows/ci.yml",
+      "sha256": "6c59d6f9b9a898678d0acb42cdb9edd50ca0cfb19f1ca95c96a1b3a3bb5615e4",
+      "kind": "source"
+    },
+    {
+      "path": "ADVERSARIAL_PREP_REPORT.md",
+      "sha256": "1de64ea8f26be2bdf53cb2d3f508b2e7a2195dbd2ae49ac976e1e5552c89b2fe",
+      "kind": "source"
+    },
+    {
+      "path": "README.md",
+      "sha256": "44bafe267b771eb17bda03f72f20c34d43dd217eabcabf2b455b93d093b62e07",
+      "kind": "source"
+    },
+    {
+      "path": "SKILL.md",
+      "sha256": "f1639b636e217049a8d0ab2674af248a4d63e2541933b7a9d232e25eb4039dd4",
+      "kind": "source"
+    },
+    {
+      "path": "adversarial-prep.ssat.yaml",
+      "sha256": "e905b4c9d806d6d10e2740fcedae293498babaf58f367baa4039e518cc7fa96c",
+      "kind": "source"
+    },
+    {
+      "path": "context/PROGRESS.md",
+      "sha256": "028131171dd24b014b4676c453d014d54f32d3727f900d82e774c9ddc02ff11e",
+      "kind": "source"
+    },
+    {
+      "path": "plans/adversarial-prep.md",
+      "sha256": "84ee140aec8e5d1366a338b1005080653ef7d601d268612c219da03a6dcabfb9",
+      "kind": "source"
+    },
+    {
+      "path": "pyproject.toml",
+      "sha256": "4c25d1d011c4df07f6906f4d1f61590a5a4235fb2609df007c5cb91592f79bea",
+      "kind": "source"
+    },
+    {
+      "path": "server.py",
+      "sha256": "a2495be2848cf555cd5dcf2820e3df653c92a16362486f5bf391f28927fa187d",
+      "kind": "source"
+    },
+    {
+      "path": "skills/socratic-gtm-strategist/SKILL.md",
+      "sha256": "f1639b636e217049a8d0ab2674af248a4d63e2541933b7a9d232e25eb4039dd4",
+      "kind": "source"
+    },
+    {
+      "path": "smoke/adversarial-prep.json",
+      "sha256": "611e3c1942831480e36b450be9f533d8e5207f1d5339f737f0f07230e0815c46",
+      "kind": "source"
+    },
+    {
+      "path": "specs/adversarial-prep.md",
+      "sha256": "23a2ecc13dee80fe5d941093ca47e4922c58f90051becaab6c4f3dd837ff8873",
+      "kind": "source"
+    },
+    {
+      "path": "tests/package_smoke.py",
+      "sha256": "636d2901bf420affc7e8a0b454896f7d579bf4587ffcdd9ae6032319c815f7d5",
+      "kind": "source"
+    },
+    {
+      "path": "tests/prep.test.cjs",
+      "sha256": "ac712fdf0b5c9dae46e6199dfeb908b1eee056cbf2245cefa82b768cc4d56409",
+      "kind": "source"
+    },
+    {
+      "path": "tests/prep_browser.cjs",
+      "sha256": "c2d63122d9b5ee13815e5400cfada06fb2c84ea44f50f20dc50d0713e20702f6",
+      "kind": "source"
+    },
+    {
+      "path": "tests/prep_smoke.cjs",
+      "sha256": "d080f0a03a54a39907f075a43888008c675ae5f991451ebf2cd45556fc74654d",
+      "kind": "source"
+    },
+    {
+      "path": "tests/session.test.cjs",
+      "sha256": "190b68fef1f5f4940157e1182e07bf19d6ca1ff977422b993cabca791da1c166",
+      "kind": "source"
+    },
+    {
+      "path": "tests/test_hardening.py",
+      "sha256": "be9edaad55f3ae2924fc8ec840562f683bb131818b67428b92c76a0f2d8fbea5",
+      "kind": "source"
+    },
+    {
+      "path": "ui/index.html",
+      "sha256": "8aefb00dc200a8d9c87cc905dba0e91b17e121e7f7159e6b88565c21d2b5266b",
+      "kind": "source"
+    },
+    {
+      "path": "ui/prep-ui.js",
+      "sha256": "c26a92bbc8727cd71c82fc7ad89864a958b86b57ca33601447afd9c7874241b0",
+      "kind": "source"
+    },
+    {
+      "path": "ui/prep.css",
+      "sha256": "617d66b67abacd9ad6c3bd434ebf70e46fe104b833872b8160b82a1d61893974",
+      "kind": "source"
+    },
+    {
+      "path": "ui/prep.js",
+      "sha256": "89d01ef39391dd9b7243c0044735ca47d4b04032b4293a67b02e27b35e7c2777",
+      "kind": "source"
+    },
+    {
+      "path": "ui/session.js",
+      "sha256": "826d3a54439cbb582d98c938a32e61140817ba9b7870c90fb5785cf4756a4025",
+      "kind": "source"
+    }
+  ],
+  "applicability": [
+    {
+      "category": "accessibility",
+      "applicable": true,
+      "reason": "Declared accessibility checks use actual local execution; no live model, commercial outcome or release claim."
+    },
+    {
+      "category": "external_effects",
+      "applicable": true,
+      "reason": "Declared external_effects checks use actual local execution; no live model, commercial outcome or release claim."
+    },
+    {
+      "category": "failure_recovery",
+      "applicable": true,
+      "reason": "Declared failure_recovery checks use actual local execution; no live model, commercial outcome or release claim."
+    },
+    {
+      "category": "happy_path",
+      "applicable": true,
+      "reason": "Declared happy_path checks use actual local execution; no live model, commercial outcome or release claim."
+    },
+    {
+      "category": "performance",
+      "applicable": true,
+      "reason": "Declared performance checks use actual local execution; no live model, commercial outcome or release claim."
+    },
+    {
+      "category": "security_privacy",
+      "applicable": true,
+      "reason": "Declared security_privacy checks use actual local execution; no live model, commercial outcome or release claim."
+    },
+    {
+      "category": "state_consistency",
+      "applicable": true,
+      "reason": "Declared state_consistency checks use actual local execution; no live model, commercial outcome or release claim."
+    },
+    {
+      "category": "validation",
+      "applicable": true,
+      "reason": "Declared validation checks use actual local execution; no live model, commercial outcome or release claim."
+    }
+  ],
+  "checks": [
+    {
+      "id": "practice_isolation",
+      "requirement": "When a founder starts practice, the system shall store an isolated practice session with zero modifications to interview answers or phase (acceptance: `practice_isolation`).",
+      "category": "state_consistency",
+      "profiles": [
+        "local-windows-py311-node22-chrome"
+      ]
+    },
+    {
+      "id": "persona_selection",
+      "requirement": "When a founder selects a persona, the system shall display investor, CISO, buyer, finance, procurement, competitor and dissatisfied-customer perspectives (acceptance: `persona_selection`).",
+      "category": "happy_path",
+      "profiles": [
+        "local-windows-py311-node22-chrome"
+      ]
+    },
+    {
+      "id": "claim_ledger",
+      "requirement": "When a founder records a claim, the system shall retain its exact text, assertion/hypothesis/unknown/evidence-linked label, evidence note, counterexample, next action, owner and due date without marking evidence verified (acceptance: `claim_ledger`).",
+      "category": "state_consistency",
+      "profiles": [
+        "local-windows-py311-node22-chrome"
+      ]
+    },
+    {
+      "id": "claim_candidates",
+      "requirement": "When interview statements are extracted, the system shall store the resulting verbatim statements as founder assertions requiring review (acceptance: `claim_candidates`).",
+      "category": "validation",
+      "profiles": [
+        "local-windows-py311-node22-chrome"
+      ]
+    },
+    {
+      "id": "adaptive_followup",
+      "requirement": "When a practice answer lacks evidence, a counterexample or a falsifiable test, the system shall emit a follow-up requesting the missing field and quote the focused claim (acceptance: `adaptive_followup`).",
+      "category": "happy_path",
+      "profiles": [
+        "local-windows-py311-node22-chrome"
+      ]
+    },
+    {
+      "id": "conflict_review",
+      "requirement": "When statements have overlapping terms and differing numeric or negation patterns, the system shall display both exact statements as possible conflicts for founder review rather than asserting a contradiction (acceptance: `conflict_review`).",
+      "category": "validation",
+      "profiles": [
+        "local-windows-py311-node22-chrome"
+      ]
+    },
+    {
+      "id": "fair_challenge",
+      "requirement": "When a founder contests a question, the system shall record the challenge, invite correction of its premise and preserve the answer without a readiness penalty (acceptance: `fair_challenge`).",
+      "category": "happy_path",
+      "profiles": [
+        "local-windows-py311-node22-chrome"
+      ]
+    },
+    {
+      "id": "scenario_shocks",
+      "requirement": "When a founder selects a scenario, the system shall display baseline, budget loss, rising costs, free competition, integration loss and premortem conditions as hypothetical (acceptance: `scenario_shocks`).",
+      "category": "happy_path",
+      "profiles": [
+        "local-windows-py311-node22-chrome"
+      ]
+    },
+    {
+      "id": "timed_rehearsal",
+      "requirement": "When a timed rehearsal is selected, the system shall display untimed, 30-second and 120-second answer controls, pause/resume and an explicit interruption action; expiration shall preserve the draft without automatic submission (acceptance: `timed_rehearsal`).",
+      "category": "state_consistency",
+      "profiles": [
+        "local-windows-py311-node22-chrome"
+      ]
+    },
+    {
+      "id": "practice_debrief",
+      "requirement": "When a practice session ends, the system shall retain the transcript and show missing evidence, counterexamples and next actions without inventing scores or probabilities (acceptance: `practice_debrief`).",
+      "category": "happy_path",
+      "profiles": [
+        "local-windows-py311-node22-chrome"
+      ]
+    },
+    {
+      "id": "retest_comparison",
+      "requirement": "When a founder retests a recorded objection, the system shall create a linked practice attempt and show the previous and current answer with their recorded supporting fields (acceptance: `retest_comparison`).",
+      "category": "state_consistency",
+      "profiles": [
+        "local-windows-py311-node22-chrome"
+      ]
+    },
+    {
+      "id": "practice_exports",
+      "requirement": "When a founder exports practice, the system shall emit a text-safe Markdown debrief, formula-neutralized action CSV and an agent-coach packet from actual session inputs (acceptance: `practice_exports`).",
+      "category": "external_effects",
+      "profiles": [
+        "local-windows-py311-node22-chrome"
+      ]
+    },
+    {
+      "id": "practice_restore",
+      "requirement": "When a session file or device copy is restored, the system shall validate practice records, references, enums, text, numeric bounds and dates before replacing active state while accepting legacy interview-only files (acceptance: `practice_restore`).",
+      "category": "state_consistency",
+      "profiles": [
+        "local-windows-py311-node22-chrome"
+      ]
+    },
+    {
+      "id": "practice_recovery",
+      "requirement": "If a practice mutation or import exceeds a bound or contains invalid data, the system shall retain the current session and show an error (acceptance: `practice_recovery`).",
+      "category": "failure_recovery",
+      "profiles": [
+        "local-windows-py311-node22-chrome"
+      ]
+    },
+    {
+      "id": "practice_privacy",
+      "requirement": "When untrusted text is rendered or exported, the system shall render it as text and shall make zero network requests from practice content (acceptance: `practice_privacy`).",
+      "category": "security_privacy",
+      "profiles": [
+        "local-windows-py311-node22-chrome"
+      ]
+    },
+    {
+      "id": "practice_accessibility",
+      "requirement": "When practice opens at a 390px viewport, the system shall display labelled keyboard controls, a native focus-managed dialog and no horizontal overflow (acceptance: `practice_accessibility`).",
+      "category": "accessibility",
+      "profiles": [
+        "local-windows-py311-node22-chrome"
+      ]
+    },
+    {
+      "id": "practice_wheel",
+      "requirement": "When an installed wheel serves the dashboard, the system shall return HTTP 200 for the practice JavaScript and stylesheet resources (acceptance: `practice_wheel`).",
+      "category": "happy_path",
+      "profiles": [
+        "local-windows-py311-node22-chrome"
+      ]
+    },
+    {
+      "id": "bounded_work",
+      "requirement": "Enforce record/text/size ceilings and complete 50 small-history scans within 2000ms.",
+      "category": "performance",
+      "profiles": [
+        "local-windows-py311-node22-chrome"
+      ]
+    },
+    {
+      "id": "regression",
+      "requirement": "Existing browser failure recovery, credentials and downloads remain functional.",
+      "category": "failure_recovery",
+      "profiles": [
+        "local-windows-py311-node22-chrome"
+      ]
+    },
+    {
+      "id": "architecture",
+      "requirement": "Scoped SSAT and non-hollow actual runtime smoke, plus complete internal function complexity inventory.",
+      "category": "security_privacy",
+      "profiles": [
+        "local-windows-py311-node22-chrome"
+      ]
+    },
+    {
+      "id": "spec_proof",
+      "requirement": "Strict contract, 17 requirement mutants and drift checks pass.",
+      "category": "validation",
+      "profiles": [
+        "local-windows-py311-node22-chrome"
+      ]
+    },
+    {
+      "id": "visual_proof",
+      "requirement": "Prestige static/render/challenge checks plus rendered interactive dialog observations pass.",
+      "category": "accessibility",
+      "profiles": [
+        "local-windows-py311-node22-chrome"
+      ]
+    },
+    {
+      "id": "python_security",
+      "requirement": "Bounded static Python scan covers the eligible source inventory.",
+      "category": "security_privacy",
+      "profiles": [
+        "local-windows-py311-node22-chrome"
+      ]
+    }
+  ]
+}

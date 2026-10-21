@@ -33,7 +33,7 @@ def main():
              "import server, mcp_server, socratic_gtm; from pathlib import Path; "
              "assert 'Socratic GTM' in socratic_gtm.get_system_prompt(); "
              "ui=Path(server.__file__).parent/'ui'; "
-             "assert (ui/'index.html').is_file(); assert (ui/'session.js').is_file(); "
+             "assert (ui/'index.html').is_file(); assert (ui/'session.js').is_file(); assert (ui/'prep.js').is_file(); assert (ui/'prep-ui.js').is_file(); assert (ui/'prep.css').is_file(); "
              "assert (ui/'openapi.json').is_file(); print('resources OK')"])
         requests = [
             {"jsonrpc": "2.0", "id": 1, "method": "initialize", "params": {}},

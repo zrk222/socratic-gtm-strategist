@@ -148,3 +148,38 @@ controlled fixtures; they do not prove current search-provider availability.
 
 The local audit evidence distinguishes test coverage from production readiness.
 See [specs/audit-hardening.md](specs/audit-hardening.md) for the scoped requirements.
+
+## Adversarial preparation workspace
+
+Open **Practice hard questions** in the dashboard. Add a claim or pull verbatim
+statements from the interview, then choose a skeptical investor, CISO, buyer,
+budget owner, procurement lead, incumbent competitor or dissatisfied customer.
+
+Each attempt stays separate from interview answers. Follow-ups use explicit
+missing evidence/counterexample/test fields; an admitted unknown prompts a
+falsifiable test. You can contest a premise, request an interruption, or rehearse
+with an optional 30-second or two-minute timer. Timer expiry preserves your draft
+without submitting; timers start paused and reset after reload.
+
+Track claim labels, source notes, counterexamples, next tests, owners and dates.
+Possible conflicts quote shared terms with differing numbers or negation; this
+English-language heuristic can miss contradictions or flag consistent statements.
+It does not verify truth. Hypothetical budget loss, cost increases, free
+competition, integration loss and a launch/deal premortem are practice conditions.
+
+Finish an attempt for its recorded gaps and transcript. Retest preserves the
+original first objection and links previous/current answers. Download the
+Markdown debrief, formula-neutralized action CSV, or an agent-coach packet for
+a separate reviewing agent. No packet is sent automatically.
+
+Practice is included in opt-in device saving and portable session files.
+Legacy interview-only files still load. Imports validate records before replacing
+state. Practice is limited to 24 claims, eight attempts, 18 answers per attempt
+and 192 KiB; the entire portable session remains limited to 256 KiB. Export
+before removing old attempts. Device storage is unencrypted; provider keys remain
+excluded. No practice content is sent to an API by these features.
+
+This is a deterministic guided rehearsal engine, not a language model or a
+calibrated judge of answer quality. A completed field is a note to review, not
+proof. The separate host-agent skill can reason about the exported record within
+its own configured capabilities and evidence boundaries.

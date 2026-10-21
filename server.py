@@ -136,8 +136,10 @@ class SocraticRequestHandler(BaseHTTPRequestHandler):
             }, head)
         if path == "/ui/index.html":
             file, content_type = CURRENT_DIR / "ui" / "index.html", "text/html; charset=utf-8"
-        elif path == "/ui/session.js":
-            file, content_type = CURRENT_DIR / "ui" / "session.js", "application/javascript; charset=utf-8"
+        elif path in {"/ui/session.js", "/ui/prep.js", "/ui/prep-ui.js"}:
+            file, content_type = CURRENT_DIR / "ui" / path.rsplit("/", 1)[1], "application/javascript; charset=utf-8"
+        elif path == "/ui/prep.css":
+            file, content_type = CURRENT_DIR / "ui" / "prep.css", "text/css; charset=utf-8"
         elif path == "/openapi.json":
             file, content_type = CURRENT_DIR / "ui" / "openapi.json", "application/json"
         elif path.startswith("/artifacts/") and path.removeprefix("/artifacts/") in ARTIFACTS:

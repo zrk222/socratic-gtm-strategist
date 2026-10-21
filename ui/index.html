@@ -41,6 +41,7 @@
     </script>
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/ui/prep.css">
     <style>
         :root { --focus-color: #67e8f9; --text-color: #f3f4f6; --page-color: #0b0f19; }
         body { color: #f3f4f6; background: #0b0f19; line-height: 1.6; }
@@ -321,6 +322,7 @@
                 <button type="button" onclick="downloadSession()">Save session file</button>
                 <button type="button" onclick="document.getElementById('sessionFile').click()">Load session</button>
                 <button type="button" onclick="downloadPlaybook()">Draft playbook</button>
+                <button id="openPractice" type="button" onclick="GTMPrepUI.open()">Practice hard questions</button>
                 <label class="sr-only" for="moreTools">More tools</label>
                 <select id="moreTools" aria-label="More tools" onchange="runWorkspaceTool(this)">
                     <option value="">More tools…</option>
@@ -506,7 +508,9 @@
             <p id="reviewStatus" role="status" aria-live="polite"></p>
         </form>
     </dialog>
+    <script src="/ui/prep.js"></script>
     <script src="/ui/session.js"></script>
+    <script src="/ui/prep-ui.js"></script>
 
     <!-- Voice & 3rd-Party API Settings Modal (Local Use Only) -->
     <div id="settingsModal" role="dialog" aria-label="Voice settings" aria-modal="true" tabindex="-1" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
@@ -1306,16 +1310,7 @@
         }
 
         function executeAdversarialMode(mode) {
-            const isCiso = mode === "ciso";
-            const title = isCiso ? "Enterprise CISO Security Inquisition" : "Tier-1 VC Partner Stress Test";
-            const q = isCiso
-                ? "Does our proprietary enterprise context ever hit public foundation model APIs, and what legally binding guarantee prevents our IP from training future model weights?"
-                : "If OpenAI or Google releases an update next month that does this natively inside their UI, why doesn't your business go to zero?";
-
-            const monologue = `- Mode: Adversarial Grilling (${mode.toUpperCase()})\n- Persona: ${isCiso ? 'Fortune 500 CISO' : 'Tier-1 General Partner'}\n- Objective: High-stakes objection stress test.`;
-            const reply = `### ⚠️ ADVERSARIAL STRESS TEST: ${title.toUpperCase()}\n\n*Persona:* ${isCiso ? 'Fortune 500 Enterprise CISO' : 'Tier-1 Enterprise AI Venture Partner'}\n\n> *"${q}"*\n\nProvide your institutional defense:`;
-
-            appendAgentMessage(monologue, reply, `Stress-Test (${mode.toUpperCase()})`, null);
+            GTMPrepUI.open(mode === 'vc' ? 'investor' : mode);
         }
 
         function updatePhaseUI(phase, confidence) {
@@ -1417,6 +1412,8 @@
             html = html.replace(/\n/g, '<br>');
             return html;
         }
+        let practiceState = GTMPrep.empty();
+        let prepReady = false;
         const SESSION_KEY = 'socratic-gtm-session-v1';
         let sessionReviews = {};
         let displayedReviewPhase = '1';
@@ -1429,7 +1426,7 @@
                 name: document.getElementById('projectName').value,
                 phase: currentPhase, draft: document.getElementById('userInput').value,
                 context: {concept: accumulatedContext.concept || '', phases: accumulatedContext.phases || {}},
-                reviews: sessionReviews});
+                reviews: sessionReviews, prep: practiceState});
         }
         function refreshWorkspace() {
             const answers = accumulatedContext.phases || {};
@@ -1478,6 +1475,8 @@
             currentPhase = clean.phase;
             accumulatedContext = {...clean.context, name: clean.name};
             sessionReviews = clean.reviews;
+            practiceState = clean.prep || GTMPrep.empty();
+            if (prepReady) GTMPrepUI.render();
             document.getElementById('userInput').value = clean.draft;
             document.getElementById('chatHistory').replaceChildren();
             if (clean.context.concept) appendUserMessage(clean.context.concept);
@@ -1571,7 +1570,7 @@
                 if (!file) return;
                 if (file.size > GTMSession.maxBytes) throw new Error('Session exceeds 256 KiB.');
                 const candidate = GTMSession.parse(await file.text());
-                if ((currentPhase > 0 || document.getElementById('userInput').value) &&
+                if ((currentPhase > 0 || practiceState.claims.length || practiceState.runs.length || document.getElementById('userInput').value) &&
                     !confirm('Replace the active session? Save a session file first if you need to retain it.')) return;
                 applySession(candidate);
                 workspaceStatus('Session loaded. Imported inputs and notes remain unverified.');
@@ -1586,6 +1585,20 @@
                 applySession(candidate);
             }
         } catch (err) { workspaceStatus('Saved session could not be loaded. Use a valid session file. ' + err.message); }
+
+        GTMPrepUI.init({
+            read: () => practiceState,
+            context: () => accumulatedContext,
+            download: downloadText,
+            write: candidate => {
+                const session = snapshotSession();
+                session.prep = candidate;
+                const clean = GTMSession.parse(GTMSession.serialize(session));
+                practiceState = clean.prep;
+                persistSession();
+            }
+        });
+        prepReady = true;
 
         document.getElementById('settingsModal').addEventListener('keydown', event => {
             if (event.key === 'Escape') { closeSettingsModal(); return; }

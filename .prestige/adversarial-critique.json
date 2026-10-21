@@ -1,0 +1,156 @@
+{
+  "attribution": {
+    "commit": "acc3e574b36ef2895268a176dbae886e1b845ae0",
+    "license": "MIT",
+    "repository": "https://github.com/Owl-Listener/designer-skills"
+  },
+  "challenge": {
+    "marker": "CRITIQUE_MUTATIONS_REJECTED",
+    "mutants_killed": 7,
+    "mutants_total": 7,
+    "mutations": [
+      {
+        "dimension": "visual_hierarchy",
+        "killed": true
+      },
+      {
+        "dimension": "composition",
+        "killed": true
+      },
+      {
+        "dimension": "color",
+        "killed": true
+      },
+      {
+        "dimension": "affordance",
+        "killed": true
+      },
+      {
+        "dimension": "information_density",
+        "killed": true
+      },
+      {
+        "dimension": "typography",
+        "killed": true
+      },
+      {
+        "dimension": "brand_consistency",
+        "killed": true
+      }
+    ],
+    "passed": true,
+    "schema": "prestige.critique-challenge.v1"
+  },
+  "contracts": [
+    {
+      "contract": "DESIGN.md",
+      "marker": "CRITIQUE_CONTRACT_ABSENT",
+      "status": "missing"
+    },
+    {
+      "contract": "MOOD.md",
+      "marker": "CRITIQUE_CONTRACT_ABSENT",
+      "status": "missing"
+    },
+    {
+      "contract": "VOICE.md",
+      "marker": "CRITIQUE_CONTRACT_ABSENT",
+      "status": "missing"
+    }
+  ],
+  "dimensions": [
+    {
+      "deterministic_findings": 0,
+      "finding_count": 0,
+      "heuristic_findings": 0,
+      "highest_severity": null,
+      "name": "visual_hierarchy"
+    },
+    {
+      "deterministic_findings": 0,
+      "finding_count": 0,
+      "heuristic_findings": 0,
+      "highest_severity": null,
+      "name": "composition"
+    },
+    {
+      "deterministic_findings": 0,
+      "finding_count": 0,
+      "heuristic_findings": 0,
+      "highest_severity": null,
+      "name": "color"
+    },
+    {
+      "deterministic_findings": 0,
+      "finding_count": 0,
+      "heuristic_findings": 0,
+      "highest_severity": null,
+      "name": "affordance"
+    },
+    {
+      "deterministic_findings": 0,
+      "finding_count": 1,
+      "heuristic_findings": 1,
+      "highest_severity": "P3",
+      "name": "information_density"
+    },
+    {
+      "deterministic_findings": 0,
+      "finding_count": 0,
+      "heuristic_findings": 0,
+      "highest_severity": null,
+      "name": "typography"
+    },
+    {
+      "deterministic_findings": 0,
+      "finding_count": 0,
+      "heuristic_findings": 0,
+      "highest_severity": null,
+      "name": "brand_consistency"
+    }
+  ],
+  "findings": [
+    {
+      "code": "DENSITY_SCAN_LOAD",
+      "dimension": "information_density",
+      "evidence": {
+        "confidence": 0.66,
+        "sections": 1,
+        "words": 4176,
+        "words_per_section": 4176.0
+      },
+      "fix": "Split the longest section with headings, summaries, or progressive disclosure.",
+      "mode": "heuristic",
+      "observation": "Observed approximately 4176 words per content section.",
+      "problem": "Long undifferentiated sections may slow scanning.",
+      "severity": "P3"
+    }
+  ],
+  "marker": "CRITIQUE_SEVEN_LENSES",
+  "markers": [
+    "CRITIQUE_SEVEN_LENSES",
+    "CRITIQUE_SCHEMA_V1",
+    "CRITIQUE_FINDING_SHAPE_EXACT",
+    "CRITIQUE_ATTRIBUTED_MIT",
+    "RELEASE_080_SYNCHRONIZED",
+    "CRITIQUE_PUBLICATION_SAFE",
+    "CRITIQUE_CONTRACT_ABSENT",
+    "CRITIQUE_MUTATIONS_REJECTED",
+    "CRITIQUE_STRICT_EXIT_EXACT",
+    "CRITIQUE_RECEIPT_ATOMIC"
+  ],
+  "passed": true,
+  "schema": "prestige.critique.v1",
+  "scope": [
+    "Static critique is not an accessibility conformance audit or browser-rendered proof.",
+    "Heuristic findings never block the verdict.",
+    "The receipt omits source, CSS, contract bodies, prompts, logs, and absolute paths."
+  ],
+  "severity_counts": {
+    "P1": 0,
+    "P2": 0,
+    "P3": 1
+  },
+  "source_sha256": "825e89eefd7f82ce4d8591021f2173c11862d245e73137f23e63c35ffb1db7ca",
+  "strict_passed": true
+}

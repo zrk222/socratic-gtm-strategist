@@ -38,13 +38,22 @@
                 experiment: text(review.experiment || '', 'Experiment'),
                 owner: text(review.owner || '', 'Owner', 200), date};
         }
+        if (value.prep !== undefined) {
+            const prep = typeof module === 'object' && module.exports ? require('./prep.js') : globalThis.GTMPrep;
+            if (!prep) throw new Error('Practice module is unavailable; current session retained.');
+            clean.prep = prep.normalize(value.prep);
+        }
         return clean;
     }
     function parse(raw) {
         if (typeof raw !== 'string' || new TextEncoder().encode(raw).length > maxBytes) throw new Error('Session exceeds 256 KiB.');
         return normalize(JSON.parse(raw));
     }
-    function serialize(value) { return JSON.stringify(normalize(value), null, 2); }
+    function serialize(value) {
+        const raw = JSON.stringify(normalize(value), null, 2);
+        if (new TextEncoder().encode(raw).length > maxBytes) throw new Error('Session exceeds 256 KiB. Export and remove old practice attempts.');
+        return raw;
+    }
     const indent = value => String(value || 'EVIDENCE REQUIRED').split(/\r?\n/).map(line => '    ' + line).join('\n');
     function playbook(value) {
         const s = normalize(value);
