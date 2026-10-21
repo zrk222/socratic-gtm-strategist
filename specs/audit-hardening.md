@@ -103,3 +103,8 @@ The subprocess HTTP smoke test uses an OS-assigned port and waits at most
 20 seconds for the server's startup URL before making requests. A fixed sleep
 or fixed port is not readiness evidence. The test retains startup diagnostics
 when readiness fails and terminates its own process on every exit path.
+
+Rejected POST requests discard an unambiguous body of at most 65536 bytes
+with a one-second deadline before returning their error. They never execute
+a tool or forward a provider request. Oversized or ambiguously framed bodies
+are rejected without consumption.

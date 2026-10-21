@@ -2,14 +2,14 @@
   "schema": "factory.workflow-audit.receipt.v1",
   "project_id": "socratic-gtm-strategist/audit-hardening",
   "state": "PASS",
-  "contract_sha256": "f6d709396bd01b4ccf24eb6394aa93a6eda5dbfcfd854e75c4491777af9df0d6",
-  "observations_sha256": "f24de7f707337cfde41599034bee2c7af55680b6ad678b2a3b56e9a07fb0dfa6",
-  "candidate_sha256": "16447ed676e76aef4a124782407d6230740241b6df68138066b361730a6884c6",
+  "contract_sha256": "a060835746d57442d86dd86863e28ebcd5d824db97484e16118f877e863bffd5",
+  "observations_sha256": "eeb734f707092796342a9e0a1dacc82540dce7abd53912b2c790ee72c1c0b159",
+  "candidate_sha256": "7a41a3ae64abee5171c8862dd67f94e93bf787fdae12e90bde6f175e38e38b25",
   "checks": 19,
   "inapplicability_evidence": {},
   "resource_usage": {
     "artifact_references": 70,
-    "bytes_hashed": 678011
+    "bytes_hashed": 681645
   },
   "errors": [],
   "agent_actions": [],
@@ -32,5 +32,5 @@
     "No project command or provider is executed.",
     "No approval, certification or deployment authority."
   ],
-  "receipt_sha256": "eda6fffd6f7c282d4f96d3fd6e9332ac85887972cbe03a31f49dcf96de41112d"
+  "receipt_sha256": "d7b484ce5ad2ad71ebba3f32882d6335233b810555f2fef61d20ac622ace260f"
 }

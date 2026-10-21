@@ -36,5 +36,7 @@ Architect verdict: PASS
 - [x] T26 | slice=ui | files=ui/index.html,tests/browser_smoke.cjs | verify=`node tests/browser_smoke.cjs` | Update preview with the Nanna product arc, Prestige hierarchy, responsive controls and reduced motion.
 - [x] T27 | slice=tests | files=tests/test_socratic_gtm.py,tests/test_hardening.py | verify=`python -m unittest discover tests -q` | Replace fixed-port/fixed-delay startup with bounded readiness evidence; assert early oversized-header rejection without racing a TCP reset.
 
+- [x] T28 | slice=server.py | files=server.py,tests/test_hardening.py | verify=`python -m unittest discover tests -q` | Discard bounded rejected request bodies before closing to preserve HTTP errors on Windows; retain origin, framing and size rejection.
+
 ## Review authority
 The user authorized audit, review and enhancement. Codex reviews this local plan; no separate human signoff or release approval is claimed.

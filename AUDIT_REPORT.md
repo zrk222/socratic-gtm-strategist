@@ -42,7 +42,7 @@ calibrated confidence and commercial validation are separate capabilities.
 See .factory/evidence/verification.json for exact argv, execution timestamps,
 elapsed time, exit codes and logs. Checks include:
 
-- Python unittest: 33 tests.
+- Python unittest: 34 tests, including a deadline for rejected incomplete bodies.
 - Node session data suite: 5 tests.
 - Chrome browser: 11 scenarios including desktop/mobile preview, voice-key
   exclusion, save/reload, real downloads, invalid and hostile imports, injected
@@ -62,7 +62,12 @@ the inherited fixed-port, fixed-delay HTTP startup test. The test now uses an
 OS-assigned port and a bounded startup-message wait. The original failure is
 retained in .factory/evidence/ci-first-failure.txt. Oversized upload rejection
 is asserted from headers before a body is sent, avoiding a client/server
-early-close TCP race. The current remote run is reported separately in the PR.
+early-close TCP race. A second remote run exposed the same race for small
+cross-site bodies on Windows Python 3.10. Rejections now discard only bounded,
+unambiguously framed bodies with a one-second deadline before closing. They
+still execute no tool or provider call. The second failure is retained in
+.factory/evidence/ci-second-failure.txt. The current remote run is reported
+separately in the PR.
 
 - This is not an authenticated public service or multi-tenant application.
 - The bundled evaluator collects answers; it does not run a model or establish

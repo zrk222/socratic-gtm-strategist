@@ -1,0 +1,46 @@
+test (windows-latest, 3.10)	Run Unit Tests	﻿2026-10-21T05:29:25.3683173Z ##[group]Run python -m unittest discover tests
+test (windows-latest, 3.10)	Run Unit Tests	2026-10-21T05:29:25.3683801Z [36;1mpython -m unittest discover tests[0m
+test (windows-latest, 3.10)	Run Unit Tests	2026-10-21T05:29:25.3745263Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+test (windows-latest, 3.10)	Run Unit Tests	2026-10-21T05:29:25.3745757Z env:
+test (windows-latest, 3.10)	Run Unit Tests	2026-10-21T05:29:25.3746094Z   pythonLocation: C:\hostedtoolcache\windows\Python\3.10.11\x64
+test (windows-latest, 3.10)	Run Unit Tests	2026-10-21T05:29:25.3746626Z   PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.10.11\x64/lib/pkgconfig
+test (windows-latest, 3.10)	Run Unit Tests	2026-10-21T05:29:25.3747125Z   Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.10.11\x64
+test (windows-latest, 3.10)	Run Unit Tests	2026-10-21T05:29:25.3747626Z   Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.10.11\x64
+test (windows-latest, 3.10)	Run Unit Tests	2026-10-21T05:29:25.3748197Z   Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.10.11\x64
+test (windows-latest, 3.10)	Run Unit Tests	2026-10-21T05:29:25.3748596Z ##[endgroup]
+test (windows-latest, 3.10)	Run Unit Tests	2026-10-21T05:29:26.3365685Z .[+] Linear/Jira CSV exported to: C:\Users\runneradmin\AppData\Local\Temp\tmprhz2alml\gtm_sprint_issues.csv
+test (windows-latest, 3.10)	Run Unit Tests	2026-10-21T05:29:26.3369970Z [+] JSON backlog exported to: C:\Users\runneradmin\AppData\Local\Temp\tmprhz2alml\gtm_sprint_issues.json
+test (windows-latest, 3.10)	Run Unit Tests	2026-10-21T05:29:32.5394963Z ...............Pitch template written to: C:\Users\RUNNER~1\AppData\Local\Temp\tmpuw5kjn8c\deck.md
+test (windows-latest, 3.10)	Run Unit Tests	2026-10-21T05:29:32.5410161Z .Dashboard successfully generated at: C:\Users\RUNNER~1\AppData\Local\Temp\tmpby199s1g\radar.html
+test (windows-latest, 3.10)	Run Unit Tests	2026-10-21T05:29:32.6385965Z .....[+] Linear/Jira CSV exported to: C:\Users\RUNNER~1\AppData\Local\Temp\tmp1acs7xtw\test_issues.csv
+test (windows-latest, 3.10)	Run Unit Tests	2026-10-21T05:29:32.6389485Z [+] JSON backlog exported to: C:\Users\RUNNER~1\AppData\Local\Temp\tmp1acs7xtw\test_issues.json
+test (windows-latest, 3.10)	Run Unit Tests	2026-10-21T05:29:32.6403409Z .Dashboard successfully generated at: C:\Users\RUNNER~1\AppData\Local\Temp\tmpir7mbni_\test_sim.html
+test (windows-latest, 3.10)	Run Unit Tests	2026-10-21T05:29:32.6414615Z .Pitch template written to: C:\Users\RUNNER~1\AppData\Local\Temp\tmpgvp8wa53\test_deck.md
+test (windows-latest, 3.10)	Run Unit Tests	2026-10-21T05:29:33.0391727Z ......[+] Adversarial Brief generated at: C:\Users\RUNNER~1\AppData\Local\Temp\tmpu78j9q61\test_ciso.md
+test (windows-latest, 3.10)	Run Unit Tests	2026-10-21T05:29:33.0401084Z .[+] Adversarial Brief generated at: C:\Users\RUNNER~1\AppData\Local\Temp\tmp7jb3rcv9\test_vc.md
+test (windows-latest, 3.10)	Run Unit Tests	2026-10-21T05:29:33.0405067Z .
+test (windows-latest, 3.10)	Run Unit Tests	2026-10-21T05:29:33.0405424Z ======================================================================
+test (windows-latest, 3.10)	Run Unit Tests	2026-10-21T05:29:33.0406260Z ERROR: test_origin_host (test_hardening.HTTPHardening) (headers={'Sec-Fetch-Site': 'cross-site'})
+test (windows-latest, 3.10)	Run Unit Tests	2026-10-21T05:29:33.0406932Z ----------------------------------------------------------------------
+test (windows-latest, 3.10)	Run Unit Tests	2026-10-21T05:29:33.0407443Z Traceback (most recent call last):
+test (windows-latest, 3.10)	Run Unit Tests	2026-10-21T05:29:33.0412964Z   File "D:\a\socratic-gtm-strategist\socratic-gtm-strategist\tests\test_hardening.py", line 73, in test_origin_host
+test (windows-latest, 3.10)	Run Unit Tests	2026-10-21T05:29:33.0413705Z     self.assertEqual(self.post("/api/export", {}, headers)[0], 403)
+test (windows-latest, 3.10)	Run Unit Tests	2026-10-21T05:29:33.0414303Z   File "D:\a\socratic-gtm-strategist\socratic-gtm-strategist\tests\test_hardening.py", line 50, in post
+test (windows-latest, 3.10)	Run Unit Tests	2026-10-21T05:29:33.0414802Z     return self.request("POST", path, json.dumps(value),
+test (windows-latest, 3.10)	Run Unit Tests	2026-10-21T05:29:33.0415467Z   File "D:\a\socratic-gtm-strategist\socratic-gtm-strategist\tests\test_hardening.py", line 44, in request
+test (windows-latest, 3.10)	Run Unit Tests	2026-10-21T05:29:33.0415975Z     response = conn.getresponse()
+test (windows-latest, 3.10)	Run Unit Tests	2026-10-21T05:29:33.0416482Z   File "C:\hostedtoolcache\windows\Python\3.10.11\x64\lib\http\client.py", line 1375, in getresponse
+test (windows-latest, 3.10)	Run Unit Tests	2026-10-21T05:29:33.0416935Z     response.begin()
+test (windows-latest, 3.10)	Run Unit Tests	2026-10-21T05:29:33.0417322Z   File "C:\hostedtoolcache\windows\Python\3.10.11\x64\lib\http\client.py", line 318, in begin
+test (windows-latest, 3.10)	Run Unit Tests	2026-10-21T05:29:33.0417788Z     version, status, reason = self._read_status()
+test (windows-latest, 3.10)	Run Unit Tests	2026-10-21T05:29:33.0418312Z   File "C:\hostedtoolcache\windows\Python\3.10.11\x64\lib\http\client.py", line 279, in _read_status
+test (windows-latest, 3.10)	Run Unit Tests	2026-10-21T05:29:33.0418788Z     line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+test (windows-latest, 3.10)	Run Unit Tests	2026-10-21T05:29:33.0419319Z   File "C:\hostedtoolcache\windows\Python\3.10.11\x64\lib\socket.py", line 705, in readinto
+test (windows-latest, 3.10)	Run Unit Tests	2026-10-21T05:29:33.0419738Z     return self._sock.recv_into(b)
+test (windows-latest, 3.10)	Run Unit Tests	2026-10-21T05:29:33.0420245Z ConnectionAbortedError: [WinError 10053] An established connection was aborted by the software in your host machine
+test (windows-latest, 3.10)	Run Unit Tests	2026-10-21T05:29:33.0422325Z
+test (windows-latest, 3.10)	Run Unit Tests	2026-10-21T05:29:33.0422485Z ----------------------------------------------------------------------
+test (windows-latest, 3.10)	Run Unit Tests	2026-10-21T05:29:33.0422846Z Ran 33 tests in 7.221s
+test (windows-latest, 3.10)	Run Unit Tests	2026-10-21T05:29:33.0423038Z
+test (windows-latest, 3.10)	Run Unit Tests	2026-10-21T05:29:33.0423145Z FAILED (errors=1)
+test (windows-latest, 3.10)	Run Unit Tests	2026-10-21T05:29:33.1457116Z ##[error]Process completed with exit code 1.

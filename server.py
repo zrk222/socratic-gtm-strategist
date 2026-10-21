@@ -4,6 +4,7 @@ import argparse
 import json
 from pathlib import Path
 import sys
+import time
 import webbrowser
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import urlsplit
@@ -71,11 +72,43 @@ class SocraticRequestHandler(BaseHTTPRequestHandler):
         self.respond(code, json.dumps(data, allow_nan=False).encode("utf-8"), head=head)
 
     def error(self, code, message, head=False):
+        self.discard_rejected_body()
         self.close_connection = True
         body = {"error": message}
         if urlsplit(self.path).path in {"/api/tts", "/api/stt"}:
             body["fallback"] = True
         self.send_json_response(code, body, head=head)
+
+    def discard_rejected_body(self):
+        # Closing with unread input can replace the HTTP error with a TCP reset.
+        if self.command != "POST" or getattr(self, "body_read", False):
+            return
+        self.body_read = True
+        lengths = self.headers.get_all("Content-Length", [])
+        if len(lengths) != 1 or self.headers.get("Transfer-Encoding"):
+            return
+        try:
+            remaining = int(lengths[0])
+        except ValueError:
+            return
+        if not 0 < remaining <= MAX_BODY:
+            return
+        previous_timeout = self.connection.gettimeout()
+        deadline = time.monotonic() + 1
+        try:
+            while remaining:
+                time_left = deadline - time.monotonic()
+                if time_left <= 0:
+                    break
+                self.connection.settimeout(time_left)
+                chunk = self.rfile.read1(remaining)
+                if not chunk:
+                    break
+                remaining -= len(chunk)
+        except OSError:
+            pass
+        finally:
+            self.connection.settimeout(previous_timeout)
 
     def do_HEAD(self):
         self.serve_get(head=True)
@@ -145,6 +178,7 @@ class SocraticRequestHandler(BaseHTTPRequestHandler):
                 return self.error(400, "A provider key is required; browser fallback is available")
             if path != "/api/stt" and self.headers.get_content_type() != "application/json":
                 return self.error(415, "Use application/json")
+            self.body_read = True
             body = self.rfile.read(length)
             if len(body) != length:
                 return self.error(400, "Incomplete request body")

@@ -73,6 +73,21 @@ class HTTPHardening(unittest.TestCase):
                 self.assertEqual(self.post("/api/export", {}, headers)[0], 403)
                 self.assertEqual(list(Path(self.tmp.name).iterdir()), [])
 
+    def test_rejected_missing_body_has_bounded_wait(self):
+        conn = http.client.HTTPConnection("127.0.0.1", self.port, timeout=3)
+        try:
+            conn.putrequest("POST", "/api/export")
+            conn.putheader("Origin", "https://evil.example")
+            conn.putheader("Content-Length", "2")
+            conn.endheaders()
+            response = conn.getresponse()
+            self.assertEqual(response.status, 403)
+            self.assertIn("error", json.loads(response.read()))
+            self.assertEqual(list(Path(self.tmp.name).iterdir()), [])
+        finally:
+            conn.close()
+        self.assertEqual(self.request("GET", "/api/status")[0], 200)
+
     def test_request_recovery(self):
         for body in ("[1]", "null", "true", "{", '"hello"', '{"phase":NaN}'):
             with self.subTest(body=body):
@@ -90,7 +105,7 @@ class HTTPHardening(unittest.TestCase):
                                        "Content-Length": "65537"})[0], 413)
         self.assertEqual(self.request("POST", "/api/chat", "{}",
                                       {"Content-Type": "text/plain"})[0], 415)
-        self.assertEqual(self.request("POST", "/api/chat", "{}",
+        self.assertEqual(self.request("POST", "/api/chat", "",
                                       {"Content-Type": "application/json",
                                        "Content-Length": "oops"})[0], 400)
 
@@ -151,7 +166,7 @@ class HTTPHardening(unittest.TestCase):
             self.assertTrue(json.loads(body)["fallback"])
 
     def test_transcription_bounds_and_fixed_target(self):
-        self.assertEqual(self.request("POST", "/api/stt", b"x",
+        self.assertEqual(self.request("POST", "/api/stt", b"",
                                      {"Content-Length": str(5242881), "x-api-key": "fixture"})[0], 413)
         with patch("server.urllib.request.urlopen", return_value=io.BytesIO(b'{"text":"fixture transcript"}')) as provider:
             status, _, body = self.request("POST", "/api/stt", b"fixture multipart",

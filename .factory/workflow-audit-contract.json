@@ -29,7 +29,7 @@
     },
     {
       "path": "AUDIT_REPORT.md",
-      "sha256": "7e09568c48278176d5e25b50cb8ac98027fe9db305d049ddfcbfb2d59f03e0d0",
+      "sha256": "fcacd96a4cca0dc3dd0b6452f502c45785f5fea33763d2aafe086a0d9402d1af",
       "kind": "acceptance"
     },
     {
@@ -69,7 +69,7 @@
     },
     {
       "path": "context/PROGRESS.md",
-      "sha256": "70c0acf5469fd0dbf8728e417e95b97c4c3b80a22846c366ef985a5f7a095d7d",
+      "sha256": "2f02e1fb7aadbb3b39135ef475fc6c1191dc9b52cd6515413a911b510768918c",
       "kind": "acceptance"
     },
     {
@@ -89,7 +89,7 @@
     },
     {
       "path": "plans/audit-hardening.md",
-      "sha256": "131f5f8e73225acf9751db5075d8903f074f6c3ff28eaeb73a887ee6d6488957",
+      "sha256": "c62a5f1d37a6cffe41c7eaa9cd86221185f3a31bd382a02df5c3a37633e6a43e",
       "kind": "acceptance"
     },
     {
@@ -119,7 +119,7 @@
     },
     {
       "path": "server.py",
-      "sha256": "ffdf3d286f755dee050f73e8ba63c355ade41d10674e1badc4d70ead5399c195",
+      "sha256": "f9cb6ab411894eff4d5da42a95a4ba96bea19f75f397613c07c874f7d070da8b",
       "kind": "source"
     },
     {
@@ -139,7 +139,7 @@
     },
     {
       "path": "specs/audit-hardening.md",
-      "sha256": "2c11ec284075ca0a1106d5ccd0eaca51ed5b1e20708c28a50d7b4613c34c3d8e",
+      "sha256": "3567b136fb005e4ecdb38f51f94c32cbdc5a3cbf62101bcbeea17c781dbee965",
       "kind": "acceptance"
     },
     {
@@ -174,7 +174,7 @@
     },
     {
       "path": "tests/test_hardening.py",
-      "sha256": "9bdaad03ae7fd039cf714fe179f7b798c63fc065d3890054b2cef7cfa0581262",
+      "sha256": "178533584ab20cede5946682306f8b05977ce3ba8bfce00a25099e5ff21e2ad7",
       "kind": "source"
     },
     {

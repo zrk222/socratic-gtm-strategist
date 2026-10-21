@@ -2,8 +2,8 @@
   "passed": true,
   "attribution": {
     "stage": "drift_audit",
-    "n_checked": 98,
-    "n_passed": 98,
+    "n_checked": 100,
+    "n_passed": 100,
     "units": [
       {
         "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\cli.py:cmd_simulate",
@@ -105,6 +105,13 @@
       },
       {
         "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\server.py:error",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\server.py:discard_rejected_body",
         "stage": "drift_audit",
         "passed": true,
         "evidence": "no drift found",
@@ -546,6 +553,13 @@
       },
       {
         "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\tests\\test_hardening.py:test_origin_host",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\tests\\test_hardening.py:test_rejected_missing_body_has_bounded_wait",
         "stage": "drift_audit",
         "passed": true,
         "evidence": "no drift found",

@@ -13,14 +13,14 @@
     "measurement_state": "complete",
     "rate_defined": true
   },
-  "audit_sha256": "219e7976271ae80345ec4cb844ed0191697c99f10e0d4d5c011dd6e410d0cafa",
+  "audit_sha256": "37eb3c13cec65ef12d0320dcafe81c86b2df9abe61920eec2910a086714ade16",
   "authority": {
     "approval": false,
     "deployment": false,
     "execution": false,
     "publication": false
   },
-  "candidate_sha256": "6ca821e96d97909b6e29e8b086a2e1270914af4a28fc4523d4d4cd2c9bac8458",
+  "candidate_sha256": "7ed858183f8a4dabb151eb7d0b9eb1cd46e0636e4ab9a3fdd85d441e3961e4bf",
   "claim_boundary": "Bounded Python AST pattern scan only. Declared tenant argument bindings verify syntactic pass-through, not tenant identity, authorization, or access isolation; this is not a penetration test, runtime exploit proof, dependency advisory, or release approval.",
   "database_context": {
     "configuration_sources": [],
@@ -71,7 +71,7 @@
   "oversized_sources": 0,
   "parse_errors": 0,
   "schema": "factory.security-audit.v1",
-  "source_manifest_sha256": "52f101c61a99478562b257bf1344387072e1fc8855222aff1881eb2e330243fd",
+  "source_manifest_sha256": "69ce31a39986ceedb2ebc068ae6972846f44a2a00899dcfb82593a47e8d96733",
   "sources": [
     {
       "bytes": 7118,
@@ -109,9 +109,9 @@
       "sha256": "298ee1e98011056f33ce3cc9caf309d22b2e667e5335d7f3fe2285a9b769f267"
     },
     {
-      "bytes": 15053,
+      "bytes": 16259,
       "path": "server.py",
-      "sha256": "ffdf3d286f755dee050f73e8ba63c355ade41d10674e1badc4d70ead5399c195"
+      "sha256": "f9cb6ab411894eff4d5da42a95a4ba96bea19f75f397613c07c874f7d070da8b"
     },
     {
       "bytes": 3166,
@@ -129,9 +129,9 @@
       "sha256": "59ff229cb8059e5d6950caee78dd387689f721d3b8f0805847d059fbc3a02060"
     },
     {
-      "bytes": 13881,
+      "bytes": 14558,
       "path": "tests/test_hardening.py",
-      "sha256": "9bdaad03ae7fd039cf714fe179f7b798c63fc065d3890054b2cef7cfa0581262"
+      "sha256": "178533584ab20cede5946682306f8b05977ce3ba8bfce00a25099e5ff21e2ad7"
     },
     {
       "bytes": 10972,
