@@ -20,10 +20,8 @@ if sys.stdout.encoding != 'utf-8':
     except Exception:
         pass
 
-# Preserve real stdout for JSON-RPC framing only
+# Real stdout stream for JSON-RPC framing
 _mcp_stdout = sys.stdout
-# Route default stdout to stderr so library prints don't corrupt JSON-RPC transport
-sys.stdout = sys.stderr
 
 # Import helper functions from scripts
 current_dir = os.path.dirname(os.path.abspath(__file__))
@@ -184,6 +182,10 @@ def send_response(response):
     _mcp_stdout.flush()
 
 def main():
+    global _mcp_stdout
+    _mcp_stdout = sys.stdout
+    sys.stdout = sys.stderr
+
     while True:
         line = sys.stdin.readline()
         if not line:

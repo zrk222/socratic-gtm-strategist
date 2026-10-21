@@ -133,5 +133,36 @@ class TestSocraticGTM(unittest.TestCase):
         self.assertIsNone(resp["id"])
         self.assertEqual(resp["error"]["code"], -32700)
 
+    def test_cli_start_mocked(self):
+        """Test the interactive terminal walkthrough via piped stdin."""
+        mock_inputs = "\n".join([
+            "AuditCo",
+            "Daily active usage through automated alerts and peer sharing.",
+            "Incumbent has direct Salesforce distribution, but we route around it.",
+            "Designed for end-user practitioners to avoid IT CISO friction on Day 1.",
+            "Starting horizontal across GitHub workflows before verticalizing.",
+            "Proactive cron routines run background scans every night.",
+            "Multi-model router across Claude and GPT with CMEK context keys.",
+            "Hybrid model charging platform fee plus metered tasks.",
+            "Bi-directional webhook sync to Postgres and Salesforce."
+        ]) + "\n"
+
+        proc = subprocess.Popen(
+            [sys.executable, os.path.join(ROOT_DIR, "cli.py"), "start"],
+            stdin=subprocess.PIPE,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            text=True,
+            cwd=self.test_dir,
+            encoding="utf-8"
+        )
+        stdout, stderr = proc.communicate(input=mock_inputs, timeout=10)
+        self.assertEqual(proc.returncode, 0)
+        self.assertIn("Audit Complete!", stdout)
+        self.assertTrue(os.path.exists(os.path.join(self.test_dir, "auditco_gtm_simulator.html")))
+        self.assertTrue(os.path.exists(os.path.join(self.test_dir, "auditco_sprint_issues.csv")))
+        self.assertTrue(os.path.exists(os.path.join(self.test_dir, "auditco_GTM_PITCH_DECK.md")))
+        self.assertTrue(os.path.exists(os.path.join(self.test_dir, "auditco_adversarial_brief.md")))
+
 if __name__ == "__main__":
     unittest.main()

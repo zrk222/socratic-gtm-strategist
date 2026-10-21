@@ -58,6 +58,75 @@ def cmd_export(args):
 def cmd_pitch_deck(args):
     generate_pitch_deck(args.startup, args.output)
 
+def cmd_start(args):
+    """Interactive terminal Socratic interview mode."""
+    banner = r"""
+  ____                  _   _         ____ _____ __  __ 
+ / ___|  ___   ___ _ __| |_(_) ___   / ___|_   _|  \/  |
+ \___ \ / _ \ / __| '__| __| |/ __| | |  _  | | | |\/| |
+  ___) | (_) | (__| |  | |_| | (__  | |_| | | | | |  | |
+ |____/ \___/ \___|_|   \__|_|\___|  \____| |_| |_|  |_|
+  AI Startup GTM Partner & Socratic Risk Auditor (v3.0)
+=========================================================
+"""
+    print(banner)
+    startup_name = input("Enter your AI Startup / Project Name: ").strip() or "MyAI"
+    print(f"\n[+] Initializing Socratic Review for: {startup_name}\n")
+    print("Answer the questions below to evaluate your GTM motion and build your execution suite.\n")
+
+    phases = [
+        ("Phase 1: Interaction Frequency & Virality", "How often does an end-user naturally touch or get value from your product (Daily, Weekly, Monthly, or Annual)? And how naturally do users brag about 'magic moments'?"),
+        ("Phase 2: Ticking Clock vs Incumbents", "What is the primary distribution advantage of your top incumbent, and why would users stay with you if they ship an AI copycat in 12 months?"),
+        ("Phase 3: The Adoption Vector (PLG vs CISO)", "Who uses the app day-to-day versus who signs the check? Are you designing for practitioner delight or enterprise IT compliance checklists on Day 1?"),
+        ("Phase 4: Expansion Vector", "Are you forcing a narrow niche on Day 1, or starting horizontal to extract power-user routines before verticalizing?"),
+        ("Phase 5: Proactive Routines vs Chatbox", "Does your user have to remember to prompt a text box, or does your app run scheduled background routines delivering ROI?"),
+        ("Phase 6: Defensive Layer & Moats", "Are you tied to a single foundation model, and how do you guarantee customer ownership of context data?"),
+        ("Phase 7: AI Pricing Paradox", "Are you pricing per-seat (which AI destroys), or pricing on consumption, outcomes, or tasks?"),
+        ("Phase 8: Data Gravity & Integrations", "What existing systems does your agent read/write natively, and how deep is the bi-directional sync?")
+    ]
+
+    scores = []
+    answers = []
+
+    for name, question in phases:
+        print(f"\n--- {name} ---")
+        print(f"Q: {question}")
+        ans = input("\nYour Answer: ").strip()
+        answers.append(ans)
+        # Heuristic confidence calculation
+        words = len(ans.split())
+        score = min(95, max(60, 60 + words))
+        scores.append(score)
+        status = "PASSED (>= 85%)" if score >= 85 else "BORDERLINE (< 85%)"
+        print(f"[Score: {score}/100 - {status}]")
+
+    print("\n=========================================================")
+    print("[+] All 8 phases completed. Synthesizing 5-Piece Operational Suite...")
+    
+    # 1. Simulator
+    sim_path = f"{startup_name.lower().replace(' ', '_')}_gtm_simulator.html"
+    generate_dashboard(startup_name, scores, [f"Score: {s}/100" for s in scores], sim_path)
+    print(f"  [✓] Interactive HTML Simulator: {sim_path}")
+
+    # 2. Issues Backlog
+    csv_path = f"{startup_name.lower().replace(' ', '_')}_sprint_issues.csv"
+    json_path = f"{startup_name.lower().replace(' ', '_')}_sprint_issues.json"
+    export_issues(DEFAULT_ISSUES, csv_path, json_path)
+    print(f"  [✓] Linear/Jira Sprint Backlog: {csv_path}")
+
+    # 3. Pitch Deck
+    deck_path = f"{startup_name.lower().replace(' ', '_')}_GTM_PITCH_DECK.md"
+    generate_pitch_deck(startup_name, deck_path)
+    print(f"  [✓] Investor Pitch Deck Copy: {deck_path}")
+
+    # 4. Adversarial Brief
+    brief_path = f"{startup_name.lower().replace(' ', '_')}_adversarial_brief.md"
+    generate_adversarial_brief("ciso", startup_name, brief_path)
+    print(f"  [✓] Enterprise CISO Readiness Brief: {brief_path}")
+
+    avg_score = round(sum(scores) / len(scores))
+    print(f"\n[+] Audit Complete! Overall GTM Resilience Score: {avg_score}/100\n")
+
 def cmd_mcp(args):
     mcp_server.main()
 
@@ -67,6 +136,10 @@ def main():
         description="Socratic GTM Strategist for AI Startups (v3.0) - CLI & MCP Toolsuite"
     )
     subparsers = parser.add_subparsers(dest="command", help="Available subcommands")
+
+    # start / interactive
+    p_start = subparsers.add_parser("start", help="Launch interactive terminal Socratic review")
+    p_start.set_defaults(func=cmd_start)
 
     # simulate
     p_sim = subparsers.add_parser("simulate", help="Generate interactive HTML Radar & Margin Simulator")

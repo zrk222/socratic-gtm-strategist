@@ -1,0 +1,39 @@
+name: Bug Report
+description: File a bug or issue with Socratic GTM Strategist
+title: "[BUG]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: Thanks for reporting an issue! Please describe what happened below.
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      description: What platform or CLI environment are you running? (e.g. Claude Code, Cursor, VS Code, Antigravity, OpenCode, Terminal)
+      placeholder: "e.g. Cursor 0.44 / Python 3.12 / Windows 11"
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Describe the Bug
+      description: A clear and concise description of the error or bug.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to Reproduce
+      description: How did you trigger the issue?
+      placeholder: |
+        1. Run `python cli.py simulate ...`
+        2. See error ...
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Error Logs or Output
+      description: Paste any terminal or MCP tracebacks.
+      render: shell
