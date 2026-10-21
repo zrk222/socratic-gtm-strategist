@@ -2,8 +2,8 @@
   "passed": true,
   "attribution": {
     "stage": "drift_audit",
-    "n_checked": 100,
-    "n_passed": 100,
+    "n_checked": 102,
+    "n_passed": 102,
     "units": [
       {
         "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\cli.py:cmd_simulate",
@@ -182,6 +182,13 @@
       },
       {
         "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\server.py:log_message",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\server.py:server_bind",
         "stage": "drift_audit",
         "passed": true,
         "evidence": "no drift found",
@@ -539,6 +546,13 @@
       },
       {
         "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\tests\\test_hardening.py:test_private_routes",
+        "stage": "drift_audit",
+        "passed": true,
+        "evidence": "no drift found",
+        "failure_class": null
+      },
+      {
+        "unit": "function:C:\\Users\\rkatz\\Documents\\Codex\\2026-10-20\\g\\work\\socratic-gtm-strategist\\tests\\test_hardening.py:test_numeric_startup_without_reverse_dns",
         "stage": "drift_audit",
         "passed": true,
         "evidence": "no drift found",

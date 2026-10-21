@@ -108,3 +108,6 @@ Rejected POST requests discard an unambiguous body of at most 65536 bytes
 with a one-second deadline before returning their error. They never execute
 a tool or forward a provider request. Oversized or ambiguously framed bodies
 are rejected without consumption.
+
+Numeric-address HTTP startup avoids reverse-DNS lookup. The local preview
+does not depend on external DNS to announce readiness.

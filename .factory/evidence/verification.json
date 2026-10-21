@@ -9,8 +9,8 @@
       "tests",
       "-q"
     ],
-    "observed_at": "2026-10-21T05:33:08.286185+00:00",
-    "elapsed_seconds": 12.92,
+    "observed_at": "2026-10-21T05:41:09.022412+00:00",
+    "elapsed_seconds": 11.701,
     "exit_code": 0,
     "status": "PASS",
     "log": ".factory/evidence/python-tests.txt"
@@ -34,8 +34,8 @@
       "node",
       "tests/browser_smoke.cjs"
     ],
-    "observed_at": "2026-10-21T05:33:21.207458+00:00",
-    "elapsed_seconds": 10.139,
+    "observed_at": "2026-10-21T05:41:20.723183+00:00",
+    "elapsed_seconds": 6.312,
     "exit_code": 0,
     "status": "PASS",
     "log": ".factory/evidence/browser-tests.txt",
@@ -56,8 +56,8 @@
       "--wheel-dir",
       ".factory/wheels"
     ],
-    "observed_at": "2026-10-21T05:33:31.347302+00:00",
-    "elapsed_seconds": 25.141,
+    "observed_at": "2026-10-21T05:41:27.036341+00:00",
+    "elapsed_seconds": 16.827,
     "exit_code": 0,
     "status": "PASS",
     "log": ".factory/evidence/wheel-build.txt"
@@ -69,8 +69,8 @@
       "tests/package_smoke.py",
       ".factory/wheels/socratic_gtm_strategist-3.0.0-py3-none-any.whl"
     ],
-    "observed_at": "2026-10-21T05:33:56.488429+00:00",
-    "elapsed_seconds": 20.563,
+    "observed_at": "2026-10-21T05:41:43.863313+00:00",
+    "elapsed_seconds": 14.887,
     "exit_code": 0,
     "status": "PASS",
     "log": ".factory/evidence/wheel-smoke.txt"
@@ -97,8 +97,8 @@
       "--root",
       "."
     ],
-    "observed_at": "2026-10-21T05:34:17.052260+00:00",
-    "elapsed_seconds": 0.253,
+    "observed_at": "2026-10-21T05:41:58.750812+00:00",
+    "elapsed_seconds": 0.32,
     "exit_code": 0,
     "status": "PASS",
     "log": ".factory/evidence/spec-strict.txt"
@@ -112,8 +112,8 @@
       "--root",
       "."
     ],
-    "observed_at": "2026-10-21T05:34:17.305510+00:00",
-    "elapsed_seconds": 0.409,
+    "observed_at": "2026-10-21T05:41:59.071737+00:00",
+    "elapsed_seconds": 0.456,
     "exit_code": 0,
     "status": "PASS",
     "log": ".factory/evidence/spec-mutations.txt"
@@ -145,8 +145,8 @@
       "3da14f872b9fb45058b6b388b19cc4a769405d25",
       "--json"
     ],
-    "observed_at": "2026-10-21T05:34:17.715189+00:00",
-    "elapsed_seconds": 2.172,
+    "observed_at": "2026-10-21T05:41:59.528312+00:00",
+    "elapsed_seconds": 1.93,
     "exit_code": 0,
     "status": "PASS",
     "log": ".factory/evidence/drift.txt"
@@ -222,8 +222,8 @@
       "--check",
       "origin/main"
     ],
-    "observed_at": "2026-10-21T05:34:19.887517+00:00",
-    "elapsed_seconds": 0.108,
+    "observed_at": "2026-10-21T05:42:01.458728+00:00",
+    "elapsed_seconds": 0.077,
     "exit_code": 0,
     "status": "PASS",
     "log": ".factory/evidence/diff-check.txt"
@@ -238,8 +238,8 @@
       ".",
       "--json"
     ],
-    "observed_at": "2026-10-21T05:34:19.996066+00:00",
-    "elapsed_seconds": 3.6,
+    "observed_at": "2026-10-21T05:42:01.536728+00:00",
+    "elapsed_seconds": 2.582,
     "exit_code": 0,
     "status": "PASS",
     "log": ".factory/evidence/security.txt"

@@ -42,7 +42,7 @@ calibrated confidence and commercial validation are separate capabilities.
 See .factory/evidence/verification.json for exact argv, execution timestamps,
 elapsed time, exit codes and logs. Checks include:
 
-- Python unittest: 34 tests, including a deadline for rejected incomplete bodies.
+- Python unittest: 35 tests, including bounded rejection and DNS-independent startup.
 - Node session data suite: 5 tests.
 - Chrome browser: 11 scenarios including desktop/mobile preview, voice-key
   exclusion, save/reload, real downloads, invalid and hostile imports, injected
@@ -67,7 +67,10 @@ cross-site bodies on Windows Python 3.10. Rejections now discard only bounded,
 unambiguously framed bodies with a one-second deadline before closing. They
 still execute no tool or provider call. The second failure is retained in
 .factory/evidence/ci-second-failure.txt. The current remote run is reported
-separately in the PR.
+separately in the PR. A third run reproduced macOS readiness timeouts. The
+numeric-address server now binds without the standard reverse-DNS lookup;
+startup is tested with DNS unavailable. The third failure is retained in
+.factory/evidence/ci-third-failure.txt.
 
 - This is not an authenticated public service or multi-tenant application.
 - The bundled evaluator collects answers; it does not run a model or establish

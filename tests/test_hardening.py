@@ -9,7 +9,6 @@ import sys
 import tempfile
 import threading
 import unittest
-from http.server import ThreadingHTTPServer
 from unittest.mock import patch
 
 import server
@@ -25,7 +24,7 @@ ROOT = Path(__file__).resolve().parents[1]
 class HTTPHardening(unittest.TestCase):
     def setUp(self):
         self.tmp = tempfile.TemporaryDirectory()
-        self.httpd = ThreadingHTTPServer(("127.0.0.1", 0), server.SocraticRequestHandler)
+        self.httpd = server.LocalHTTPServer(("127.0.0.1", 0), server.SocraticRequestHandler)
         self.httpd.output_directory = Path(self.tmp.name)
         self.thread = threading.Thread(target=self.httpd.serve_forever, daemon=True)
         self.thread.start()
@@ -57,6 +56,16 @@ class HTTPHardening(unittest.TestCase):
                 continue
             with self.subTest(path=path):
                 self.assertEqual(self.request("GET", path)[0], 404)
+
+    def test_numeric_startup_without_reverse_dns(self):
+        with patch("socket.getfqdn", side_effect=AssertionError("DNS is unavailable")) as dns:
+            httpd = server.LocalHTTPServer(("127.0.0.1", 0), server.SocraticRequestHandler)
+            try:
+                self.assertEqual(httpd.server_name, "127.0.0.1")
+                self.assertGreater(httpd.server_port, 0)
+                dns.assert_not_called()
+            finally:
+                httpd.server_close()
 
     def test_no_directory_listing_or_head_disclosure(self):
         for path in ("/ui/", "/.git/", "/server.py"):

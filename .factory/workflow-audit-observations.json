@@ -1,7 +1,7 @@
 {
   "schema": "factory.workflow-audit.observations.v1",
-  "contract_sha256": "a060835746d57442d86dd86863e28ebcd5d824db97484e16118f877e863bffd5",
-  "candidate_sha256": "7a41a3ae64abee5171c8862dd67f94e93bf787fdae12e90bde6f175e38e38b25",
+  "contract_sha256": "97293c8384fb1c5d5b3f849a77b1813a361e0d1379cad7003907018576f244a1",
+  "candidate_sha256": "cf35f49e531218569ed3765808bedbf290cf48e9197831105b3f91e634d71e49",
   "observations": [
     {
       "id": "wheel_smoke",
@@ -9,7 +9,7 @@
       "status": "PASS",
       "reason": "Expected: Run the installed CLI, SDK and MCP outside the checkout with packaged resources. Observed: specified regression assertions and recorded outputs passed; scope is limited to declared fixtures/profiles.",
       "execution_identity": "Codex local Windows runner; CPython 3.11.9, Node 22 and installed headless Chrome; local reviewer identity is not externally authenticated.",
-      "observed_at": "2026-10-21T05:33:56.488429+00:00",
+      "observed_at": "2026-10-21T05:41:43.863313+00:00",
       "artifacts": [
         {
           "path": ".factory/evidence/wheel-smoke.txt",
@@ -24,11 +24,11 @@
       "status": "PASS",
       "reason": "Expected: Reject repository disclosure, traversal and HEAD directory listing. Observed: specified regression assertions and recorded outputs passed; scope is limited to declared fixtures/profiles.",
       "execution_identity": "Codex local Windows runner; CPython 3.11.9, Node 22 and installed headless Chrome; local reviewer identity is not externally authenticated.",
-      "observed_at": "2026-10-21T05:33:08.286185+00:00",
+      "observed_at": "2026-10-21T05:41:09.022412+00:00",
       "artifacts": [
         {
           "path": ".factory/evidence/python-tests.txt",
-          "sha256": "08ed4e4253ae151cbeb762aa5d2d782ff844566e6a4f6b23366f6ec9b8d8f5f7",
+          "sha256": "ab76e7ee05181712efdef185ae230d1d47b859630ae0b533f03b99b07403b038",
           "kind": "terminal"
         }
       ]
@@ -39,11 +39,11 @@
       "status": "PASS",
       "reason": "Expected: Reject foreign Origin and Host headers before generator/provider writes. Observed: specified regression assertions and recorded outputs passed; scope is limited to declared fixtures/profiles.",
       "execution_identity": "Codex local Windows runner; CPython 3.11.9, Node 22 and installed headless Chrome; local reviewer identity is not externally authenticated.",
-      "observed_at": "2026-10-21T05:33:08.286185+00:00",
+      "observed_at": "2026-10-21T05:41:09.022412+00:00",
       "artifacts": [
         {
           "path": ".factory/evidence/python-tests.txt",
-          "sha256": "08ed4e4253ae151cbeb762aa5d2d782ff844566e6a4f6b23366f6ec9b8d8f5f7",
+          "sha256": "ab76e7ee05181712efdef185ae230d1d47b859630ae0b533f03b99b07403b038",
           "kind": "terminal"
         }
       ]
@@ -54,11 +54,11 @@
       "status": "PASS",
       "reason": "Expected: Malformed, oversized and nested JSON return errors without losing service. Observed: specified regression assertions and recorded outputs passed; scope is limited to declared fixtures/profiles.",
       "execution_identity": "Codex local Windows runner; CPython 3.11.9, Node 22 and installed headless Chrome; local reviewer identity is not externally authenticated.",
-      "observed_at": "2026-10-21T05:33:08.286185+00:00",
+      "observed_at": "2026-10-21T05:41:09.022412+00:00",
       "artifacts": [
         {
           "path": ".factory/evidence/python-tests.txt",
-          "sha256": "08ed4e4253ae151cbeb762aa5d2d782ff844566e6a4f6b23366f6ec9b8d8f5f7",
+          "sha256": "ab76e7ee05181712efdef185ae230d1d47b859630ae0b533f03b99b07403b038",
           "kind": "terminal"
         }
       ]
@@ -69,11 +69,11 @@
       "status": "PASS",
       "reason": "Expected: Verbose filler remains founder-reported with null confidence. Observed: specified regression assertions and recorded outputs passed; scope is limited to declared fixtures/profiles.",
       "execution_identity": "Codex local Windows runner; CPython 3.11.9, Node 22 and installed headless Chrome; local reviewer identity is not externally authenticated.",
-      "observed_at": "2026-10-21T05:33:08.286185+00:00",
+      "observed_at": "2026-10-21T05:41:09.022412+00:00",
       "artifacts": [
         {
           "path": ".factory/evidence/python-tests.txt",
-          "sha256": "08ed4e4253ae151cbeb762aa5d2d782ff844566e6a4f6b23366f6ec9b8d8f5f7",
+          "sha256": "ab76e7ee05181712efdef185ae230d1d47b859630ae0b533f03b99b07403b038",
           "kind": "terminal"
         }
       ]
@@ -84,11 +84,11 @@
       "status": "PASS",
       "reason": "Expected: CLI retains eight answers and creates only declared draft artifacts. Observed: specified regression assertions and recorded outputs passed; scope is limited to declared fixtures/profiles.",
       "execution_identity": "Codex local Windows runner; CPython 3.11.9, Node 22 and installed headless Chrome; local reviewer identity is not externally authenticated.",
-      "observed_at": "2026-10-21T05:33:08.286185+00:00",
+      "observed_at": "2026-10-21T05:41:09.022412+00:00",
       "artifacts": [
         {
           "path": ".factory/evidence/python-tests.txt",
-          "sha256": "08ed4e4253ae151cbeb762aa5d2d782ff844566e6a4f6b23366f6ec9b8d8f5f7",
+          "sha256": "ab76e7ee05181712efdef185ae230d1d47b859630ae0b533f03b99b07403b038",
           "kind": "terminal"
         }
       ]
@@ -99,7 +99,7 @@
       "status": "PASS",
       "reason": "Expected: Hostile project/notes render as text; zero remains zero with chart CDN blocked. Observed: specified regression assertions and recorded outputs passed; scope is limited to declared fixtures/profiles.",
       "execution_identity": "Codex local Windows runner; CPython 3.11.9, Node 22 and installed headless Chrome; local reviewer identity is not externally authenticated.",
-      "observed_at": "2026-10-21T05:33:21.207458+00:00",
+      "observed_at": "2026-10-21T05:41:20.723183+00:00",
       "artifacts": [
         {
           "path": ".factory/evidence/browser-tests.txt",
@@ -108,7 +108,7 @@
         },
         {
           "path": ".factory/evidence/browser/observations.json",
-          "sha256": "06d754e21896334954c938ab405d5029c75d4a048e7dd367f9fc0ec169d6eb37",
+          "sha256": "486f48bfb6c9c47370bf2103fd303186c763be2ffb016961b4b0e1965f8bb605",
           "kind": "observation"
         }
       ]
@@ -119,11 +119,11 @@
       "status": "PASS",
       "reason": "Expected: Controlled sourced results are UNVERIFIED; network failures are UNAVAILABLE with UTC timestamp. Observed: specified regression assertions and recorded outputs passed; scope is limited to declared fixtures/profiles.",
       "execution_identity": "Codex local Windows runner; CPython 3.11.9, Node 22 and installed headless Chrome; local reviewer identity is not externally authenticated.",
-      "observed_at": "2026-10-21T05:33:08.286185+00:00",
+      "observed_at": "2026-10-21T05:41:09.022412+00:00",
       "artifacts": [
         {
           "path": ".factory/evidence/python-tests.txt",
-          "sha256": "08ed4e4253ae151cbeb762aa5d2d782ff844566e6a4f6b23366f6ec9b8d8f5f7",
+          "sha256": "ab76e7ee05181712efdef185ae230d1d47b859630ae0b533f03b99b07403b038",
           "kind": "terminal"
         }
       ]
@@ -134,11 +134,11 @@
       "status": "PASS",
       "reason": "Expected: Pitch/security templates leave company claims evidence-required. Observed: specified regression assertions and recorded outputs passed; scope is limited to declared fixtures/profiles.",
       "execution_identity": "Codex local Windows runner; CPython 3.11.9, Node 22 and installed headless Chrome; local reviewer identity is not externally authenticated.",
-      "observed_at": "2026-10-21T05:33:08.286185+00:00",
+      "observed_at": "2026-10-21T05:41:09.022412+00:00",
       "artifacts": [
         {
           "path": ".factory/evidence/python-tests.txt",
-          "sha256": "08ed4e4253ae151cbeb762aa5d2d782ff844566e6a4f6b23366f6ec9b8d8f5f7",
+          "sha256": "ab76e7ee05181712efdef185ae230d1d47b859630ae0b533f03b99b07403b038",
           "kind": "terminal"
         }
       ]
@@ -149,11 +149,11 @@
       "status": "PASS",
       "reason": "Expected: Invalid envelopes/arguments recover and notifications produce no response or tool mutation. Observed: specified regression assertions and recorded outputs passed; scope is limited to declared fixtures/profiles.",
       "execution_identity": "Codex local Windows runner; CPython 3.11.9, Node 22 and installed headless Chrome; local reviewer identity is not externally authenticated.",
-      "observed_at": "2026-10-21T05:33:08.286185+00:00",
+      "observed_at": "2026-10-21T05:41:09.022412+00:00",
       "artifacts": [
         {
           "path": ".factory/evidence/python-tests.txt",
-          "sha256": "08ed4e4253ae151cbeb762aa5d2d782ff844566e6a4f6b23366f6ec9b8d8f5f7",
+          "sha256": "ab76e7ee05181712efdef185ae230d1d47b859630ae0b533f03b99b07403b038",
           "kind": "terminal"
         }
       ]
@@ -179,7 +179,7 @@
       "status": "PASS",
       "reason": "Expected: Edit and save evidence, reload it and download matching playbook/CSV without formula execution. Observed: specified regression assertions and recorded outputs passed; scope is limited to declared fixtures/profiles.",
       "execution_identity": "Codex local Windows runner; CPython 3.11.9, Node 22 and installed headless Chrome; local reviewer identity is not externally authenticated.",
-      "observed_at": "2026-10-21T05:33:21.207458+00:00",
+      "observed_at": "2026-10-21T05:41:20.723183+00:00",
       "artifacts": [
         {
           "path": ".factory/evidence/browser-tests.txt",
@@ -188,7 +188,7 @@
         },
         {
           "path": ".factory/evidence/browser/observations.json",
-          "sha256": "06d754e21896334954c938ab405d5029c75d4a048e7dd367f9fc0ec169d6eb37",
+          "sha256": "486f48bfb6c9c47370bf2103fd303186c763be2ffb016961b4b0e1965f8bb605",
           "kind": "observation"
         }
       ]
@@ -199,7 +199,7 @@
       "status": "PASS",
       "reason": "Expected: Session and review actions remain visible and usable at 390px without overflow. Observed: specified regression assertions and recorded outputs passed; scope is limited to declared fixtures/profiles.",
       "execution_identity": "Codex local Windows runner; CPython 3.11.9, Node 22 and installed headless Chrome; local reviewer identity is not externally authenticated.",
-      "observed_at": "2026-10-21T05:33:21.207458+00:00",
+      "observed_at": "2026-10-21T05:41:20.723183+00:00",
       "artifacts": [
         {
           "path": ".factory/evidence/browser-tests.txt",
@@ -208,7 +208,7 @@
         },
         {
           "path": ".factory/evidence/browser/mobile.png",
-          "sha256": "98b5f77a70f20d464b71e6c8f3ec456517fcab4214477a795c4195e003a15799",
+          "sha256": "9cce530a57c36f02dbf394dae41ae033a8f2133958ec4658369f5af034505f85",
           "kind": "screenshot"
         }
       ]
@@ -219,16 +219,16 @@
       "status": "PASS",
       "reason": "Expected: Fixed provider forwarding, upload bounds, failure fallback and credential exclusion use controlled fixtures. Observed: specified regression assertions and recorded outputs passed; scope is limited to declared fixtures/profiles.",
       "execution_identity": "Codex local Windows runner; CPython 3.11.9, Node 22 and installed headless Chrome; local reviewer identity is not externally authenticated.",
-      "observed_at": "2026-10-21T05:33:08.286185+00:00",
+      "observed_at": "2026-10-21T05:41:09.022412+00:00",
       "artifacts": [
         {
           "path": ".factory/evidence/python-tests.txt",
-          "sha256": "08ed4e4253ae151cbeb762aa5d2d782ff844566e6a4f6b23366f6ec9b8d8f5f7",
+          "sha256": "ab76e7ee05181712efdef185ae230d1d47b859630ae0b533f03b99b07403b038",
           "kind": "terminal"
         },
         {
           "path": ".factory/evidence/browser/observations.json",
-          "sha256": "06d754e21896334954c938ab405d5029c75d4a048e7dd367f9fc0ec169d6eb37",
+          "sha256": "486f48bfb6c9c47370bf2103fd303186c763be2ffb016961b4b0e1965f8bb605",
           "kind": "observation"
         }
       ]
@@ -239,7 +239,7 @@
       "status": "PASS",
       "reason": "Expected: Mission, four-step journey and next action are honest and reduced motion is respected. Observed: specified regression assertions and recorded outputs passed; scope is limited to declared fixtures/profiles.",
       "execution_identity": "Codex local Windows runner; CPython 3.11.9, Node 22 and installed headless Chrome; local reviewer identity is not externally authenticated.",
-      "observed_at": "2026-10-21T05:33:21.207458+00:00",
+      "observed_at": "2026-10-21T05:41:20.723183+00:00",
       "artifacts": [
         {
           "path": ".factory/evidence/browser-tests.txt",
@@ -248,7 +248,7 @@
         },
         {
           "path": ".factory/evidence/browser/welcome-desktop.png",
-          "sha256": "1bec654386806545395fd7b8d50b79897ba26236bea41ef8053ef4d964ad5a1d",
+          "sha256": "48d3333fc3457af83bd8b91657fad25b3c4ad5b994f06482bfb6e22560df0681",
           "kind": "screenshot"
         },
         {
@@ -264,11 +264,11 @@
       "status": "PASS",
       "reason": "Expected: Reject HTTP bodies above 65536 bytes, audio above 5242880 bytes and excessive nested JSON. Observed: specified regression assertions and recorded outputs passed; scope is limited to declared fixtures/profiles.",
       "execution_identity": "Codex local Windows runner; CPython 3.11.9, Node 22 and installed headless Chrome; local reviewer identity is not externally authenticated.",
-      "observed_at": "2026-10-21T05:33:08.286185+00:00",
+      "observed_at": "2026-10-21T05:41:09.022412+00:00",
       "artifacts": [
         {
           "path": ".factory/evidence/python-tests.txt",
-          "sha256": "08ed4e4253ae151cbeb762aa5d2d782ff844566e6a4f6b23366f6ec9b8d8f5f7",
+          "sha256": "ab76e7ee05181712efdef185ae230d1d47b859630ae0b533f03b99b07403b038",
           "kind": "terminal"
         }
       ]
@@ -279,11 +279,11 @@
       "status": "PASS",
       "reason": "Expected: Bounded AST audit covers all discovered Python sources and reports no findings. Observed: specified regression assertions and recorded outputs passed; scope is limited to declared fixtures/profiles.",
       "execution_identity": "Codex local Windows runner; CPython 3.11.9, Node 22 and installed headless Chrome; local reviewer identity is not externally authenticated.",
-      "observed_at": "2026-10-21T05:34:19.996066+00:00",
+      "observed_at": "2026-10-21T05:42:01.536728+00:00",
       "artifacts": [
         {
           "path": ".factory/evidence/security.txt",
-          "sha256": "e9fa3c9dc1c800c2c8687413225ef182cb5c0150f302684b86dddf97cfeedf64",
+          "sha256": "07c953cd0f112a78576a0d4b8ab159a9bc9319177cb3da2f8379c150a3256bf8",
           "kind": "terminal"
         }
       ]
@@ -324,7 +324,7 @@
       "status": "PASS",
       "reason": "Expected: Strict spec, requirement mutation, source drift and skill validation pass. Observed: specified regression assertions and recorded outputs passed; scope is limited to declared fixtures/profiles.",
       "execution_identity": "Codex local Windows runner; CPython 3.11.9, Node 22 and installed headless Chrome; local reviewer identity is not externally authenticated.",
-      "observed_at": "2026-10-21T05:34:17.305510+00:00",
+      "observed_at": "2026-10-21T05:41:59.071737+00:00",
       "artifacts": [
         {
           "path": ".factory/evidence/spec-mutations.txt",
@@ -338,7 +338,7 @@
         },
         {
           "path": ".factory/evidence/drift.txt",
-          "sha256": "71062716a68c1d7c3a33e4be00260d0ceb53f30a4e105eb2b85c623e000a5f56",
+          "sha256": "013c3a8b23ddb49fc4d1470bebeab624380cbbc7eacfd94ca3dc587caee6f3bc",
           "kind": "observation"
         },
         {

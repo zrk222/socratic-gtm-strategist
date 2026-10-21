@@ -38,5 +38,7 @@ Architect verdict: PASS
 
 - [x] T28 | slice=server.py | files=server.py,tests/test_hardening.py | verify=`python -m unittest discover tests -q` | Discard bounded rejected request bodies before closing to preserve HTTP errors on Windows; retain origin, framing and size rejection.
 
+- [x] T29 | slice=server.py | files=server.py,tests/test_hardening.py | verify=`python -m unittest discover tests -q` | Remove reverse-DNS lookup from numeric-address server startup and assert startup with DNS unavailable.
+
 ## Review authority
 The user authorized audit, review and enhancement. Codex reviews this local plan; no separate human signoff or release approval is claimed.

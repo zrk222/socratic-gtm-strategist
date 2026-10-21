@@ -7,6 +7,7 @@ import sys
 import time
 import webbrowser
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+from socketserver import TCPServer
 from urllib.parse import urlsplit
 import urllib.request
 import re
@@ -313,8 +314,15 @@ class SocraticRequestHandler(BaseHTTPRequestHandler):
         return None
 
 
+class LocalHTTPServer(ThreadingHTTPServer):
+    def server_bind(self):
+        # Numeric binding needs no reverse DNS, which can stall offline startup.
+        TCPServer.server_bind(self)
+        self.server_name, self.server_port = self.server_address[:2]
+
+
 def start_server(port=8000, open_browser=True, host="127.0.0.1"):
-    httpd = ThreadingHTTPServer((host, port), SocraticRequestHandler)
+    httpd = LocalHTTPServer((host, port), SocraticRequestHandler)
     httpd.output_directory = Path.cwd() / "gtm_outputs"
     url = f"http://127.0.0.1:{httpd.server_port}/ui/index.html"
     print(f"[+] Local GTM intake dashboard: {url}", file=sys.stderr)
